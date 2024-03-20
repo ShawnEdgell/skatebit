@@ -31,30 +31,45 @@
 	};
 
 	const uploadAvatar = async () => {
-		try {
-			uploading = true;
+		uploading = true;
 
+		try {
 			if (!files || files.length === 0) {
 				throw new Error('You must select an image to upload.');
 			}
 
 			const file = files[0];
 			const fileExt = file.name.split('.').pop();
-			const filePath = `${Math.random()}.${fileExt}`;
+			const newFilePath = `${Math.random()}.${fileExt}`;
 
-			const { error } = await supabase.storage.from('avatars').upload(filePath, file);
-
-			if (error) {
-				throw error;
+			// Delete existing avatar from storage if 'url' is not empty
+			if (url) {
+				// Assuming 'url' contains the filename of the existing avatar
+				// Extract filename from 'url' if it's structured differently
+				const { error: deleteError } = await supabase.storage.from('avatars').remove([url]);
+				if (deleteError) {
+					throw deleteError;
+				}
 			}
 
-			url = filePath;
-			setTimeout(() => {
-				dispatch('upload');
-			}, 100);
+			// Upload the new file
+			const { error: uploadError } = await supabase.storage
+				.from('avatars')
+				.upload(newFilePath, file);
+			if (uploadError) {
+				throw uploadError;
+			}
+
+			// Update the avatar URL to the new file path
+			url = newFilePath;
+			avatarUrl = null; // Reset this to force re-download if necessary
+
+			// Emit an event to notify of the upload completion, for example, to update the user profile
+			dispatch('upload', { newUrl: newFilePath });
 		} catch (error) {
 			if (error instanceof Error) {
-				alert(error.message);
+				console.error('Upload error:', error.message);
+				alert(error.message); // Display a user-friendly error message
 			}
 		} finally {
 			uploading = false;

@@ -18,6 +18,7 @@
 			redirectTo={`${data.url}/auth/callback`}
 			showLinks={false}
 			appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
+			providers={['google', 'discord']}
 		/>
 	</div>
 </div>
