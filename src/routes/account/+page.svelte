@@ -33,9 +33,9 @@
 	};
 </script>
 
-<div class="form-widget">
+<div class="container-centered">
 	<form
-		class="form-widget"
+		class="flex flex-col items-center space-y-5"
 		method="post"
 		action="?/update"
 		use:enhance={handleSubmit}
@@ -50,29 +50,47 @@
 			}}
 		/>
 		<div>
-			<label for="email">Email</label>
-			<input id="email" type="text" value={session.user.email} disabled />
+			<input class="input" id="email" type="text" value={session.user.email} disabled />
 		</div>
 
 		<div>
-			<label for="fullName">Full Name</label>
-			<input id="fullName" name="fullName" type="text" value={form?.fullName ?? fullName} />
+			<input
+				class="input"
+				id="fullName"
+				name="fullName"
+				type="text"
+				placeholder="Full Name"
+				value={form?.fullName ?? fullName}
+			/>
 		</div>
 
 		<div>
-			<label for="username">Username</label>
-			<input id="username" name="username" type="text" value={form?.username ?? username} />
+			<input
+				class="input"
+				id="username"
+				name="username"
+				type="text"
+				placeholder="Username"
+				value={form?.username ?? username}
+			/>
 		</div>
 
 		<div>
-			<label for="website">Website</label>
-			<input id="website" name="website" type="url" value={form?.website ?? website} />
+			<input
+				class="input"
+				id="website"
+				name="website"
+				type="url"
+				autocomplete="email"
+				placeholder="Website"
+				value={form?.website ?? website}
+			/>
 		</div>
 
 		<div>
 			<input
 				type="submit"
-				class="button block primary"
+				class="button block btn variant-filled-secondary"
 				value={loading ? 'Loading...' : 'Update'}
 				disabled={loading}
 			/>
@@ -81,7 +99,7 @@
 
 	<form method="post" action="?/signout" use:enhance={handleSignOut}>
 		<div>
-			<button class="button block" disabled={loading}>Sign Out</button>
+			<button class="button block btn variant-filled-error" disabled={loading}>Sign Out</button>
 		</div>
 	</form>
 </div>

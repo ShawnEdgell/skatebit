@@ -3,6 +3,12 @@
 @tailwind utilities;
 @tailwind variants;
 
+html, body { @apply h-full overflow-hidden; }
+
+.container-centered {
+	@apply flex flex-col h-full justify-center items-center space-y-5 p-2
+}
+
 /* modern theme */
 @font-face {
 	font-family: 'Quicksand';
@@ -32,4 +38,31 @@
 	font-family: 'Playfair Display';
 	src: url('/fonts/PlayfairDisplay-Italic.ttf');
 	font-display: swap;
+}
+
+/* Avatar */
+
+.avatar {
+	border-radius: var(--custom-border-radius);
+	overflow: hidden;
+	max-width: 100%;
+}
+.avatar.image {
+	object-fit: cover;
+}
+.avatar.no-image {
+	background-color: #333;
+	border: 1px solid rgb(200, 200, 200);
+	border-radius: 5px;
+}
+
+.avatarPlaceholder {
+	border: var(--custom-border);
+	border-radius: var(--custom-border-radius);
+	width: 35px;
+	height: 35px;
+	background-color: rgba(255, 255, 255, 0.2);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }

@@ -79,7 +79,7 @@
 	$: if (url) downloadImage(url);
 </script>
 
-<div>
+<div class="space-y-3">
 	{#if avatarUrl}
 		<img
 			src={avatarUrl}
@@ -93,8 +93,8 @@
 	<input type="hidden" name="avatarUrl" value={url} />
 
 	<div style="width: {size}em;">
-		<label class="button primary block" for="single">
-			{uploading ? 'Uploading ...' : 'Upload'}
+		<label class="button block btn variant-filled" for="single">
+			{uploading ? 'Uploading ...' : 'Change avatar'}
 		</label>
 		<input
 			style="visibility: hidden; position:absolute;"
