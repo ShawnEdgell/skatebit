@@ -22,4 +22,5 @@
 		<h1 class="h1 tracking-tighter text-6xl">Skatebit.</h1>
 	</div>
 	<p>An online hub for skateboarding video games.</p>
+	<a href="/login" class="btn variant-filled-primary">Account</a>
 </div>

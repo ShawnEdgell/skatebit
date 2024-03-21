@@ -11,7 +11,7 @@
 </svelte:head>
 
 <div class="container-centered">
-	<div class="space-y-5">
+	<div class="space-y-5 max-w-md">
 		<h1 class="h1">Login</h1>
 		<p>Access your profile, chat in the forums, upload stats/settings, and more!</p>
 		<Auth

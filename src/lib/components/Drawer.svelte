@@ -7,11 +7,10 @@
 	const drawerSettings: DrawerSettings = {
 		id: 'example-3',
 		// Provide your property overrides:
-		bgDrawer: 'bg-surface-900 text-white',
+		bgDrawer: 'bg-surface-50-900-token',
 		width: 'w-[280px] md:w-[480px]',
 		padding: 'p-0',
 		rounded: 'none',
-
 		position: 'right'
 	};
 
