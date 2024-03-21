@@ -51,7 +51,7 @@
 	<DrawerItems />
 </Drawer>
 
-<AppShell scrollbarGutter="auto">
+<AppShell scrollbarGutter="auto" regionPage="scroll-smooth">
 	<svelte:fragment slot="header">
 		<AppBar />
 	</svelte:fragment>

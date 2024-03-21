@@ -6,22 +6,22 @@
 		{
 			label: 'Skater XL',
 			actions: [
-				{ label: 'Play', link: '/' },
-				{ label: 'Details', link: '/' }
+				{ label: 'Play', link: '/games/skaterxl' },
+				{ label: 'Details', link: '/games/skaterxl' }
 			]
 		},
 		{
 			label: 'Session',
 			actions: [
-				{ label: 'Launch', link: '/' },
-				{ label: 'Learn More', link: '/' }
+				{ label: 'Launch', link: '/games/session' },
+				{ label: 'Learn More', link: '/games/session' }
 			]
 		},
 		{
 			label: 'Skate.',
 			actions: [
-				{ label: 'Start', link: '/' },
-				{ label: 'Explore', link: '/' }
+				{ label: 'Start', link: '/games/skate' },
+				{ label: 'Explore', link: '/games/skate' }
 			]
 		}
 	];
@@ -43,7 +43,7 @@
 					<!-- (optionally you can provide a label here) -->
 					<ul>
 						<li>
-							<a href="/">
+							<a href={link}>
 								<span class="badge bg-primary-500">(icon)</span>
 								<span class="flex-auto">Skeleton</span>
 							</a>
