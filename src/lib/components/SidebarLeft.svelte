@@ -18,16 +18,22 @@
 			// Add more links as needed
 		],
 		'/skaterxl': [
-			{ title: 'Page 1', url: '/skaterxl/page1' },
-			{ title: 'Page 2', url: '/skaterxl/page2' }
+			{ title: 'About', url: '/skaterxl/about' },
+			{ title: 'News', url: '/skaterxl/news' },
+			{ title: 'Guides', url: '/skaterxl/guides' },
+			{ title: 'Mods', url: '/skaterxl/mods' },
+			{ title: 'Stats', url: '/skaterxl/stats' }
 		],
 		'/session': [
-			{ title: 'Page 1', url: '/session/page1' },
-			{ title: 'Page 2', url: '/session/page2' }
+			{ title: 'About', url: '/session/about' },
+			{ title: 'News', url: '/session/news' },
+			{ title: 'Guides', url: '/session/guides' },
+			{ title: 'Mods', url: '/session/mods' },
+			{ title: 'Stats', url: '/session/stats' }
 		],
 		'/skate': [
-			{ title: 'Page 1', url: '/skate/page1' },
-			{ title: 'Page 2', url: '/skate/page2' }
+			{ title: 'About', url: '/skate/about' },
+			{ title: 'News', url: '/skate/news' }
 		]
 	};
 
@@ -45,19 +51,19 @@
 		<AppRailAnchor href="/docs/introduction" selected={$page.url.pathname.startsWith('/docs/')}
 			>Docs</AppRailAnchor
 		>
-		<AppRailAnchor href="/skaterxl/page1" selected={$page.url.pathname.startsWith('/skaterxl/')}
+		<AppRailAnchor href="/skaterxl/about" selected={$page.url.pathname.startsWith('/skaterxl/')}
 			>Skater XL</AppRailAnchor
 		>
-		<AppRailAnchor href="/session/page1" selected={$page.url.pathname.startsWith('/session/')}>
+		<AppRailAnchor href="/session/about" selected={$page.url.pathname.startsWith('/session/')}>
 			Session</AppRailAnchor
 		>
-		<AppRailAnchor href="/skate/page1" selected={$page.url.pathname.startsWith('/skate/')}
+		<AppRailAnchor href="/skate/about" selected={$page.url.pathname.startsWith('/skate/')}
 			>Skate.</AppRailAnchor
 		>
 	</AppRail>
 </div>
 
-<nav class="list-nav w-full p-4 bg-surface-50-900-token card">
+<nav class="list-nav w-full px-4 py-8 bg-surface-50-900-token card">
 	<ul>
 		{#each currentNavLinks as { title, url }}
 			<li>

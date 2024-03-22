@@ -10,11 +10,11 @@
 	slotDefault="place-self-center"
 	slotTrail="place-content-end"
 	data-sveltekit-preload-data="hover"
-	padding="px-4 py-4 sm:py-2"
+	padding="p-4"
 >
 	<svelte:fragment slot="lead">
 		<a href="/" class="flex items-center gap-1" data-sveltekit-preload-data="hover">
-			<h1 class="h1 tracking-tighter text-xl">Skatebit.</h1>
+			<h1 class="h1 tracking-tighter text-2xl">Skatebit.</h1>
 		</a>
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
@@ -26,6 +26,6 @@
 			<div class="hidden sm:flex items-center gap-4">
 				<Navigation />
 			</div>
-		</div></svelte:fragment
-	>
+		</div>
+	</svelte:fragment>
 </AppBar>
