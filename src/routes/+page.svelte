@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>User Management</title>
+	<title>Skatebit</title>
 </svelte:head>
 
 <div class="flex flex-col items-center">
@@ -22,6 +22,12 @@
 </div>
 <p>An online hub for skateboarding video games.</p>
 <div>
-	<a href="/games" class="btn variant-filled-primary">Games</a>
-	<a href="/login" class="btn variant-filled-secondary">Account</a>
+	<a href="/docs/get-started" class="btn variant-filled-primary" data-sveltekit-preload-data="hover"
+		>Get Started</a
+	>
+	<a
+		href="/docs/introduction"
+		class="btn variant-filled-secondary"
+		data-sveltekit-preload-data="hover">Learn More</a
+	>
 </div>

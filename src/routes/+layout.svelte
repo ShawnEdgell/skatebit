@@ -5,7 +5,6 @@
 	import { AppShell, Drawer, initializeStores } from '@skeletonlabs/skeleton';
 
 	import AppBar from '$lib/components/AppBar.svelte';
-	import DrawerItems from '$lib/components/DrawerItems.svelte';
 
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -47,11 +46,9 @@
 	<title>User Management</title>
 </svelte:head>
 
-<Drawer>
-	<DrawerItems />
-</Drawer>
+<Drawer />
 
-<AppShell scrollbarGutter="auto" regionPage="scroll-smooth">
+<AppShell scrollbarGutter="auto" regionPage="scroll-smooth overscroll-none">
 	<svelte:fragment slot="header">
 		<AppBar />
 	</svelte:fragment>

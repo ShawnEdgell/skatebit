@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { popup } from '@skeletonlabs/skeleton';
+	import { popup, LightSwitch } from '@skeletonlabs/skeleton';
 	import type { PopupSettings } from '@skeletonlabs/skeleton';
 
 	interface Action {
@@ -18,19 +18,17 @@
 			label: 'Explore',
 			actions: [
 				{ label: 'Homepage', link: '/' },
-				{ label: 'Forums', link: '/games/session' },
-				{ label: 'Blog', link: '/games/skaterxl' },
-				{ label: 'Skater XL', link: '/games/skaterxl' },
-				{ label: 'Session', link: '/games/session' },
-				{ label: 'Skate.', link: '/games/skate' }
+				{ label: 'Documentation', link: '/docs/introduction' },
+				{ label: 'Forums', link: '/forums' },
+				{ label: 'Blog', link: '/blog' },
+				{ label: 'Skater XL', link: '/skaterxl/page1' },
+				{ label: 'Session', link: '/session' },
+				{ label: 'Skate.', link: '/skate' }
 			]
 		},
 		{
-			label: 'Skate.',
-			actions: [
-				{ label: 'Start', link: '/games/skate' },
-				{ label: 'Explore', link: '/games/skate' }
-			]
+			label: 'Settings',
+			actions: [{ label: 'Account', link: '/login' }]
 		}
 	];
 
@@ -54,7 +52,7 @@
 
 	<!-- Corresponding Popup -->
 	<div class="card p-4" data-popup={`popup-${i}`}>
-		<div class="popup-content space-y-3">
+		<div class="popup-content space-y-1">
 			{#each actions as { label, link }, index}
 				<nav class="list-nav">
 					<ul>
@@ -67,8 +65,17 @@
 							</a>
 						</li>
 						{#if label === 'Blog'}
-							<div class="pt-4 pb-2">
+							<div class="py-2">
 								<hr class="!border-t-2" />
+							</div>
+						{/if}
+						{#if label === 'Account'}
+							<div class="py-2">
+								<hr class="!border-t-2" />
+							</div>
+							<div class="flex items-center justify-between">
+								<h3>Mode</h3>
+								<LightSwitch />
 							</div>
 						{/if}
 					</ul>

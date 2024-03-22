@@ -33,6 +33,9 @@
 	};
 </script>
 
+<svelte:head>
+	<title>Skatebit | Account</title>
+</svelte:head>
 <form
 	class="flex flex-col items-center space-y-5"
 	method="post"

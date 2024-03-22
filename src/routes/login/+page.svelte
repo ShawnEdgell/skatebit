@@ -7,11 +7,11 @@
 </script>
 
 <svelte:head>
-	<title>User Management</title>
+	<title>Skatebit | Login</title>
 </svelte:head>
 
 <div class="space-y-5 max-w-sm">
-	<h1 class="h1">Login</h1>
+	<h1 class="h1">Account Login</h1>
 	<p>Access your profile, chat in the forums, upload stats/settings, and more!</p>
 	<Auth
 		supabaseClient={data.supabase}
