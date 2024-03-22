@@ -1,20 +1,28 @@
 <script lang="ts">
 	import { popup } from '@skeletonlabs/skeleton';
+	import type { PopupSettings } from '@skeletonlabs/skeleton';
 
-	// Enhanced array of objects including navigation buttons for each game
-	const games = [
+	interface Action {
+		label: string;
+		link: string;
+	}
+
+	interface Game {
+		label: string;
+		actions: Action[];
+	}
+
+	// Define the games array with types
+	const games: Game[] = [
 		{
-			label: 'Skater XL',
+			label: 'Explore',
 			actions: [
-				{ label: 'Play', link: '/games/skaterxl' },
-				{ label: 'Details', link: '/games/skaterxl' }
-			]
-		},
-		{
-			label: 'Session',
-			actions: [
-				{ label: 'Launch', link: '/games/session' },
-				{ label: 'Learn More', link: '/games/session' }
+				{ label: 'Homepage', link: '/' },
+				{ label: 'Forums', link: '/games/session' },
+				{ label: 'Blog', link: '/games/skaterxl' },
+				{ label: 'Skater XL', link: '/games/skaterxl' },
+				{ label: 'Session', link: '/games/session' },
+				{ label: 'Skate.', link: '/games/skate' }
 			]
 		},
 		{
@@ -25,30 +33,44 @@
 			]
 		}
 	];
+
+	// Common settings for the popup, without 'target'
+	let popupSettings: Omit<PopupSettings, 'target'> = {
+		event: 'click',
+		placement: 'bottom',
+		middleware: { offset: 8 }
+	};
 </script>
 
 {#each games as { label, actions }, i}
-	<!-- Trigger -->
+	<!-- Dynamically assign the 'target' for each button -->
+
 	<button
-		class="btn variant-filled-surface-900"
-		use:popup={{ event: 'click', target: 'popup-' + i, placement: 'top' }}
+		class="btn hover:variant-ghost-primary"
+		use:popup={{ ...popupSettings, target: `popup-${i}` }}
 	>
 		{label}
 	</button>
-	<!-- Popup -->
-	<div class="card p-4" data-popup={'popup-' + i}>
-		<div class="popup-content flex flex-col items-center flex-1 gap-3">
-			{#each actions as { label, link }}
+
+	<!-- Corresponding Popup -->
+	<div class="card p-4" data-popup={`popup-${i}`}>
+		<div class="popup-content space-y-3">
+			{#each actions as { label, link }, index}
 				<nav class="list-nav">
-					<!-- (optionally you can provide a label here) -->
 					<ul>
 						<li>
-							<a href={link}>
-								<span class="badge bg-primary-500">(icon)</span>
-								<span class="flex-auto">Skeleton</span>
+							<a href={link} data-sveltekit-preload-data="hover">
+								<div>
+									<span class="badge bg-primary-500">(icon)</span>
+									<span class="flex-auto">{label}</span>
+								</div>
 							</a>
 						</li>
-						<!-- ... -->
+						{#if label === 'Blog'}
+							<div class="pt-4 pb-2">
+								<hr class="!border-t-2" />
+							</div>
+						{/if}
 					</ul>
 				</nav>
 			{/each}

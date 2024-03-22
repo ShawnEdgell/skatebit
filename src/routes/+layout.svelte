@@ -59,7 +59,9 @@
 	<!-- (sidebarRight) -->
 	<!-- (pageHeader) -->
 	<!-- Router Slot -->
-	<slot />
+	<div class="flex flex-col h-full w-full justify-center items-center space-y-5 p-4">
+		<slot />
+	</div>
 	<!-- ---- / ---- -->
 	<!-- (pageFooter) -->
 	<!-- (footer) -->

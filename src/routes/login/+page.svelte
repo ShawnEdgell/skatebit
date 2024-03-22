@@ -10,17 +10,15 @@
 	<title>User Management</title>
 </svelte:head>
 
-<div class="container-centered">
-	<div class="space-y-5 max-w-md">
-		<h1 class="h1">Login</h1>
-		<p>Access your profile, chat in the forums, upload stats/settings, and more!</p>
-		<Auth
-			supabaseClient={data.supabase}
-			view="magic_link"
-			redirectTo={`${data.url}/auth/callback`}
-			showLinks={false}
-			appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
-			providers={['google', 'discord']}
-		/>
-	</div>
+<div class="space-y-5 max-w-sm">
+	<h1 class="h1">Login</h1>
+	<p>Access your profile, chat in the forums, upload stats/settings, and more!</p>
+	<Auth
+		supabaseClient={data.supabase}
+		view="magic_link"
+		redirectTo={`${data.url}/auth/callback`}
+		showLinks={false}
+		appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
+		providers={['google', 'discord']}
+	/>
 </div>
