@@ -8,7 +8,7 @@
 	<div class="hidden sm:flex fixed top-0 left-0 mt-16 h-full w-72">
 		<SidebarLeft />
 	</div>
-	<div class="sm:ml-72 lg:mr-72 space-y-5 max-w-4xl">
+	<div class="sm:ml-72 lg:mr-72 space-y-5 w-full max-w-4xl">
 		<slot />
 	</div>
 	<div class="overflow-y-scroll hidden lg:block fixed top-0 mt-6 right-0 h-full w-72 p-4">

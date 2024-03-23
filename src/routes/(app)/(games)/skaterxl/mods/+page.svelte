@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { tocCrawler } from '@skeletonlabs/skeleton';
+	import ModTabs from '$lib/components/ModTabs.svelte';
 </script>
 
 <svelte:head>
@@ -7,114 +8,41 @@
 </svelte:head>
 
 <div class="space-y-5" use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
-	<h1 class="h1">Skater XL</h1>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
+	<h1 class="text-3xl font-bold mb-8">Mods</h1>
+	<h2 class="text-xl font-semibold mb-2">Choosing Your Game Version</h2>
+	<p class="mb-4">
+		Different versions of Skater XL come with their own set of unique mods. Find out below what's
+		special about each one.
 	</p>
-	<h2 class="h2">xl-4-Header 1</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
-	</p>
-	<h2 class="h2">xl-4-Header 2</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
-	</p>
-	<h2 class="h2">xl-4-Header 3</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
-	</p>
-	<h2 class="h2">xl-4-Header 4</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
-	</p>
-	<h2 class="h2">xl-4-Header 5</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
-	</p>
-	<h2 class="h2">xl-4-Header 6</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
-	</p>
-	<h2 class="h2">xl-4-Header 7</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
-	</p>
-	<h2 class="h2">xl-4-Header 8</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
-	</p>
-	<h2 class="h2">xl-4-Header 9</h2>
-	<p>
-		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus
-		consequuntur voluptatem soluta provident amet minus assumenda deserunt iste, repellendus
-		molestias quasi dolor illum numquam rerum incidunt repellat? Lorem ipsum dolor sit amet
-		consectetur adipisicing elit. Aliquid culpa excepturi, soluta inventore amet sunt laudantium
-		dicta, blanditiis vel facilis alias aut suscipit veniam laborum odio reiciendis autem!
-		Consectetur, hic!. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ullam inventore
-		beatae iste, corrupti in. Temporibus quasi, dolorum dignissimos qui adipisci, consequatur amet
-		quo nobis dolores atque unde perferendis illo.
+
+	<div class="flex gap-4">
+		<div class="card p-0 mt-4 mb-4">
+			<img src="/images/Alpha2.webp" alt="Skater XL Alpha Version" class="rounded-lg" />
+			<p class="p-4">
+				<strong>Skater XL v1.2.2.8 (Alpha)</strong>
+				<br />
+				<span class="text-sm">
+					Unparalleled mod support in Skater XL 1.2.2.8 empowers players to explore a vast modding
+					universe, featuring essential mods like the XXL 3 mod and XL Gear Modifier.
+				</span>
+			</p>
+		</div>
+		<div class="card p-0 mt-4 mb-4">
+			<img src="/images/Home2.webp" alt="Skater XL Public Version" class="rounded-lg" />
+			<p class="p-4">
+				<strong>Skater XL v1.2.7.8 (Public)</strong>
+				<br />
+				<span class="text-sm">
+					Vert skating gets a revolutionary makeover in v1.2.7.8 with an advanced grabs update. It's
+					a dream come true for ramp and bowl lovers seeking depth and realism in their
+					skateboarding exploits.
+				</span>
+			</p>
+		</div>
+	</div>
+	<h2 class="text-xl font-semibold mb-2">Working Mods</h2>
+	<p class="mb-4">
+		Please select your game version below to view a curated list of compatible mods.
 	</p>
 </div>
+<ModTabs />
