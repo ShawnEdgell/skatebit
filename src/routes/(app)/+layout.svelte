@@ -11,7 +11,7 @@
 	<div class="sm:ml-72 lg:mr-72 space-y-5 max-w-4xl">
 		<slot />
 	</div>
-	<div class="hidden lg:block fixed top-0 mt-6 right-0 h-full w-72 p-4">
+	<div class="overflow-y-scroll hidden lg:block fixed top-0 mt-6 right-0 h-full w-72 p-4">
 		<SidebarCard />
 		<TableOfContents>
 			<h1>On the Page</h1>
