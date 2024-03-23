@@ -22,7 +22,8 @@
 			{ title: 'News', url: '/skaterxl/news' },
 			{ title: 'Guides', url: '/skaterxl/guides' },
 			{ title: 'Mods', url: '/skaterxl/mods' },
-			{ title: 'Stats', url: '/skaterxl/stats' }
+			{ title: 'Stats', url: '/skaterxl/stats' },
+			{ title: 'XL Hub', url: '/skaterxl/xlhub' }
 		],
 		'/session': [
 			{ title: 'About', url: '/session/about' },
@@ -47,7 +48,7 @@
 </script>
 
 <div>
-	<AppRail background="bg-surface-50-900-token card">
+	<AppRail background="bg-surface-50-900-token card rounded-none">
 		<AppRailAnchor href="/docs/introduction" selected={$page.url.pathname.startsWith('/docs/')}
 			>Docs</AppRailAnchor
 		>
@@ -63,7 +64,7 @@
 	</AppRail>
 </div>
 
-<nav class="list-nav w-full px-4 py-8 bg-surface-50-900-token card">
+<nav class="list-nav w-full px-4 py-6 bg-surface-50-900-token card rounded-none">
 	<ul>
 		{#each currentNavLinks as { title, url }}
 			<li>

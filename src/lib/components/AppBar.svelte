@@ -10,7 +10,7 @@
 	slotDefault="place-self-center"
 	slotTrail="place-content-end"
 	data-sveltekit-preload-data="hover"
-	padding="p-4"
+	padding="p-3"
 >
 	<svelte:fragment slot="lead">
 		<a href="/" class="flex items-center gap-1" data-sveltekit-preload-data="hover">
