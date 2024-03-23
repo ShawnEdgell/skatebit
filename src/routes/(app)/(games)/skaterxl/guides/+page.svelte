@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { tocCrawler } from '@skeletonlabs/skeleton';
-	import QuickGuide from '$lib/components/QuickGuide.svelte';
+	import QuickGuide from './QuickGuide.svelte';
 </script>
 
 <svelte:head>

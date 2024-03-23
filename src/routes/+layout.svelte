@@ -5,7 +5,7 @@
 	import { AppShell, Drawer, initializeStores } from '@skeletonlabs/skeleton';
 
 	import AppBar from '$lib/components/AppBar.svelte';
-	import TreeView from '$lib/components/TreeView.svelte';
+	import MobileNav from '$lib/components/MobileNav.svelte';
 
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -48,7 +48,7 @@
 </svelte:head>
 
 <Drawer>
-	<TreeView />
+	<MobileNav />
 </Drawer>
 
 <AppShell scrollbarGutter="auto" regionPage="scroll-smooth overscroll-none">
@@ -59,7 +59,7 @@
 	<!-- (sidebarRight) -->
 	<!-- (pageHeader) -->
 	<!-- Router Slot -->
-	<div class="flex flex-col h-full w-full justify-center items-center space-y-5 p-4">
+	<div class="flex flex-col h-full w-full items-center justify-center space-y-5 p-4">
 		<slot />
 	</div>
 	<!-- ---- / ---- -->

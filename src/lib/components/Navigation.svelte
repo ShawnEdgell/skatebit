@@ -21,9 +21,9 @@
 				{ label: 'Documentation', link: '/docs/introduction' },
 				{ label: 'Forums', link: '/forums' },
 				{ label: 'Blog', link: '/blog' },
-				{ label: 'Skater XL', link: '/skaterxl/about' },
-				{ label: 'Session', link: '/session/about' },
-				{ label: 'Skate.', link: '/skate/about' }
+				{ label: 'Skater XL', link: '/skaterxl/news' },
+				{ label: 'Session', link: '/session/news' },
+				{ label: 'Skate.', link: '/skate/news' }
 			]
 		},
 		{

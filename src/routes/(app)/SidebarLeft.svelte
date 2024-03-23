@@ -18,7 +18,6 @@
 			// Add more links as needed
 		],
 		'/skaterxl': [
-			{ title: 'About', url: '/skaterxl/about' },
 			{ title: 'News', url: '/skaterxl/news' },
 			{ title: 'Guides', url: '/skaterxl/guides' },
 			{ title: 'Mods', url: '/skaterxl/mods' },
@@ -26,16 +25,12 @@
 			{ title: 'XL Hub', url: '/skaterxl/xlhub' }
 		],
 		'/session': [
-			{ title: 'About', url: '/session/about' },
 			{ title: 'News', url: '/session/news' },
 			{ title: 'Guides', url: '/session/guides' },
 			{ title: 'Mods', url: '/session/mods' },
 			{ title: 'Stats', url: '/session/stats' }
 		],
-		'/skate': [
-			{ title: 'About', url: '/skate/about' },
-			{ title: 'News', url: '/skate/news' }
-		]
+		'/skate': [{ title: 'News', url: '/skate/news' }]
 	};
 
 	$: classesActive = (href: string) => (href === $page.url.pathname ? '!bg-primary-500' : '');
@@ -52,13 +47,13 @@
 		<AppRailAnchor href="/docs/introduction" selected={$page.url.pathname.startsWith('/docs/')}
 			>Docs</AppRailAnchor
 		>
-		<AppRailAnchor href="/skaterxl/about" selected={$page.url.pathname.startsWith('/skaterxl/')}
+		<AppRailAnchor href="/skaterxl/news" selected={$page.url.pathname.startsWith('/skaterxl/')}
 			>Skater XL</AppRailAnchor
 		>
-		<AppRailAnchor href="/session/about" selected={$page.url.pathname.startsWith('/session/')}>
+		<AppRailAnchor href="/session/news" selected={$page.url.pathname.startsWith('/session/')}>
 			Session</AppRailAnchor
 		>
-		<AppRailAnchor href="/skate/about" selected={$page.url.pathname.startsWith('/skate/')}
+		<AppRailAnchor href="/skate/news" selected={$page.url.pathname.startsWith('/skate/')}
 			>Skate.</AppRailAnchor
 		>
 	</AppRail>

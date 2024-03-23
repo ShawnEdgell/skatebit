@@ -4,7 +4,7 @@ export const mods = [
         version: 'v1.2.2.8',
         modItems: [
             {
-                badge: 'Essential',
+                icon: '🔥', // Specify the icon here
                 title: 'XXL 3 Mod',
                 author: 'DawgVinci',
                 workingVersion: '1.3.3',
@@ -16,7 +16,7 @@ export const mods = [
                 ]
             },
             {
-                badge: 'Essential',
+                icon: '🔥', // Specify the icon here
                 title: 'XL Gear Mod (XLGM2)',
                 author: 'mcbtay, Redgouf',
                 workingVersion: '2.0.1',
@@ -28,7 +28,7 @@ export const mods = [
                 ]
             },
             {
-                badge: 'Essential',
+                icon: '🔥', // Specify the icon here
                 title: 'XL Graphics',
                 author: 'Babbo',
                 workingVersion: '1.1.2',
@@ -40,7 +40,7 @@ export const mods = [
                 ]
             },
             {
-                badge: 'Essential',
+                icon: '🔥', // Specify the icon here
                 title: 'Soundmod',
                 author: 'Babbo, jbooogie',
                 workingVersion: '1.3.0',
@@ -52,7 +52,7 @@ export const mods = [
                 ]
             },
             {
-                badge: 'Essential',
+                icon: '🔥',
                 title: 'DeckFX',
                 author: 'Klepto',
                 workingVersion: '1.4',
@@ -294,7 +294,7 @@ export const mods = [
         version: 'v1.2.7.8',
         modItems: [
             {
-                badge: 'Essential',
+                icon: '🔥', // Specify the icon here
                 title: 'XL Mod',
                 author: 'DawgVinci',
                 workingVersion: '1.0.0c',
@@ -306,7 +306,7 @@ export const mods = [
                 ]
             },
             {
-                badge: 'Essential',
+                icon: '🔥', // Specify the icon here
                 title: 'XL Graphics',
                 author: 'Babbo',
                 workingVersion: '2.0.2',
@@ -318,7 +318,7 @@ export const mods = [
                 ]
             },
             {
-                badge: 'Essential',
+                icon: '🔥', // Specify the icon here
                 title: 'Soundmod',
                 author: 'Babbo, jbooogie',
                 workingVersion: '1.2.0',
@@ -330,7 +330,7 @@ export const mods = [
                 ]
             },
             {
-                badge: 'Essential',
+                icon: '🔥',
                 title: 'Deck Tools',
                 author: 'Guru',
                 workingVersion: '0.0.2',
