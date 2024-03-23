@@ -5,6 +5,7 @@
 	import { AppShell, Drawer, initializeStores } from '@skeletonlabs/skeleton';
 
 	import AppBar from '$lib/components/AppBar.svelte';
+	import TreeView from '$lib/components/TreeView.svelte';
 
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -46,7 +47,9 @@
 	<title>User Management</title>
 </svelte:head>
 
-<Drawer />
+<Drawer>
+	<TreeView />
+</Drawer>
 
 <AppShell scrollbarGutter="auto" regionPage="scroll-smooth overscroll-none">
 	<svelte:fragment slot="header">
