@@ -2,22 +2,22 @@ import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals: { supabase } }) => {
-    const { data } = await supabase.from('xl_stats').select('id, name');
-    return { countries: data ?? [] };
+    const { data } = await supabase.from('xl_stats').select('id, title, description, file_url, created_at, updated_at'); // Include file_url field
+    return { stats: data ?? [] };
 };
 
-
 export const actions: Actions = {
-    addCountry: async ({ request, locals: { supabase } }) => {
+    addStat: async ({ request, locals: { supabase } }) => { // Updated to 'addStat'
         const formData = await request.formData();
-        const name = formData.get('name') as string;
+        const title = formData.get('title') as string;
+        const description = formData.get('description') as string;
 
-        const { error } = await supabase.from('xl_stats').insert({ name });
+        const { error } = await supabase.from('xl_stats').insert({ title, description });
 
         if (error) {
-            return fail(500, { name });
+            return fail(500, { error: error.message });
         }
 
-        return { name };
+        return {};
     },
 };

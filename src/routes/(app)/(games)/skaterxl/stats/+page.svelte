@@ -1,41 +1,61 @@
+<!-- stats.svelte -->
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
 	import type { SubmitFunction } from '@sveltejs/kit';
 
 	export let data: {
-		session: any; // Consider adding actual types
-		supabase: any; // Consider adding actual types
-		countries: { id: number; name: string }[]; // Adjusted to include id
+		session: any; // TODO: Define actual types if possible
+		supabase: any; // TODO: Define actual types if possible
+		stats: {
+			id: number;
+			title: string;
+			description: string;
+			created_at?: string;
+			updated_at?: string;
+		}[];
 	};
 
-	let { session, supabase, countries } = data;
-	let countryForm: HTMLFormElement;
+	let { session, supabase, stats } = data;
+	let form: HTMLFormElement;
 	let loading = false;
-	let name: string = '';
+	let title: string = '';
+	let description: string = '';
+	let isFormValid = false;
 
 	const handleSubmit: SubmitFunction = () => {
 		loading = true;
 		return async () => {
-			// Assume form submission logic to Supabase goes here
-
 			loading = false;
-			name = ''; // Reset the name field after successful submission
+			title = '';
+			description = '';
+			await reloadStats();
 		};
 	};
 
-	const reloadCountries = async () => {
-		const { data: newData, error } = await supabase.from('xl_stats').select('id, name');
-
+	const reloadStats = async () => {
+		const { data: newData, error } = await supabase
+			.from('xl_stats')
+			.select('id, title, description, created_at, updated_at');
 		if (error) {
 			console.error('Error fetching data:', error.message);
 		} else {
-			countries = newData ?? [];
+			stats = newData ?? [];
 		}
 	};
 
+	function formatDate(dateString: string): string {
+		const date = new Date(dateString);
+		return new Intl.DateTimeFormat('default', {
+			dateStyle: 'medium',
+			timeStyle: 'short'
+		}).format(date);
+	}
+
+	$: isFormValid = title.trim().length > 0 && description.trim().length > 0;
+
 	onMount(async () => {
-		await reloadCountries();
+		await reloadStats();
 	});
 </script>
 
@@ -44,39 +64,62 @@
 </svelte:head>
 
 <div class="flex flex-col items-center space-y-5">
-	<form
-		class="flex flex-col items-center space-y-5"
-		method="post"
-		action="?/addCountry"
-		use:enhance={handleSubmit}
-		bind:this={countryForm}
-	>
-		<div>
-			<input
-				class="input"
-				id="name"
-				name="name"
-				type="text"
-				placeholder="Country Name"
-				bind:value={name}
-			/>
-		</div>
+	{#if session}
+		<!-- Check if user is logged in -->
+		<form
+			class="flex flex-col items-center space-y-5"
+			method="post"
+			action="?/addStat"
+			use:enhance={handleSubmit}
+			bind:this={form}
+		>
+			<div>
+				<input
+					class="input"
+					id="title"
+					name="title"
+					type="text"
+					placeholder="Stat Title"
+					bind:value={title}
+				/>
+			</div>
+			<div>
+				<input
+					class="input"
+					id="description"
+					name="description"
+					type="text"
+					placeholder="Stat Description"
+					bind:value={description}
+				/>
+			</div>
+			<div>
+				<input
+					type="submit"
+					class="button block btn variant-filled-secondary"
+					value={loading ? 'Adding...' : 'Add Stats'}
+					disabled={!isFormValid || loading}
+				/>
+			</div>
+		</form>
+	{:else}
+		<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover">
+			Login to Add Stats
+		</a>
+	{/if}
 
-		<div>
-			<input
-				type="submit"
-				class="button block btn variant-filled-secondary"
-				value={loading ? 'Adding...' : 'Add Country'}
-				disabled={loading}
-			/>
-		</div>
-	</form>
-	<button class="button btn variant-filled" on:click={reloadCountries}>Reload List</button>
+	<button class="button btn variant-filled" on:click={reloadStats}>Reload List</button>
 	<div>
-		<h2>List of Countries</h2>
+		<h2>List of Stats</h2>
 		<ul>
-			{#each countries as country}
-				<li>{country.name}</li>
+			{#each stats as stat}
+				<li>
+					{stat.title}
+					{stat.description}
+					{#if stat.created_at && stat.updated_at}
+						- Created: {formatDate(stat.created_at)}, Updated: {formatDate(stat.updated_at)}
+					{/if}
+				</li>
 			{/each}
 		</ul>
 	</div>
