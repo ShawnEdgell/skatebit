@@ -1,90 +1,83 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { writable } from 'svelte/store';
-	import type { Session } from '@supabase/supabase-js';
-	import type { StatsData } from './types';
+	import { onMount } from 'svelte';
+	import type { SubmitFunction } from '@sveltejs/kit';
 
-	export let data: { session: Session; supabase: any };
+	export let data: {
+		session: any; // Consider adding actual types
+		supabase: any; // Consider adding actual types
+		countries: { id: number; name: string }[]; // Adjusted to include id
+	};
 
-	let statsForm: HTMLFormElement;
+	let { session, supabase, countries } = data;
+	let countryForm: HTMLFormElement;
 	let loading = false;
+	let name: string = '';
 
-	// Initialize statsData as a writable store
-	let statsData = writable<StatsData[]>([]);
-
-	const handleSubmit = () => {
+	const handleSubmit: SubmitFunction = () => {
 		loading = true;
 		return async () => {
+			// Assume form submission logic to Supabase goes here
+
 			loading = false;
-			await fetch('/api/+page/upload', {
-				method: 'POST',
-				body: new FormData(statsForm)
-			});
-			// Refresh stats data after submission
-			await fetchStatsData();
+			name = ''; // Reset the name field after successful submission
 		};
 	};
 
-	const fetchStatsData = async () => {
-		try {
-			// Fetch stats data from the server-side load function
-			const { stats } = data;
-			statsData.set(stats);
-		} catch (error) {
-			console.error('Error fetching stats data:', error);
+	const reloadCountries = async () => {
+		const { data: newData, error } = await supabase.from('xl_stats').select('id, name');
+
+		if (error) {
+			console.error('Error fetching data:', error.message);
+		} else {
+			countries = newData ?? [];
 		}
 	};
 
-	// Fetch and update statsData on component mount
-	fetchStatsData();
+	onMount(async () => {
+		await reloadCountries();
+	});
 </script>
 
 <svelte:head>
-	<title>Skater XL Stats</title>
+	<title>Skatebit | Stats</title>
 </svelte:head>
 
-{#if data.session}
+<div class="flex flex-col items-center space-y-5">
 	<form
 		class="flex flex-col items-center space-y-5"
 		method="post"
-		action="?/upload"
+		action="?/addCountry"
 		use:enhance={handleSubmit}
-		bind:this={statsForm}
-		enctype="multipart/form-data"
+		bind:this={countryForm}
 	>
 		<div>
-			<input class="input" id="title" type="text" placeholder="Title" name="title" />
+			<input
+				class="input"
+				id="name"
+				name="name"
+				type="text"
+				placeholder="Country Name"
+				bind:value={name}
+			/>
 		</div>
-		<div>
-			<textarea class="input" id="description" placeholder="Description" name="description"
-			></textarea>
-		</div>
-		<div>
-			<input class="input" id="file" type="file" accept=".webp" name="file" />
-		</div>
+
 		<div>
 			<input
 				type="submit"
 				class="button block btn variant-filled-secondary"
-				value={loading ? 'Uploading...' : 'Upload Stats'}
+				value={loading ? 'Adding...' : 'Add Country'}
 				disabled={loading}
 			/>
 		</div>
 	</form>
-{:else}
-	<div class="row flex-center flex-col items-center flex">
-		<div class="col-6 form-widget">
-			<a href="/login" class="button block btn variant-filled-secondary">Login</a>
-		</div>
-		<p>You must be logged in to upload stats & settings.</p>
-	</div>
-{/if}
-
-<h2>Submitted Stats Data</h2>
-{#each $statsData as stat}
+	<button class="button btn variant-filled" on:click={reloadCountries}>Reload List</button>
 	<div>
-		<p>Title: {stat.title}</p>
-		<p>Description: {stat.description}</p>
-		<!-- Include other properties as needed -->
+		<h2>List of Countries</h2>
+		<ul>
+			{#each countries as country}
+				<li>{country.name}</li>
+			{/each}
+		</ul>
 	</div>
-{/each}
+</div>
