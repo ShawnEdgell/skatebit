@@ -1,42 +1,59 @@
-<!-- stats.svelte -->
+<!-- page.svelte -->
+
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
-	import type { SubmitFunction } from '@sveltejs/kit';
 
+	interface Profile {
+		username: string;
+	}
+
+	interface Stat {
+		id: number;
+		title: string;
+		description: string;
+		file_url: string;
+		created_at: string;
+		updated_at: string;
+		profiles?: Profile; // Make sure this matches the structure returned by your query
+	}
+
+	// Define the component's props
 	export let data: {
-		session: any; // TODO: Define actual types if possible
-		supabase: any; // TODO: Define actual types if possible
-		stats: {
-			id: number;
-			title: string;
-			description: string;
-			created_at?: string;
-			updated_at?: string;
-		}[];
+		session: any;
+		supabase: any;
+		stats: Stat[];
 	};
 
+	// Define component variables and functions
 	let { session, supabase, stats } = data;
 	let form: HTMLFormElement;
 	let loading = false;
 	let title: string = '';
 	let description: string = '';
-	let isFormValid = false;
+	let isFormValid: boolean = false;
+	let fileInput: HTMLInputElement;
 
-	const handleSubmit: SubmitFunction = () => {
+	// Function to handle form submission
+	const handleSubmit = () => {
 		loading = true;
 		return async () => {
-			loading = false;
 			title = '';
 			description = '';
+			if (fileInput) fileInput.value = '';
 			await reloadStats();
+			loading = false;
 		};
 	};
 
+	// Function to reload stats data
 	const reloadStats = async () => {
 		const { data: newData, error } = await supabase
 			.from('xl_stats')
-			.select('id, title, description, created_at, updated_at');
+			.select(
+				'id, title, description, created_at, updated_at, file_url, profiles:profile_id(username)'
+			);
+
 		if (error) {
 			console.error('Error fetching data:', error.message);
 		} else {
@@ -52,11 +69,24 @@
 		}).format(date);
 	}
 
-	$: isFormValid = title.trim().length > 0 && description.trim().length > 0;
-
+	// Run code on component mount
 	onMount(async () => {
 		await reloadStats();
+		// Initialize the file input variable after the component mounts
+		fileInput = document.getElementById('file') as HTMLInputElement;
 	});
+
+	// Correctly declare reactive statements
+	$: if (fileInput) {
+		fileInput.addEventListener('change', () => {
+			isFormValid =
+				!!title.trim().length && !!description.trim().length && !!fileInput?.files?.length;
+		});
+	}
+
+	// Reactively update isFormValid
+	$: isFormValid =
+		!!title.trim().length && !!description.trim().length && !!fileInput?.files?.length;
 </script>
 
 <svelte:head>
@@ -65,13 +95,13 @@
 
 <div class="flex flex-col items-center space-y-5">
 	{#if session}
-		<!-- Check if user is logged in -->
 		<form
 			class="flex flex-col items-center space-y-5"
 			method="post"
 			action="?/addStat"
 			use:enhance={handleSubmit}
 			bind:this={form}
+			enctype="multipart/form-data"
 		>
 			<div>
 				<input
@@ -93,6 +123,7 @@
 					bind:value={description}
 				/>
 			</div>
+			<input class="input" id="file" name="file" type="file" accept=".zip" />
 			<div>
 				<input
 					type="submit"
@@ -109,18 +140,32 @@
 	{/if}
 
 	<button class="button btn variant-filled" on:click={reloadStats}>Reload List</button>
-	<div>
-		<h2>List of Stats</h2>
-		<ul>
-			{#each stats as stat}
-				<li>
-					{stat.title}
-					{stat.description}
-					{#if stat.created_at && stat.updated_at}
-						- Created: {formatDate(stat.created_at)}, Updated: {formatDate(stat.updated_at)}
+
+	<h2>List of Stats</h2>
+	<ul class="space-y-6 w-full">
+		{#each stats as stat}
+			<li>
+				<div class="flex card p-4 justify-between items-center space-y-2 gap-8">
+					<div class="flex flex-col space-y-1">
+						<strong>Title: {stat.title}</strong>
+						<p>Uploaded by: {stat.profiles?.username}</p>
+						<p>Description: {stat.description}</p>
+						{#if stat.created_at}
+							<p>Created: {formatDate(stat.created_at)}</p>
+						{/if}
+					</div>
+					{#if stat.file_url}
+						<!-- Temporarily display the URL -->
+						<a
+							href={stat.file_url}
+							class="btn btn-sm variant-filled-secondary"
+							download="{stat.title}.zip"
+						>
+							Download
+						</a>
 					{/if}
-				</li>
-			{/each}
-		</ul>
-	</div>
+				</div>
+			</li>
+		{/each}
+	</ul>
 </div>
