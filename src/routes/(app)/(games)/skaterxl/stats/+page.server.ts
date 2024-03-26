@@ -11,7 +11,6 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
                 description, 
                 file_url, 
                 created_at, 
-                updated_at,
                 profiles(username)
             `)
             .order('created_at', { ascending: false });
@@ -21,7 +20,7 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
             return { stats: [] };
         }
 
-        console.log(stats);
+        console.log(stats); // Add this line to inspect the returned data structure
         return { stats: stats ?? [] };
     } catch (error) {
         console.error('Unexpected error:', error instanceof Error ? error.message : error);

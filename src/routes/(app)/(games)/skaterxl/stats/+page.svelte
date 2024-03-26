@@ -14,8 +14,8 @@
 		description: string;
 		file_url: string;
 		created_at: string;
-		updated_at: string;
-		profiles?: Profile; // Make sure this matches the structure returned by your query
+		profile_id: string; // This is correctly set up for comparison
+		profiles?: Profile; // Optional, based on if you're fetching usernames as well
 	}
 
 	// Define the component's props
@@ -50,9 +50,7 @@
 	const reloadStats = async () => {
 		const { data: newData, error } = await supabase
 			.from('xl_stats')
-			.select(
-				'id, title, description, created_at, updated_at, file_url, profiles:profile_id(username)'
-			);
+			.select('id, title, description, file_url, created_at, profile_id, profiles(username)');
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
@@ -61,12 +59,66 @@
 		}
 	};
 
+	const editStat = async (stat: Stat) => {
+		// Implement your logic to handle editing here
+		try {
+			const newTitle = prompt('Enter new title:', stat.title);
+			const newDescription = prompt('Enter new description:', stat.description);
+			if (newTitle === null || newDescription === null) {
+				// User canceled editing
+				return;
+			}
+			const { error } = await supabase
+				.from('xl_stats')
+				.update({
+					title: newTitle,
+					description: newDescription
+				})
+				.eq('id', stat.id);
+			if (error) {
+				console.error('Error editing stat:', error.message);
+				throw new Error('Failed to edit stat');
+			}
+			// Update the stat in the list
+			const updatedStats = stats.map((s) => {
+				if (s.id === stat.id) {
+					return { ...s, title: newTitle, description: newDescription };
+				}
+				return s;
+			});
+			stats = updatedStats;
+			console.log('Stat edited successfully:');
+		} catch (error) {
+			console.error('Failed to edit stat:', error instanceof Error ? error.message : error);
+		}
+	};
+
+	// Function to handle deleting a stat
+	const deleteStat = async (stat: Stat) => {
+		// Implement your logic to handle deletion here
+		try {
+			const { error } = await supabase.from('xl_stats').delete().eq('id', stat.id);
+			if (error) {
+				console.error('Error deleting stat:', error.message);
+				throw new Error('Failed to delete stat');
+			}
+			// Remove the deleted stat from the list
+			stats = stats.filter((s) => s.id !== stat.id);
+			console.log('Stat deleted successfully:');
+		} catch (error) {
+			console.error('Failed to delete stat:', error instanceof Error ? error.message : error);
+		}
+	};
+
 	function formatDate(dateString: string): string {
 		const date = new Date(dateString);
-		return new Intl.DateTimeFormat('default', {
+		// Convert the date to the user's local time zone
+		const formatted = new Intl.DateTimeFormat('default', {
 			dateStyle: 'medium',
-			timeStyle: 'short'
+			timeStyle: 'short',
+			timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
 		}).format(date);
+		return formatted;
 	}
 
 	// Run code on component mount
@@ -89,12 +141,9 @@
 		!!title.trim().length && !!description.trim().length && !!fileInput?.files?.length;
 </script>
 
-<svelte:head>
-	<title>Skatebit | Stats</title>
-</svelte:head>
-
 <div class="flex flex-col items-center space-y-5">
 	{#if session}
+		<!-- Form to add new stat -->
 		<form
 			class="flex flex-col items-center space-y-5"
 			method="post"
@@ -103,7 +152,8 @@
 			bind:this={form}
 			enctype="multipart/form-data"
 		>
-			<div>
+			<!-- Input fields for new stat -->
+			<div class="w-full">
 				<input
 					class="input"
 					id="title"
@@ -113,7 +163,7 @@
 					bind:value={title}
 				/>
 			</div>
-			<div>
+			<div class="w-full">
 				<input
 					class="input"
 					id="description"
@@ -123,7 +173,10 @@
 					bind:value={description}
 				/>
 			</div>
-			<input class="input" id="file" name="file" type="file" accept=".zip" />
+			<div class="w-full">
+				<input class="input" id="file" name="file" type="file" accept=".zip" />
+				<small class="text-gray-500">File must be less than 2MB and in .zip format.</small>
+			</div>
 			<div>
 				<input
 					type="submit"
@@ -134,11 +187,13 @@
 			</div>
 		</form>
 	{:else}
+		<!-- Link to login page if user is not logged in -->
 		<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover">
 			Login to Add Stats
 		</a>
 	{/if}
 
+	<!-- Button to reload stats -->
 	<button class="button btn variant-filled" on:click={reloadStats}>Reload List</button>
 
 	<h2>List of Stats</h2>
@@ -154,16 +209,25 @@
 							<p>Created: {formatDate(stat.created_at)}</p>
 						{/if}
 					</div>
-					{#if stat.file_url}
-						<!-- Temporarily display the URL -->
-						<a
-							href={stat.file_url}
-							class="btn btn-sm variant-filled-secondary"
-							download="{stat.title}.zip"
-						>
-							Download
-						</a>
-					{/if}
+					<div class="flex gap-1">
+						<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
+						{#if session && session.user && session.user.id === stat.profile_id}
+							<button class="btn btn-sm variant-filled-warning" on:click={() => editStat(stat)}
+								>Edit</button
+							>
+							<button class="btn btn-sm variant-filled-error" on:click={() => deleteStat(stat)}
+								>Delete</button
+							>
+						{/if}
+
+						{#if stat.file_url}
+							<a
+								href={stat.file_url}
+								class="btn btn-sm variant-filled-secondary"
+								download="{stat.title}.zip">Download</a
+							>
+						{/if}
+					</div>
 				</div>
 			</li>
 		{/each}
