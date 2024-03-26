@@ -4,9 +4,7 @@
 
 <Stepper>
 	<Step>
-		<svelte:fragment slot="header">
-			<h3 class="h3">Get Started with Skater XL Modding!</h3>
-		</svelte:fragment>
+		<svelte:fragment slot="header">Get Started with Skater XL Modding!</svelte:fragment>
 
 		<p>
 			It's crucial to know which version of Skater XL you're installing mods into, as mod

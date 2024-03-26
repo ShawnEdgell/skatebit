@@ -6,7 +6,8 @@
 	<title>Skatebit | Skater XL</title>
 </svelte:head>
 
-<div class="space-y-5" use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
+<div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
+	<span class="badge variant-filled mb-2">Skater XL</span>
 	<h1 class="text-3xl font-bold mb-8">XL Hub</h1>
 	<h2 class="text-xl font-semibold mb-2">The Easy Way to Mod Skater XL</h2>
 	<p class="mb-4">

@@ -7,6 +7,7 @@
 </svelte:head>
 
 <div class="space-y-5" use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
+	<span class="badge variant-filled mb-2">Docs</span>
 	<h1 class="h1">Getting Started</h1>
 	<p>
 		Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit cupiditate quam natus

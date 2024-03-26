@@ -149,9 +149,12 @@
 		!!title.trim().length && !!description.trim().length && !!fileInput?.files?.length;
 </script>
 
-<div class="flex flex-col space-y-5" use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
+<div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
+	<span class="badge variant-filled mb-2">Skater XL</span>
+	<h1 class="text-3xl font-bold mb-8">Stats & Settings</h1>
 	{#if session}
 		<!-- Form to add new stat -->
+
 		<form
 			class="flex flex-col space-y-5"
 			method="post"
@@ -160,7 +163,6 @@
 			bind:this={form}
 			enctype="multipart/form-data"
 		>
-			<h1 class="text-3xl font-bold mb-3">Stats & Settings</h1>
 			<h2 class="text-xl font-semibold mb-2">Upload Your Stats</h2>
 			<!-- Input fields for new stat -->
 			<div class="w-full">
@@ -202,9 +204,8 @@
 			Login to Add Stats
 		</a>
 	{/if}
-
+	<hr class="!border-t-2 my-6" />
 	<ul class="space-y-6 w-full">
-		<hr class="!border-t-2" />
 		<h2 class="text-xl font-semibold mb-2">File Downloads</h2>
 		<!-- Button to reload stats -->
 
