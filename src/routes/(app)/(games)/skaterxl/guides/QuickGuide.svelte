@@ -7,6 +7,7 @@
 		<svelte:fragment slot="header">
 			<h3 class="h3">Get Started with Skater XL Modding!</h3>
 		</svelte:fragment>
+
 		<p>
 			It's crucial to know which version of Skater XL you're installing mods into, as mod
 			compatibility depends on your game version. Check your game version in the lower left corner

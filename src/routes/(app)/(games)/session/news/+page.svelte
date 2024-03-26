@@ -62,12 +62,7 @@
 				<p class="text-gray-500 mb-4">{date}</p>
 				<p class="mb-4">{description}</p>
 				<div class="aspect-video w-full">
-					<iframe
-						src={videoUrl}
-						title={videoTitle}
-						frameborder="0"
-						allowfullscreen
-						loading="lazy"
+					<iframe src={videoUrl} title={videoTitle} frameborder="0" allowfullscreen loading="lazy"
 					></iframe>
 				</div>
 			</article>

@@ -3,6 +3,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
+	import { tocCrawler } from '@skeletonlabs/skeleton';
 
 	interface Profile {
 		username: string;
@@ -14,8 +15,8 @@
 		description: string;
 		file_url: string;
 		created_at: string;
-		profile_id: string; // This is correctly set up for comparison
-		profiles?: Profile; // Optional, based on if you're fetching usernames as well
+		profile_id: string;
+		profiles?: Profile;
 	}
 
 	// Define the component's props
@@ -44,6 +45,13 @@
 			await reloadStats();
 			loading = false;
 		};
+	};
+
+	// Function to confirm stat deletion
+	const confirmDelete = async (stat: Stat) => {
+		if (window.confirm('Are you sure you want to delete this stat?')) {
+			await deleteStat(stat);
+		}
 	};
 
 	// Function to reload stats data
@@ -141,17 +149,19 @@
 		!!title.trim().length && !!description.trim().length && !!fileInput?.files?.length;
 </script>
 
-<div class="flex flex-col items-center space-y-5">
+<div class="flex flex-col space-y-5" use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	{#if session}
 		<!-- Form to add new stat -->
 		<form
-			class="flex flex-col items-center space-y-5"
+			class="flex flex-col space-y-5"
 			method="post"
 			action="?/addStat"
 			use:enhance={handleSubmit}
 			bind:this={form}
 			enctype="multipart/form-data"
 		>
+			<h1 class="text-3xl font-bold mb-3">Stats & Settings</h1>
+			<h2 class="text-xl font-semibold mb-2">Upload Your Stats</h2>
 			<!-- Input fields for new stat -->
 			<div class="w-full">
 				<input
@@ -177,7 +187,7 @@
 				<input class="input" id="file" name="file" type="file" accept=".zip" />
 				<small class="text-gray-500">File must be less than 2MB and in .zip format.</small>
 			</div>
-			<div>
+			<div class="w-full flex justify-center">
 				<input
 					type="submit"
 					class="button block btn variant-filled-secondary"
@@ -193,18 +203,18 @@
 		</a>
 	{/if}
 
-	<!-- Button to reload stats -->
-	<button class="button btn variant-filled" on:click={reloadStats}>Reload List</button>
-
-	<h2>List of Stats</h2>
 	<ul class="space-y-6 w-full">
+		<hr class="!border-t-2" />
+		<h2 class="text-xl font-semibold mb-2">File Downloads</h2>
+		<!-- Button to reload stats -->
+
 		{#each stats as stat}
 			<li>
 				<div class="flex card p-4 justify-between items-center space-y-2 gap-8">
 					<div class="flex flex-col space-y-1">
-						<strong>Title: {stat.title}</strong>
+						<h2 class="h2 text-xl">{stat.title}</h2>
+						<p>{stat.description}</p>
 						<p>Uploaded by: {stat.profiles?.username}</p>
-						<p>Description: {stat.description}</p>
 						{#if stat.created_at}
 							<p>Created: {formatDate(stat.created_at)}</p>
 						{/if}
@@ -215,7 +225,7 @@
 							<button class="btn btn-sm variant-filled-warning" on:click={() => editStat(stat)}
 								>Edit</button
 							>
-							<button class="btn btn-sm variant-filled-error" on:click={() => deleteStat(stat)}
+							<button class="btn btn-sm variant-filled-error" on:click={() => confirmDelete(stat)}
 								>Delete</button
 							>
 						{/if}

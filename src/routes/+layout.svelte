@@ -53,7 +53,9 @@
 
 <AppShell scrollbarGutter="auto" regionPage="scroll-smooth overscroll-none">
 	<svelte:fragment slot="header">
-		<AppBar />
+		<div class="shadow-xl">
+			<AppBar />
+		</div>
 	</svelte:fragment>
 	<!-- (sidebarLeft) -->
 	<!-- (sidebarRight) -->

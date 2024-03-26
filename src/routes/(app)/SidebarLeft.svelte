@@ -21,14 +21,12 @@
 			{ title: 'News', url: '/skaterxl/news' },
 			{ title: 'Guides', url: '/skaterxl/guides' },
 			{ title: 'Mods', url: '/skaterxl/mods' },
-			{ title: 'Stats', url: '/skaterxl/stats' },
+			{ title: 'Stats & Settings', url: '/skaterxl/stats' },
 			{ title: 'XL Hub', url: '/skaterxl/xlhub' }
 		],
 		'/session': [
 			{ title: 'News', url: '/session/news' },
-			{ title: 'Guides', url: '/session/guides' },
-			{ title: 'Mods', url: '/session/mods' },
-			{ title: 'Stats', url: '/session/stats' }
+			{ title: 'Stats & Settings', url: '/session/stats' }
 		],
 		'/skate': [{ title: 'News', url: '/skate/news' }]
 	};

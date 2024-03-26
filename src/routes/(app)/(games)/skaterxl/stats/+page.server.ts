@@ -19,8 +19,6 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
             console.error('Error fetching stats:', error.message);
             return { stats: [] };
         }
-
-        console.log(stats); // Add this line to inspect the returned data structure
         return { stats: stats ?? [] };
     } catch (error) {
         console.error('Unexpected error:', error instanceof Error ? error.message : error);
