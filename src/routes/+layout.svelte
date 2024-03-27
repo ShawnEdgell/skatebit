@@ -5,7 +5,7 @@
 	import { AppShell, Drawer, initializeStores } from '@skeletonlabs/skeleton';
 
 	import AppBar from '$lib/components/AppBar.svelte';
-	import MobileNav from '$lib/components/MobileNav.svelte';
+	import SidebarNav from '$lib/components/SidebarNav.svelte';
 
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -48,7 +48,7 @@
 </svelte:head>
 
 <Drawer>
-	<MobileNav />
+	<SidebarNav />
 </Drawer>
 
 <AppShell scrollbarGutter="auto" regionPage="scroll-smooth overscroll-none">

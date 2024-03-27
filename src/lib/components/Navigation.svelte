@@ -18,7 +18,6 @@
 			label: 'Explore',
 			actions: [
 				{ label: 'Homepage', link: '/' },
-				{ label: 'Forums', link: '/forums' },
 				{ label: 'Documentation', link: '/docs/introduction' },
 				{ label: 'News', link: '/docs/news' },
 				{ label: 'Skater XL', link: '/skaterxl/news' },

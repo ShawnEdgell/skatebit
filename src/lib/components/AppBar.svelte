@@ -12,17 +12,18 @@
 	data-sveltekit-preload-data="hover"
 >
 	<svelte:fragment slot="lead">
-		<a href="/" class="flex items-center gap-1" data-sveltekit-preload-data="hover">
-			<h1 class="h1 tracking-tight text-2xl">Skatebit.</h1>
-		</a>
+		<div class="flex gap-2">
+			<div class="md:hidden">
+				<Drawer />
+			</div>
+			<a href="/" class="flex items-center gap-1" data-sveltekit-preload-data="hover">
+				<h1 class="h1 tracking-tight text-2xl">Skatebit.</h1>
+			</a>
+		</div>
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<div>
-			<div class="sm:hidden">
-				<Drawer />
-			</div>
-
-			<div class="hidden sm:flex items-center gap-4">
+			<div class="hidden md:flex items-center gap-4">
 				<Navigation />
 			</div>
 		</div>
