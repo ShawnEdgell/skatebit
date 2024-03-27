@@ -6,36 +6,37 @@
 	function closeDrawer() {
 		drawerStore.close();
 	}
+
+	const navigationLinks = [
+		{ url: '/', label: 'Home' },
+		{ url: '/forums', label: 'Forums' },
+		{ url: '/docs/introduction', label: 'Documentation' },
+		{ url: '/docs/news', label: 'News' },
+		{ url: '/skaterxl/news', label: 'Skater XL News' },
+		{ url: '/skaterxl/guides', label: 'Skater XL Guides' },
+		{ url: '/skaterxl/mods', label: 'Skater XL Mods' },
+		{ url: '/skaterxl/stats', label: 'Skater XL Stats' },
+		{ url: '/skaterxl/xlhub', label: 'Skater XL Hub' },
+		{ url: '/session/news', label: 'Session News' },
+		{ url: '/session/stats', label: 'Session Stats' },
+		{ url: '/skate/news', label: 'Skate News' }
+	];
 </script>
 
-<div class="flex flex-col items gap-2 p-6">
-	<h1 class="text-xl">General</h1>
-	<a href="/" on:click={closeDrawer} class="btn" data-sveltekit-preload-data="hover">Homepage</a>
-	<a href="/login" on:click={closeDrawer} class="btn" data-sveltekit-preload-data="hover">Account</a
-	>
-	<a
-		href="/docs/introduction"
-		on:click={closeDrawer}
-		class="btn"
-		data-sveltekit-preload-data="hover">Documentation</a
-	>
-	<a href="/forums" on:click={closeDrawer} class="btn" data-sveltekit-preload-data="hover">Forums</a
-	>
-	<a href="/blog" on:click={closeDrawer} class="btn" data-sveltekit-preload-data="hover">Blog</a>
-	<hr class="!border-t-2 my-2" />
-	<h1 class="text-xl">Games</h1>
-	<a href="/skaterxl/news" on:click={closeDrawer} class="btn" data-sveltekit-preload-data="hover"
-		>Skater XL</a
-	>
-	<a href="/session/news" on:click={closeDrawer} class="btn" data-sveltekit-preload-data="hover"
-		>Session</a
-	>
-	<a href="/skate/news" on:click={closeDrawer} class="btn" data-sveltekit-preload-data="hover"
-		>Skate.</a
-	>
-	<hr class="!border-t-2 my-2" />
-	<div class="flex items-center justify-between">
-		<h1 class="text-xl">Mode</h1>
-		<LightSwitch />
-	</div>
+<nav>
+	<!-- (optionally you can provide a label here) -->
+	<ul>
+		<li class="list flex flex-col p-6 space-y-2">
+			{#each navigationLinks as { url, label }}
+				<a href={url} on:click={closeDrawer}>
+					<span class="btn variant-filled w-full">{label}</span>
+				</a>
+			{/each}
+		</li>
+		<!-- ... -->
+	</ul>
+</nav>
+<div class="card flex justify-between p-6 mx-6">
+	<strong>Mode:</strong>
+	<LightSwitch />
 </div>

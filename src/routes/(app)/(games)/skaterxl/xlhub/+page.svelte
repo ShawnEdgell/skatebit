@@ -7,14 +7,21 @@
 </svelte:head>
 
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
-	<span class="badge variant-filled mb-2">Skater XL</span>
-	<h1 class="text-3xl font-bold mb-8">XL Hub</h1>
-	<h2 class="text-xl font-semibold mb-2">The Easy Way to Mod Skater XL</h2>
-	<p class="mb-4">
-		Introducing XL Hub by Fro, the ultimate tool for browsing, downloading, and managing your Skater
-		XL maps and mods. No UnityModManager required.
-	</p>
-	<a href="https://mod.io/g/skaterxl/m/xlhub" target="_blank" class="btn variant-filled-secondary"
-		>Check Out XL Hub</a
-	>
+	<article>
+		<div class="header">
+			<span class="badge variant-filled-tertiary mb-2">Skater XL</span>
+			<h1>XL Hub</h1>
+			<p>A new way to browse, download, and manage your Skater XL mods.</p>
+			<hr class="!border-t-2" />
+		</div>
+		<div>
+			<h2>The Easy Way to Mod Skater XL</h2>
+			<p>
+				Introducing XL Hub by Fro, the ultimate tool for browsing, downloading, and managing your
+				Skater XL maps and mods. No UnityModManager required.
+			</p>
+			<a href="https://mod.io/g/skaterxl/m/XLHub" target="_blank">Check Out XL Hub</a>
+			<img src="/images/XLHub.webp" alt="XL Hub" class="rounded-xl my-6" />
+		</div>
+	</article>
 </div>

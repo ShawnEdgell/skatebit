@@ -14,7 +14,7 @@
 	const navLinksMapping: NavLinksMapping = {
 		'/docs': [
 			{ title: 'Introduction', url: '/docs/introduction' },
-			{ title: 'Get Started', url: '/docs/get-started' }
+			{ title: 'News', url: '/docs/news' }
 			// Add more links as needed
 		],
 		'/skaterxl': [

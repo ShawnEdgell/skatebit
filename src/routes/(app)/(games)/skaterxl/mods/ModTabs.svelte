@@ -3,6 +3,24 @@
 	import { mods } from './modsData'; // Ensure this path matches the location of your mods data file
 
 	let tabSet: number = 0;
+
+	function getBadgeClass(badgeName: string): string {
+		switch (badgeName) {
+			case 'Essential':
+				return 'badge variant-filled';
+			case 'New':
+				return 'badge variant-filled-success';
+			case 'Recommended':
+				return 'badge variant-filled-secondary';
+			case 'Useful':
+				return 'badge variant-filled-primary';
+			case 'Fun':
+				return 'badge variant-filled-warning';
+			// Add more cases as needed
+			default:
+				return 'badge';
+		}
+	}
 </script>
 
 <TabGroup>
@@ -18,10 +36,14 @@
 	<svelte:fragment slot="panel">
 		{#if tabSet < mods.length}
 			<Accordion>
-				{#each mods[tabSet].modItems as { title, author, workingVersion, keybind, features, note, icon, downloadLinks }}
+				{#each mods[tabSet].modItems as { title, author, workingVersion, keybind, features, note, badge, downloadLinks }}
 					<AccordionItem>
 						<svelte:fragment slot="lead">
-							{#if icon}{icon}{/if}
+							{#if badge}
+								<!-- Use the getBadgeClass function to determine the class -->
+
+								<div class={getBadgeClass(badge)}>{badge}</div>
+							{/if}
 						</svelte:fragment>
 						<svelte:fragment slot="summary">{title}</svelte:fragment>
 						<svelte:fragment slot="content">

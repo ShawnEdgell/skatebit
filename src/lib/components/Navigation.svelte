@@ -18,9 +18,9 @@
 			label: 'Explore',
 			actions: [
 				{ label: 'Homepage', link: '/' },
-				{ label: 'Documentation', link: '/docs/introduction' },
 				{ label: 'Forums', link: '/forums' },
-				{ label: 'Blog', link: '/blog' },
+				{ label: 'Documentation', link: '/docs/introduction' },
+				{ label: 'News', link: '/docs/news' },
 				{ label: 'Skater XL', link: '/skaterxl/news' },
 				{ label: 'Session', link: '/session/news' },
 				{ label: 'Skate.', link: '/skate/news' }
@@ -74,7 +74,7 @@
 								</div>
 							</a>
 						</li>
-						{#if label === 'Blog'}
+						{#if label === 'News'}
 							<div class="py-2">
 								<hr class="!border-t-2" />
 							</div>

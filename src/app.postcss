@@ -7,7 +7,7 @@ html { -webkit-tap-highlight-color: rgba(128, 128, 128, 0.5); }
 
 html, body { @apply h-full overflow-hidden scroll-smooth; }
 
-iframe { @apply w-full h-full rounded-xl}
+iframe { @apply aspect-video w-full mb-12 rounded-xl}
 
 /* modern theme */
 @font-face {
@@ -65,4 +65,32 @@ iframe { @apply w-full h-full rounded-xl}
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+article > h1, article > div > h1{
+	@apply h1 mb-8;
+}
+
+article > h2, article > div > h2, article > div > form > h2 {
+	@apply h2 mb-2;
+}
+
+article > p, article > div > p {
+	@apply mb-4;
+}
+
+article > a, article > div > a{
+	@apply btn variant-filled-secondary;
+}
+
+article > div {
+	@apply mb-8;
+}
+
+article > div.header > h1 {
+	@apply h1 mb-4;
+}
+
+article > div.header > hr {
+	@apply mt-8;
 }

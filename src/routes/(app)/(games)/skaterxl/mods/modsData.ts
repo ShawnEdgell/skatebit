@@ -4,7 +4,31 @@ export const mods = [
         version: 'v1.2.2.8',
         modItems: [
             {
-                icon: '🔥', // Specify the icon here
+                badge: 'New',
+                title: 'Walking Mod',
+                author: 'Froquede',
+                workingVersion: '1.3.0',
+                keybind: 'X + A or Sqaure + X (controller)',
+                features: ['Walking', 'Custom Animations and Emotes'],
+                note: '',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/walking-mod', label: 'skaterxl.mod.io' }
+                ]
+            },
+            {
+                badge: 'New',
+                title: 'Grind Tools',
+                author: 'Guru',
+                workingVersion: '1.0.2',
+                keybind: '(automatic)',
+                features: ['Customizable Grind Splines', 'Wax Tool'],
+                note: 'Access this mod through the Pause menu.',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
+                ]
+            },
+            {
+                badge: 'Essential', // Specify the badge here
                 title: 'XXL 3 Mod',
                 author: 'DawgVinci',
                 workingVersion: '1.3.3',
@@ -16,7 +40,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '🔥', // Specify the icon here
+                badge: 'Essential', // Specify the badge here
                 title: 'XL Gear Mod (XLGM2)',
                 author: 'mcbtay, Redgouf',
                 workingVersion: '2.0.1',
@@ -28,7 +52,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '🔥', // Specify the icon here
+                badge: 'Essential', // Specify the badge here
                 title: 'XL Graphics',
                 author: 'Babbo',
                 workingVersion: '1.1.2',
@@ -40,7 +64,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '🔥', // Specify the icon here
+                badge: 'Essential', // Specify the badge here
                 title: 'Soundmod',
                 author: 'Babbo, jbooogie',
                 workingVersion: '1.3.0',
@@ -52,7 +76,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '🔥',
+                badge: 'Essential',
                 title: 'DeckFX',
                 author: 'Klepto',
                 workingVersion: '1.4',
@@ -65,7 +89,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Recommended',
                 title: 'Fro\'s Experimental Mod',
                 author: 'Froquede',
                 workingVersion: '1.18.3',
@@ -77,7 +101,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Recommended',
                 title: 'Boned Ollie Mod',
                 author: 'MateusSXL',
                 workingVersion: '2.2.0',
@@ -89,7 +113,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Recommended',
                 title: 'XL Menu Mod',
                 author: 'mcbtay',
                 workingVersion: '2.6.1',
@@ -101,7 +125,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Recommended',
                 title: 'Mutliplayer++',
                 author: 'MateusSXL',
                 workingVersion: '1.0.1',
@@ -113,7 +137,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Recommended',
                 title: 'Decal Fix',
                 author: 'Brookzee99',
                 workingVersion: '1.2.2.8 & 1.2.5.6',
@@ -125,7 +149,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Useful',
                 title: 'Better Replay Mod',
                 author: 'Froquede',
                 workingVersion: '1.5.0',
@@ -137,55 +161,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
-                title: 'Grind Tools',
-                author: 'Guru',
-                workingVersion: '1.0.2',
-                keybind: '(automatic)',
-                features: ['Customizable Grind Splines', 'Wax Tool'],
-                note: 'Access this mod through the Pause menu.',
-                downloadLinks: [
-                    { url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
-                ]
-            },
-            {
-                icon: '',
-                title: 'Walking Mod',
-                author: 'Froquede',
-                workingVersion: '1.3.0',
-                keybind: 'X + A or Sqaure + X (controller)',
-                features: ['Walking', 'Custom Animations and Emotes'],
-                note: '',
-                downloadLinks: [
-                    { url: 'https://mod.io/g/skaterxl/m/walking-mod', label: 'skaterxl.mod.io' }
-                ]
-            },
-            {
-                icon: '',
-                title: 'Grab Customizer',
-                author: 'Froquede',
-                workingVersion: '1.7.2',
-                keybind: 'CTRL + G',
-                features: ['Comprehensive Grab Customization'],
-                note: '',
-                downloadLinks: [
-                    { url: 'https://mod.io/g/skaterxl/m/grabs-customizer-mod', label: 'skaterxl.mod.io' }
-                ]
-            },
-            {
-                icon: '',
-                title: 'Lateflip Mod',
-                author: 'MateusSXL',
-                workingVersion: '1.1.1',
-                keybind: '(automatic)',
-                features: ['Realistic Late Flip Mechanics'],
-                note: 'Press L + F to toggle on/off.',
-                downloadLinks: [
-                    { url: 'https://mod.io/g/skaterxl/m/late-flip-mod-with-animations', label: 'skaterxl.mod.io' }
-                ]
-            },
-            {
-                icon: '',
+                badge: 'Useful',
                 title: 'XL Object Dropper',
                 author: 'mcbtay, SqueegeeDinoToy',
                 workingVersion: '1.0.5',
@@ -197,7 +173,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Useful',
                 title: 'Better Object Dropper',
                 author: 'manu & mu35li',
                 workingVersion: '2.0.1',
@@ -209,55 +185,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
-                title: 'XL Random Map',
-                author: 'mcbtay',
-                workingVersion: '0.0.2',
-                keybind: 'X or Square on controller while Map Menu is open',
-                features: ['Map seletion Randomizer'],
-                note: '',
-                downloadLinks: [
-                    { url: 'https://mod.io/g/skaterxl/m/xlrandommap', label: 'skaterxl.mod.io' }
-                ]
-            },
-            {
-                icon: '',
-                title: 'BreakFX',
-                author: 'DawgVinci',
-                workingVersion: '0.0.1',
-                keybind: 'B',
-                features: ['Board Break Mechanics'],
-                note: 'The board will break automatically by default, or by pressing B on keyboard.',
-                downloadLinks: [
-                    { url: 'https://discord.com/invite/GmuBn6UzUh', label: 'DawgVinc\'s Discord' }
-                ]
-            },
-            {
-                icon: '',
-                title: 'Gear Utilities',
-                author: 'DawgVinci',
-                workingVersion: '2.0d',
-                keybind: 'G',
-                features: ['Custom Accessories'],
-                note: 'Nagivate to the #gearutilies section within DawgVinci\'s Discord to find this mod.',
-                downloadLinks: [
-                    { url: 'https://discord.com/invite/GmuBn6UzUh', label: 'DawgVinci\'s Discord' }
-                ]
-            },
-            {
-                icon: '',
-                title: 'Controller Rumble',
-                author: 'billowper, Froquede',
-                workingVersion: '1.2.3',
-                keybind: '(automatic)',
-                features: ['Customizable Rumble Feedback'],
-                note: '',
-                downloadLinks: [
-                    { url: 'https://mod.io/g/skaterxl/m/controller-rumble', label: 'skaterxl.mod.io' }
-                ]
-            },
-            {
-                icon: '',
+                badge: 'Useful',
                 title: 'Not My Feet',
                 author: 'M4cs',
                 workingVersion: '1.1',
@@ -269,7 +197,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Useful',
                 title: 'Controls Editor',
                 author: 'Silentbaws',
                 workingVersion: '0.1.1',
@@ -278,6 +206,79 @@ export const mods = [
                 note: '',
                 downloadLinks: [
                     { url: 'https://mod.io/g/skaterxl/m/controls-editor', label: 'skaterxl.mod.io' }
+                ]
+            },
+            {
+                badge: 'Fun',
+                title: 'Grab Customizer',
+                author: 'Froquede',
+                workingVersion: '1.7.2',
+                keybind: 'CTRL + G',
+                features: ['Comprehensive Grab Customization'],
+                note: '',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/grabs-customizer-mod', label: 'skaterxl.mod.io' }
+                ]
+            },
+            {
+                badge: 'Fun',
+                title: 'Lateflip Mod',
+                author: 'MateusSXL',
+                workingVersion: '1.1.1',
+                keybind: '(automatic)',
+                features: ['Realistic Late Flip Mechanics'],
+                note: 'Press L + F to toggle on/off.',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/late-flip-mod-with-animations', label: 'skaterxl.mod.io' }
+                ]
+            },
+            {
+                badge: 'Fun',
+                title: 'BreakFX',
+                author: 'DawgVinci',
+                workingVersion: '0.0.1',
+                keybind: 'B',
+                features: ['Board Break Mechanics'],
+                note: 'The board will break automatically by default, or by pressing B on keyboard.',
+                downloadLinks: [
+                    { url: 'https://discord.com/invite/GmuBn6UzUh', label: 'DawgVinc\'s Discord' }
+                ]
+            },
+            {
+                badge: 'Fun',
+                title: 'XL Random Map',
+                author: 'mcbtay',
+                workingVersion: '0.0.2',
+                keybind: 'X or Square on controller while Map Menu is open',
+                features: ['Map seletion Randomizer'],
+                note: '',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/xlrandommap', label: 'skaterxl.mod.io' }
+                ]
+            },
+
+            {
+                badge: 'Fun',
+                title: 'Gear Utilities',
+                author: 'DawgVinci',
+                workingVersion: '2.0d',
+                keybind: 'G',
+                features: ['Custom Accessories'],
+                note: 'Nagivate to the #gearutilies section within DawgVinci\'s Discord to find this mod.',
+                downloadLinks: [
+                    { url: 'https://discord.com/invite/GmuBn6UzUh', label: 'DawgVinci\'s Discord' }
+                ]
+            },
+            {
+                badge: 'Fun',
+                title: 'Controller Rumble',
+                author: 'billowper, Froquede',
+                workingVersion: '1.2.3',
+                keybind: '(automatic)',
+                features: ['Customizable Rumble Feedback'],
+                note: '',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/controller-rumble', label: 'skaterxl.mod.io' }
                 ]
             },
 
@@ -294,8 +295,8 @@ export const mods = [
         version: 'v1.2.7.8',
         modItems: [
             {
-                icon: '🔥', // Specify the icon here
-                title: 'XL Mod',
+                badge: 'New', // Specify the badge here
+                title: 'XL Weather',
                 author: 'DawgVinci',
                 workingVersion: '1.0.0c',
                 keybind: 'F7',
@@ -306,7 +307,31 @@ export const mods = [
                 ]
             },
             {
-                icon: '🔥', // Specify the icon here
+                badge: 'New',
+                title: 'Grind Tools',
+                author: 'Guru',
+                workingVersion: '2.0.1',
+                keybind: '(automatic)',
+                features: ['Customizable Grind Splines', 'Wax Tool'],
+                note: 'Access this mod through the Pause menu.',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
+                ]
+            },
+            {
+                badge: 'Essential', // Specify the badge here
+                title: 'XL Mod (Stats Menu)',
+                author: 'DawgVinci',
+                workingVersion: '1.0.0c',
+                keybind: 'F7',
+                features: ['Stats Customization', 'Enhanced Gameplay Control', 'Stance and Steeze Settings'],
+                note: 'Navigate to the #xlmod section for Skater XL v1.2.7.8 in DawgVinci\'s Discord server to download the mod.',
+                downloadLinks: [
+                    { url: 'https://discord.com/invite/GmuBn6UzUh', label: 'DawgVinci\'s Discord' },
+                ]
+            },
+            {
+                badge: 'Essential', // Specify the badge here
                 title: 'XL Graphics',
                 author: 'Babbo',
                 workingVersion: '2.0.2',
@@ -318,19 +343,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '🔥', // Specify the icon here
-                title: 'Soundmod',
-                author: 'Babbo, jbooogie',
-                workingVersion: '1.2.0',
-                keybind: '(automatic)',
-                features: ['Enhanced Gameplay/UI Sounds', 'Custom Soundpacks'],
-                note: 'SoundMod version 1.2.0 does not include any pre-installed sounds. You\'ll need to download and manually install a soundpack to hear any changes.',
-                downloadLinks: [
-                    { url: 'https://mod.io/g/skaterxl/m/soundmod', label: 'skaterxl.mod.io' }
-                ]
-            },
-            {
-                icon: '🔥',
+                badge: 'Essential',
                 title: 'Deck Tools',
                 author: 'Guru',
                 workingVersion: '0.0.2',
@@ -343,7 +356,19 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Essential', // Specify the badge here
+                title: 'Soundmod',
+                author: 'Babbo, jbooogie',
+                workingVersion: '1.2.0',
+                keybind: '(automatic)',
+                features: ['Enhanced Gameplay/UI Sounds', 'Custom Soundpacks'],
+                note: 'SoundMod version 1.2.0 does not include any pre-installed sounds. You\'ll need to download and manually install a soundpack to hear any changes.',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/soundmod', label: 'skaterxl.mod.io' }
+                ]
+            },
+            {
+                badge: 'Recommended',
                 title: 'Fro\'s Experimental Mod',
                 author: 'Froquede',
                 workingVersion: '2.0.1',
@@ -355,7 +380,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Recommended',
                 title: 'Boned Ollie Mod',
                 author: 'MateusSXL',
                 workingVersion: '2.2.0',
@@ -367,7 +392,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Recommended',
                 title: 'XL Menu Mod',
                 author: 'mcbtay',
                 workingVersion: '2.6.3',
@@ -379,7 +404,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Useful',
                 title: 'Mutliplayer++',
                 author: 'MateusSXL',
                 workingVersion: '1.0.2',
@@ -391,7 +416,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
+                badge: 'Useful',
                 title: 'Better Replay Mod',
                 author: 'Froquede',
                 workingVersion: '2.1.0',
@@ -403,19 +428,7 @@ export const mods = [
                 ]
             },
             {
-                icon: '',
-                title: 'Grind Tools',
-                author: 'Guru',
-                workingVersion: '2.0.1',
-                keybind: '(automatic)',
-                features: ['Customizable Grind Splines', 'Wax Tool'],
-                note: 'Access this mod through the Pause menu.',
-                downloadLinks: [
-                    { url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
-                ]
-            },
-            {
-                icon: '',
+                badge: 'Useful',
                 title: 'ShapeFX',
                 author: 'DawgVinci ',
                 workingVersion: '1.0.0',

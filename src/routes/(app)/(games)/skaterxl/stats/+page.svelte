@@ -149,98 +149,109 @@
 		!!title.trim().length && !!description.trim().length && !!fileInput?.files?.length;
 </script>
 
+<svelte:head>
+	<title>Skatebit | Skater XL News</title>
+</svelte:head>
+
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
-	<span class="badge variant-filled mb-2">Skater XL</span>
-	<h1 class="text-3xl font-bold mb-8">Stats & Settings</h1>
-	{#if session}
-		<!-- Form to add new stat -->
+	<article>
+		<div class="header">
+			<span class="badge variant-filled-tertiary mb-2">Skater XL</span>
+			<h1>Stats & Settings</h1>
+			<p>Download and share Skater XL Stats and Settings.</p>
+			<hr class="!border-t-2" />
+		</div>
+		<div>
+			{#if session}
+				<form
+					class="flex flex-col space-y-5"
+					method="post"
+					action="?/addStat"
+					use:enhance={handleSubmit}
+					bind:this={form}
+					enctype="multipart/form-data"
+				>
+					<h2>Upload Files</h2>
 
-		<form
-			class="flex flex-col space-y-5"
-			method="post"
-			action="?/addStat"
-			use:enhance={handleSubmit}
-			bind:this={form}
-			enctype="multipart/form-data"
-		>
-			<h2 class="text-xl font-semibold mb-2">Upload Your Stats</h2>
-			<!-- Input fields for new stat -->
-			<div class="w-full">
-				<input
-					class="input"
-					id="title"
-					name="title"
-					type="text"
-					placeholder="Stat Title"
-					bind:value={title}
-				/>
-			</div>
-			<div class="w-full">
-				<input
-					class="input"
-					id="description"
-					name="description"
-					type="text"
-					placeholder="Stat Description"
-					bind:value={description}
-				/>
-			</div>
-			<div class="w-full">
-				<input class="input" id="file" name="file" type="file" accept=".zip" />
-				<small class="text-gray-500">File must be less than 2MB and in .zip format.</small>
-			</div>
-			<div class="w-full flex justify-center">
-				<input
-					type="submit"
-					class="button block btn variant-filled-secondary"
-					value={loading ? 'Adding...' : 'Add Stats'}
-					disabled={!isFormValid || loading}
-				/>
-			</div>
-		</form>
-	{:else}
-		<!-- Link to login page if user is not logged in -->
-		<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover">
-			Login to Add Stats
-		</a>
-	{/if}
-	<hr class="!border-t-2 my-6" />
-	<ul class="space-y-6 w-full">
-		<h2 class="text-xl font-semibold mb-2">File Downloads</h2>
-		<!-- Button to reload stats -->
-
-		{#each stats as stat}
-			<li>
-				<div class="flex card p-4 justify-between items-center space-y-2 gap-8">
-					<div class="flex flex-col space-y-1">
-						<h2 class="h2 text-xl">{stat.title}</h2>
-						<p>{stat.description}</p>
-						<p>Uploaded by: {stat.profiles?.username}</p>
-						{#if stat.created_at}
-							<p>Created: {formatDate(stat.created_at)}</p>
-						{/if}
+					<div class="w-full">
+						<input
+							class="input"
+							id="title"
+							name="title"
+							type="text"
+							placeholder="Stat Title"
+							bind:value={title}
+						/>
 					</div>
-					<div class="flex gap-1">
-						<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
-						{#if session && session.user && session.user.id === stat.profile_id}
-							<button class="btn btn-sm variant-filled-warning" on:click={() => editStat(stat)}
-								>Edit</button
-							>
-							<button class="btn btn-sm variant-filled-error" on:click={() => confirmDelete(stat)}
-								>Delete</button
-							>
-						{/if}
-
-						{#if stat.file_url}
-							<a
-								href={stat.file_url}
-								class="btn btn-sm variant-filled-secondary"
-								download="{stat.title}.zip">Download</a
-							>
-						{/if}
+					<div class="w-full">
+						<input
+							class="input"
+							id="description"
+							name="description"
+							type="text"
+							placeholder="Stat Description"
+							bind:value={description}
+						/>
 					</div>
-				</div>
-			</li>
-		{/each}
-	</ul>
+					<div class="w-full">
+						<input class="input" id="file" name="file" type="file" accept=".zip" />
+						<small class="text-gray-500">File must be less than 2MB and in .zip format.</small>
+					</div>
+					<div class="w-full flex justify-center">
+						<input
+							type="submit"
+							class="button block btn variant-filled-secondary"
+							value={loading ? 'Adding...' : 'Add Stats'}
+							disabled={!isFormValid || loading}
+						/>
+					</div>
+				</form>
+			{:else}
+				<!-- Link to login page if user is not logged in -->
+				<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover">
+					Login to Add Stats
+				</a>
+			{/if}
+		</div>
+		<div>
+			<h2>File Downloads</h2>
+		</div>
+		<div>
+			<ul class="space-y-6 w-full">
+				{#each stats as stat}
+					<li>
+						<div class="flex card p-4 justify-between items-center space-y-2 gap-8">
+							<div class="flex flex-col space-y-1">
+								<h2 class="h2 text-xl">{stat.title}</h2>
+								<p>{stat.description}</p>
+								<p>Uploaded by: {stat.profiles?.username}</p>
+								{#if stat.created_at}
+									<p>Created: {formatDate(stat.created_at)}</p>
+								{/if}
+							</div>
+							<div class="flex flex-col gap-2">
+								<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
+								{#if session && session.user && session.user.id === stat.profile_id}
+									<button class="btn variant-filled-warning" on:click={() => editStat(stat)}
+										>Edit</button
+									>
+									<button class="btn variant-filled-error" on:click={() => confirmDelete(stat)}
+										>Delete</button
+									>
+								{/if}
+
+								{#if stat.file_url}
+									<a
+										href={stat.file_url}
+										class="btn variant-filled-secondary"
+										download="{stat.title}.zip">Download</a
+									>
+								{/if}
+							</div>
+						</div>
+					</li>
+				{/each}
+			</ul>
+		</div>
+	</article>
 </div>
