@@ -5,36 +5,39 @@
 			releaseDate: 'July 28, 2020',
 			description:
 				"Skater XL revolutionizes skateboarding gameplay with its Independent Foot Control System and physics-based mechanics, offering gamers the expressive controls they've always dreamed of.",
-			imageSrc: '/images/Home2.webp'
+			imageSrc: '/images/Alpha2.webp',
+			href: '/skaterxl/news'
 		},
 		{
 			title: 'Session: Skate Sim',
 			releaseDate: 'September 22, 2022',
 			description:
 				"Session is an ultra-realistic skateboard game blending '90s skate culture aesthetic with modern dual stick controls for total board and skater control.",
-			imageSrc: '/images/Picture.webp'
+			imageSrc: '/images/Session.webp',
+			href: '/session/news'
 		},
 		{
 			title: 'Skate.',
 			releaseDate: 'TBA',
 			description:
 				"Skate. is EA's upcoming skateboarding game, promising a return to the beloved franchise with a renewed focus on authenticity and innovative gameplay mechanics.",
-			imageSrc: '/images/Picture.webp'
+			imageSrc: '/images/Skate.webp',
+			href: '/skate/news'
 		}
 	];
 </script>
 
-<div class="flex flex-col gap-2">
+<div class="flex flex-col gap-4">
 	{#each games as game (game.title)}
-		<div class="card flex justify-center items-center">
+		<div class="card card-hover flex justify-center items-center">
 			<!-- Text content -->
-			<div class="flex-1">
+			<a href={game.href} class="flex-1" data-sveltekit-preload-data="hover">
 				<header class="card-header">
-					<h2 class="h2 text-2xl">{game.title}</h2>
+					<h3 class="h3">{game.title}</h3>
 				</header>
 				<section class="p-4">Release Date: {game.releaseDate}</section>
 				<footer class="card-footer">{game.description}</footer>
-			</div>
+			</a>
 			<!-- Circular image -->
 			<div class="rounded-full overflow-hidden w-36 h-36 m-4">
 				<img src={game.imageSrc} alt={game.title} class="object-cover w-full h-full" />

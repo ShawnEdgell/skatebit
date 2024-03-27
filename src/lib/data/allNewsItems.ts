@@ -1,6 +1,6 @@
 const sessionNewsItems = [
     {
-        game: 'Session', // Identifying property
+        game: 'Session',
         title: 'Schoolyard DLC Trailer',
         date: 'February 22, 2024',
         description:
@@ -9,7 +9,7 @@ const sessionNewsItems = [
         videoTitle: 'Schoolyard DLC Trailer'
     },
     {
-        game: 'Session', // Identifying property
+        game: 'Session',
         title: 'Abandoned Mall DLC Trailer',
         date: 'October 26, 2023',
         description:
@@ -18,7 +18,7 @@ const sessionNewsItems = [
         videoTitle: 'Abandoned Mall DLC Trailer'
     },
     {
-        game: 'Session', // Identifying property
+        game: 'Session',
         title: 'Waterpark & Chris Cole DLC Trailer',
         date: 'May 17, 2023',
         description:
@@ -27,7 +27,7 @@ const sessionNewsItems = [
         videoTitle: 'Waterpark & Chris Cole DLC Trailer'
     },
     {
-        game: 'Session', // Identifying property
+        game: 'Session',
         title: 'Session: Skate Sim | Launch Trailer',
         date: 'September 22, 2022',
         description:
@@ -36,14 +36,32 @@ const sessionNewsItems = [
         videoTitle: 'Waterpark & Chris Cole DLC Trailer'
     },
     {
-        game: 'Session', // Identifying property
+        game: 'Session',
         title: 'New Skater Reveal',
         date: 'September 19, 2022',
         description:
             'Torey Pudwill, Nora Vasconsellos, Samarria Brevard, and Ryan Thompson will join the fray, bringing the roster up to 16 big names. ',
         videoUrl: 'https://www.youtube.com/embed/_FCXzT5_sAA?si=eyDZmHRnKBky7TW9',
         videoTitle: 'New Skater Reveal'
-    }
+    },
+    {
+        game: 'Session',
+        title: 'Update Trailer',
+        date: 'July 6, 2021',
+        description:
+            'Creativity and freedom of expression: This, is Session. Pure, raw skateboarding. Forget about hand holding or turbo timers, just go tame that concrete!',
+        videoUrl: 'https://www.youtube.com/embed/IMwi5oy7Hro?si=bSatgpEEu5DhPBUQ',
+        videoTitle: 'Session: Skate Sim | Update Trailer'
+    },
+    {
+        game: 'Session',
+        title: 'San Francisco Trailer',
+        date: 'Aug 27, 2022',
+        description:
+            'Grab your board and travel to the Bay Area, where many famous skaters made a name for themselves. Now\'s the time for you to make your own mark in this faithful reproduction of the City of Fog. ',
+        videoUrl: 'https://www.youtube.com/embed/RFf3lH1w2AQ?si=ywWiEuF5C8H65gdl',
+        videoTitle: 'Session: Skate Sim | San Francisco Trailer'
+    },
 ];
 
 const skateNewsItems = [

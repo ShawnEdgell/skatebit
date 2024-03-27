@@ -12,7 +12,7 @@
 		<div class="header">
 			<span class="badge variant-filled-warning mb-2">Skate.</span>
 			<h1>News</h1>
-			<p>A short description.</p>
+			<p>All the latest Skate. news.</p>
 			<hr class="!border-t-2" />
 		</div>
 		{#each skateNewsItems as { title, date, description, videoUrl, videoTitle }}

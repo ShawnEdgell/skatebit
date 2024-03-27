@@ -4,6 +4,7 @@
 	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
 	import { tocCrawler } from '@skeletonlabs/skeleton';
+	import InstallCard from './InstallCard.svelte';
 
 	interface Profile {
 		username: string;
@@ -161,6 +162,7 @@
 			<p>Download and share Skater XL Stats and Settings.</p>
 			<hr class="!border-t-2" />
 		</div>
+		<InstallCard />
 		<div>
 			{#if session}
 				<form
@@ -171,7 +173,7 @@
 					bind:this={form}
 					enctype="multipart/form-data"
 				>
-					<h2>Upload Files</h2>
+					<h2>Upload Your Stats</h2>
 
 					<div class="w-full">
 						<input
@@ -213,22 +215,31 @@
 				</a>
 			{/if}
 		</div>
+
 		<div>
-			<h2>File Downloads</h2>
+			<h2>Downloads</h2>
 		</div>
 		<div>
 			<ul class="space-y-6 w-full">
 				{#each stats as stat}
 					<li>
-						<div class="flex card p-4 justify-between items-center space-y-2 gap-8">
-							<div class="flex flex-col space-y-1">
-								<h2 class="h2 text-xl">{stat.title}</h2>
+						<div class="flex card p-6 justify-between items-center gap-6">
+							<div class="flex flex-col space-y-4">
+								<h3 class="h3">{stat.title}</h3>
 								<p>{stat.description}</p>
-								<p>Uploaded by: {stat.profiles?.username}</p>
-								{#if stat.created_at}
-									<p>Created: {formatDate(stat.created_at)}</p>
-								{/if}
+								<div>
+									<hr class="!border-t-2 mb-4" />
+									<p class="text-sm mt-2">
+										Uploaded by: <span class="font-medium">{stat.profiles?.username}</span>
+									</p>
+									{#if stat.created_at}
+										<p class="text-sm">
+											Created: <span class="font-medium">{formatDate(stat.created_at)}</span>
+										</p>
+									{/if}
+								</div>
 							</div>
+
 							<div class="flex flex-col gap-2">
 								<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
 								{#if session && session.user && session.user.id === stat.profile_id}

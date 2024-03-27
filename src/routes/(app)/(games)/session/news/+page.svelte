@@ -12,7 +12,7 @@
 		<div class="header">
 			<span class="badge variant-filled-error mb-2">Session</span>
 			<h1>News</h1>
-			<p>A short description.</p>
+			<p>All the latest news for Session: Skate Sim.</p>
 			<hr class="!border-t-2" />
 		</div>
 		{#each sessionNewsItems as { title, date, description, videoUrl, videoTitle }}

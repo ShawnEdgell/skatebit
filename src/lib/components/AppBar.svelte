@@ -23,7 +23,7 @@
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
 		<div>
-			<div class="hidden md:flex items-center gap-4">
+			<div class="flex items-center gap-4">
 				<Navigation />
 			</div>
 		</div>
