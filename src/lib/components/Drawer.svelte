@@ -23,6 +23,7 @@
 	class="btn flex items-center justify-center p-2 rounded-full hover:bg-primary-500/10 hover:text-white transition-colors"
 	on:click={openDrawer}
 	data-sveltekit-preload-data="hover"
+	aria-label="Open menu"
 >
 	<svg
 		class="h-6 w-6"

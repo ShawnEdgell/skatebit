@@ -22,7 +22,7 @@
 		<a
 			href="/docs/introduction"
 			class="btn variant-filled-primary"
-			data-sveltekit-preload-data="hover">Learn More</a
+			data-sveltekit-preload-data="hover">About Skatebit</a
 		>
 		<a href="/docs/news" class="btn variant-soft-primary" data-sveltekit-preload-data="hover"
 			>Latest News</a
