@@ -22,7 +22,7 @@
 			imgSrc: '/images/XLWeather.webp',
 			altText: 'Weather Mod by Guru',
 			title: 'Weather Mod by Guru',
-			description: 'Discover the newly released Weather Mod for Skater XL.'
+			description: 'Explore the new Weather Mod for Skater XL.'
 		}
 		// Add more ads as needed
 	];

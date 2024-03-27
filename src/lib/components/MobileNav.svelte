@@ -29,7 +29,7 @@
 		<li class="list flex flex-col p-6 space-y-2">
 			{#each navigationLinks as { url, label }}
 				<a href={url} on:click={closeDrawer}>
-					<span class="btn variant-filled w-full">{label}</span>
+					<span class="btn variant-soft w-full">{label}</span>
 				</a>
 			{/each}
 		</li>
