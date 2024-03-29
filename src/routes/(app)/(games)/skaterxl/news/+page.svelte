@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Skatebit | Skater XL News</title>
+	<title>Skatebit | Skater XL</title>
 </svelte:head>
 
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>

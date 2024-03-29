@@ -18,7 +18,7 @@
 				<Drawer />
 			</div>
 			<a href="/" class="flex items-center gap-1" data-sveltekit-preload-data="hover">
-				<h1 class="h1 tracking-tight text-2xl">Skatebit.</h1>
+				<h1 class="h1 tracking-tight text-2xl">Skatebit</h1>
 			</a>
 		</div>
 	</svelte:fragment>
