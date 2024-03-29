@@ -4,7 +4,7 @@ import type { Actions, PageServerLoad } from './$types';
 export const load: PageServerLoad = async ({ locals: { supabase } }) => {
     try {
         const { data: stats, error } = await supabase
-            .from('xl_stats')
+            .from('session_stats')
             .select(`
                 id, 
                 title, 
@@ -46,13 +46,13 @@ export const actions: Actions = {
             const filePath = `/${Date.now()}_${file.name}`;
             try {
                 const uploadResult = await supabase.storage
-                    .from('xl_stat_files')
+                    .from('session_stat_files')
                     .upload(filePath, file);
 
                 if (uploadResult.error) throw uploadResult.error;
 
                 const { data } = await supabase.storage
-                    .from('xl_stat_files')
+                    .from('session_stat_files')
                     .getPublicUrl(filePath);
 
                 publicURL = data.publicUrl;
@@ -63,7 +63,7 @@ export const actions: Actions = {
         }
 
         try {
-            const { error: insertError } = await supabase.from('xl_stats').insert({
+            const { error: insertError } = await supabase.from('session_stats').insert({
                 profile_id: userId,
                 title,
                 description,

@@ -109,20 +109,36 @@
 		}
 	};
 
-	// Function to handle deleting a stat
+	// Function to handle deleting an XL stat
 	const deleteStat = async (stat: Stat) => {
-		// Implement your logic to handle deletion here
+		const filePath = stat.file_url.split('/').pop(); // Gets the filename from the URL
+
 		try {
-			const { error } = await supabase.from('xl_stats').delete().eq('id', stat.id);
-			if (error) {
-				console.error('Error deleting stat:', error.message);
-				throw new Error('Failed to delete stat');
+			// Attempt to delete the file from storage
+			const { error: deleteFileError } = await supabase.storage
+				.from('xl_stat_files') // Ensure this is your correct bucket name
+				.remove([filePath]);
+
+			if (deleteFileError) {
+				console.error('Error deleting file from storage:', deleteFileError.message);
+				throw new Error('Failed to delete file from storage');
 			}
-			// Remove the deleted stat from the list
+
+			// Proceed to delete the stat from the database
+			const { error: deleteStatError } = await supabase.from('xl_stats').delete().eq('id', stat.id);
+			if (deleteStatError) {
+				console.error('Error deleting stat from database:', deleteStatError.message);
+				throw new Error('Failed to delete stat from database');
+			}
+
+			// Update the local state to reflect the deletion
 			stats = stats.filter((s) => s.id !== stat.id);
-			console.log('Stat deleted successfully:');
+			console.log('Stat and associated file deleted successfully');
 		} catch (error) {
-			console.error('Failed to delete stat:', error instanceof Error ? error.message : error);
+			console.error(
+				'Failed to delete stat or file:',
+				error instanceof Error ? error.message : error
+			);
 		}
 	};
 
