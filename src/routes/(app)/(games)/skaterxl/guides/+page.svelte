@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { tocCrawler } from '@skeletonlabs/skeleton';
 	import QuickGuide from './QuickGuide.svelte';
-	import MapsGear from './MapsGear.svelte';
 	import VideoSection from './VideoSection.svelte';
 	import VersionCards from './VersionCards.svelte';
 </script>
@@ -32,12 +31,22 @@
 		<div>
 			<h2>Maps & Gear</h2>
 			<p>
-				Explore maps and gear to enhance your Skater XL experience. Discover new environments and
-				equipment to take your skills to the next level.
+				To install custom maps and gear, place them in the following directories. Please note that
+				XLGM gear requires you to install each piece of gear into 2 folders.
 			</p>
-			<div class="card p-6 mb-12">
-				<MapsGear />
-			</div>
+			<p>Custom Maps: <code class="code">Documents/SkaterXL/Maps</code></p>
+			<p>
+				Custom Gear: <code class="code">Documents/SkaterXL/Gear</code>
+			</p>
+
+			<p>
+				XLGM Gear: <code class="code">Documents/SkaterXL/Gear</code>
+				<code class="variant-soft-primary"></code>
+			</p>
+			<p>
+				XLGM Assets: <code class="code">Documents/SkaterXL/XLGearModifier/assets</code>
+				<code class="variant-soft-primary"></code>
+			</p>
 		</div>
 		<VideoSection
 			title="Skater XL Mod Guide (2024)"

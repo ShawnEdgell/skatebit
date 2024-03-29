@@ -36,71 +36,77 @@
 <svelte:head>
 	<title>Skatebit | Account</title>
 </svelte:head>
-<form
-	class="flex flex-col items-center space-y-5"
-	method="post"
-	action="?/update"
-	use:enhance={handleSubmit}
-	bind:this={profileForm}
->
-	<Avatar
-		{supabase}
-		bind:url={avatarUrl}
-		size={10}
-		on:upload={() => {
-			profileForm.requestSubmit();
-		}}
-	/>
-	<div>
-		<input class="input" id="email" type="text" value={session.user.email} disabled />
-	</div>
 
-	<div>
-		<input
-			class="input"
-			id="fullName"
-			name="fullName"
-			type="text"
-			placeholder="Full Name"
-			value={form?.fullName ?? fullName}
+<div class="flex flex-col items-center space-y-5">
+	<a href="/skaterxl/stats" class="btn variant-filled-tertiary" data-sveltekit-preload-data="hover"
+		>Upload Skater XL Stats</a
+	>
+	<form
+		class="flex flex-col items-center space-y-5"
+		method="post"
+		action="?/update"
+		use:enhance={handleSubmit}
+		bind:this={profileForm}
+	>
+		<Avatar
+			{supabase}
+			bind:url={avatarUrl}
+			size={10}
+			on:upload={() => {
+				profileForm.requestSubmit();
+			}}
 		/>
-	</div>
+		<div>
+			<input class="input" id="email" type="text" value={session.user.email} disabled />
+		</div>
 
-	<div>
-		<input
-			class="input"
-			id="username"
-			name="username"
-			type="text"
-			placeholder="Username"
-			value={form?.username ?? username}
-		/>
-	</div>
+		<div>
+			<input
+				class="input"
+				id="fullName"
+				name="fullName"
+				type="text"
+				placeholder="Full Name"
+				value={form?.fullName ?? fullName}
+			/>
+		</div>
 
-	<div>
-		<input
-			class="input"
-			id="website"
-			name="website"
-			type="url"
-			autocomplete="email"
-			placeholder="Website"
-			value={form?.website ?? website}
-		/>
-	</div>
+		<div>
+			<input
+				class="input"
+				id="username"
+				name="username"
+				type="text"
+				placeholder="Username"
+				value={form?.username ?? username}
+			/>
+		</div>
 
-	<div>
-		<input
-			type="submit"
-			class="button block btn variant-filled-secondary"
-			value={loading ? 'Loading...' : 'Update'}
-			disabled={loading}
-		/>
-	</div>
-</form>
+		<div>
+			<input
+				class="input"
+				id="website"
+				name="website"
+				type="url"
+				autocomplete="email"
+				placeholder="Website"
+				value={form?.website ?? website}
+			/>
+		</div>
 
-<form method="post" action="?/signout" use:enhance={handleSignOut}>
-	<div>
-		<button class="button block btn variant-filled-error" disabled={loading}>Sign Out</button>
-	</div>
-</form>
+		<div>
+			<input
+				type="submit"
+				class="button block btn variant-filled-secondary"
+				value={loading ? 'Loading...' : 'Update'}
+				disabled={loading}
+			/>
+		</div>
+	</form>
+
+	<form method="post" action="?/signout" use:enhance={handleSignOut}>
+		<div>
+			<button class="button block btn variant-filled-error" disabled={loading}>Sign Out</button>
+		</div>
+	</form>
+</div>
