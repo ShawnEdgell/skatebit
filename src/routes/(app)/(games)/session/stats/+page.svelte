@@ -3,7 +3,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
-	import { tocCrawler } from '@skeletonlabs/skeleton';
+	import { Accordion, AccordionItem, tocCrawler } from '@skeletonlabs/skeleton';
 
 	interface Profile {
 		username: string;
@@ -101,21 +101,20 @@
 		}
 	};
 
-	// Function to handle deleting a stat
+	// Function to handle deleting a stat and its file
 	const deleteStat = async (stat: Stat) => {
-		const filePath = stat.file_url.split('/').pop(); // Adjust based on your file_url structure
+		// Extract the path from file_url, assuming it includes the full storage path
+		const fileStoragePath = stat.file_url.split('session_stat_files/')[1]; // Adjust based on how your URLs are structured
 
 		try {
-			// Attempt to delete the file from storage
-			const { data: deleteData, error: deleteFileError } = await supabase.storage
+			// Delete the file from storage
+			const { error: deleteFileError } = await supabase.storage
 				.from('session_stat_files')
-				.remove([filePath]);
+				.remove([fileStoragePath]); // Use the full path including profile_id folder
 
 			if (deleteFileError) {
 				console.error('Error deleting file from storage:', deleteFileError.message);
 				throw new Error('Failed to delete file from storage');
-			} else {
-				console.log('Storage deletion response:', deleteData);
 			}
 
 			// Delete the stat from the database
@@ -123,17 +122,16 @@
 				.from('session_stats')
 				.delete()
 				.eq('id', stat.id);
+
 			if (deleteStatError) {
-				console.error('Error deleting stat from database:', deleteStatError.message);
-				throw new Error('Failed to delete stat from database');
+				console.error('Error deleting stat:', deleteStatError.message);
+				throw new Error('Failed to delete stat');
 			} else {
-				// Successfully deleted stat from database, now update UI
 				stats = stats.filter((s) => s.id !== stat.id);
-				console.log('Stat and associated file deleted successfully');
 			}
 		} catch (error) {
 			console.error(
-				'Failed to delete stat or file:',
+				'Failed to delete file or stat:',
 				error instanceof Error ? error.message : error
 			);
 		}
@@ -250,44 +248,62 @@
 			<ul class="space-y-6 w-full">
 				{#each stats as stat}
 					<li>
-						<div class="flex flex-col sm:flex-row card p-6 justify-between items-center gap-6">
-							<div class="flex flex-col space-y-4 w-full">
-								<h3 class="h3">{stat.title}</h3>
-								<p>{stat.description}</p>
-								<div>
-									<hr class="!border-t-2 mb-4" />
-									<p class="text-sm mt-2">
-										Uploaded by: <span class="font-medium">{stat.profiles?.username}</span>
-									</p>
-									{#if stat.created_at}
-										<p class="text-sm">
-											Created: <span class="font-medium">{formatDate(stat.created_at)}</span>
+						<div class="flex flex-col card p-6 space-y-5">
+							<div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+								<div class="flex flex-col space-y-4 w-full">
+									<h3 class="h3">{stat.title}</h3>
+									<p>{stat.description}</p>
+									<div>
+										<hr class="!border-t-2 mb-4" />
+										<p class="text-sm mt-2">
+											Uploaded by: <span class="font-medium">{stat.profiles?.username}</span>
 										</p>
+										{#if stat.created_at}
+											<p class="text-sm">
+												Created: <span class="font-medium">{formatDate(stat.created_at)}</span>
+											</p>
+										{/if}
+									</div>
+								</div>
+
+								<div class="flex flex-col gap-2">
+									<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
+									{#if session && session.user && session.user.id === stat.profile_id}
+										<button class="btn variant-filled-warning" on:click={() => editStat(stat)}
+											>Edit</button
+										>
+										<button class="btn variant-filled-error" on:click={() => confirmDelete(stat)}
+											>Delete</button
+										>
+									{/if}
+
+									{#if stat.file_url}
+										<div class="max-w-lg mx-auto">
+											<img
+												src={stat.file_url}
+												alt={stat.title}
+												class="rounded-lg shadow-md w-full h-auto object-cover object-center"
+												loading="lazy"
+											/>
+										</div>
 									{/if}
 								</div>
 							</div>
-
-							<div class="flex flex-col gap-2">
-								<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
-								{#if session && session.user && session.user.id === stat.profile_id}
-									<button class="btn variant-filled-warning" on:click={() => editStat(stat)}
-										>Edit</button
-									>
-									<button class="btn variant-filled-error" on:click={() => confirmDelete(stat)}
-										>Delete</button
-									>
-								{/if}
-
-								{#if stat.file_url}
-									<div class="max-w-lg mx-auto">
-										<img
-											src={stat.file_url}
-											alt={stat.title}
-											class="rounded-lg shadow-md w-full h-auto object-cover object-center"
-											loading="lazy"
-										/>
-									</div>
-								{/if}
+							<div>
+								<Accordion>
+									<AccordionItem>
+										<svelte:fragment slot="summary">View full stats</svelte:fragment>
+										<svelte:fragment slot="content">
+											<img
+												src={stat.file_url}
+												alt={stat.title}
+												class="rounded-lg shadow-md w-full h-auto object-cover object-center"
+												loading="lazy"
+											/>
+										</svelte:fragment>
+									</AccordionItem>
+									<!-- ... -->
+								</Accordion>
 							</div>
 						</div>
 					</li>

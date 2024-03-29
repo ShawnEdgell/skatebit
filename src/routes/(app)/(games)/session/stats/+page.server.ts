@@ -43,24 +43,26 @@ export const actions: Actions = {
         let publicURL = '';
 
         if (file) {
-            const filePath = `/${Date.now()}_${file.name}`;
+            // Adjust filePath to include the userId as part of the folder path
+            const filePath = `${userId}/${Date.now()}_${file.name}`;
             try {
                 const uploadResult = await supabase.storage
                     .from('session_stat_files')
                     .upload(filePath, file);
-
+        
                 if (uploadResult.error) throw uploadResult.error;
-
+        
                 const { data } = await supabase.storage
                     .from('session_stat_files')
                     .getPublicUrl(filePath);
-
+        
                 publicURL = data.publicUrl;
             } catch (error) {
                 console.error('Error with file upload or retrieval:', error instanceof Error ? error.message : error);
                 return fail(500, { error: 'Failed to upload file or retrieve URL' });
             }
         }
+        
 
         try {
             const { error: insertError } = await supabase.from('session_stats').insert({
