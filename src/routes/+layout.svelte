@@ -4,8 +4,8 @@
 
 	import { AppShell, Drawer, initializeStores } from '@skeletonlabs/skeleton';
 
-	import AppBar from '$lib/components/AppBar.svelte';
-	import SidebarNav from '$lib/components/SidebarNav.svelte';
+	import Navigation from '$lib/components/Navigation.svelte';
+	import SidebarLeft from '$lib/components/SidebarLeft.svelte';
 
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
@@ -48,13 +48,13 @@
 </svelte:head>
 
 <Drawer>
-	<SidebarNav />
+	<SidebarLeft />
 </Drawer>
 
 <AppShell scrollbarGutter="auto" regionPage="scroll-smooth overscroll-none">
 	<svelte:fragment slot="header">
 		<div class="shadow-xl">
-			<AppBar />
+			<Navigation />
 		</div>
 	</svelte:fragment>
 	<!-- (sidebarLeft) -->
