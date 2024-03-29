@@ -218,6 +218,7 @@
 							id="file"
 							name="file"
 							type="file"
+							multiple
 							accept="image/jpeg, image/png, image/webp"
 						/>
 						<small class="text-gray-500"
