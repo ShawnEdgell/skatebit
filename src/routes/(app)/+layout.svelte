@@ -14,7 +14,7 @@
 		<slot />
 	</div>
 	<!-- (Right Sidebar) -->
-	<div class="overflow-y-scroll hidden xl:block fixed top-0 mt-6 right-0 h-full w-96 py-12 px-4">
+	<div class="overflow-y-scroll hidden xl:block fixed top-0 mt-8 right-0 h-full w-96 py-12 px-4">
 		<SidebarCard />
 		<TableOfContents>
 			<h1>On the Page</h1>

@@ -37,5 +37,12 @@
             </p>
             <a href="https://discord.gg/65gAJju3pF" target="_blank" class="btn">Illusory Discord</a>
         </div>
+        <iframe
+        class="h-full w-full"
+        src="https://www.youtube.com/embed/qBMqPMPzGUY?si=t1xneBu_GNf2Gi-t"
+        title="Session: Skate Sim - Launch Trailer | PS5 & PS4 Games"
+        frameborder="0"
+        allowfullscreen
+        loading="lazy" />
     </article>
 </div>

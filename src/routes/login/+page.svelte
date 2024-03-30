@@ -12,7 +12,7 @@
 
 <div class="space-y-5 max-w-sm">
 	<h1 class="h1">Account Login</h1>
-	<p>Access your profile, chat in the forums, upload stats/settings, and more!</p>
+	<p>Access and edit your own profile, upload stats/settings, and more!</p>
 	<Auth
 		supabaseClient={data.supabase}
 		view="magic_link"

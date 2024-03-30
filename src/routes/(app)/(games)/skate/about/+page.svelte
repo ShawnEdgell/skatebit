@@ -51,5 +51,13 @@
 				data-sveltekit-preload-data="hover">Skate. Discord</a
 			>
 		</div>
+		<iframe
+			class="h-full w-full"
+			src="https://www.youtube.com/embed/Y2XddTE08rI?si=PHcksZ3Kry1jQOJ_"
+			title="Still Working On It | skate."
+			frameborder="0"
+			allowfullscreen
+			loading="lazy"
+		/>
 	</article>
 </div>
