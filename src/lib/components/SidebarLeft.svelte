@@ -152,16 +152,6 @@
 				<ul>
 					<li>
 						<a
-							href="/skaterxl/news"
-							class={classesActive('/skaterxl/news')}
-							data-sveltekit-preload-data="hover"
-							on:click={closeDrawer}
-						>
-							News
-						</a>
-					</li>
-					<li>
-						<a
 							href="/skaterxl/guides"
 							class={classesActive('/skaterxl/guides')}
 							data-sveltekit-preload-data="hover"
@@ -210,16 +200,6 @@
 				<ul>
 					<li>
 						<a
-							href="/session/news"
-							class={classesActive('/session/news')}
-							data-sveltekit-preload-data="hover"
-							on:click={closeDrawer}
-						>
-							News
-						</a>
-					</li>
-					<li>
-						<a
 							href="/session/guides"
 							class={classesActive('/session/guides')}
 							data-sveltekit-preload-data="hover"
@@ -249,12 +229,12 @@
 				<ul>
 					<li>
 						<a
-							href="/skate/news"
-							class={classesActive('/skate/news')}
+							href="/skate/about"
+							class={classesActive('/skate/about')}
 							data-sveltekit-preload-data="hover"
 							on:click={closeDrawer}
 						>
-							News
+							About
 						</a>
 					</li>
 					<!-- ... -->

@@ -1,76 +1,130 @@
 <script lang="ts">
-	import { tocCrawler } from '@skeletonlabs/skeleton';
+	import { onMount } from 'svelte';
 	import { writable } from 'svelte/store';
+	import { tocCrawler } from '@skeletonlabs/skeleton';
 
-	let tabIndex = 0; // This will be used as a key to force updates
+	const channels = [
+		{ name: 'Skater XL', playlistId: 'UUpBQRZl7apZt_LQXKgqKQiQ' },
+		{ name: 'Session', playlistId: 'PLWmRSsZZ1RCW-0uQWKlCAiGZVnIaRYaTm' },
+		{ name: 'Skate.', playlistId: 'UUSBQJEWTWOUCO65xvoDfljw' }
+	];
 
-	const activeGames = writable(['Skater XL', 'Session', 'Skate.']);
+	const videos = writable<
+		{
+			id: number;
+			title: string;
+			date: string;
+			description: string;
+			videoUrl: string;
+			videoTitle: string;
+		}[]
+	>([]);
 
-	function toggleGame(game: string) {
-		activeGames.update((current) => {
-			const isActive = current.includes(game);
-			const updated = isActive ? current.filter((g) => g !== game) : [...current, game];
+	const apiKey = import.meta.env.VITE_YT_API_KEY as string;
 
-			// Trigger reactivity by incrementing tabIndex
-			tabIndex += 1;
-			return updated;
+	interface YouTubeVideoItem {
+		snippet: {
+			title: string;
+			publishedAt: string;
+			description: string;
+			resourceId: { videoId: string };
+		};
+	}
+
+	function truncateText(text: string, length: number): string {
+		return text.length > length ? `${text.substring(0, length)}...` : text;
+	}
+
+	const expandedItems = writable(new Set<number>());
+
+	function toggleExpanded(id: number): void {
+		expandedItems.update((current) => {
+			const newExpandedItems = new Set(current);
+			newExpandedItems.has(id) ? newExpandedItems.delete(id) : newExpandedItems.add(id);
+			return newExpandedItems;
 		});
 	}
 
-	import { allNewsItems } from '$lib/data/allNewsItems';
+	async function fetchVideos(playlistId: string) {
+		const response = await fetch(
+			`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=20&key=${apiKey}`
+		);
+		const data = await response.json();
+		return data.items
+			.filter((item: YouTubeVideoItem) => item.snippet.description.trim().length > 0)
+			.map((item: YouTubeVideoItem) => ({
+				title: item.snippet.title,
+				date: new Date(item.snippet.publishedAt).toLocaleDateString('en-US', {
+					month: 'long',
+					day: 'numeric',
+					year: 'numeric'
+				}),
+				description: item.snippet.description,
+				videoUrl: `https://www.youtube.com/embed/${item.snippet.resourceId.videoId}`,
+				videoTitle: item.snippet.title
+			}));
+	}
+
+	onMount(async () => {
+		const videoFetchPromises = channels.map((channel) => fetchVideos(channel.playlistId));
+		const allVideos = await Promise.all(videoFetchPromises);
+		const combinedVideos = allVideos.flat();
+		combinedVideos.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+		videos.set(combinedVideos.map((item, index) => ({ ...item, id: index })));
+	});
 </script>
 
 <svelte:head>
-	<title>Skatebit | All News</title>
+	<title>Skatebit | News</title>
 </svelte:head>
 
-<!-- Updated use of tabIndex as a reactive key -->
-<div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page', key: tabIndex }}>
+<div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
-		<div class="header">
-			<!-- Toggle buttons with dynamic classes for active/inactive states -->
-			<button
-				class="badge variant-filled-tertiary mb-2 cursor-pointer {$activeGames.includes('Skater XL')
-					? 'active bg-blue-500'
-					: 'inactive bg-gray-500'}"
-				on:click={() => toggleGame('Skater XL')}>Skater XL</button
-			>
-			<button
-				class="badge variant-filled-error mb-2 cursor-pointer {$activeGames.includes('Session')
-					? 'active bg-blue-500'
-					: 'inactive bg-gray-500'}"
-				on:click={() => toggleGame('Session')}>Session</button
-			>
-			<button
-				class="badge variant-filled-warning mb-2 cursor-pointer {$activeGames.includes('Skate.')
-					? 'active bg-blue-500'
-					: 'inactive bg-gray-500'}"
-				on:click={() => toggleGame('Skate.')}>Skate.</button
-			>
+		<div>
+			{#each channels as { name }}
+				<span
+					class="badge mr-1 {name === 'Skater XL'
+						? 'variant-filled-tertiary'
+						: name === 'Skate.'
+							? 'variant-filled-warning'
+							: 'variant-filled-error'} mb-2">{name}</span
+				>
+			{/each}
+
 			<h1>News</h1>
-			<p>A source for the latest game updates, breaking news, and insider insights.</p>
-			<hr class="!border-t-2" />
+			<p>All the latest updates, breaking news, and insider insights.</p>
+			<hr class="border-t-2 my-2" />
 		</div>
-		<!-- News items -->
-		{#each allNewsItems as item}
-			{#if $activeGames.includes(item.game)}
-				<div>
-					<h2>{item.title}</h2>
-					<p><small>{item.date}</small></p>
-					<p>{item.description}</p>
-					<iframe src={item.videoUrl} title={item.videoTitle} allow="fullscreen" loading="lazy">
-					</iframe>
+		{#each $videos as { title, date, description, videoUrl, videoTitle }, index}
+			<div>
+				<h2 class="h2">{title}</h2>
+				<p class="text-sm">{date}</p>
+				<p>
+					{#if $expandedItems.has(index)}
+						{description}
+						<button
+							class="cursor-pointer text-blue-500 underline"
+							on:click={() => toggleExpanded(index)}>Show less</button
+						>
+					{:else}
+						{truncateText(description, 100)}
+						<button
+							class="cursor-pointer text-blue-500 underline"
+							on:click={() => toggleExpanded(index)}>Read more</button
+						>
+					{/if}
+				</p>
+				<div class="relative pt-[56.25%]">
+					<iframe
+						class="absolute top-0 left-0 w-full h-full"
+						src={videoUrl}
+						title={videoTitle}
+						frameborder="0"
+						allowfullscreen
+						loading="lazy"
+					></iframe>
 				</div>
-			{/if}
+			</div>
 		{/each}
 	</article>
 </div>
-
-<style>
-	.active {
-		opacity: 1; /* Fully opaque */
-	}
-	.inactive {
-		opacity: 0.5; /* Faded appearance */
-	}
-</style>
