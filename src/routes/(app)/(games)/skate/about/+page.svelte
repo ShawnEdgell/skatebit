@@ -10,12 +10,20 @@
 	<article>
 		<div class="header">
 			<span class="badge variant-filled-warning mb-2">Skate.</span>
-			<h1>Discover Skate: The Next Chapter</h1>
+			<h1>Skate: The Next Chapter</h1>
 			<p>
 				Get the latest scoop on the highly anticipated Skate. game – from early development insights
 				to how you can join the journey.
 			</p>
 			<hr class="!border-t-2" />
+		</div>
+		<div>
+			<h2>Stay Updated</h2>
+			<p>
+				For the latest news and updates on Skate. and more, make sure to visit our News section
+				regularly!
+			</p>
+			<a href="/docs/news" class="btn" data-sveltekit-preload-data="hover">Latest News</a>
 		</div>
 		<div>
 			<h2>Join the Playtesting Crew</h2>
@@ -31,21 +39,17 @@
 			>
 		</div>
 		<div>
-			<h2>Stay Updated</h2>
+			<h2>Join the Community</h2>
 			<p>
-				For the latest news and updates on Skate. and more, make sure to visit our News section
-				regularly!
+				Join the official Skate. Discord to chat with community memebers and stay updated on the
+				latest news and updates.
 			</p>
-			<a href="/docs/news" class="btn" data-sveltekit-preload-data="hover">Latest News</a>
-		</div>
-		<div>
-			<h2>Stay Updated</h2>
-			r the latest
-			<p>
-				Fo news and updates on Skate. and more, make sure to visit our News section regularly. Don’t
-				miss out on any announcements or opportunities to get involved!
-			</p>
-			<a href="/docs/news" class="btn" data-sveltekit-preload-data="hover">Latest News</a>
+			<a
+				href="https://discord.gg/skateea"
+				target="_blank"
+				class="btn"
+				data-sveltekit-preload-data="hover">Skate. Discord</a
+			>
 		</div>
 	</article>
 </div>

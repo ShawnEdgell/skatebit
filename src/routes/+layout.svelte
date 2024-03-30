@@ -61,7 +61,7 @@
 	<!-- (sidebarRight) -->
 	<!-- (pageHeader) -->
 	<!-- Router Slot -->
-	<div class="flex flex-col h-full w-full items-center justify-center space-y-5 p-4">
+	<div class="flex flex-col h-full w-full items-center justify-center space-y-5 p-4 xl:pr-0">
 		<slot />
 	</div>
 	<!-- ---- / ---- -->

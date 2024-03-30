@@ -73,7 +73,7 @@
 
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
-		<div>
+		<div class="header">
 			{#each channels as { name, playlistId }}
 				<button
 					on:click={() => toggleNews(playlistId)}
