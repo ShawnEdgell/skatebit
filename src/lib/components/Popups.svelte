@@ -14,8 +14,8 @@
 		{ href: '/docs/introduction', label: 'Introduction' },
 		{ href: '/docs/news', label: 'News' },
 		null, // Represents a divider
-		{ href: '/skaterxl/guides', label: 'Skater XL' },
-		{ href: '/session/guides', label: 'Session' },
+		{ href: '/skaterxl/about', label: 'Skater XL' },
+		{ href: '/session/about', label: 'Session' },
 		{ href: '/skate/about', label: 'Skate.' }
 	];
 </script>

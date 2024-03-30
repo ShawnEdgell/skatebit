@@ -32,14 +32,6 @@
 		</div>
 		<div>
 			<h2>Stay Updated</h2>
-			<p>
-				For the latest news and updates on Skate. and more, make sure to visit our News section
-				regularly!
-			</p>
-			<a href="/docs/news" class="btn" data-sveltekit-preload-data="hover">Latest News</a>
-		</div>
-		<div>
-			<h2>Stay Updated</h2>
 			r the latest
 			<p>
 				Fo news and updates on Skate. and more, make sure to visit our News section regularly. Don’t

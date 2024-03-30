@@ -3,25 +3,6 @@
 	import { writable } from 'svelte/store';
 	import { tocCrawler } from '@skeletonlabs/skeleton';
 
-	const channels = [
-		{ name: 'Skater XL', playlistId: 'UUpBQRZl7apZt_LQXKgqKQiQ' },
-		{ name: 'Session', playlistId: 'PLWmRSsZZ1RCW-0uQWKlCAiGZVnIaRYaTm' },
-		{ name: 'Skate.', playlistId: 'UUSBQJEWTWOUCO65xvoDfljw' }
-	];
-
-	const videos = writable<
-		{
-			id: number;
-			title: string;
-			date: string;
-			description: string;
-			videoUrl: string;
-			videoTitle: string;
-		}[]
-	>([]);
-
-	const apiKey = import.meta.env.VITE_YT_API_KEY as string;
-
 	interface YouTubeVideoItem {
 		snippet: {
 			title: string;
@@ -31,21 +12,40 @@
 		};
 	}
 
-	function truncateText(text: string, length: number): string {
-		return text.length > length ? `${text.substring(0, length)}...` : text;
+	interface ExtendedVideoItem {
+		title: string;
+		publishedAt: string;
+		description: string;
+		videoUrl: string;
+		playlistId: string;
+		showFullDescription: boolean; // Add this property
 	}
 
-	const expandedItems = writable(new Set<number>());
+	const channels = [
+		{ name: 'All', playlistId: 'ALL' },
+		{ name: 'Skater XL', playlistId: 'UUpBQRZl7apZt_LQXKgqKQiQ' },
+		{ name: 'Session', playlistId: 'PLWmRSsZZ1RCW-0uQWKlCAiGZVnIaRYaTm' },
+		{ name: 'Skate.', playlistId: 'UUSBQJEWTWOUCO65xvoDfljw' }
+	];
 
-	function toggleExpanded(id: number): void {
-		expandedItems.update((current) => {
-			const newExpandedItems = new Set(current);
-			newExpandedItems.has(id) ? newExpandedItems.delete(id) : newExpandedItems.add(id);
-			return newExpandedItems;
-		});
-	}
+	const videos = writable<ExtendedVideoItem[]>([]);
+	const activePlaylistId = writable('ALL');
+	const apiKey = import.meta.env.VITE_YT_API_KEY;
 
-	async function fetchVideos(playlistId: string) {
+	onMount(async () => {
+		const channelPromises = channels
+			.filter((channel) => channel.playlistId !== 'ALL')
+			.map((channel) => fetchVideos(channel.playlistId));
+
+		const allVideos = await Promise.all(channelPromises);
+		videos.set(
+			allVideos
+				.flat()
+				.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+		);
+	});
+
+	async function fetchVideos(playlistId: string): Promise<ExtendedVideoItem[]> {
 		const response = await fetch(
 			`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=20&key=${apiKey}`
 		);
@@ -54,24 +54,17 @@
 			.filter((item: YouTubeVideoItem) => item.snippet.description.trim().length > 0)
 			.map((item: YouTubeVideoItem) => ({
 				title: item.snippet.title,
-				date: new Date(item.snippet.publishedAt).toLocaleDateString('en-US', {
-					month: 'long',
-					day: 'numeric',
-					year: 'numeric'
-				}),
+				publishedAt: item.snippet.publishedAt,
 				description: item.snippet.description,
 				videoUrl: `https://www.youtube.com/embed/${item.snippet.resourceId.videoId}`,
-				videoTitle: item.snippet.title
+				playlistId,
+				showFullDescription: false // Initialize showFullDescription to false
 			}));
 	}
 
-	onMount(async () => {
-		const videoFetchPromises = channels.map((channel) => fetchVideos(channel.playlistId));
-		const allVideos = await Promise.all(videoFetchPromises);
-		const combinedVideos = allVideos.flat();
-		combinedVideos.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-		videos.set(combinedVideos.map((item, index) => ({ ...item, id: index })));
-	});
+	function toggleNews(playlistId: string) {
+		activePlaylistId.set(playlistId);
+	}
 </script>
 
 <svelte:head>
@@ -81,50 +74,78 @@
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
 		<div>
-			{#each channels as { name }}
-				<span
-					class="badge mr-1 {name === 'Skater XL'
-						? 'variant-filled-tertiary'
-						: name === 'Skate.'
-							? 'variant-filled-warning'
-							: 'variant-filled-error'} mb-2">{name}</span
+			{#each channels as { name, playlistId }}
+				<button
+					on:click={() => toggleNews(playlistId)}
+					class="badge mr-1 mb-2
+                    {playlistId === $activePlaylistId
+						? name === 'All'
+							? 'variant-filled-primary'
+							: name === 'Skater XL'
+								? 'variant-filled-tertiary'
+								: name === 'Session'
+									? 'variant-filled-error'
+									: name === 'Skate.'
+										? 'variant-filled-warning'
+										: ''
+						: name === 'All'
+							? 'variant-outline-primary'
+							: name === 'Skater XL'
+								? 'variant-outline-tertiary'
+								: name === 'Session'
+									? 'variant-outline-error'
+									: name === 'Skate.'
+										? 'variant-outline-warning'
+										: ''}"
 				>
+					{name}
+				</button>
 			{/each}
-
 			<h1>News</h1>
 			<p>All the latest updates, breaking news, and insider insights.</p>
 			<hr class="border-t-2 my-2" />
 		</div>
-		{#each $videos as { title, date, description, videoUrl, videoTitle }, index}
-			<div>
-				<h2 class="h2">{title}</h2>
-				<p class="text-sm">{date}</p>
-				<p>
-					{#if $expandedItems.has(index)}
-						{description}
+		{#each $videos as video}
+			{#if $activePlaylistId === 'ALL' || $activePlaylistId === video.playlistId}
+				<div>
+					<h2 class="h2">{video.title}</h2>
+					<p class="text-sm">
+						{new Date(video.publishedAt).toLocaleDateString('en-US', {
+							month: 'long',
+							day: 'numeric',
+							year: 'numeric'
+						})}
+					</p>
+					{#if video.showFullDescription}
+						<p>{video.description}</p>
 						<button
-							class="cursor-pointer text-blue-500 underline"
-							on:click={() => toggleExpanded(index)}>Show less</button
+							on:click={() => (video.showFullDescription = false)}
+							class="text-tertiary-500 hover:underline mb-4"
 						>
+							Show less
+						</button>
 					{:else}
-						{truncateText(description, 100)}
+						<p>{video.description.slice(0, 100)}...</p>
 						<button
-							class="cursor-pointer text-blue-500 underline"
-							on:click={() => toggleExpanded(index)}>Read more</button
+							on:click={() => (video.showFullDescription = true)}
+							class="text-tertiary-500 hover:underline mb-4"
 						>
+							Read more
+						</button>
 					{/if}
-				</p>
-				<div class="relative pt-[56.25%]">
-					<iframe
-						class="absolute top-0 left-0 w-full h-full"
-						src={videoUrl}
-						title={videoTitle}
-						frameborder="0"
-						allowfullscreen
-						loading="lazy"
-					></iframe>
+
+					<div class="relative pt-[56.25%]">
+						<iframe
+							class="absolute top-0 left-0 w-full h-full"
+							src={video.videoUrl}
+							title={video.title}
+							frameborder="0"
+							allowfullscreen
+							loading="lazy"
+						></iframe>
+					</div>
 				</div>
-			</div>
+			{/if}
 		{/each}
 	</article>
 </div>

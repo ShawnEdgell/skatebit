@@ -152,6 +152,16 @@
 				<ul>
 					<li>
 						<a
+							href="/skaterxl/about"
+							class={classesActive('/skaterxl/about')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							About
+						</a>
+					</li>
+					<li>
+						<a
 							href="/skaterxl/guides"
 							class={classesActive('/skaterxl/guides')}
 							data-sveltekit-preload-data="hover"
@@ -198,6 +208,16 @@
 			<nav class="list-nav">
 				<!-- (optionally you can provide a label here) -->
 				<ul>
+					<li>
+						<a
+							href="/session/about"
+							class={classesActive('/session/about')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							About
+						</a>
+					</li>
 					<li>
 						<a
 							href="/session/guides"
