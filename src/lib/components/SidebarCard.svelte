@@ -48,7 +48,7 @@
 </script>
 
 <a
-	class="block card card-hover p-0 mt-12 mb-6"
+	class="block card card-hover p-0"
 	href={ads[currentAdIndex].href}
 	target={ads[currentAdIndex].href.startsWith('http') ? '_blank' : '_self'}
 	rel={ads[currentAdIndex].href.startsWith('http') ? 'noopener noreferrer' : ''}
