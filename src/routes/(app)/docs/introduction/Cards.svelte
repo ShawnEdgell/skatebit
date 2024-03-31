@@ -39,7 +39,7 @@
 				<footer class="card-footer flex flex-col gap-4">
 					{game.description}
 					<div>
-						<button class="btn variant-filled-secondary">Explore {game.title}</button>
+						<a href={game.href} class="btn variant-filled-secondary">Explore {game.title}</a>
 					</div>
 				</footer>
 			</div>
