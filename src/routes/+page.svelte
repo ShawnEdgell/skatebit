@@ -6,7 +6,7 @@
 	<title>Skatebit</title>
 </svelte:head>
 
-<div class="h-full w-full flex justify-center items-center">
+<div class="h-full w-full flex justify-center items-center text-center sm:text-left p-4">
 	<div class="max-w-4xl space-y-5">
 		<h1 class="h1 tracking-tight text-4xl sm:text-6xl">The hub for skateboarding video games.</h1>
 
