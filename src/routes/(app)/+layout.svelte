@@ -10,16 +10,19 @@
 		<SidebarLeft />
 	</div>
 	<!-- (Main Content) -->
+
 	<div class="md:ml-[22rem] space-y-5 p-4 xl:pr-0 w-full max-w-4xl">
 		<slot />
 	</div>
 	<!-- (Right Sidebar) -->
-	<div class="hidden xl:block sticky top-12 h-full px-4">
-		<div class="w-[22rem] space-y-6">
-			<SidebarCard />
-			<TableOfContents>
-				<h1>On the Page</h1>
-			</TableOfContents>
+	<div class="hidden xl:block sticky top-12 mb-16 h-full px-4 justify-end">
+		<div class="flex flex-col justify-end w-[22rem] space-y-6">
+			<div>
+				<SidebarCard />
+				<TableOfContents>
+					<h1>On the Page</h1>
+				</TableOfContents>
+			</div>
 		</div>
 	</div>
 </div>
