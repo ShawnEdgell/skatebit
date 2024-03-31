@@ -13,7 +13,7 @@
 		id: number;
 		title: string;
 		description: string;
-		file_url: string;
+		file_url: string[]; // Updated to indicate an array of strings
 		created_at: string;
 		profile_id: string;
 		profiles?: Profile;
@@ -25,6 +25,11 @@
 		supabase: any;
 		stats: Stat[];
 	};
+
+	// Define the type for items in fileList
+	interface FileListItem {
+		name: string; // Assuming each item in fileList has a 'name' property
+	}
 
 	// Define component variables and functions
 	let { session, supabase, stats } = data;
@@ -101,39 +106,45 @@
 		}
 	};
 
-	// Function to handle deleting a stat and its file
 	const deleteStat = async (stat: Stat) => {
-		// Extract the path from file_url, assuming it includes the full storage path
-		const fileStoragePath = stat.file_url.split('session_stat_files/')[1]; // Adjust based on how your URLs are structured
+		// Parse file URLs to get storage paths
+		const filePaths = stat.file_url.map((url) => {
+			const urlObj = new URL(url);
+			// Assuming your file URLs are direct access URLs to the storage,
+			// you'll need to adjust the path to match the actual file path in storage.
+			// This example assumes the path in the URL directly maps to the file path in storage,
+			// following the '/storage/v1/object/public/session_stat_files/' prefix.
+			const path = urlObj.pathname.replace('/storage/v1/object/public/session_stat_files/', '');
+			return path;
+		});
 
-		try {
-			// Delete the file from storage
-			const { error: deleteFileError } = await supabase.storage
+		if (filePaths.length > 0) {
+			// Delete files from storage
+			const { error: deleteFilesError } = await supabase.storage
 				.from('session_stat_files')
-				.remove([fileStoragePath]); // Use the full path including profile_id folder
+				.remove(filePaths);
 
-			if (deleteFileError) {
-				console.error('Error deleting file from storage:', deleteFileError.message);
-				throw new Error('Failed to delete file from storage');
+			if (deleteFilesError) {
+				console.error('Error deleting files:', deleteFilesError.message);
+				return; // Stop execution if there's an error deleting files
 			}
+		}
 
-			// Delete the stat from the database
-			const { error: deleteStatError } = await supabase
-				.from('session_stats')
-				.delete()
-				.eq('id', stat.id);
+		// Delete the stat record from the database
+		const { error: deleteStatError } = await supabase
+			.from('session_stats')
+			.delete()
+			.eq('id', stat.id);
 
-			if (deleteStatError) {
-				console.error('Error deleting stat:', deleteStatError.message);
-				throw new Error('Failed to delete stat');
-			} else {
-				stats = stats.filter((s) => s.id !== stat.id);
-			}
-		} catch (error) {
-			console.error(
-				'Failed to delete file or stat:',
-				error instanceof Error ? error.message : error
-			);
+		if (deleteStatError) {
+			console.error('Error deleting stat:', deleteStatError.message);
+			return;
+		} else {
+			console.log('Stat and associated files deleted successfully.');
+
+			// Here's the new part: updating the stats array to remove the deleted stat
+			// Filter out the deleted stat using its id
+			stats = stats.filter((s) => s.id !== stat.id);
 		}
 	};
 
@@ -281,7 +292,7 @@
 									{#if stat.file_url}
 										<div class="max-w-lg mx-auto">
 											<img
-												src={stat.file_url}
+												src={stat.file_url[0]}
 												alt={stat.title}
 												class="rounded-lg shadow-md w-full h-auto object-cover object-center"
 												loading="lazy"
@@ -295,12 +306,14 @@
 									<AccordionItem>
 										<svelte:fragment slot="summary">View full stats</svelte:fragment>
 										<svelte:fragment slot="content">
-											<img
-												src={stat.file_url}
-												alt={stat.title}
-												class="rounded-lg shadow-md w-full h-auto object-cover object-center"
-												loading="lazy"
-											/>
+											{#each stat.file_url as url}
+												<img
+													src={url}
+													alt={stat.title}
+													class="rounded-lg shadow-md w-full h-auto object-cover object-center"
+													loading="lazy"
+												/>
+											{/each}
 										</svelte:fragment>
 									</AccordionItem>
 									<!-- ... -->

@@ -29,22 +29,24 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
 
 
 export const actions: Actions = {
-    addStat: async ({ request, locals: { supabase, getSession } }) => { // Make sure getSession is available and used
+    addStat: async ({ request, locals: { supabase, getSession } }) => {
         const session = await getSession();
         if (!session || !session.user) {
-            return fail(401, { error: 'Authentication required' }); // Ensures user is logged in
+            return fail(401, { error: 'Authentication required' });
         }
         const userId = session.user.id;
         const formData = await request.formData();
         const title = formData.get('title') as string;
         const description = formData.get('description') as string;
-        const file = formData.get('file') as File;
+        const files = formData.getAll('file') as File[];
 
-        let publicURL = '';
+        const publicURLs = [];
+        // Create a unique timestamp for this upload session
+        const uploadTimestamp = Date.now();
 
-        if (file) {
-            // Adjust filePath to include the userId as part of the folder path
-            const filePath = `${userId}/${Date.now()}_${file.name}`;
+        for (const file of files) {
+            // Include the userId and the uploadTimestamp in the folder path
+            const filePath = `${userId}/${uploadTimestamp}/${file.name}`;
             try {
                 const uploadResult = await supabase.storage
                     .from('session_stat_files')
@@ -56,20 +58,19 @@ export const actions: Actions = {
                     .from('session_stat_files')
                     .getPublicUrl(filePath);
         
-                publicURL = data.publicUrl;
+                publicURLs.push(data.publicUrl);
             } catch (error) {
                 console.error('Error with file upload or retrieval:', error instanceof Error ? error.message : error);
                 return fail(500, { error: 'Failed to upload file or retrieve URL' });
             }
         }
-        
 
         try {
             const { error: insertError } = await supabase.from('session_stats').insert({
                 profile_id: userId,
                 title,
                 description,
-                file_url: publicURL,
+                file_url: publicURLs, // Make sure this matches the column name in your database
             });
 
             if (insertError) {
