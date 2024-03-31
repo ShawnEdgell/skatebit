@@ -37,7 +37,7 @@
 	<title>Skatebit | Account</title>
 </svelte:head>
 
-<div class="flex h-full justify-center flex-col items-center space-y-5">
+<div class="flex h-full justify-center flex-col items-center space-y-5 p-4">
 	<a
 		href="/skaterxl/stats"
 		class="btn btn-sm variant-filled-primary"

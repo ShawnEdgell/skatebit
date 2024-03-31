@@ -10,7 +10,7 @@
 	<title>Skatebit | Login</title>
 </svelte:head>
 
-<div class="flex h-full justify-center flex-col items-center">
+<div class="flex h-full justify-center flex-col items-center p-4">
 	<div class=" max-w-sm space-y-5">
 		<h1 class="h1">Account Login</h1>
 		<p>Access and edit your own profile, upload stats/settings, and more!</p>
