@@ -89,13 +89,13 @@
 										? 'variant-filled-warning'
 										: ''
 						: name === 'All'
-							? 'variant-outline-primary'
+							? 'variant-soft-primary'
 							: name === 'Skater XL'
-								? 'variant-outline-tertiary'
+								? 'variant-soft-tertiary'
 								: name === 'Session'
-									? 'variant-outline-error'
+									? 'variant-soft-error'
 									: name === 'Skate.'
-										? 'variant-outline-warning'
+										? 'variant-soft-warning'
 										: ''}"
 				>
 					{name}
