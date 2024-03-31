@@ -6,7 +6,7 @@
 			description:
 				"Skater XL revolutionizes skateboarding gameplay with its Independent Foot Control System and physics-based mechanics, offering gamers the expressive controls they've always dreamed of.",
 			imageSrc: '/images/Alpha2.webp',
-			href: '/skaterxl/news'
+			href: '/skaterxl/about'
 		},
 		{
 			title: 'Session: Skate Sim',
@@ -14,7 +14,7 @@
 			description:
 				"Session is an ultra-realistic skateboard game blending '90s skate culture aesthetic with modern dual stick controls for total board and skater control.",
 			imageSrc: '/images/Session.webp',
-			href: '/session/news'
+			href: '/session/about'
 		},
 		{
 			title: 'Skate.',
@@ -22,7 +22,7 @@
 			description:
 				"Skate. is EA's upcoming skateboarding game, promising a return to the beloved franchise with a renewed focus on authenticity and innovative gameplay mechanics.",
 			imageSrc: '/images/Skate.webp',
-			href: '/skate/news'
+			href: '/skate/about'
 		}
 	];
 </script>
