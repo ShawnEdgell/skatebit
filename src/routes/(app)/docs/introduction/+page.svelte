@@ -27,6 +27,10 @@
 				discussions.
 			</p>
 		</div>
-		<Cards />
+		<div>
+			<h2>Games</h2>
+			<p>Check out our collection of supported games.</p>
+			<Cards />
+		</div>
 	</article>
 </div>

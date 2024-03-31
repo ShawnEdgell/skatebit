@@ -16,13 +16,13 @@
 		</p>
 
 		<div>
+			<a href="/docs/news" class="btn variant-filled-primary" data-sveltekit-preload-data="hover"
+				>All Latest News</a
+			>
 			<a
 				href="/docs/introduction"
-				class="btn variant-filled-primary"
+				class="btn variant-soft-primary"
 				data-sveltekit-preload-data="hover">About Skatebit</a
-			>
-			<a href="/docs/news" class="btn variant-soft-primary" data-sveltekit-preload-data="hover"
-				>Latest News</a
 			>
 		</div>
 	</div>

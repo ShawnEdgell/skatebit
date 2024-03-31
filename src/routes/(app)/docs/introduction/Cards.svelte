@@ -29,15 +29,20 @@
 
 <div class="flex flex-col gap-4">
 	{#each games as game (game.title)}
-		<div class="card md:card-hover flex justify-center items-center">
+		<div class="card flex justify-center items-center">
 			<!-- Text content -->
-			<a href={game.href} class="flex-1" data-sveltekit-preload-data="hover">
+			<div class="flex-1">
 				<header class="card-header">
 					<h3 class="h3">{game.title}</h3>
 				</header>
 				<section class="p-4">Release Date: {game.releaseDate}</section>
-				<footer class="card-footer">{game.description}</footer>
-			</a>
+				<footer class="card-footer flex flex-col gap-4">
+					{game.description}
+					<div>
+						<button class="btn variant-filled-secondary">Explore {game.title}</button>
+					</div>
+				</footer>
+			</div>
 			<!-- Circular image -->
 			<div class="rounded-full overflow-hidden w-36 h-36 m-4">
 				<img src={game.imageSrc} alt={game.title} class="object-cover w-full h-full" />
