@@ -29,7 +29,7 @@
 
 <div class="flex flex-col gap-4">
 	{#each games as game (game.title)}
-		<div class="card card-hover flex justify-center items-center">
+		<div class="card md:card-hover flex justify-center items-center">
 			<!-- Text content -->
 			<a href={game.href} class="flex-1" data-sveltekit-preload-data="hover">
 				<header class="card-header">
