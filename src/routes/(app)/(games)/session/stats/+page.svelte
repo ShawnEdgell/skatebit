@@ -26,11 +26,6 @@
 		stats: Stat[];
 	};
 
-	// Define the type for items in fileList
-	interface FileListItem {
-		name: string; // Assuming each item in fileList has a 'name' property
-	}
-
 	// Define component variables and functions
 	let { session, supabase, stats } = data;
 	let form: HTMLFormElement;
@@ -50,6 +45,17 @@
 			await reloadStats();
 			loading = false;
 		};
+	};
+
+	const handleFileChange = () => {
+		if (fileInput && fileInput.files && fileInput.files.length > 8) {
+			// If more than 8 files are selected, alert the user and reset the input
+			alert('You can only select up to 8 images.');
+			fileInput.value = ''; // Clear the selected files
+		}
+		// Update the form validity based on the number of selected files
+		isFormValid =
+			!!title.trim().length && !!description.trim().length && !!fileInput?.files?.length;
 	};
 
 	// Function to confirm stat deletion
@@ -107,44 +113,41 @@
 	};
 
 	const deleteStat = async (stat: Stat) => {
-		// Parse file URLs to get storage paths
-		const filePaths = stat.file_url.map((url) => {
-			const urlObj = new URL(url);
-			// Assuming your file URLs are direct access URLs to the storage,
-			// you'll need to adjust the path to match the actual file path in storage.
-			// This example assumes the path in the URL directly maps to the file path in storage,
-			// following the '/storage/v1/object/public/session_stat_files/' prefix.
-			const path = urlObj.pathname.replace('/storage/v1/object/public/session_stat_files/', '');
-			return path;
-		});
+		// Assuming stat.file_url contains URLs of files within the directory we want to delete
+		if (stat.file_url.length > 0) {
+			// Extract the paths for deletion
+			const filePaths = stat.file_url.map((url) => {
+				// Create a URL object from the URL string
+				const parsedUrl = new URL(url);
+				// Assuming your URL might look something like "https://your-bucket.region.supabase.co/storage/v1/object/public/session_stat_files/userId/timestamp/filename.jpg"
+				// You need to extract the path segment after "/object/public/"
+				const pathSegments = parsedUrl.pathname.split('/');
+				// This assumes your storage paths start immediately after 'public/'
+				const startIndex = pathSegments.indexOf('public') + 2; // +2 to skip 'public' and the first part of the path (e.g., 'session_stat_files')
+				const filePath = pathSegments.slice(startIndex).join('/');
+				return filePath;
+			});
 
-		if (filePaths.length > 0) {
-			// Delete files from storage
-			const { error: deleteFilesError } = await supabase.storage
-				.from('session_stat_files')
-				.remove(filePaths);
-
-			if (deleteFilesError) {
-				console.error('Error deleting files:', deleteFilesError.message);
-				return; // Stop execution if there's an error deleting files
+			// Delete files in batch
+			const { error } = await supabase.storage.from('session_stat_files').remove(filePaths);
+			if (error) {
+				console.error('Failed to delete files:', error.message);
+				// Handle failure
+				return;
 			}
-		}
 
-		// Delete the stat record from the database
-		const { error: deleteStatError } = await supabase
-			.from('session_stats')
-			.delete()
-			.eq('id', stat.id);
-
-		if (deleteStatError) {
-			console.error('Error deleting stat:', deleteStatError.message);
-			return;
-		} else {
-			console.log('Stat and associated files deleted successfully.');
-
-			// Here's the new part: updating the stats array to remove the deleted stat
-			// Filter out the deleted stat using its id
-			stats = stats.filter((s) => s.id !== stat.id);
+			// Once all files are deleted, proceed to delete the stat record
+			const { error: deleteStatError } = await supabase
+				.from('session_stats')
+				.delete()
+				.match({ id: stat.id });
+			if (deleteStatError) {
+				console.error('Failed to delete stat record:', deleteStatError.message);
+				// Handle deletion error
+			} else {
+				// Update UI or state as necessary to reflect the deletion
+				stats = stats.filter((s) => s.id !== stat.id);
+			}
 		}
 	};
 
@@ -231,6 +234,7 @@
 							type="file"
 							multiple
 							accept="image/jpeg, image/png, image/webp"
+							on:change={handleFileChange}
 						/>
 						<small class="text-gray-500"
 							>File must be less than 2MB and in JPEG, PNG, or WEBP format.</small
