@@ -222,11 +222,14 @@
 						<div class="alert-message">
 							<h3 class="h3">Upload Info</h3>
 							<p>
-								Please note that you can currently only upload up to 8 images at a time. This will
-								likely change in the future. For now, we recommend splitting your Stats and Camera
-								settings into two different uploads. We also recommend images to be 1280x720, but
-								any size will work as long as the images are less than 2MB each. You can always edit
-								or delete your stat uploads.
+								You can currently upload up to 8 images at a time. For now, split your stats and
+								camera settings into separate uploads. Images should ideally be 1280x720, but any
+								size will work as long as they are less than 2MB each. You can edit or delete your
+								uploads anytime.
+							</p>
+							<p>
+								Images are displayed alphabetically/numerically. To control the order, name them
+								1.jpg, 2.jpg, 3.jpg, etc.
 							</p>
 						</div>
 					</aside>
