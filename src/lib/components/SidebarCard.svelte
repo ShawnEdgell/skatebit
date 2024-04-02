@@ -11,6 +11,13 @@
 
 	const ads: Ad[] = [
 		{
+			href: 'https://mod.io/g/skaterxl/m/xlgearmodifier',
+			imgSrc: '/images/XLGM.webp',
+			altText: 'XL Gear Modifier',
+			title: 'XL Gear Modifier',
+			description: 'Now available on Skater XL v1.2.7.8 (Public)'
+		},
+		{
 			href: '/skaterxl/xlhub',
 			imgSrc: '/images/XLHub.webp',
 			altText: 'XL Hub by Fro',
