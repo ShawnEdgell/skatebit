@@ -282,11 +282,6 @@ export const mods = [
                 ]
             },
 
-
-
-
-
-
             // Additional mod objects...
         ]
     },
@@ -297,13 +292,13 @@ export const mods = [
             {
                 badge: 'New', // Specify the badge here
                 title: 'XL Weather',
-                author: 'DawgVinci',
-                workingVersion: '1.0.0c',
-                keybind: 'F7',
-                features: ['Stats Customization', 'Enhanced Gameplay Control', 'Stance and Steeze Settings'],
-                note: 'Navigate to the #xlmod section for Skater XL v1.2.7.8 in DawgVinci\'s Discord server to download the mod.',
+                author: 'Guru',
+                workingVersion: '0.3.0',
+                keybind: 'W',
+                features: ['Day/Night cycles', 'Skybox customization', 'Add rain, snow, fog, etc.'],
+                note: '',
                 downloadLinks: [
-                    { url: 'https://discord.com/invite/GmuBn6UzUh', label: 'DawgVinci\'s Discord' },
+                    { url: 'https://mod.io/g/skaterxl/m/xlweather', label: 'skaterxl.mod.io' },
                 ]
             },
             {
