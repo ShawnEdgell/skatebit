@@ -291,6 +291,18 @@ export const mods = [
         modItems: [
             {
                 badge: 'New', // Specify the badge here
+                title: 'XL Gear Mod (XLGM2)',
+                author: 'mcbtay, Redgouf',
+                workingVersion: '2.0.2',
+                keybind: '(automatic)',
+                features: ['Dynamic Clothing', 'Custom Character Models', 'Unlimited Gear Customization'],
+                note: 'The XL Gear Mod is integrated into the Edit Skater Menu.',
+                downloadLinks: [
+                    { url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' }
+                ]
+            },
+            {
+                badge: 'New', // Specify the badge here
                 title: 'XL Weather',
                 author: 'Guru',
                 workingVersion: '0.3.0',
