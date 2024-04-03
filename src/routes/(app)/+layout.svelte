@@ -29,20 +29,6 @@
 	</div>
 </div>
 
-<!-- Footer -->
-<div class="mx-auto w-full flex justify-between bg-surface-50-900-token">
-	<!-- (Footer Left) -->
-	<div class="hidden md:flex fixed top-0 left-0 mt-[4.5rem] h-full w-[22rem]"></div>
-	<!-- (Footer) -->
-	<div class="flex justify-center w-full">
-		<div class="space-y-5 p-4 w-full max-w-4xl md:ml-[22rem] xl:pr-0">
-			<Footer />
-		</div>
-	</div>
-	<!-- (Footer Rjght) -->
-	<div class="hidden xl:flex sticky top-0 h-full px-4 justify-end">
-		<div class="w-[22rem] flex flex-col justify-end">
-			<div class="space-y-6 my-16"></div>
-		</div>
-	</div>
+<div class="bg-surface-50-900-token">
+	<Footer />
 </div>

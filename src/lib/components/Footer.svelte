@@ -19,11 +19,7 @@
 	];
 </script>
 
-<div class="flex items-center justify-between h-[22rem]">
-	<div class="space-y-2">
-		<p class="text-sm">The hub for skateboarding and BMX gaming.</p>
-		<div class="badge variant-soft-surface">1.0.0</div>
-	</div>
+<div class="flex items-center justify-center md:justify-end h-[22rem] p-4 sm:p-16">
 	<div class="flex gap-16">
 		{#each navigationData as section}
 			<ul class="space-y-3">
