@@ -9,7 +9,7 @@
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
 		<div class="header">
-			<span class="badge variant-filled-secondary mb-2">BMX Streets</span>
+			<span class="badge variant-filled-surface mb-2">BMX Streets</span>
 			<h1>BMX Streets: The Next-Gen BMX Game</h1>
 			<p>Catch all the latest buzz on BMX Streets, the eagerly awaited sequel to Pipe.</p>
 			<hr class="!border-t-2" />

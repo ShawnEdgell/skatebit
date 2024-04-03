@@ -8,6 +8,26 @@
 
 <div class="h-full w-full flex justify-center items-center text-center sm:text-left p-4">
 	<div class="max-w-4xl space-y-5">
+		<a
+			href="/skaterxl/about"
+			class="font-bold btn btn-sm variant-filled-tertiary"
+			data-sveltekit-preload-data="hover">Skater XL</a
+		>
+		<a
+			href="/session/about"
+			class="font-bold btn btn-sm variant-filled-error"
+			data-sveltekit-preload-data="hover">Session</a
+		>
+		<a
+			href="/skate/about"
+			class="font-bold btn btn-sm variant-filled-warning"
+			data-sveltekit-preload-data="hover">Skate.</a
+		>
+		<a
+			href="/bmxstreets/about"
+			class="font-bold btn btn-sm variant-filled-surface"
+			data-sveltekit-preload-data="hover">BMX Streets</a
+		>
 		<h1 class="h1 tracking-tight text-4xl sm:text-6xl">
 			The hub for skateboarding and BMX gaming.
 		</h1>
@@ -19,12 +39,10 @@
 
 		<div>
 			<a href="/docs/news" class="btn variant-filled-primary" data-sveltekit-preload-data="hover"
-				>All Latest News</a
+				>Latest News</a
 			>
-			<a
-				href="/docs/introduction"
-				class="btn variant-soft-primary"
-				data-sveltekit-preload-data="hover">About Skatebit</a
+			<a href="/docs/info" class="btn variant-soft-primary" data-sveltekit-preload-data="hover"
+				>About Skatebit</a
 			>
 		</div>
 	</div>

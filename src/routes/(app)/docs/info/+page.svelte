@@ -4,14 +4,14 @@
 </script>
 
 <svelte:head>
-	<title>Skatebit | Introduction</title>
+	<title>Skatebit |</title>
 </svelte:head>
 
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
 		<div class="header">
-			<span class="badge variant-filled mb-2">Docs</span>
-			<h1>Introduction</h1>
+			<span class="badge variant-filled-primary mb-2">Docs</span>
+			<h1>Information</h1>
 			<p>Welcome to Skatebit!</p>
 			<hr class="!border-t-2" />
 		</div>

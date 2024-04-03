@@ -148,12 +148,12 @@
 					</li>
 					<li>
 						<a
-							href="/docs/introduction"
-							class={classesActive('/docs/introduction')}
+							href="/docs/info"
+							class={classesActive('/docs/info')}
 							data-sveltekit-preload-data="hover"
 							on:click={closeDrawer}
 						>
-							Introduction</a
+							Info</a
 						>
 					</li>
 
