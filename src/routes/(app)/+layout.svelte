@@ -2,6 +2,7 @@
 	import { TableOfContents } from '@skeletonlabs/skeleton';
 	import SidebarLeft from '$lib/components/SidebarLeft.svelte';
 	import SidebarCard from '$lib/components/SidebarCard.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 </script>
 
 <div class="mx-auto w-full flex justify-between">
@@ -10,20 +11,38 @@
 		<SidebarLeft />
 	</div>
 	<!-- (Main Content) -->
-	<div class="w-full flex justify-center">
-		<div class="md:ml-[22rem] space-y-5 p-4 xl:pr-0 w-full max-w-4xl">
+	<div class="flex justify-center w-full">
+		<div class="space-y-5 p-4 w-full max-w-4xl md:ml-[22rem] xl:pr-0">
 			<slot />
 		</div>
 	</div>
 	<!-- (Right Sidebar) -->
-	<div class="hidden xl:block sticky top-0 h-full px-4 justify-end">
-		<div class="flex flex-col justify-end w-[22rem]">
+	<div class="hidden xl:flex sticky top-0 h-full px-4 justify-end">
+		<div class="w-[22rem] flex flex-col justify-end">
 			<div class="space-y-6 my-16">
 				<SidebarCard />
 				<TableOfContents>
 					<h1>On the Page</h1>
 				</TableOfContents>
 			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Footer -->
+<div class="mx-auto w-full flex justify-between bg-surface-50-900-token">
+	<!-- (Footer Left) -->
+	<div class="hidden md:flex fixed top-0 left-0 mt-[4.5rem] h-full w-[22rem]"></div>
+	<!-- (Footer) -->
+	<div class="flex justify-center w-full">
+		<div class="space-y-5 p-4 w-full max-w-4xl md:ml-[22rem] xl:pr-0">
+			<Footer />
+		</div>
+	</div>
+	<!-- (Footer Rjght) -->
+	<div class="hidden xl:flex sticky top-0 h-full px-4 justify-end">
+		<div class="w-[22rem] flex flex-col justify-end">
+			<div class="space-y-6 my-16"></div>
 		</div>
 	</div>
 </div>

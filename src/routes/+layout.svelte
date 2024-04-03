@@ -57,12 +57,7 @@
 			<Navigation />
 		</div>
 	</svelte:fragment>
-	<!-- (sidebarLeft) -->
-	<!-- (sidebarRight) -->
-	<!-- (pageHeader) -->
 	<!-- Router Slot -->
 	<slot />
 	<!-- ---- / ---- -->
-	<!-- (pageFooter) -->
-	<!-- (footer) -->
 </AppShell>
