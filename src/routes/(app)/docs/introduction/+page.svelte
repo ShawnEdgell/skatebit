@@ -17,14 +17,9 @@
 		</div>
 		<div>
 			<h2>About Skatebit.</h2>
-
 			<p>
-				Skatebit is your ultimate destination for all things related to skateboarding video games.
-			</p>
-			<p>
-				We've created a comprehensive platform where skateboarding enthusiasts can come together to
-				exchange tips, find guides, download community stats and settings, and engage in
-				discussions.
+				We've created a comprehensive platform where players can come together to exchange tips,
+				find guides, download community stats and settings, and engage in discussions.
 			</p>
 		</div>
 		<div>

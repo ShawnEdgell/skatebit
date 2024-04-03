@@ -23,6 +23,14 @@
 				"Skate. is EA's upcoming skateboarding game, promising a return to the beloved franchise with a renewed focus on authenticity and innovative gameplay mechanics.",
 			imageSrc: '/images/Skate.webp',
 			href: '/skate/about'
+		},
+		{
+			title: 'BMX Streets',
+			releaseDate: 'April 5, 2024',
+			description:
+				'BMX Streets is a next-gen BMX game that offers a realistic experience with a focus on physics and control.',
+			imageSrc: '/images/bmx.webp',
+			href: '/bmxstreets/about'
 		}
 	];
 </script>

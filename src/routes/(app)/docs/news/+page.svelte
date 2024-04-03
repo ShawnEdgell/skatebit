@@ -25,7 +25,8 @@
 		{ name: 'All', playlistId: 'ALL' },
 		{ name: 'Skater XL', playlistId: 'UUpBQRZl7apZt_LQXKgqKQiQ' },
 		{ name: 'Session', playlistId: 'PLWmRSsZZ1RCW-0uQWKlCAiGZVnIaRYaTm' },
-		{ name: 'Skate.', playlistId: 'UUSBQJEWTWOUCO65xvoDfljw' }
+		{ name: 'Skate.', playlistId: 'UUSBQJEWTWOUCO65xvoDfljw' },
+		{ name: 'BMX Streets', playlistId: 'UUa9hHhEEojvYELIcd-Clj5A' }
 	];
 
 	const videos = writable<ExtendedVideoItem[]>([]);
@@ -78,7 +79,7 @@
 				<button
 					on:click={() => toggleNews(playlistId)}
 					class="badge mr-1 mb-2
-                    {playlistId === $activePlaylistId
+				{playlistId === $activePlaylistId
 						? name === 'All'
 							? 'variant-filled-primary'
 							: name === 'Skater XL'
@@ -87,7 +88,9 @@
 									? 'variant-filled-error'
 									: name === 'Skate.'
 										? 'variant-filled-warning'
-										: ''
+										: name === 'BMX Streets'
+											? 'variant-filled'
+											: ''
 						: name === 'All'
 							? 'variant-soft-primary'
 							: name === 'Skater XL'
@@ -96,13 +99,15 @@
 									? 'variant-soft-error'
 									: name === 'Skate.'
 										? 'variant-soft-warning'
-										: ''}"
+										: name === 'BMX Streets'
+											? 'variant-soft'
+											: ''}"
 				>
 					{name}
 				</button>
 			{/each}
 			<h1>News</h1>
-			<p>All the latest updates, breaking news, and insider insights.</p>
+			<p>All the latest updates and news.</p>
 			<hr class="border-t-2 my-2" />
 		</div>
 		{#each $videos as video}
