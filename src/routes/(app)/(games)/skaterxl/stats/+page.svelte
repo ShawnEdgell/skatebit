@@ -284,7 +284,7 @@
 			<ul class="space-y-6 w-full">
 				{#each stats as stat}
 					<li>
-						<div class="flex card p-6 justify-between items-center gap-6">
+						<div class="flex flex-col sm:flex-row card p-6 justify-between items-center gap-6">
 							<div class="flex flex-col space-y-4">
 								<h3 class="h3">{stat.title}</h3>
 								<p>{stat.description}</p>

@@ -19,21 +19,17 @@
 	];
 </script>
 
-<div class="flex items-center justify-center md:justify-end h-[22rem] p-4 sm:p-16">
-	<div class="flex gap-16">
-		{#each navigationData as section}
-			<ul class="space-y-3">
-				<li><h3 class="mb-6">{section.title}</h3></li>
-				{#each section.links as link}
-					<li>
-						<a
-							href={link.href}
-							class="underline text-primary-500"
-							data-sveltekit-preload-data="hover">{link.text}</a
-						>
-					</li>
-				{/each}
-			</ul>
-		{/each}
-	</div>
+<div class="flex gap-16">
+	{#each navigationData as section}
+		<ul class="space-y-3">
+			<li><h3 class="mb-6">{section.title}</h3></li>
+			{#each section.links as link}
+				<li>
+					<a href={link.href} class="underline text-primary-500" data-sveltekit-preload-data="hover"
+						>{link.text}</a
+					>
+				</li>
+			{/each}
+		</ul>
+	{/each}
 </div>

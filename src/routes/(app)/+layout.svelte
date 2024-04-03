@@ -28,7 +28,9 @@
 		</div>
 	</div>
 </div>
-
-<div class="bg-surface-50-900-token">
+<!-- (Footer) -->
+<div
+	class="flex items-center justify-center md:justify-end h-[22rem] p-4 sm:p-16 bg-surface-50-900-token"
+>
 	<Footer />
 </div>
