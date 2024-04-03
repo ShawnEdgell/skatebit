@@ -89,7 +89,7 @@
 									: name === 'Skate.'
 										? 'variant-filled-warning'
 										: name === 'BMX Streets'
-											? 'variant-filled'
+											? 'variant-filled-secondary'
 											: ''
 						: name === 'All'
 							? 'variant-soft-primary'
@@ -100,7 +100,7 @@
 									: name === 'Skate.'
 										? 'variant-soft-warning'
 										: name === 'BMX Streets'
-											? 'variant-soft'
+											? 'variant-soft-secondary'
 											: ''}"
 				>
 					{name}
