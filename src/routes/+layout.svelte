@@ -44,7 +44,7 @@
 </script>
 
 <svelte:head>
-	<title>User Management</title>
+	<title>Skatebit</title>
 </svelte:head>
 
 <Drawer>
