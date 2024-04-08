@@ -71,86 +71,87 @@
 <svelte:head>
 	<title>Skatebit | News</title>
 </svelte:head>
-
-<div class="h-full w-full flex justify-center items-center p-4">
-	<article>
-		<div class="header">
-			{#each channels as { name, playlistId }}
-				<button
-					on:click={() => toggleNews(playlistId)}
-					class="badge mr-1 mb-2
+<div class="h-full w-full flex justify-center items-center text-center sm:text-left p-4">
+	<div class="max-w-5xl space-y-5">
+		<article>
+			<div class="header">
+				{#each channels as { name, playlistId }}
+					<button
+						on:click={() => toggleNews(playlistId)}
+						class="badge mr-1 mb-2
 				{playlistId === $activePlaylistId
-						? name === 'All'
-							? 'variant-filled-primary'
-							: name === 'Skater XL'
-								? 'variant-filled-tertiary'
-								: name === 'Session'
-									? 'variant-filled-error'
-									: name === 'Skate.'
-										? 'variant-filled-warning'
-										: name === 'BMX Streets'
-											? 'variant-filled-surface'
-											: ''
-						: name === 'All'
-							? 'variant-soft-primary'
-							: name === 'Skater XL'
-								? 'variant-soft-tertiary'
-								: name === 'Session'
-									? 'variant-soft-error'
-									: name === 'Skate.'
-										? 'variant-soft-warning'
-										: name === 'BMX Streets'
-											? 'variant-soft-surface'
-											: ''}"
-				>
-					{name}
-				</button>
-			{/each}
-			<h1>News</h1>
-			<p>All the latest updates and news.</p>
-			<hr class="border-t-2 my-2" />
-		</div>
-		{#each $videos as video}
-			{#if $activePlaylistId === 'ALL' || $activePlaylistId === video.playlistId}
-				<div>
-					<h2 class="h2">{video.title}</h2>
-					<p class="text-sm">
-						{new Date(video.publishedAt).toLocaleDateString('en-US', {
-							month: 'long',
-							day: 'numeric',
-							year: 'numeric'
-						})}
-					</p>
-					{#if video.showFullDescription}
-						<p>{video.description}</p>
-						<button
-							on:click={() => (video.showFullDescription = false)}
-							class="text-tertiary-500 hover:underline mb-4"
-						>
-							Show less
-						</button>
-					{:else}
-						<p>{video.description.slice(0, 100)}...</p>
-						<button
-							on:click={() => (video.showFullDescription = true)}
-							class="text-tertiary-500 hover:underline mb-4"
-						>
-							Read more
-						</button>
-					{/if}
+							? name === 'All'
+								? 'variant-filled-primary'
+								: name === 'Skater XL'
+									? 'variant-filled-tertiary'
+									: name === 'Session'
+										? 'variant-filled-error'
+										: name === 'Skate.'
+											? 'variant-filled-warning'
+											: name === 'BMX Streets'
+												? 'variant-filled-surface'
+												: ''
+							: name === 'All'
+								? 'variant-soft-primary'
+								: name === 'Skater XL'
+									? 'variant-soft-tertiary'
+									: name === 'Session'
+										? 'variant-soft-error'
+										: name === 'Skate.'
+											? 'variant-soft-warning'
+											: name === 'BMX Streets'
+												? 'variant-soft-surface'
+												: ''}"
+					>
+						{name}
+					</button>
+				{/each}
+				<h1>News</h1>
+				<p>All the latest updates and news.</p>
+				<hr class="border-t-2 my-2" />
+			</div>
+			{#each $videos as video}
+				{#if $activePlaylistId === 'ALL' || $activePlaylistId === video.playlistId}
+					<div>
+						<h2 class="h2">{video.title}</h2>
+						<p class="text-sm">
+							{new Date(video.publishedAt).toLocaleDateString('en-US', {
+								month: 'long',
+								day: 'numeric',
+								year: 'numeric'
+							})}
+						</p>
+						{#if video.showFullDescription}
+							<p>{video.description}</p>
+							<button
+								on:click={() => (video.showFullDescription = false)}
+								class="text-tertiary-500 hover:underline mb-4"
+							>
+								Show less
+							</button>
+						{:else}
+							<p>{video.description.slice(0, 200)}...</p>
+							<button
+								on:click={() => (video.showFullDescription = true)}
+								class="text-tertiary-500 hover:underline mb-4"
+							>
+								Read more
+							</button>
+						{/if}
 
-					<div class="relative pt-[56.25%]">
-						<iframe
-							class="absolute top-0 left-0 w-full h-full"
-							src={video.videoUrl}
-							title={video.title}
-							frameborder="0"
-							allowfullscreen
-							loading="lazy"
-						></iframe>
+						<div class="relative pt-[56.25%]">
+							<iframe
+								class="absolute top-0 left-0 w-full h-full"
+								src={video.videoUrl}
+								title={video.title}
+								frameborder="0"
+								allowfullscreen
+								loading="lazy"
+							></iframe>
+						</div>
 					</div>
-				</div>
-			{/if}
-		{/each}
-	</article>
+				{/if}
+			{/each}
+		</article>
+	</div>
 </div>
