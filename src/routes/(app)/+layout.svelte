@@ -30,7 +30,7 @@
 </div>
 <!-- (Footer) -->
 <div
-	class="flex items-center justify-center md:justify-center h-[22rem] p-4 md:pl-[23rem] xl:pr-[23rem] sm:py-16 bg-surface-50-900-token"
+	class="flex items-center justify-center md:justify-end h-[22rem] p-4 md:pl-[23rem] sm:p-16 bg-surface-50-900-token"
 >
 	<Footer />
 </div>
