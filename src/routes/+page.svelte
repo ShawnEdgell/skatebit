@@ -38,7 +38,7 @@
 		</p>
 
 		<div>
-			<a href="/docs/news" class="btn variant-filled-primary" data-sveltekit-preload-data="hover"
+			<a href="/news" class="btn variant-filled-primary" data-sveltekit-preload-data="hover"
 				>Latest News</a
 			>
 			<a href="/docs/info" class="btn variant-soft-primary" data-sveltekit-preload-data="hover"
