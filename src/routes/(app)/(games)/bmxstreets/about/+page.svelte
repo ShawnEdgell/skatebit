@@ -35,6 +35,16 @@
 				data-sveltekit-preload-data="hover">BMX Streets Discord</a
 			>
 		</div>
+		<div>
+			<h2>Start Your Modding Journey</h2>
+			<p>Check out the Volution Discord to stay updated with the latest mods for BMX Streets.</p>
+			<a
+				href="https://discord.com/invite/mgWRUnD"
+				target="_blank"
+				class="btn"
+				data-sveltekit-preload-data="hover">Volution Discord</a
+			>
+		</div>
 		<iframe
 			class="h-full w-full"
 			src="https://www.youtube.com/embed/Q_c6XMMKTS4?si=JMmF1uku40XTgW1l"
