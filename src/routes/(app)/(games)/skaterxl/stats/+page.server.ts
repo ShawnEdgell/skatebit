@@ -5,7 +5,7 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
     const { data: stats, error: fetchError } = await supabase
         .from('xl_stats')
         .select('id, title, description, file_url, created_at, updated_at, profiles(username)')
-        .order('created_at', { ascending: false });
+        .order('created_at', { ascending: true });
 
     if (fetchError) {
         console.error('Error fetching stats:', fetchError.message);

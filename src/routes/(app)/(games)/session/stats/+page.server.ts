@@ -14,7 +14,7 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
                 updated_at,
                 profiles(username)
             `)
-            .order('created_at', { ascending: false });
+            .order('created_at', { ascending: true });
 
         if (error) {
             console.error('Error fetching stats:', error.message);
