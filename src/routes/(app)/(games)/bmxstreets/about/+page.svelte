@@ -20,7 +20,7 @@
 				Keep up with the freshest news and updates on BMX Streets and more, by checking out the News
 				section frequently!
 			</p>
-			<a href="/news" class="btn" data-sveltekit-preload-data="hover">Latest News</a>
+			<a href="/docs/news" class="btn" data-sveltekit-preload-data="hover">Latest News</a>
 		</div>
 		<div>
 			<h2>Join the Community</h2>

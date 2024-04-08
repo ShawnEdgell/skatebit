@@ -138,6 +138,16 @@
 				<ul>
 					<li>
 						<a
+							href="/docs/news"
+							class={classesActive('/docs/news')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							News</a
+						>
+					</li>
+					<li>
+						<a
 							href="/docs/info"
 							class={classesActive('/docs/info')}
 							data-sveltekit-preload-data="hover"
