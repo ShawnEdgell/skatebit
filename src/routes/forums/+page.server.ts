@@ -2,23 +2,22 @@ import { error as kitError } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals: { supabase } }) => {
-    const { data: stats, error: fetchError } = await supabase
+    const { data: threads, error: fetchError } = await supabase
       .from('forum_threads') // Updated table name
       .select('id, title, description, created_at, profile_id, profiles(username)')
       .order('created_at', { ascending: true });
   
     if (fetchError) {
-      console.error('Error fetching stats:', fetchError.message);
-      throw kitError(500, 'Failed to fetch stats');
+      console.error('Error fetching threads:', fetchError.message);
+      throw kitError(500, 'Failed to fetch threads');
     }
   
-    // Return an empty array if no stats are found
-    return { stats: stats ?? [] };
-  };
-  
+    // Return an empty array if no threads are found
+    return { threads: threads ?? [] };
+};
 
 export const actions: Actions = {
-    addStat: async ({ request, locals: { supabase, getSession } }) => {
+    addThread: async ({ request, locals: { supabase, getSession } }) => {
         const session = await getSession();
         if (!session || !session.user) {
             throw kitError(401, 'Authentication required');
@@ -39,8 +38,8 @@ export const actions: Actions = {
         });
 
         if (insertError) {
-            console.error('Error inserting new stat:', insertError.message);
-            throw kitError(500, 'Failed to add new stat');
+            console.error('Error inserting new thread:', insertError.message);
+            throw kitError(500, 'Failed to add new thread');
         }
 
         return {};
