@@ -1,12 +1,8 @@
 <script lang="ts">
-	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
-	import { tocCrawler } from '@skeletonlabs/skeleton';
+	import { enhance } from '$app/forms';
 
-	interface Profile {
-		username: string;
-	}
-
+	// Define the Thread and Profile interfaces
 	interface Thread {
 		id: number;
 		title: string;
@@ -14,6 +10,10 @@
 		created_at: string;
 		profile_id: string;
 		profiles?: Profile;
+	}
+
+	interface Profile {
+		username: string;
 	}
 
 	// Define the component's props
@@ -25,25 +25,26 @@
 
 	// Define component variables and functions
 	let { session, supabase, threads } = data;
-	let form: HTMLFormElement;
 	let loading = false;
 	let title: string = '';
 	let description: string = '';
 	let isFormValid: boolean = false;
+	let form: HTMLFormElement;
 
+	// Define handleSubmit function to submit only one form
 	const handleSubmit = async () => {
 		loading = true;
 		try {
 			const { data: newThread, error } = await supabase
 				.from('forum_threads')
-				.insert({ title, description });
+				.insert({ title, description, profile_id: session.user.id }); // Add profile_id
+
 			if (error) {
 				console.error('Error adding thread:', error.message);
 			} else {
 				title = '';
 				description = '';
-				// Directly add the newly created thread to the beginning of the threads array
-				threads = [newThread, ...threads];
+				await reloadThreads(); // Wait for thread reload to complete
 			}
 		} finally {
 			loading = false;
@@ -143,13 +144,20 @@
 
 	// Correctly declare reactive statements
 	$: isFormValid = !!title.trim().length && !!description.trim().length;
+
+	// Function to navigate to thread details
+	function goToThread(id: number) {
+		import('$app/navigation').then(({ goto }) => {
+			goto(`/forums/${id}`);
+		});
+	}
 </script>
 
 <svelte:head>
 	<title>Skatebit | Forums</title>
 </svelte:head>
 
-<div class="flex justify-center" use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
+<div class="flex justify-center">
 	<article class="max-w-4xl w-full p-4">
 		<div class="header">
 			<span class="badge variant-filled-primary mb-2">Hub</span>
@@ -161,14 +169,11 @@
 			{#if session}
 				<form
 					class="flex flex-col space-y-5"
-					method="post"
-					action="?/addThread"
-					use:enhance={handleSubmit}
+					on:submit|preventDefault={handleSubmit}
 					bind:this={form}
 					enctype="multipart/form-data"
 				>
 					<h2>Create a New Thread</h2>
-
 					<div class="w-full">
 						<input
 							class="input"
@@ -198,19 +203,13 @@
 					</div>
 				</form>
 			{:else}
-				<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover">
-					Login to Chat
-				</a>
+				<div class="flex justify-center">
+					<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover"
+						>Login to Chat</a
+					>
+				</div>
 			{/if}
 		</div>
-
-		<!-- Reload button for refreshing thread list -->
-		<div class="mt-4 flex justify-center">
-			<button class="button btn variant-filled-primary" on:click={reloadThreads}>
-				Reload Threads
-			</button>
-		</div>
-
 		<div>
 			<h2>Threads</h2>
 		</div>
@@ -234,7 +233,6 @@
 									{/if}
 								</div>
 							</div>
-
 							<div class="flex flex-col gap-2">
 								{#if session && session.user && session.user.id === thread.profile_id}
 									<button
@@ -246,6 +244,10 @@
 										on:click={() => confirmDelete(thread)}>Delete</button
 									>
 								{/if}
+								<button
+									class="btn btn-sm sm:btn-md variant-filled-primary"
+									on:click={() => goToThread(thread.id)}>View Thread</button
+								>
 							</div>
 						</div>
 					</li>
