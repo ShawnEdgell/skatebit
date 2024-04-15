@@ -10,7 +10,7 @@
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
 		<div class="header">
-			<span class="badge variant-filled mb-2">Docs</span>
+			<span class="badge variant-filled-primary mb-2">Docs</span>
 			<h1>Information</h1>
 			<p>Welcome to Skatebit!</p>
 			<hr class="!border-t-2" />

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, afterUpdate } from 'svelte';
+	import { tocCrawler } from '@skeletonlabs/skeleton';
 
 	interface Thread {
 		id: number;
@@ -116,53 +117,56 @@
 </script>
 
 <svelte:head>
-	<title>Thread Detail</title>
+	<title>Skatebit | Forums | {thread.title}</title>
 </svelte:head>
 
-<article
-	class="container absolute mx-auto max-w-4xl inset-x-0 top-[4.6rem] bottom-0 flex h-screen flex-col p-4"
->
-	<div class="header">
-		<span class="badge variant-filled-primary mb-2">Thread</span>
-		<h1>{thread.title}</h1>
-		<p>{thread.description}</p>
-		<hr class="!border-t-2" />
-	</div>
-
-	<div class="flex-grow overflow-y-auto whitespace-wrap mb-12" bind:this={commentsContainer}>
-		<ul>
-			{#each comments as comment}
-				<li class="py-2">
-					<div class="flex items-center mb-1">
-						<span class="mr-2">{comment.profiles.username}</span>
-						<span class="text-gray-500 text-xs">{formatDate(comment.created_at)}</span>
-					</div>
-					<div class="text-base whitespace-wrap break-all">{comment.comment_text}</div>
-				</li>
-			{/each}
-		</ul>
-	</div>
-
-	{#if session}
-		<div class="input-container mb-0 flex sticky bottom-0 py-4">
-			<input
-				type="text"
-				bind:value={newComment}
-				placeholder="Add a comment..."
-				class="input mr-2 flex-grow"
-				on:keydown={handleKeyDown}
-			/>
-			<button
-				on:click={submitComment}
-				class="btn variant-filled-secondary"
-				disabled={!newComment.trim() || loading}>Post</button
-			>
+<div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
+	<article
+		class="container mx-auto max-w-4xl inset-x-0 top-[4.6rem] bottom-0 flex h-screen flex-col"
+	>
+		<div class="header mb-2">
+			<span class="badge variant-filled-primary mb-2">Thread</span>
+			<h1>{thread.title}</h1>
+			<p>{thread.description}</p>
+			<hr class="!border-t-2" />
 		</div>
-	{:else}
-		<p class="py-4">Please log in to post comments.</p>
-	{/if}
 
-	{#if error}
-		<p class="text-red-500 p-4">{error}</p>
-	{/if}
-</article>
+		<div class="flex-grow overflow-y-auto" bind:this={commentsContainer}>
+			<ul>
+				{#each comments as comment}
+					<li class="py-2">
+						<div class="flex items-center mb-">
+							<span class="text-primary-500 font-bold mr-2">{comment.profiles.username}</span>
+							<span class="text-gray-500 text-xs">{formatDate(comment.created_at)}</span>
+						</div>
+						<!-- Apply break-word to prevent inappropriate word breaks -->
+						<div class="text-base overflow-wrap: break-word;">{comment.comment_text}</div>
+					</li>
+				{/each}
+			</ul>
+		</div>
+
+		{#if session}
+			<div class="flex sticky bottom-0 mb-12 py-4">
+				<input
+					type="text"
+					bind:value={newComment}
+					placeholder="Add a comment..."
+					class="input mr-2 flex-grow"
+					on:keydown={handleKeyDown}
+				/>
+				<button
+					on:click={submitComment}
+					class="btn variant-filled-secondary"
+					disabled={!newComment.trim() || loading}>Post</button
+				>
+			</div>
+		{:else}
+			<p class="py-4">Please log in to post comments.</p>
+		{/if}
+
+		{#if error}
+			<p class="text-red-500 p-4">{error}</p>
+		{/if}
+	</article>
+</div>

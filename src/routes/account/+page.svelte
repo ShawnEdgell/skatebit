@@ -38,16 +38,6 @@
 </svelte:head>
 
 <div class="flex h-full justify-center flex-col items-center space-y-5 p-4">
-	<a
-		href="/skaterxl/stats"
-		class="btn btn-sm variant-filled-primary"
-		data-sveltekit-preload-data="hover">Upload Skater XL Stats</a
-	>
-	<a
-		href="/session/stats"
-		class="btn btn-sm variant-filled-primary"
-		data-sveltekit-preload-data="hover">Upload Session Stats</a
-	>
 	<form
 		class="flex flex-col items-center space-y-5"
 		method="post"

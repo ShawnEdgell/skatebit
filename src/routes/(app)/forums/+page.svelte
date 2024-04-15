@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { tocCrawler } from '@skeletonlabs/skeleton';
 
 	// Define the Thread and Profile interfaces
 	interface Thread {
@@ -156,10 +157,10 @@
 	<title>Skatebit | Forums</title>
 </svelte:head>
 
-<div class="flex justify-center">
-	<article class="max-w-4xl w-full p-4">
+<div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
+	<article>
 		<div class="header">
-			<span class="badge variant-filled-primary mb-2">Hub</span>
+			<span class="badge variant-filled-primary mb-2">Forums</span>
 			<h1>Forums</h1>
 			<p>Welcome to the Forums!</p>
 			<hr class="!border-t-2" />

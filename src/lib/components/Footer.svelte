@@ -3,8 +3,9 @@
 		{
 			title: 'Explore',
 			links: [
-				{ href: '/docs/news', text: 'News' },
-				{ href: '/docs/info', text: 'Info' }
+				{ href: '/info', text: 'Info' },
+				{ href: '/news', text: 'News' },
+				{ href: '/forums', text: 'Forums' }
 			]
 		},
 		{
