@@ -1,3 +1,5 @@
+<!-- YourComponent.svelte -->
+
 <script lang="ts">
 	import { onMount } from 'svelte';
 
@@ -18,7 +20,8 @@
 	interface Comment {
 		id: number;
 		comment_text: string;
-		profile: Profile;
+		profiles: Profile;
+		created_at: string; // Add created_at to Comment interface
 	}
 
 	// Define the component's props
@@ -35,18 +38,12 @@
 	let error: string | null = null;
 	let loading = false;
 
-	interface Comment {
-		id: number;
-		comment_text: string;
-		profiles: Profile; // Change from 'profile' to 'profiles'
-	}
-
 	// Modify the fetchComments function to populate the profile data
 	const fetchComments = async () => {
 		try {
 			const { data: commentsData, error: fetchError } = await supabase
 				.from('comments')
-				.select('id, comment_text, profile_id, profiles(username)')
+				.select('id, comment_text, profile_id, profiles(username), created_at') // Fetch created_at column
 				.eq('thread_id', thread.id);
 
 			if (fetchError) {
@@ -108,6 +105,22 @@
 
 	// Run code on component mount
 	onMount(fetchComments);
+
+	// Function to format timestamp
+	function formatDate(timestamp: string) {
+		const date = new Date(timestamp);
+
+		const options: Intl.DateTimeFormatOptions = {
+			month: 'long',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric',
+			hour12: true
+		};
+		const formattedDate = date.toLocaleDateString('en-US', options);
+
+		return formattedDate;
+	}
 </script>
 
 <svelte:head>
@@ -125,11 +138,18 @@
 		<hr class="!border-t-2" />
 	</div>
 
-	<!-- Comments Section (Scrollable, in the Middle) -->
 	<div class="flex-grow overflow-y-auto mb-12">
 		<ul>
 			{#each comments as comment}
-				<li class="py-2">{comment.comment_text} - {comment.profile.username}</li>
+				<li class="py-2">
+					<div class="flex items-center mb-1">
+						<span class="mr-2">{comment.profiles.username}</span>
+						<!-- Use 'profiles' instead of 'profile' -->
+						<span class="text-gray-500 text-xs">{formatDate(comment.created_at)}</span>
+						<!-- Display casual timestamp -->
+					</div>
+					<div class="text-base">{comment.comment_text}</div>
+				</li>
 			{/each}
 		</ul>
 	</div>
