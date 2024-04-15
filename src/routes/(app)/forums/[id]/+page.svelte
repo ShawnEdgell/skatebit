@@ -135,11 +135,11 @@
 			<ul>
 				{#each comments as comment}
 					<li class="py-2">
-						<div class="flex items-center mb-">
+						<div class="flex items-center mb-1">
 							<span class="text-primary-500 font-bold mr-2">{comment.profiles.username}</span>
 							<span class="text-gray-500 text-xs">{formatDate(comment.created_at)}</span>
 						</div>
-						<!-- Apply break-word to prevent inappropriate word breaks -->
+						<!-- Changed class to prevent word breaking incorrectly -->
 						<div class="text-base overflow-wrap: break-word;">{comment.comment_text}</div>
 					</li>
 				{/each}
@@ -162,7 +162,11 @@
 				>
 			</div>
 		{:else}
-			<p class="py-4">Please log in to post comments.</p>
+			<div class="flex justify-center">
+				<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover"
+					>Login to Chat</a
+				>
+			</div>
 		{/if}
 
 		{#if error}
