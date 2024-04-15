@@ -128,7 +128,17 @@
 			<span class="badge variant-filled-primary mb-2">Thread</span>
 			<h1>{thread.title}</h1>
 			<p>{thread.description}</p>
-			<hr class="!border-t-2" />
+			<div>
+				<p class="text-sm mt-2">
+					Uploaded by: <span class="font-medium">{thread.profiles?.username}</span>
+				</p>
+				{#if thread.created_at}
+					<p class="text-sm">
+						Created: <span class="font-medium">{formatDate(thread.created_at)}</span>
+					</p>
+				{/if}
+			</div>
+			<hr class="!border-t-2 mb-4" />
 		</div>
 
 		<div class="flex-grow overflow-y-auto" bind:this={commentsContainer}>
