@@ -225,6 +225,16 @@
 							XL Hub
 						</a>
 					</li>
+					<li>
+						<a
+							href="/skaterxl/links"
+							class={classesActive('/skaterxl/links')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							Helpful Links
+						</a>
+					</li>
 					<!-- ... -->
 				</ul>
 			</nav>
