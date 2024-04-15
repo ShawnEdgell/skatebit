@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { enhance } from '$app/forms';
 
 	// Define the Thread and Profile interfaces
 	interface Thread {
