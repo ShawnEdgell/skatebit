@@ -17,17 +17,6 @@
 			<p>Learn how to get started with Skater XL modding.</p>
 			<hr class="!border-t-2" />
 		</div>
-		<VersionCards />
-		<div>
-			<h2>Getting Started with Skater XL Modding</h2>
-			<p>
-				Begin your Skater XL modding journey with our getting started guide. This guide will walk
-				you through the essential steps to get you up and running with all the latest mods.
-			</p>
-			<div class="card p-6 mb-12">
-				<QuickGuide />
-			</div>
-		</div>
 		<div>
 			<h2>Maps & Gear</h2>
 			<p>
@@ -47,6 +36,16 @@
 				XLGM Assets: <code class="code">Documents/SkaterXL/XLGearModifier/assets</code>
 				<code class="variant-soft-primary"></code>
 			</p>
+		</div>
+		<VersionCards />
+		<div>
+			<h2>Getting Started with Skater XL Modding</h2>
+			<p>
+				Begin your Skater XL modding journey with our getting started guide. This guide will walk
+				you through the essential steps to get you up and running with all the latest mods.
+			</p>
+
+			<QuickGuide />
 		</div>
 		<VideoSection
 			title="Skater XL Mod Guide (2024)"
