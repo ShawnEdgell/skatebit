@@ -66,7 +66,8 @@
 	const reloadStats = async () => {
 		const { data: newData, error } = await supabase
 			.from('xl_stats')
-			.select('id, title, description, file_url, created_at, profile_id, profiles(username)');
+			.select('id, title, description, file_url, created_at, profile_id, profiles(username)')
+			.order('created_at', { ascending: false }); // This will order stats by creation time, newest first
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
@@ -286,7 +287,7 @@
 					<li>
 						<div class="flex flex-col sm:flex-row card p-6 justify-between items-center gap-6">
 							<div class="flex flex-col space-y-4">
-								<h3 class="h3">{stat.title}</h3>
+								<h3 class="h3" data-toc-ignore>{stat.title}</h3>
 								<p>{stat.description}</p>
 								<div>
 									<hr class="!border-t-2 mb-4" />

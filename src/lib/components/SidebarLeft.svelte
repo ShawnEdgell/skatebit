@@ -311,6 +311,16 @@
 							About
 						</a>
 					</li>
+					<li>
+						<a
+							href="/bmxstreets/mods"
+							class={classesActive('/bmxstreets/mods')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							Mods
+						</a>
+					</li>
 					<!-- ... -->
 				</ul>
 			</nav>
