@@ -73,7 +73,7 @@
 		</div>
 		<!-- Message -->
 		<div class="alert-message">
-			<h3 class="h3">"Method on Enter not found" error</h3>
+			<h3 class="h3" data-toc-ignore>"Method on Enter not found" error</h3>
 			<p>
 				If you encounter errors like "method on enter" or "method on start," it indicates a mismatch
 				between your game version and the UnityModManager (UMM) version. To resolve this, revisit
