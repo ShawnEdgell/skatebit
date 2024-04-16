@@ -17,7 +17,7 @@
 			<hr class="!border-t-2" />
 		</div>
 		<div>
-			<h2>Boned Ollie Settings Not Working</h2>
+			<h2>Boned Ollie settings not working</h2>
 			<p>
 				Issues with the Boned Ollie settings are common, often due to the mod's advanced nature.
 			</p>
