@@ -20,6 +20,7 @@
 		comment_text: string;
 		profiles: Profile;
 		created_at: string;
+		profile_id: string;
 	}
 
 	export let data: {
@@ -89,6 +90,59 @@
 		}
 	};
 
+	const editComment = async (comment: Comment) => {
+		// Implement your logic to handle editing here
+		try {
+			const newCommentText = prompt('Enter new comment text:', comment.comment_text);
+			if (newCommentText === null) {
+				// User canceled editing
+				return;
+			}
+			const { error } = await supabase
+				.from('comments')
+				.update({
+					comment_text: newCommentText
+				})
+				.eq('id', comment.id);
+			if (error) {
+				console.error('Error editing comment:', error.message);
+				throw new Error('Failed to edit comment');
+			}
+			// Update the comment in the list
+			const updatedComments = comments.map((c) => {
+				if (c.id === comment.id) {
+					return { ...c, comment_text: newCommentText };
+				}
+				return c;
+			});
+			comments = updatedComments;
+			console.log('Comment edited successfully:');
+		} catch (error) {
+			console.error('Failed to edit comment:', error instanceof Error ? error.message : error);
+		}
+	};
+
+	// Function to handle deleting a comment
+	const deleteComment = async (comment: Comment) => {
+		try {
+			// Attempt to delete the comment from the database
+			const { error: deleteCommentError } = await supabase
+				.from('comments')
+				.delete()
+				.eq('id', comment.id);
+			if (deleteCommentError) {
+				console.error('Error deleting comment from database:', deleteCommentError.message);
+				throw new Error('Failed to delete comment from database');
+			}
+
+			// Update the local state to reflect the deletion
+			comments = comments.filter((t) => t.id !== comment.id);
+			console.log('Comment deleted successfully');
+		} catch (error) {
+			console.error('Failed to delete comment:', error instanceof Error ? error.message : error);
+		}
+	};
+
 	onMount(fetchCommentsAndSubmit);
 
 	afterUpdate(() => {
@@ -112,6 +166,13 @@
 		if (event.key === 'Enter') {
 			event.preventDefault();
 			submitComment();
+		}
+	};
+
+	// Function to confirm thread deletion
+	const confirmDelete = async (comment: Comment) => {
+		if (window.confirm('Are you sure you want to delete this comment?')) {
+			await deleteComment(comment);
 		}
 	};
 </script>
@@ -146,8 +207,26 @@
 				{#each comments as comment}
 					<li class="py-2">
 						<div class="flex items-center mb-1">
-							<span class="text-primary-500 font-bold mr-2">{comment.profiles.username}</span>
-							<span class="text-gray-500 text-xs">{formatDate(comment.created_at)}</span>
+							<div>
+								<span class="text-primary-500 font-bold mr-2">{comment.profiles.username}</span>
+								<span class="text-gray-500 text-xs">{formatDate(comment.created_at)}</span>
+							</div>
+							{#if session && session.user && session.user.id === comment.profile_id}
+								<div class="ml-4 grid grid-cols-2 gap-2">
+									<button
+										class="badge variant-filled-warning"
+										on:click={() => editComment(comment)}
+									>
+										Edit
+									</button>
+									<button
+										class="badge variant-filled-error"
+										on:click={() => confirmDelete(comment)}
+									>
+										Delete
+									</button>
+								</div>
+							{/if}
 						</div>
 						<!-- Changed class to prevent word breaking incorrectly -->
 						<div class="text-base overflow-wrap: break-word;">{comment.comment_text}</div>

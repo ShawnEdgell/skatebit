@@ -217,7 +217,7 @@
 			<ul class="space-y-6 w-full">
 				{#each threads as thread}
 					<li>
-						<div class="flex card p-6 justify-between items-center gap-6">
+						<div class="flex flex-col sm:flex-row card p-6 justify-between items-center gap-6">
 							<div class="flex w-full flex-col space-y-4">
 								<h3 class="h3">{thread.title}</h3>
 								<p>{thread.description}</p>
@@ -233,19 +233,19 @@
 									{/if}
 								</div>
 							</div>
-							<div class="flex flex-col gap-2">
+							<div class="flex flex-row sm:flex-col gap-2">
 								{#if session && session.user && session.user.id === thread.profile_id}
 									<button
-										class="btn btn-sm sm:btn-md variant-filled-warning"
+										class="btn variant-filled-warning w-full sm:w-auto"
 										on:click={() => editThread(thread)}>Edit</button
 									>
 									<button
-										class="btn btn-sm sm:btn-md variant-filled-error"
+										class="btn variant-filled-error w-full sm:w-auto"
 										on:click={() => confirmDelete(thread)}>Delete</button
 									>
 								{/if}
 								<button
-									class="btn btn-sm sm:btn-md variant-filled-primary"
+									class="btn variant-filled-primary w-full sm:w-auto"
 									on:click={() => goToThread(thread.id)}>View Thread</button
 								>
 							</div>
