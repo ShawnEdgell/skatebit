@@ -70,7 +70,7 @@
 		<div>
 			<h3 class="h3">Settings Example</h3>
 			<p>
-				The ReShade enhanced image uses FakeHDR and prod80 Color Tempurature filters. This helps
+				The ReShade enhanced image uses FakeHDR and prod80 Color Temperature filters. This helps
 				reduce the brown 'hazy' look of the base map.
 			</p>
 			<img
