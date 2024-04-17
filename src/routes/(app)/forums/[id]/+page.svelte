@@ -1,15 +1,6 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
 	import { tocCrawler } from '@skeletonlabs/skeleton';
-
-	// Interfaces
-	interface Comment {
-		id: number;
-		comment_text: string;
-		profiles: Profile;
-		created_at: string;
-		profile_id: string;
-	}
 
 	interface Thread {
 		id: number;
@@ -24,6 +15,14 @@
 		username: string;
 	}
 
+	interface Comment {
+		id: number;
+		comment_text: string;
+		profiles: Profile;
+		created_at: string;
+		profile_id: string;
+	}
+
 	export let data: {
 		session: any;
 		supabase: any;
@@ -33,51 +32,30 @@
 
 	let { session, supabase, thread, comments } = data;
 	let newComment = '';
-	let error: string | null = null; // Explicitly typing error variable
+	let error: string | null = null;
 	let loading = false;
 	let commentsContainer: HTMLElement | null = null;
-	let commentSubscription: any;
 
-	const subscribeToComments = () => {
-		commentSubscription = supabase
-			.from('comments')
-			.on('INSERT', (payload: { new: Comment }) => {
-				// Update comments when a new comment is inserted
-				comments = [...comments, payload.new];
-			})
-			.subscribe();
-	};
+	const fetchCommentsAndSubmit = async () => {
+		try {
+			const { data: commentsData, error: fetchError } = await supabase
+				.from('comments')
+				.select('id, comment_text, profile_id, profiles(username), created_at')
+				.eq('thread_id', thread.id);
 
-	const fetchComments = async () => {
-		const { data: commentsData, error: fetchError } = await supabase
-			.from('comments')
-			.select('id, comment_text, profile_id, profiles(username), created_at')
-			.eq('thread_id', thread.id);
+			if (fetchError) throw new Error(fetchError.message);
 
-		if (fetchError) {
-			console.error('Error fetching comments:', fetchError.message);
-			error = 'Failed to fetch comments';
-			return;
+			comments = commentsData.map((comment: Comment) => ({
+				...comment,
+				profile: comment.profiles ? { username: comment.profiles.username } : null
+			}));
+
+			error = null;
+		} catch (error: any) {
+			console.error('Error:', error.message);
+			error = error.message || 'An error occurred.';
 		}
-
-		comments = commentsData.map((comment: Comment) => ({
-			...comment,
-			profile: comment.profiles ? { username: comment.profiles.username } : null
-		}));
-
-		error = null;
 	};
-
-	onMount(async () => {
-		await fetchComments();
-		subscribeToComments();
-	});
-
-	onDestroy(() => {
-		if (commentSubscription) {
-			commentSubscription.unsubscribe();
-		}
-	});
 
 	const submitComment = async () => {
 		if (!session) {
@@ -102,7 +80,7 @@
 
 			if (insertError) throw new Error(insertError.message);
 
-			await fetchComments();
+			await fetchCommentsAndSubmit();
 			newComment = '';
 		} catch (error: any) {
 			console.error('Error:', error.message);
@@ -113,9 +91,11 @@
 	};
 
 	const editComment = async (comment: Comment) => {
+		// Implement your logic to handle editing here
 		try {
 			const newCommentText = prompt('Enter new comment text:', comment.comment_text);
 			if (newCommentText === null) {
+				// User canceled editing
 				return;
 			}
 			const { error } = await supabase
@@ -128,6 +108,7 @@
 				console.error('Error editing comment:', error.message);
 				throw new Error('Failed to edit comment');
 			}
+			// Update the comment in the list
 			const updatedComments = comments.map((c) => {
 				if (c.id === comment.id) {
 					return { ...c, comment_text: newCommentText };
@@ -141,8 +122,10 @@
 		}
 	};
 
+	// Function to handle deleting a comment
 	const deleteComment = async (comment: Comment) => {
 		try {
+			// Attempt to delete the comment from the database
 			const { error: deleteCommentError } = await supabase
 				.from('comments')
 				.delete()
@@ -152,12 +135,21 @@
 				throw new Error('Failed to delete comment from database');
 			}
 
+			// Update the local state to reflect the deletion
 			comments = comments.filter((t) => t.id !== comment.id);
 			console.log('Comment deleted successfully');
 		} catch (error) {
 			console.error('Failed to delete comment:', error instanceof Error ? error.message : error);
 		}
 	};
+
+	onMount(fetchCommentsAndSubmit);
+
+	afterUpdate(() => {
+		if (commentsContainer) {
+			commentsContainer.scrollTop = commentsContainer.scrollHeight;
+		}
+	});
 
 	const formatDate = (timestamp: string) => {
 		const date = new Date(timestamp);
@@ -177,6 +169,7 @@
 		}
 	};
 
+	// Function to confirm thread deletion
 	const confirmDelete = async (comment: Comment) => {
 		if (window.confirm('Are you sure you want to delete this comment?')) {
 			await deleteComment(comment);
@@ -216,7 +209,7 @@
 						<div class="flex items-center mb-1">
 							<div>
 								<span class="text-primary-500 font-bold mr-2">{comment.profiles.username}</span>
-								<span class="text-gray-500 text-">{formatDate(comment.created_at)}</span>
+								<span class="text-gray-500 text-sm">{formatDate(comment.created_at)}</span>
 							</div>
 							{#if session && session.user && session.user.id === comment.profile_id}
 								<div class="ml-4 grid grid-cols-2 gap-2">
@@ -235,7 +228,8 @@
 								</div>
 							{/if}
 						</div>
-						<div class="text-base;">{comment.comment_text}</div>
+						<!-- Changed class to prevent word breaking incorrectly -->
+						<div class="text-base overflow-wrap: break-word;">{comment.comment_text}</div>
 					</li>
 				{/each}
 			</ul>

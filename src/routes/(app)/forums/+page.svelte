@@ -31,43 +31,32 @@
 	let isFormValid: boolean = false;
 	let form: HTMLFormElement;
 
-	// Function to subscribe to real-time updates for threads
-	const subscribeToThreadUpdates = () => {
-		const channel = supabase.channel('custom-thread-channel');
-		channel
-			.on(
-				'postgres_changes',
-				{ event: '*', schema: 'public', table: 'forum_threads' },
-				(payload: any) => {
-					// Handle different types of events: insert, update, delete
-					const eventType = payload.eventType;
-					const threadId = payload.new?.id || payload.old?.id;
+	// Define handleSubmit function to submit only one form
+	const handleSubmit = async () => {
+		loading = true;
+		try {
+			const { data: newThread, error } = await supabase
+				.from('forum_threads')
+				.insert({ title, description, profile_id: session.user.id }); // Add profile_id
 
-					if (eventType === 'INSERT') {
-						// If a new thread is inserted, update the local state with the new thread
-						threads = [...threads, payload.new];
-					} else if (eventType === 'UPDATE') {
-						// If a thread is updated, find it in the local state and update its data
-						threads = threads.map((thread) => {
-							if (thread.id === threadId) {
-								return { ...thread, ...payload.new };
-							}
-							return thread;
-						});
-					} else if (eventType === 'DELETE') {
-						// If a thread is deleted, remove it from the local state
-						threads = threads.filter((thread) => thread.id !== threadId);
-					}
-				}
-			)
-			.subscribe();
+			if (error) {
+				console.error('Error adding thread:', error.message);
+			} else {
+				title = '';
+				description = '';
+				await reloadThreads(); // Wait for thread reload to complete
+			}
+		} finally {
+			loading = false;
+		}
 	};
 
-	// Run code on component mount
-	onMount(async () => {
-		await reloadThreads();
-		subscribeToThreadUpdates();
-	});
+	// Function to confirm thread deletion
+	const confirmDelete = async (thread: Thread) => {
+		if (window.confirm('Are you sure you want to delete this thread?')) {
+			await deleteThread(thread);
+		}
+	};
 
 	// Function to reload threads data
 	const reloadThreads = async () => {
@@ -82,70 +71,6 @@
 		}
 	};
 
-	// Define handleSubmit function to submit only one form
-	const handleSubmit = async () => {
-		loading = true;
-		try {
-			const { data: newThread, error } = await supabase
-				.from('forum_threads')
-				.insert({ title, description, profile_id: session.user.id });
-
-			if (error) {
-				console.error('Error adding thread:', error.message);
-			} else {
-				title = '';
-				description = '';
-				await reloadThreads();
-			}
-		} finally {
-			loading = false;
-		}
-	};
-
-	// Function to confirm thread deletion
-	const confirmDelete = async (thread: Thread) => {
-		if (window.confirm('Are you sure you want to delete this thread?')) {
-			await deleteThread(thread);
-		}
-	};
-
-	// Function to handle deleting a thread
-	const deleteThread = async (thread: Thread) => {
-		try {
-			const { error: deleteThreadError } = await supabase
-				.from('forum_threads')
-				.delete()
-				.eq('id', thread.id);
-			if (deleteThreadError) {
-				console.error('Error deleting thread from database:', deleteThreadError.message);
-				throw new Error('Failed to delete thread from database');
-			}
-
-			// Update the local state to reflect the deletion
-			threads = threads.filter((t) => t.id !== thread.id);
-			console.log('Thread deleted successfully');
-		} catch (error) {
-			console.error('Failed to delete thread:', error instanceof Error ? error.message : error);
-		}
-	};
-
-	// Function to navigate to thread details
-	function goToThread(id: number) {
-		import('$app/navigation').then(({ goto }) => {
-			goto(`/forums/${id}`);
-		});
-	}
-
-	// Correctly declare reactive statements
-	$: isFormValid = !!title.trim().length && !!description.trim().length;
-
-	// Function to format date
-	function formatDate(dateString: string): string {
-		const date = new Date(dateString);
-		return date.toLocaleString();
-	}
-
-	// Function to edit a thread
 	const editThread = async (thread: Thread) => {
 		// Implement your logic to handle editing here
 		try {
@@ -179,6 +104,53 @@
 			console.error('Failed to edit thread:', error instanceof Error ? error.message : error);
 		}
 	};
+
+	// Function to handle deleting a thread
+	const deleteThread = async (thread: Thread) => {
+		try {
+			// Attempt to delete the thread from the database
+			const { error: deleteThreadError } = await supabase
+				.from('forum_threads')
+				.delete()
+				.eq('id', thread.id);
+			if (deleteThreadError) {
+				console.error('Error deleting thread from database:', deleteThreadError.message);
+				throw new Error('Failed to delete thread from database');
+			}
+
+			// Update the local state to reflect the deletion
+			threads = threads.filter((t) => t.id !== thread.id);
+			console.log('Thread deleted successfully');
+		} catch (error) {
+			console.error('Failed to delete thread:', error instanceof Error ? error.message : error);
+		}
+	};
+
+	function formatDate(dateString: string): string {
+		const date = new Date(dateString);
+		// Convert the date to the user's local time zone
+		const formatted = new Intl.DateTimeFormat('default', {
+			dateStyle: 'medium',
+			timeStyle: 'short',
+			timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+		}).format(date);
+		return formatted;
+	}
+
+	// Run code on component mount
+	onMount(async () => {
+		await reloadThreads();
+	});
+
+	// Correctly declare reactive statements
+	$: isFormValid = !!title.trim().length && !!description.trim().length;
+
+	// Function to navigate to thread details
+	function goToThread(id: number) {
+		import('$app/navigation').then(({ goto }) => {
+			goto(`/forums/${id}`);
+		});
+	}
 </script>
 
 <svelte:head>
