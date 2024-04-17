@@ -11,6 +11,13 @@
 
 	const ads: Ad[] = [
 		{
+			href: '/bmxstreets/mods',
+			imgSrc: '/images/BMX_Reshade2.webp',
+			altText: 'BMX Streets Mods Now Available',
+			title: 'BMX Streets Mods Now Available!',
+			description: 'Discover the latest mods for BMX Streets.'
+		},
+		{
 			href: 'https://mod.io/g/skaterxl/m/xlgearmodifier',
 			imgSrc: '/images/XLGM.webp',
 			altText: 'XL Gear Modifier',
@@ -45,7 +52,7 @@
 
 	// Start switching ads every 30 seconds
 	onMount(() => {
-		intervalId = setInterval(switchAd, 30000); // Adjusted to switch ad every 30 seconds
+		intervalId = setInterval(switchAd, 20000); // Adjusted to switch ad every 30 seconds
 	});
 
 	// Clean up on destroy
