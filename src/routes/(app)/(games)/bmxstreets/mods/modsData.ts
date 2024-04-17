@@ -11,7 +11,7 @@ export const mods = [
                 features: ['Teleport to interesting locations'],
                 note: 'You need to be on your bike to use this mod.',
                 downloadLinks: [
-                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228088944877375533', label: 'Volution Discord' }
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228088944877375533', label: 'Mod Link - Volution Discord' }
                 ]
             },
             {
@@ -22,7 +22,7 @@ export const mods = [
                 features: ['Max Stars', 'Never Bail', 'Unlock Everything'],
                 note: 'The mod has a config system, any settings you change will save when you close the menu.',
                 downloadLinks: [
-                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228370275549184084', label: 'Volution Discord' }
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228370275549184084', label: 'Mod Link - Volution Discord' }
                 ]
             },
 

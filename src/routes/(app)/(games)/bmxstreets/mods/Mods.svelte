@@ -54,7 +54,7 @@
 					{/if}
 					<div class="flex items-start gap-4">
 						{#each downloadLinks as { url, label }}
-							<a href={url} class="btn variant-filled" target="_blank" rel="noopener noreferrer"
+							<a href={url} class="btn variant-filled-secondary" rel="noopener noreferrer"
 								>{label}</a
 							>
 						{/each}

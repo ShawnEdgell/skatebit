@@ -72,7 +72,7 @@
 									{#each downloadLinks as { url, label }}
 										<a
 											href={url}
-											class="btn variant-filled"
+											class="btn variant-filled-secondary"
 											target="_blank"
 											rel="noopener noreferrer">{label}</a
 										>
