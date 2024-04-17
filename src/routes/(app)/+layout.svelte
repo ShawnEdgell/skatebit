@@ -19,7 +19,7 @@
 	<!-- (Right Sidebar) -->
 	<div class="hidden xl:flex sticky top-0 h-full px-4 justify-end">
 		<div class="w-[22rem] flex flex-col justify-end overflow-y-auto">
-			<div class="space-y-6 my-16">
+			<div class="space-y-6 my-16 px-4">
 				<SidebarCard />
 				<TableOfContents>
 					<h1>On the Page</h1>
