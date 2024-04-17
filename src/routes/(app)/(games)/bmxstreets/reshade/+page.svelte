@@ -47,7 +47,12 @@
 		</div>
 		<div>
 			<h3 class="h3">Without Reshade</h3>
-			<img src="/images/BMX_Reshade1.webp" alt="Without Reshade Example" class="my-4" />
+			<img
+				src="/images/BMX_Reshade1.webp"
+				alt="Without Reshade Example"
+				class="my-4"
+				loading="lazy"
+			/>
 		</div>
 		<div>
 			<h3 class="h3">Reshade Enhanced</h3>
@@ -55,7 +60,12 @@
 				Please note that you can adjust and create your own custom settings. This is just an
 				example.
 			</p>
-			<img src="/images/BMX_Reshade2.webp" alt="Without Reshade Example" class="my-4" />
+			<img
+				src="/images/BMX_Reshade2.webp"
+				alt="Without Reshade Example"
+				class="my-4"
+				loading="lazy"
+			/>
 		</div>
 		<div>
 			<h3 class="h3">Settings Example</h3>
@@ -63,7 +73,12 @@
 				The ReShade enhanced image uses FakeHDR and prod80 Color Tempurature filters. This helps
 				reduce the brown 'hazy' look of the base map.
 			</p>
-			<img src="/images/BMX_Reshade3.webp" alt="Without Reshade Example" class="my-4" />
+			<img
+				src="/images/BMX_Reshade3.webp"
+				alt="Without Reshade Example"
+				class="my-4"
+				loading="lazy"
+			/>
 		</div>
 	</article>
 </div>
