@@ -36,21 +36,21 @@
 					<a
 						href="https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-offline-installer"
 						target="_blank"
-						class="btn variant-filled-secondary">.NET Framework 4.8</a
+						class="btn btn-sm sm:btn-md variant-filled-secondary">.NET Framework 4.8</a
 					>
 				</li>
 				<li>
 					<a
 						href="https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-6.0.29-windows-x64-installer"
 						target="_blank"
-						class="btn variant-filled-secondary">.NET Desktop Runtime 6.0 x64</a
+						class="btn btn-sm sm:btn-md variant-filled-secondary">.NET Desktop Runtime 6.0 x64</a
 					>
 				</li>
 				<li>
 					<a
 						href="https://aka.ms/vs/16/release/vc_redist.x64.exe"
 						target="_blank"
-						class="btn variant-filled-secondary"
+						class="btn btn-sm sm:btn-md variant-filled-secondary"
 						>Microsoft Visual C++ 2015-2019 Redistributable x64</a
 					>
 				</li>
@@ -59,13 +59,13 @@
 			<a
 				href="https://github.com/HerpDerpinstine/MelonLoader/releases/latest/download/MelonLoader.Installer.exe"
 				target="_blank"
-				class="btn variant-filled-secondary mb-6">Download MelonLoader</a
+				class="btn btn-sm sm:btn-md variant-filled-secondary mb-6">Download MelonLoader</a
 			>
 			<p>
 				In the installer, go to the Automated tab, click 'SELECT', and navigate to your BMX Streets
 				.exe file located at:
+				<code class="code">Steam\steamapps\common\BMX Streets</code>
 			</p>
-			<p><code class="code">C:\Program Files (x86)\Steam\steamapps\common\BMX Streets</code></p>
 
 			<p>
 				After installation, a 'Mods' folder will appear in your game directory. Simply drag and drop
