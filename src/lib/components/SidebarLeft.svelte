@@ -323,12 +323,32 @@
 					</li>
 					<li>
 						<a
+							href="/bmxstreets/guides"
+							class={classesActive('/bmxstreets/guides')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							Guides
+						</a>
+					</li>
+					<li>
+						<a
 							href="/bmxstreets/mods"
 							class={classesActive('/bmxstreets/mods')}
 							data-sveltekit-preload-data="hover"
 							on:click={closeDrawer}
 						>
 							Mods
+						</a>
+					</li>
+					<li>
+						<a
+							href="/bmxstreets/reshade"
+							class={classesActive('/bmxstreets/reshade')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							ReShade
 						</a>
 					</li>
 					<!-- ... -->
