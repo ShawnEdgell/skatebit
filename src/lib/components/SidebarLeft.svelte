@@ -4,6 +4,10 @@
 	import { onMount } from 'svelte';
 	import { currentTileIndex } from '$lib/stores/stores';
 	const urlToTabMap = {
+		'/': 0,
+		'/info': 0,
+		'/news': 0,
+		'/forums': 0,
 		'/Hub': 0,
 		'/skaterxl': 1,
 		'/session': 2,
