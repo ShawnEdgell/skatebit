@@ -2,6 +2,15 @@
 	import { onMount, afterUpdate } from 'svelte';
 	import { tocCrawler } from '@skeletonlabs/skeleton';
 
+	// Interfaces
+	interface Comment {
+		id: number;
+		comment_text: string;
+		profiles: Profile;
+		created_at: string;
+		profile_id: string;
+	}
+
 	interface Thread {
 		id: number;
 		title: string;
@@ -13,14 +22,6 @@
 
 	interface Profile {
 		username: string;
-	}
-
-	interface Comment {
-		id: number;
-		comment_text: string;
-		profiles: Profile;
-		created_at: string;
-		profile_id: string;
 	}
 
 	export let data: {
@@ -36,6 +37,7 @@
 	let loading = false;
 	let commentsContainer: HTMLElement | null = null;
 
+	// Fetch comments and submit new comment
 	const fetchCommentsAndSubmit = async () => {
 		try {
 			const { data: commentsData, error: fetchError } = await supabase
@@ -229,7 +231,7 @@
 							{/if}
 						</div>
 						<!-- Changed class to prevent word breaking incorrectly -->
-						<div class="text-base overflow-wrap: break-word;">{comment.comment_text}</div>
+						<div class="text-base;">{comment.comment_text}</div>
 					</li>
 				{/each}
 			</ul>
