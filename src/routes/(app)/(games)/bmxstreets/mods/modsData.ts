@@ -19,7 +19,7 @@ export const mods = [
                 title: 'Nolew\'s Multi Mod',
                 author: 'Nolew',
                 keybind: 'N',
-                features: ['Max Stars, Never Bail, Unlock Everything'],
+                features: ['Max Stars', 'Never Bail', 'Unlock Everything'],
                 note: 'The mod has a config system, any settings you change will save when you close the menu.',
                 downloadLinks: [
                     { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228370275549184084', label: 'Volution Discord' }

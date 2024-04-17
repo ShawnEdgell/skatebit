@@ -70,7 +70,7 @@ export const mods = [
                 workingVersion: '1.3.0',
                 keybind: '(automatic)',
                 features: ['Enhanced Gameplay/UI Sounds', 'Custom Soundpacks'],
-                note: 'The soundmod is auto-enabled upon launch. You can customize your sounnds by adding a different Soundpack.',
+                note: 'The soundmod is auto-enabled upon launch. You can customize your sounds by adding a different Soundpack.',
                 downloadLinks: [
                     { url: 'https://mod.io/g/skaterxl/m/soundmod', label: 'skaterxl.mod.io' }
                 ]

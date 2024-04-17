@@ -10,18 +10,22 @@
 	<div class="max-w-4xl space-y-5">
 		<a
 			href="/skaterxl/about"
-			class="badge variant-filled-tertiary"
+			class="btn btn-sm variant-filled-tertiary"
 			data-sveltekit-preload-data="hover">Skater XL</a
 		>
-		<a href="/session/about" class="badge variant-filled-error" data-sveltekit-preload-data="hover"
-			>Session</a
+		<a
+			href="/session/about"
+			class="btn btn-sm variant-filled-error"
+			data-sveltekit-preload-data="hover">Session</a
 		>
-		<a href="/skate/about" class="badge variant-filled-warning" data-sveltekit-preload-data="hover"
-			>Skate.</a
+		<a
+			href="/skate/about"
+			class="btn btn-sm variant-filled-warning"
+			data-sveltekit-preload-data="hover">Skate.</a
 		>
 		<a
 			href="/bmxstreets/about"
-			class="badge variant-filled-surface"
+			class="btn btn-sm variant-filled-surface"
 			data-sveltekit-preload-data="hover">BMX Streets</a
 		>
 		<h1 class="h1 tracking-tight text-4xl sm:text-6xl">
