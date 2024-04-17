@@ -24,7 +24,7 @@
 </script>
 
 <Accordion>
-	{#each mods[tabSet].modItems as { title, author, workingVersion, keybind, features, note, badge, downloadLinks }}
+	{#each mods[tabSet].modItems as { title, author, keybind, features, note, badge, downloadLinks }}
 		<AccordionItem>
 			<svelte:fragment slot="lead">
 				{#if badge}
@@ -38,10 +38,6 @@
 				<div class="card p-4 space-y-4">
 					<div><h3 class="h3">{title}</h3></div>
 					<div><strong>Author:</strong> <span class="font-normal">{author}</span></div>
-					<div>
-						<strong>Working Version:</strong>
-						<span class="font-normal">{workingVersion}</span>
-					</div>
 					<div><strong>Keybind:</strong> <span class="font-normal">{keybind}</span></div>
 					<div>
 						<strong>Features:</strong>

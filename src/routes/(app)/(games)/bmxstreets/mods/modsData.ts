@@ -5,38 +5,24 @@ export const mods = [
         modItems: [
             {
                 badge: 'New',
-                title: 'Sample Mod',
-                author: 'Modder Name',
-                workingVersion: '1.0',
-                keybind: 'Press this button to open',
-                features: ['Description'],
-                note: '',
+                title: 'Quick Porter Mod',
+                author: 'Josh / Karxem',
+                keybind: 'Q',
+                features: ['Teleport to interesting locations'],
+                note: 'You need to be on your bike to use this mod.',
                 downloadLinks: [
-                    { url: 'https://mod.io/', label: 'mod.io' }
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228088944877375533', label: 'Volution Discord' }
                 ]
             },
             {
                 badge: 'New',
-                title: 'Sample Mod',
-                author: 'Modder Name',
-                workingVersion: '1.0',
-                keybind: 'Press this button to open',
-                features: ['Description'],
-                note: '',
+                title: 'Nolew\'s Multi Mod',
+                author: 'Nolew',
+                keybind: 'Q',
+                features: ['Max Stars, Never Bail, Unlock Everything'],
+                note: 'The mod has a config system, any settings you change will save when you close the menu.',
                 downloadLinks: [
-                    { url: 'https://mod.io/', label: 'mod.io' }
-                ]
-            },
-            {
-                badge: 'New',
-                title: 'Sample Mod',
-                author: 'Modder Name',
-                workingVersion: '1.0',
-                keybind: 'Press this button to open',
-                features: ['Description'],
-                note: '',
-                downloadLinks: [
-                    { url: 'https://mod.io/', label: 'mod.io' }
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228370275549184084', label: 'Volution Discord' }
                 ]
             },
 

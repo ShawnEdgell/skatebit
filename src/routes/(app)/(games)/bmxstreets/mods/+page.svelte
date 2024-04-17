@@ -16,6 +16,19 @@
 			<hr class="!border-t-2" />
 		</div>
 		<div>
+			<h2>Volution Discord</h2>
+			<p>
+				Make sure to join the Volution Discord server to stay up to date with the latest mods and
+				updates. This is where you will download most of your script mods.
+			</p>
+			<a
+				href="https://discord.com/invite/mgWRUnD"
+				target="_blank"
+				class="btn"
+				data-sveltekit-preload-data="hover">Volution Discord</a
+			>
+		</div>
+		<div>
 			<h2>Mod List</h2>
 			<p>
 				Here you can find a list of all working script mods. Make sure your have Melon Loader
