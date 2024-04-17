@@ -18,7 +18,7 @@ export const mods = [
                 badge: 'New',
                 title: 'Nolew\'s Multi Mod',
                 author: 'Nolew',
-                keybind: 'Q',
+                keybind: 'N',
                 features: ['Max Stars, Never Bail, Unlock Everything'],
                 note: 'The mod has a config system, any settings you change will save when you close the menu.',
                 downloadLinks: [
