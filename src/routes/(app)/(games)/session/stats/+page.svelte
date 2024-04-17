@@ -307,18 +307,20 @@
 											</p>
 										{/if}
 									</div>
+									{#if session && session.user && session.user.id === stat.profile_id}
+										<div class="flex gap-2">
+											<button class="btn variant-filled-warning" on:click={() => editStat(stat)}
+												>Edit</button
+											>
+											<button class="btn variant-filled-error" on:click={() => confirmDelete(stat)}
+												>Delete</button
+											>
+										</div>
+									{/if}
 								</div>
 
 								<div class="flex flex-col gap-2">
 									<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
-									{#if session && session.user && session.user.id === stat.profile_id}
-										<button class="btn variant-filled-warning" on:click={() => editStat(stat)}
-											>Edit</button
-										>
-										<button class="btn variant-filled-error" on:click={() => confirmDelete(stat)}
-											>Delete</button
-										>
-									{/if}
 
 									{#if stat.file_url}
 										<div class="max-w-lg mx-auto">
