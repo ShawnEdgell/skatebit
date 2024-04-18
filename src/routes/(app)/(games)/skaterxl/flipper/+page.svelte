@@ -55,8 +55,9 @@
 		<div class="alert-message">
 			<h3 class="h3">Upload Info</h3>
 			<p>
-				Note that this tool is still in beta. If you encounter any issues, please let us know in the
-				Forums or on Disord! Make sure to only upload XML files exported from XXL Mod.
+				Note that this tool is still in beta and may not work as expected . If you encounter any
+				issues, please let us know in the Forums or on Disord! Make sure to only upload XML files
+				exported from XXL Mod.
 			</p>
 		</div>
 	</aside>
