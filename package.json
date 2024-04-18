@@ -22,6 +22,7 @@
     "@types/eslint": "^8.56.0",
     "@types/luxon": "^3.4.2",
     "@types/node": "20.11.30",
+    "@types/xml2js": "^0.4.14",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
     "autoprefixer": "10.4.18",
@@ -45,6 +46,7 @@
     "@supabase/auth-ui-shared": "^0.1.8",
     "@supabase/auth-ui-svelte": "^0.2.9",
     "@supabase/ssr": "^0.1.0",
-    "@supabase/supabase-js": "^2.39.8"
+    "@supabase/supabase-js": "^2.39.8",
+    "xml2js": "^0.6.2"
   }
 }
