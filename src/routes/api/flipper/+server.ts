@@ -1,37 +1,5 @@
-// Define a more specific interface for each stance settings instance
-interface StanceSettingsInstance {
-    lfPosSpeed: number;
-    rfPosSpeed: number;
-    lfRotSpeed: number;
-    rfRotSpeed: number;
-    lfPos: { x: number; y: number; z: number };
-    rfPos: { x: number; y: number; z: number };
-    lfRot: {
-        x: number;
-        y: number;
-        z: number;
-        w: number;
-        eulerAngles: {
-            x: number;
-            y: number;
-            z: number;
-        };
-    };
-    rfRot: {
-        x: number;
-        y: number;
-        z: number;
-        w: number;
-        eulerAngles: {
-            x: number;
-            y: number;
-            z: number;
-        };
-    };
-}
-
 // Define an interface that represents the structure of the settings object
-interface FootSettings {
+interface Settings {
     lfPosSpeed: number;
     rfPosSpeed: number;
     lfRotSpeed: number;
@@ -87,12 +55,12 @@ export const POST: RequestHandler = async ({ request }) => {
                     const settings = stanceSettings[category];
                     if (Array.isArray(settings)) {
                         // Iterate over each instance of the category
-                        settings.forEach((instance: StanceSettingsInstance) => {
+                        settings.forEach((instance: Settings) => {
                             swapFootSettings(instance);
                         });
                     } else if (typeof settings === 'object') {
                         // If not an array and it's an object, assume it's a single instance
-                        swapFootSettings(settings as StanceSettingsInstance); // Assert type
+                        swapFootSettings(settings as Settings); // Assert type
                     }
                 }
             }
@@ -117,7 +85,7 @@ export const POST: RequestHandler = async ({ request }) => {
 };
 
 // Update your function to use this interface
-function swapFootSettings(settings: FootSettings) {
+function swapFootSettings(settings: Settings) {
     // Swap logic
     [settings.lfPosSpeed, settings.rfPosSpeed] = [settings.rfPosSpeed, settings.lfPosSpeed];
     // Swap rotation speeds

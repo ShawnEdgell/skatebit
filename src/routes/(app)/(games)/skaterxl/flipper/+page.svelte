@@ -1,4 +1,4 @@
-<!-- src/routes/flipper/+page.svelte -->
+<!-- src/routes/(app)/(games)/skaterxl/flipper/+page.svelte -->
 <script lang="ts">
 	async function handleSubmit(event: SubmitEvent) {
 		event.preventDefault();
