@@ -249,6 +249,16 @@
 							Helpful Links
 						</a>
 					</li>
+					<li>
+						<a
+							href="/skaterxl/videos"
+							class={classesActive('/skaterxl/videos')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							Video Submissions
+						</a>
+					</li>
 					<!-- ... -->
 				</ul>
 			</nav>
