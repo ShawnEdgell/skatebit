@@ -10,7 +10,7 @@
 				return 'badge variant-filled';
 			case 'New':
 				return 'badge variant-filled-success';
-			case 'Recommended':
+			case 'Mappers':
 				return 'badge variant-filled-secondary';
 			case 'Useful':
 				return 'badge variant-filled-primary';
