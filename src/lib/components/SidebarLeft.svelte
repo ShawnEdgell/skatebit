@@ -297,6 +297,16 @@
 							Stats & Settings
 						</a>
 					</li>
+					<li>
+						<a
+							href="/session/videos"
+							class={classesActive('/session/videos')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							Video Submissions
+						</a>
+					</li>
 					<!-- ... -->
 				</ul>
 			</nav>
@@ -363,6 +373,16 @@
 							on:click={closeDrawer}
 						>
 							ReShade
+						</a>
+					</li>
+					<li>
+						<a
+							href="/bmxstreets/videos"
+							class={classesActive('/bmxstreets/videos')}
+							data-sveltekit-preload-data="hover"
+							on:click={closeDrawer}
+						>
+							Video Submissions
 						</a>
 					</li>
 					<!-- ... -->

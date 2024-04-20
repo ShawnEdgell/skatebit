@@ -39,7 +39,7 @@
 		loading = true;
 		try {
 			const { data: newSubmission, error } = await supabase
-				.from('xl_edits')
+				.from('streets_edits')
 				.insert({ title, youtube_link, profile_id: session.user.id });
 
 			if (error) {
@@ -62,9 +62,9 @@
 
 	const reloadSubmissions = async () => {
 		const { data: newSubmissions, error } = await supabase
-			.from('xl_edits')
+			.from('streets_edits')
 			.select('id, title, created_at, youtube_link, profile_id, profiles(username)')
-			.order('created_at', { ascending: false }); // This line ensures data is sorted newest to oldest
+			.order('created_at', { ascending: false }); // Ensures newest submissions are listed first
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
@@ -85,7 +85,7 @@
 			}
 
 			const { error } = await supabase
-				.from('xl_edits')
+				.from('streets_edits')
 				.update({
 					title: newTitle,
 					youtube_link: newYoutubeLink
@@ -112,7 +112,7 @@
 	};
 
 	const deleteSubmission = async (submission: Submission) => {
-		const { error } = await supabase.from('xl_edits').delete().eq('id', submission.id);
+		const { error } = await supabase.from('streets_edits').delete().eq('id', submission.id);
 		if (error) {
 			console.error('Error deleting submission:', error.message);
 		} else {
@@ -139,13 +139,13 @@
 </script>
 
 <svelte:head>
-	<title>Skatebit | Skater XL</title>
+	<title>Skatebit | BMX Streets</title>
 </svelte:head>
 
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
 		<div class="header">
-			<span class="badge variant-filled-tertiary mb-2">Skater XL</span>
+			<span class="badge variant-filled-surface mb-2">BMX Streets</span>
 			<h1>Video Submissions</h1>
 			<p>Welcome to the Submission Page!</p>
 			<hr class="!border-t-2" />
@@ -159,8 +159,8 @@
 				>
 					<h2>Submit a New Video</h2>
 					<p>
-						Feel free to link your Skater XL edits below. Please use youtube links only. Stay tuned
-						for more features!
+						Feel free to link your BMX Streets edits below. Please use youtube links only. Stay
+						tuned for more features!
 					</p>
 					<div class="w-full">
 						<input
