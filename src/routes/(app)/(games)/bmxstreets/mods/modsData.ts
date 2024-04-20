@@ -5,6 +5,17 @@ export const mods = [
         modItems: [
             {
                 badge: 'New',
+                title: 'Character Customization Mod',
+                author: 'Hubba',
+                keybind: 'V to open while character menu is open. B to close.',
+                features: ['Adds custom materials to characters'],
+                note: '',
+                downloadLinks: [
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1231179056737816586', label: 'Discord Link' },
+                ]
+            },
+            {
+                badge: 'New',
                 title: 'Guru BMX Mod',
                 author: 'Guru',
                 keybind: 'CTRL + G',
@@ -22,7 +33,7 @@ export const mods = [
                 features: ['Scaling of Various Bike Parts'],
                 note: '',
                 downloadLinks: [
-                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1231010045194666004', label: 'Mod Link - Volution Discord' }
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1231010045194666004', label: 'Discord Link' }
                 ]
             },
             {
@@ -33,7 +44,7 @@ export const mods = [
                 features: ['Teleport to interesting locations'],
                 note: 'You need to be on your bike to use this mod.',
                 downloadLinks: [
-                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228088944877375533', label: 'Mod Link - Volution Discord' }
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228088944877375533', label: 'Discord Link' }
                 ]
             },
             {
@@ -44,7 +55,8 @@ export const mods = [
                 features: ['Max Stars', 'Never Bail', 'Unlock Everything', 'Pin Dropper'],
                 note: 'The mod has a config system, any settings you change will save when you close the menu.',
                 downloadLinks: [
-                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228370275549184084', label: 'Mod Link - Volution Discord' }
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1228370275549184084', label: 'Discord Link' },
+                    { url: 'https://mod.io/g/bmxs/m/nolews-multi-mod', label: 'Mod.io Link' }
                 ]
             },
             {
