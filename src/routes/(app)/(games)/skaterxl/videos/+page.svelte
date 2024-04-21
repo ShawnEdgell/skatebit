@@ -2,6 +2,11 @@
 	import { onMount } from 'svelte';
 	import { tocCrawler } from '@skeletonlabs/skeleton';
 
+	interface Reaction {
+		type: string;
+		profile_id: string;
+	}
+
 	interface Submission {
 		id: number;
 		title: string;
@@ -9,6 +14,9 @@
 		youtube_link: string;
 		profile_id: string;
 		profiles?: Profile;
+		reaction_count: number;
+		hasReacted?: boolean;
+		xl_reactions?: Reaction[]; // Ensure this is defined if you use it in your Submission interface
 	}
 
 	interface Profile {
@@ -54,24 +62,74 @@
 		}
 	};
 
+	async function handleReaction(submissionId: number) {
+		const index = submissions.findIndex((s) => s.id === submissionId);
+		if (index === -1) return; // Submission not found
+
+		const submission = submissions[index];
+
+		if (submission.hasReacted) {
+			// Remove the reaction
+			const { error } = await supabase
+				.from('xl_reactions')
+				.delete()
+				.match({ submission_id: submissionId, profile_id: session.user.id, type: 'fire' });
+
+			if (!error) {
+				submission.reaction_count--;
+				submission.hasReacted = false;
+				submissions = [...submissions]; // This triggers an update in Svelte by creating a new array
+			} else {
+				console.error('Error removing reaction:', error.message);
+			}
+		} else {
+			// Add a new reaction
+			const { error } = await supabase.from('xl_reactions').insert({
+				submission_id: submissionId,
+				profile_id: session.user.id,
+				type: 'fire'
+			});
+
+			if (!error) {
+				submission.reaction_count++;
+				submission.hasReacted = true;
+				submissions = [...submissions]; // This triggers an update in Svelte by creating a new array
+			} else {
+				console.error('Error adding reaction:', error.message);
+			}
+		}
+	}
+
 	const confirmDelete = async (submission: Submission) => {
 		if (window.confirm('Are you sure you want to delete this submission?')) {
 			await deleteSubmission(submission);
 		}
 	};
 
-	const reloadSubmissions = async () => {
+	async function reloadSubmissions() {
 		const { data: newSubmissions, error } = await supabase
-			.from('xl_edits')
-			.select('id, title, created_at, youtube_link, profile_id, profiles(username)')
-			.order('created_at', { ascending: false }); // This line ensures data is sorted newest to oldest
+			.from('xl_edits') // Remove the generic type argument here
+			.select(
+				'id, title, created_at, youtube_link, profile_id, profiles(username), xl_reactions(type, profile_id)'
+			)
+			.order('created_at', { ascending: false });
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
-		} else {
-			submissions = newSubmissions ?? [];
+			return;
 		}
-	};
+
+		// Assume newSubmissions is correctly fetched and cast it to the expected type manually
+		submissions = (newSubmissions as Submission[]).map((submission) => {
+			// Handle the possibility that xl_reactions might be undefined
+			const hasReacted =
+				submission.xl_reactions?.some(
+					(reaction) => reaction.profile_id === session.user.id && reaction.type === 'fire'
+				) ?? false;
+			const reaction_count = submission.xl_reactions?.length ?? 0;
+			return { ...submission, hasReacted, reaction_count };
+		});
+	}
 
 	const editSubmission = async (submission: Submission) => {
 		try {
@@ -132,6 +190,8 @@
 	}
 
 	onMount(async () => {
+		console.log('Session available:', session);
+		console.log('Submissions loaded:', submissions);
 		await reloadSubmissions();
 	});
 
@@ -202,7 +262,7 @@
 		<div>
 			<h2>Submissions</h2>
 			<ul class="space-y-6 w-full">
-				{#each submissions as submission}
+				{#each submissions as submission (submission.id)}
 					<div class="flex flex-col card p-6 justify-between items-center gap-6">
 						<div class="flex w-full flex-col space-y-4">
 							<h3 class="h3" data-toc-ignore>{submission.title}</h3>
@@ -225,6 +285,15 @@
 										Created: <span class="font-medium">{formatDate(submission.created_at)}</span>
 									</p>
 								{/if}
+								<div>
+									<button
+										class="btn {submission.hasReacted ? 'btn-liked' : 'btn-unliked'}"
+										on:click={() => handleReaction(submission.id)}
+										disabled={!session || !session.user}
+									>
+										🔥 {submission.reaction_count}
+									</button>
+								</div>
 							</div>
 							<div class="grid gap-2">
 								{#if session && session.user.id === submission.profile_id}

@@ -34,6 +34,7 @@
 				For detailed assistance, refer to the BonedOllieMod guide in our Guides section, which
 				provides all the necessary information.
 			</p>
+			<hr class="!border-t-1" />
 		</div>
 
 		<div>
@@ -44,6 +45,7 @@
 				your game version and ensure you download the appropriate UMM. For clarity, we recommend
 				removing any previously downloaded versions of UnityModManager.
 			</p>
+			<hr class="!border-t-1" />
 		</div>
 		<div>
 			<h2>Skater keeps falling through the floor, can't land anything</h2>
@@ -52,6 +54,7 @@
 				correct stats menu mod from DawgVinci's Discord to fix this. (XXL v1.3.3 for the Alpha
 				branch, or XL Mod for the Public branch)
 			</p>
+			<hr class="!border-t-1" />
 		</div>
 		<div>
 			<h2>How do I find out which game version I am running?</h2>
@@ -60,6 +63,7 @@
 				bottom-left corner of the screen. Right now the most common versions are 1.2.2.8 and
 				1.2.7.8.
 			</p>
+			<hr class="!border-t-1" />
 		</div>
 		<div>
 			<h2>How do I change my game version?</h2>
@@ -68,6 +72,7 @@
 				select the version you want to play in the drop-down menu. Note: The Beta branch is
 				outdated; use Alpha or Public.
 			</p>
+			<hr class="!border-t-1" />
 		</div>
 		<div>
 			<h2>Board wont stop flipping</h2>
@@ -76,6 +81,7 @@
 				in the catch tab of the XXL or XL Mod. To resolve this, switch the setting to "Auto."
 				Alternatively, you can manually catch the board by clicking your sticks.
 			</p>
+			<hr class="!border-t-1" />
 		</div>
 		<div>
 			<h2>Haven't played in a while, all of my mods are broken</h2>
