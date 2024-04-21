@@ -63,13 +63,10 @@
 	};
 
 	async function handleReaction(submissionId: number) {
-		const index = submissions.findIndex((s) => s.id === submissionId);
-		if (index === -1) return; // Submission not found
-
-		const submission = submissions[index];
+		const submission = submissions.find((s) => s.id === submissionId);
+		if (!submission) return;
 
 		if (submission.hasReacted) {
-			// Remove the reaction
 			const { error } = await supabase
 				.from('xl_reactions')
 				.delete()
@@ -78,12 +75,10 @@
 			if (!error) {
 				submission.reaction_count--;
 				submission.hasReacted = false;
-				submissions = [...submissions]; // This triggers an update in Svelte by creating a new array
 			} else {
 				console.error('Error removing reaction:', error.message);
 			}
 		} else {
-			// Add a new reaction
 			const { error } = await supabase.from('xl_reactions').insert({
 				submission_id: submissionId,
 				profile_id: session.user.id,
@@ -93,7 +88,6 @@
 			if (!error) {
 				submission.reaction_count++;
 				submission.hasReacted = true;
-				submissions = [...submissions]; // This triggers an update in Svelte by creating a new array
 			} else {
 				console.error('Error adding reaction:', error.message);
 			}
@@ -101,6 +95,7 @@
 	}
 
 	const confirmDelete = async (submission: Submission) => {
+		console.log('Deleting submission:', submission);
 		if (window.confirm('Are you sure you want to delete this submission?')) {
 			await deleteSubmission(submission);
 		}
@@ -169,14 +164,18 @@
 		}
 	};
 
-	const deleteSubmission = async (submission: Submission) => {
+	async function deleteSubmission(submission: Submission) {
+		console.log('Deleting submission:', submission);
 		const { error } = await supabase.from('xl_edits').delete().eq('id', submission.id);
 		if (error) {
 			console.error('Error deleting submission:', error.message);
 		} else {
+			console.log('Submission deleted successfully:', submission.id);
 			submissions = submissions.filter((s) => s.id !== submission.id);
+			// Use Svelte's update function to trigger reactivity
+			submissions = [...submissions];
 		}
-	};
+	}
 
 	function formatDate(dateString: string): string {
 		const date = new Date(dateString);

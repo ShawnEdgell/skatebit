@@ -12,7 +12,7 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
             profiles(username),
             xl_reactions!inner(*)
         `)
-        .order('created_at', { ascending: true });
+        .order('created_at', { ascending: false });
 
     if (fetchError) {
         console.error('Error fetching submissions:', fetchError.message);
