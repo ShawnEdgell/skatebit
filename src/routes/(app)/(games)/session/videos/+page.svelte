@@ -139,7 +139,7 @@
 </script>
 
 <svelte:head>
-	<title>Skatebit | Session</title>
+	<title>Skatebit | Session: Skate Sim</title>
 </svelte:head>
 
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
