@@ -222,10 +222,8 @@
 						<div class="alert-message">
 							<h3 class="h3">Upload Info</h3>
 							<p>
-								You can currently upload up to 8 images at a time. For now, split your stats and
-								camera settings into separate uploads. Images should ideally be 1280x720, but any
-								size will work as long as they are less than 2MB each. You can edit or delete your
-								uploads anytime.
+								You can currently add up to 8 images per upload. You can edit or delete your uploads
+								anytime.
 							</p>
 							<p>
 								Images are displayed alphabetically/numerically. To control the order, name them
@@ -296,48 +294,41 @@
 								<div class="flex flex-col space-y-4 w-full">
 									<h3 class="h3">{stat.title}</h3>
 									<p>{stat.description}</p>
-									<div>
-										<hr class="!border-t-2 mb-4" />
-										<p class="text-sm mt-2">
-											Uploaded by: <span class="font-medium">{stat.profiles?.username}</span>
-										</p>
-										{#if stat.created_at}
+									<hr class="!border-t-2" />
+									<div class="flex items-center justify-between">
+										<div>
 											<p class="text-sm">
-												Created: <span class="font-medium">{formatDate(stat.created_at)}</span>
+												Uploaded by: <span class="font-medium">{stat.profiles?.username}</span>
 											</p>
-										{/if}
+											{#if stat.created_at}
+												<p class="text-sm">
+													Created: <span class="font-medium">{formatDate(stat.created_at)}</span>
+												</p>
+											{/if}
+										</div>
+										<div>
+											{#if session && session.user && session.user.id === stat.profile_id}
+												<div>
+													<button
+														class="btn btn-sm variant-filled-warning"
+														on:click={() => editStat(stat)}>Edit</button
+													>
+													<button
+														class="btn btn-sm variant-filled-error"
+														on:click={() => confirmDelete(stat)}>Delete</button
+													>
+												</div>
+											{/if}
+										</div>
 									</div>
-									{#if session && session.user && session.user.id === stat.profile_id}
-										<div class="flex gap-2">
-											<button class="btn variant-filled-warning" on:click={() => editStat(stat)}
-												>Edit</button
-											>
-											<button class="btn variant-filled-error" on:click={() => confirmDelete(stat)}
-												>Delete</button
-											>
-										</div>
-									{/if}
-								</div>
-
-								<div class="flex flex-col gap-2">
-									<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
-
-									{#if stat.file_url}
-										<div class="max-w-lg mx-auto">
-											<img
-												src={stat.file_url[0]}
-												alt={stat.title}
-												class="rounded-lg shadow-md w-full h-auto object-cover object-center"
-												loading="lazy"
-											/>
-										</div>
-									{/if}
 								</div>
 							</div>
 							<div>
 								<Accordion>
 									<AccordionItem>
-										<svelte:fragment slot="summary">View full stats</svelte:fragment>
+										<svelte:fragment slot="summary"
+											><p class="font-bold">View full stats</p></svelte:fragment
+										>
 										<svelte:fragment slot="content">
 											{#each stat.file_url as url}
 												<img

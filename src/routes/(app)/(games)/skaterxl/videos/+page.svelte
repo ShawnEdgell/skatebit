@@ -73,8 +73,8 @@
 				.match({ submission_id: submissionId, profile_id: session.user.id, type: 'fire' });
 
 			if (!error) {
-				submission.reaction_count--;
-				submission.hasReacted = false;
+				submission.reaction_count--; // Decrement reaction count
+				submission.hasReacted = false; // Set hasReacted to false
 			} else {
 				console.error('Error removing reaction:', error.message);
 			}
@@ -86,12 +86,15 @@
 			});
 
 			if (!error) {
-				submission.reaction_count++;
-				submission.hasReacted = true;
+				submission.reaction_count++; // Increment reaction count
+				submission.hasReacted = true; // Set hasReacted to true
 			} else {
 				console.error('Error adding reaction:', error.message);
 			}
 		}
+
+		// Force Svelte to update the component by reassigning the submissions array
+		submissions = submissions.slice();
 	}
 
 	const confirmDelete = async (submission: Submission) => {
@@ -166,14 +169,30 @@
 
 	async function deleteSubmission(submission: Submission) {
 		console.log('Deleting submission:', submission);
-		const { error } = await supabase.from('xl_edits').delete().eq('id', submission.id);
-		if (error) {
-			console.error('Error deleting submission:', error.message);
+
+		// Start by deleting all reactions associated with the submission
+		const { error: reactionError } = await supabase
+			.from('xl_reactions')
+			.delete()
+			.match({ submission_id: submission.id });
+
+		if (reactionError) {
+			console.error('Error deleting reactions:', reactionError.message);
+			return; // Stop further processing if reactions cannot be deleted
+		}
+
+		// Proceed to delete the submission if reactions were successfully deleted
+		const { error: submissionError } = await supabase
+			.from('xl_edits')
+			.delete()
+			.eq('id', submission.id);
+
+		if (submissionError) {
+			console.error('Error deleting submission:', submissionError.message);
 		} else {
 			console.log('Submission deleted successfully:', submission.id);
+			// Update the submissions array to remove the deleted submission
 			submissions = submissions.filter((s) => s.id !== submission.id);
-			// Use Svelte's update function to trigger reactivity
-			submissions = [...submissions];
 		}
 	}
 
@@ -189,8 +208,6 @@
 	}
 
 	onMount(async () => {
-		console.log('Session available:', session);
-		console.log('Submissions loaded:', submissions);
 		await reloadSubmissions();
 	});
 
@@ -262,7 +279,7 @@
 			<h2>Submissions</h2>
 			<ul class="space-y-6 w-full">
 				{#each submissions as submission (submission.id)}
-					<div class="flex flex-col card p-6 justify-between items-center gap-6">
+					<div class="flex flex-col card p-6 justify-between items-start gap-6">
 						<div class="flex w-full flex-col space-y-4">
 							<h3 class="h3" data-toc-ignore>{submission.title}</h3>
 							<iframe
@@ -274,7 +291,7 @@
 							>
 							</iframe>
 						</div>
-						<div class="flex w-full justify-between">
+						<div class="flex w-full justify-between items-center">
 							<div>
 								<p class="text-sm mt-2">
 									Uploaded by: <span class="font-medium">{submission.profiles?.username}</span>
@@ -284,29 +301,31 @@
 										Created: <span class="font-medium">{formatDate(submission.created_at)}</span>
 									</p>
 								{/if}
-								<div>
-									<button
-										class="btn {submission.hasReacted ? 'btn-liked' : 'btn-unliked'}"
-										on:click={() => handleReaction(submission.id)}
-										disabled={!session || !session.user}
-									>
-										🔥 {submission.reaction_count}
-									</button>
-								</div>
 							</div>
-							<div class="grid gap-2">
-								{#if session && session.user.id === submission.profile_id}
-									<button
-										class="btn btn-sm variant-filled-warning w-full sm:w-auto"
-										on:click={() => editSubmission(submission)}>Edit</button
-									>
-									<button
-										class="btn btn-sm variant-filled-error"
-										on:click={() => confirmDelete(submission)}>Delete</button
-									>
-								{/if}
+							<div class="flex items-center">
+								<button
+									class="btn variant-filled-surface {submission.hasReacted
+										? 'btn-liked'
+										: 'btn-unliked'} ml-4"
+									on:click={() => handleReaction(submission.id)}
+									disabled={!session || !session.user}
+								>
+									🔥 {submission.reaction_count}
+								</button>
 							</div>
 						</div>
+						{#if session && session.user.id === submission.profile_id}
+							<div class="grid grid-cols-2 gap-2">
+								<button
+									class="btn btn-sm variant-filled-warning"
+									on:click={() => editSubmission(submission)}>Edit</button
+								>
+								<button
+									class="btn btn-sm variant-filled-error"
+									on:click={() => confirmDelete(submission)}>Delete</button
+								>
+							</div>
+						{/if}
 					</div>
 				{/each}
 			</ul>

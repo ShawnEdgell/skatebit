@@ -226,17 +226,19 @@
 									</p>
 								{/if}
 							</div>
-							<div class="grid gap-2">
-								{#if session && session.user.id === submission.profile_id}
-									<button
-										class="btn btn-sm variant-filled-warning w-full sm:w-auto"
-										on:click={() => editSubmission(submission)}>Edit</button
-									>
-									<button
-										class="btn btn-sm variant-filled-error"
-										on:click={() => confirmDelete(submission)}>Delete</button
-									>
-								{/if}
+							<div>
+								<div class="grid grid-cols-2 gap-2">
+									{#if session && session.user.id === submission.profile_id}
+										<button
+											class="btn btn-sm variant-filled-warning w-full sm:w-auto"
+											on:click={() => editSubmission(submission)}>Edit</button
+										>
+										<button
+											class="btn btn-sm variant-filled-error"
+											on:click={() => confirmDelete(submission)}>Delete</button
+										>
+									{/if}
+								</div>
 							</div>
 						</div>
 					</div>
