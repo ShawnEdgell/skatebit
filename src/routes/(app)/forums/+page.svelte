@@ -178,7 +178,7 @@
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
 		<div class="header">
-			<span class="badge variant-filled-primary mb-2">Forums</span>
+			<span class="badge variant-filled-primary mb-2">Hub</span>
 			<h1>Forums</h1>
 			<p>Welcome to the Forums!</p>
 			<hr class="!border-t-2" />

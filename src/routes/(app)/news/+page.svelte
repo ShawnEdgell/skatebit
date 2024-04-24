@@ -75,11 +75,17 @@
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
 		<div class="header">
+			<span class="badge variant-filled-primary mb-2">Hub</span>
+			<h1>News</h1>
+			<p>All the latest updates and news.</p>
+			<hr class="border-t-2 my-2" />
+		</div>
+		<div>
 			{#each channels as { name, playlistId }}
 				<button
 					on:click={() => toggleNews(playlistId)}
-					class="badge mr-1 mb-2
-				{playlistId === $activePlaylistId
+					class="btn btn-sm sm:btn-md mr-1 mb-2
+		{playlistId === $activePlaylistId
 						? name === 'All'
 							? 'variant-filled-primary'
 							: name === 'Skater XL'
@@ -106,9 +112,6 @@
 					{name}
 				</button>
 			{/each}
-			<h1>News</h1>
-			<p>All the latest updates and news.</p>
-			<hr class="border-t-2 my-2" />
 		</div>
 		{#each $videos as video}
 			{#if $activePlaylistId === 'ALL' || $activePlaylistId === video.playlistId}
