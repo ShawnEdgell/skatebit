@@ -105,14 +105,29 @@
 		}
 	};
 
-	// Function to handle deleting a thread
+	// Function to handle deleting a thread and its associated comments
 	const deleteThread = async (thread: Thread) => {
 		try {
+			// First, delete all comments associated with the thread
+			const { error: deleteCommentsError } = await supabase
+				.from('comments') // Ensure the table name is correct as per your schema
+				.delete()
+				.match({ thread_id: thread.id }); // Ensure 'thread_id' is the correct foreign key column
+
+			if (deleteCommentsError) {
+				console.error(
+					'Error deleting comments associated with the thread:',
+					deleteCommentsError.message
+				);
+				throw new Error('Failed to delete comments associated with the thread');
+			}
+
 			// Attempt to delete the thread from the database
 			const { error: deleteThreadError } = await supabase
 				.from('forum_threads')
 				.delete()
 				.eq('id', thread.id);
+
 			if (deleteThreadError) {
 				console.error('Error deleting thread from database:', deleteThreadError.message);
 				throw new Error('Failed to delete thread from database');
@@ -120,9 +135,12 @@
 
 			// Update the local state to reflect the deletion
 			threads = threads.filter((t) => t.id !== thread.id);
-			console.log('Thread deleted successfully');
+			console.log('Thread and associated comments deleted successfully');
 		} catch (error) {
-			console.error('Failed to delete thread:', error instanceof Error ? error.message : error);
+			console.error(
+				'Failed to delete thread and its comments:',
+				error instanceof Error ? error.message : error
+			);
 		}
 	};
 
