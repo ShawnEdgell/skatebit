@@ -2,6 +2,11 @@
 	import { onMount } from 'svelte';
 	import { tocCrawler } from '@skeletonlabs/skeleton';
 
+	interface Reaction {
+		type: string;
+		profile_id: string;
+	}
+
 	interface Submission {
 		id: number;
 		title: string;
@@ -9,6 +14,9 @@
 		youtube_link: string;
 		profile_id: string;
 		profiles?: Profile;
+		reaction_count: number;
+		hasReacted?: boolean;
+		session_reactions?: Reaction[]; // Ensure this is defined if you use it in your Submission interface
 	}
 
 	interface Profile {
@@ -54,24 +62,72 @@
 		}
 	};
 
+	async function handleReaction(submissionId: number) {
+		const submission = submissions.find((s) => s.id === submissionId);
+		if (!submission) return;
+
+		if (submission.hasReacted) {
+			const { error } = await supabase
+				.from('session_reactions')
+				.delete()
+				.match({ submission_id: submissionId, profile_id: session.user.id, type: 'fire' });
+
+			if (!error) {
+				submission.reaction_count--; // Decrement reaction count
+				submission.hasReacted = false; // Set hasReacted to false
+			} else {
+				console.error('Error removing reaction:', error.message);
+			}
+		} else {
+			const { error } = await supabase.from('session_reactions').insert({
+				submission_id: submissionId,
+				profile_id: session.user.id,
+				type: 'fire'
+			});
+
+			if (!error) {
+				submission.reaction_count++; // Increment reaction count
+				submission.hasReacted = true; // Set hasReacted to true
+			} else {
+				console.error('Error adding reaction:', error.message);
+			}
+		}
+
+		// Force Svelte to update the component by reassigning the submissions array
+		submissions = submissions.slice();
+	}
+
 	const confirmDelete = async (submission: Submission) => {
+		console.log('Deleting submission:', submission);
 		if (window.confirm('Are you sure you want to delete this submission?')) {
 			await deleteSubmission(submission);
 		}
 	};
 
-	const reloadSubmissions = async () => {
+	async function reloadSubmissions() {
 		const { data: newSubmissions, error } = await supabase
-			.from('session_edits')
-			.select('id, title, created_at, youtube_link, profile_id, profiles(username)')
-			.order('created_at', { ascending: false }); // Sorts submissions from newest to oldest
+			.from('session_edits') // Remove the generic type argument here
+			.select(
+				'id, title, created_at, youtube_link, profile_id, profiles(username), session_reactions(type, profile_id)'
+			)
+			.order('created_at', { ascending: false });
 
 		if (error) {
 			console.error('Error fetching data:', error.message);
-		} else {
-			submissions = newSubmissions ?? [];
+			return;
 		}
-	};
+
+		// Assume newSubmissions is correctly fetched and cast it to the expected type manually
+		submissions = (newSubmissions as Submission[]).map((submission) => {
+			// Handle the possibility that session_reactions might be undefined
+			const hasReacted =
+				submission.session_reactions?.some(
+					(reaction) => reaction.profile_id === session.user.id && reaction.type === 'fire'
+				) ?? false;
+			const reaction_count = submission.session_reactions?.length ?? 0;
+			return { ...submission, hasReacted, reaction_count };
+		});
+	}
 
 	const editSubmission = async (submission: Submission) => {
 		try {
@@ -111,14 +167,34 @@
 		}
 	};
 
-	const deleteSubmission = async (submission: Submission) => {
-		const { error } = await supabase.from('session_edits').delete().eq('id', submission.id);
-		if (error) {
-			console.error('Error deleting submission:', error.message);
+	async function deleteSubmission(submission: Submission) {
+		console.log('Deleting submission:', submission);
+
+		// Start by deleting all reactions associated with the submission
+		const { error: reactionError } = await supabase
+			.from('session_reactions')
+			.delete()
+			.match({ submission_id: submission.id });
+
+		if (reactionError) {
+			console.error('Error deleting reactions:', reactionError.message);
+			return; // Stop further processing if reactions cannot be deleted
+		}
+
+		// Proceed to delete the submission if reactions were successfully deleted
+		const { error: submissionError } = await supabase
+			.from('session_edits')
+			.delete()
+			.eq('id', submission.id);
+
+		if (submissionError) {
+			console.error('Error deleting submission:', submissionError.message);
 		} else {
+			console.log('Submission deleted successfully:', submission.id);
+			// Update the submissions array to remove the deleted submission
 			submissions = submissions.filter((s) => s.id !== submission.id);
 		}
-	};
+	}
 
 	function formatDate(dateString: string): string {
 		const date = new Date(dateString);
@@ -145,7 +221,7 @@
 <div use:tocCrawler={{ mode: 'generate', scrollTarget: '#page' }}>
 	<article>
 		<div class="header">
-			<span class="badge variant-filled-error mb-2">Session</span>
+			<span class="badge variant-filled-tertiary mb-2">Session</span>
 			<h1>Video Submissions</h1>
 			<p>Welcome to the Submission Page!</p>
 			<hr class="!border-t-2" />
@@ -202,8 +278,8 @@
 		<div>
 			<h2>Submissions</h2>
 			<ul class="space-y-6 w-full">
-				{#each submissions as submission}
-					<div class="flex flex-col card p-6 justify-between items-center gap-6">
+				{#each submissions as submission (submission.id)}
+					<div class="flex flex-col card p-6 justify-between items-start gap-6">
 						<div class="flex w-full flex-col space-y-4">
 							<h3 class="h3" data-toc-ignore>{submission.title}</h3>
 							<iframe
@@ -215,7 +291,7 @@
 							>
 							</iframe>
 						</div>
-						<div class="flex w-full justify-between">
+						<div class="flex w-full justify-between items-center">
 							<div>
 								<p class="text-sm mt-2">
 									Uploaded by: <span class="font-medium">{submission.profiles?.username}</span>
@@ -226,21 +302,30 @@
 									</p>
 								{/if}
 							</div>
-							<div>
-								<div class="grid grid-cols-2 gap-2">
-									{#if session && session.user.id === submission.profile_id}
-										<button
-											class="btn btn-sm variant-filled-warning w-full sm:w-auto"
-											on:click={() => editSubmission(submission)}>Edit</button
-										>
-										<button
-											class="btn btn-sm variant-filled-error"
-											on:click={() => confirmDelete(submission)}>Delete</button
-										>
-									{/if}
-								</div>
+							<div class="flex items-center">
+								<button
+									class="btn variant-filled-surface {submission.hasReacted
+										? 'btn-liked'
+										: 'btn-unliked'} ml-4"
+									on:click={() => handleReaction(submission.id)}
+									disabled={!session || !session.user}
+								>
+									🔥 {submission.reaction_count}
+								</button>
 							</div>
 						</div>
+						{#if session && session.user.id === submission.profile_id}
+							<div class="grid grid-cols-2 gap-2">
+								<button
+									class="btn btn-sm variant-filled-warning"
+									on:click={() => editSubmission(submission)}>Edit</button
+								>
+								<button
+									class="btn btn-sm variant-filled-error"
+									on:click={() => confirmDelete(submission)}>Delete</button
+								>
+							</div>
+						{/if}
 					</div>
 				{/each}
 			</ul>
