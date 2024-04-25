@@ -5,13 +5,25 @@ export const mods = [
         modItems: [
             {
                 badge: 'New',
+                title: 'Mod Map Visual Fix',
+                author: 'Hubba',
+                keybind: 'V',
+                features: ['Disables the volume causing issues'],
+                note: '',
+                downloadLinks: [
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1231777429370961991', label: 'Discord Link' },
+                    { url: 'https://mod.io/g/bmxs/m/mod-map-visual-fix', label: 'Mod.io Link' },
+                ]
+            },
+            {
+                badge: 'New',
                 title: 'Character Customization Mod',
                 author: 'Hubba',
                 keybind: 'V to open while character menu is open. B to close.',
                 features: ['Adds custom materials to characters'],
                 note: '',
                 downloadLinks: [
-                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1231179056737816586', label: 'Discord Link' },
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1231844812299305010', label: 'Discord Link' },
                 ]
             },
             {
