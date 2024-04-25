@@ -23,7 +23,7 @@
 <div class="flex gap-4 mb-8">
 	{#each cards as card (card.title)}
 		<div class="card p-0 mt-4 mb-4">
-			<img src={card.imageSrc} alt={card.title} class="rounded-lg" />
+			<img loading="lazy" src={card.imageSrc} alt={card.title} class="rounded-lg" />
 			<p class="p-4">
 				<strong>{card.title}</strong>
 				<br />

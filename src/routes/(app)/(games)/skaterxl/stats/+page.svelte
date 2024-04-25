@@ -286,40 +286,50 @@
 				{#each stats as stat}
 					<li>
 						<div class="flex flex-col sm:flex-row card p-6 justify-between items-center gap-6">
-							<div class="flex flex-col space-y-4">
+							<div class="flex flex-col space-y-4 w-full">
 								<h3 class="h3" data-toc-ignore>{stat.title}</h3>
 								<p>{stat.description}</p>
+								{#if session && session.user && session.user.id === stat.profile_id}
+									<div class="flex">
+										<div class="grid grid-cols-2 gap-2">
+											<button
+												class="btn btn-sm variant-filled-warning"
+												on:click={() => editStat(stat)}>Edit</button
+											>
+
+											<button
+												class="btn btn-sm variant-filled-error"
+												on:click={() => confirmDelete(stat)}>Delete</button
+											>
+										</div>
+									</div>
+								{/if}
 								<div>
 									<hr class="!border-t-2 mb-4" />
-									<p class="text-sm mt-2">
-										Uploaded by: <span class="font-medium">{stat.profiles?.username}</span>
-									</p>
-									{#if stat.created_at}
-										<p class="text-sm">
-											Created: <span class="font-medium">{formatDate(stat.created_at)}</span>
-										</p>
-									{/if}
+									<div class="flex justify-between">
+										<div>
+											<p class="text-sm">
+												Uploaded by: <span class="font-medium">{stat.profiles?.username}</span>
+											</p>
+											{#if stat.created_at}
+												<div>
+													<p class="text-sm">
+														Created: <span class="font-medium">{formatDate(stat.created_at)}</span>
+													</p>
+												</div>
+											{/if}
+										</div>
+										{#if stat.file_url}
+											<div>
+												<a
+													href={stat.file_url}
+													class="btn variant-filled-secondary"
+													download="{stat.title}.zip">Download</a
+												>
+											</div>
+										{/if}
+									</div>
 								</div>
-							</div>
-
-							<div class="flex flex-col gap-2">
-								<!-- Ensure session exists and the logged-in user matches the stat's profile_id before showing Edit/Delete -->
-								{#if session && session.user && session.user.id === stat.profile_id}
-									<button class="btn variant-filled-warning" on:click={() => editStat(stat)}
-										>Edit</button
-									>
-									<button class="btn variant-filled-error" on:click={() => confirmDelete(stat)}
-										>Delete</button
-									>
-								{/if}
-
-								{#if stat.file_url}
-									<a
-										href={stat.file_url}
-										class="btn variant-filled-secondary"
-										download="{stat.title}.zip">Download</a
-									>
-								{/if}
 							</div>
 						</div>
 					</li>

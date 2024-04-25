@@ -308,7 +308,7 @@
 										</div>
 										<div>
 											{#if session && session.user && session.user.id === stat.profile_id}
-												<div>
+												<div class="grid grid-cols-2 gap-2">
 													<button
 														class="btn btn-sm variant-filled-warning"
 														on:click={() => editStat(stat)}>Edit</button
