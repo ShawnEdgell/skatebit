@@ -38,8 +38,9 @@
 			</p>
 			<a href="https://mod.io/g/skaterxl" target="_blank" class="btn">skaterxl.mod.io</a>
 		</div>
+		<h2>Multiplayer Launch Trailer</h2>
 		<iframe
-			class="h-full w-full"
+			class="h-full w-full mt-4"
 			src="https://www.youtube.com/embed/gAlA20YBaNQ?si=L91DIgBOlJvY2cm-"
 			title="Skater XL - Official Multiplayer Launch Trailer"
 			frameborder="0"
