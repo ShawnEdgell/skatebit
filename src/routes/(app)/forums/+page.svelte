@@ -240,32 +240,38 @@
 								<h3 class="h3">{thread.title}</h3>
 								<p>{thread.description}</p>
 								<div>
-									<hr class="!border-t-2 mb-4" />
-									<p class="text-sm mt-2">
-										Uploaded by: <span class="font-medium">{thread.profiles?.username}</span>
-									</p>
-									{#if thread.created_at}
-										<p class="text-sm">
-											Created: <span class="font-medium">{formatDate(thread.created_at)}</span>
-										</p>
-									{/if}
+									<button
+										class="btn variant-filled-primary w-full sm:w-auto"
+										on:click={() => goToThread(thread.id)}>View Thread</button
+									>
 								</div>
-							</div>
-							<div class="flex flex-row sm:flex-col gap-2">
-								{#if session && session.user && session.user.id === thread.profile_id}
-									<button
-										class="btn variant-filled-warning w-full sm:w-auto"
-										on:click={() => editThread(thread)}>Edit</button
-									>
-									<button
-										class="btn variant-filled-error w-full sm:w-auto"
-										on:click={() => confirmDelete(thread)}>Delete</button
-									>
-								{/if}
-								<button
-									class="btn variant-filled-primary w-full sm:w-auto"
-									on:click={() => goToThread(thread.id)}>View Thread</button
-								>
+								<hr class="!border-t-2 mb-4" />
+								<div class="flex justify-between">
+									<div>
+										<p class="text-sm">
+											Uploaded by: <span class="font-medium">{thread.profiles?.username}</span>
+										</p>
+										{#if thread.created_at}
+											<p class="text-sm">
+												Created: <span class="font-medium">{formatDate(thread.created_at)}</span>
+											</p>
+										{/if}
+									</div>
+									<div>
+										<div class="grid grid-cols-2 gap-2">
+											{#if session && session.user && session.user.id === thread.profile_id}
+												<button
+													class="btn btn-sm variant-filled-warning w-full sm:w-auto"
+													on:click={() => editThread(thread)}>Edit</button
+												>
+												<button
+													class="btn btn-sm variant-filled-error w-full sm:w-auto"
+													on:click={() => confirmDelete(thread)}>Delete</button
+												>
+											{/if}
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
 					</li>
