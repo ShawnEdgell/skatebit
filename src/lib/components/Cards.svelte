@@ -3,25 +3,25 @@
 		{
 			title: 'Skater XL',
 			releaseDate: 'July 28, 2020',
-			imageSrc: '/images/Alpha2.webp',
+			imageSrc: '/images/cover-xl.webp',
 			href: '/skaterxl/about'
 		},
 		{
 			title: 'Session: Skate Sim',
 			releaseDate: 'September 22, 2022',
-			imageSrc: '/images/Session.webp',
+			imageSrc: '/images/cover-session.webp',
 			href: '/session/about'
 		},
 		{
 			title: 'Skate.',
 			releaseDate: 'TBA',
-			imageSrc: '/images/Skate.webp',
+			imageSrc: '/images/cover-skate.webp',
 			href: '/skate/about'
 		},
 		{
 			title: 'BMX Streets',
 			releaseDate: 'April 5, 2024',
-			imageSrc: '/images/bmx.webp',
+			imageSrc: '/images/cover-streets.webp',
 			href: '/bmxstreets/about'
 		}
 	];
@@ -29,7 +29,7 @@
 
 <div class="grid md:grid-cols-4 grid-cols-2 gap-4">
 	{#each games as game (game.title)}
-		<a href={game.href} class="block card card-hover overflow-hidden">
+		<a href={game.href} class="block card card-hover rounded-xl overflow-hidden">
 			<div class="relative w-full pb-[100%]">
 				<!-- Ensuring a square aspect ratio -->
 				<img
@@ -39,9 +39,6 @@
 					class="absolute top-0 left-0 w-full h-full object-cover"
 				/>
 			</div>
-			<header class="text-center font-bold p-4">
-				{game.title}
-			</header>
 		</a>
 	{/each}
 </div>
