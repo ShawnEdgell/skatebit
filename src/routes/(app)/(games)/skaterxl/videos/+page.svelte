@@ -269,8 +269,10 @@
 				</form>
 			{:else}
 				<div class="flex justify-center">
-					<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover"
-						>Login to Submit</a
+					<a
+						href="/login"
+						class="button btn variant-filled-primary"
+						data-sveltekit-preload-data="hover">Login to Submit</a
 					>
 				</div>
 			{/if}

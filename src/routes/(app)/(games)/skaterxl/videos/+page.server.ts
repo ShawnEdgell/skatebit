@@ -9,6 +9,7 @@ export const load: PageServerLoad = async ({ locals: { supabase } }) => {
             title,
             youtube_link,
             profile_id,
+            created_at,
             profiles(username),
             xl_reactions!inner(*)
         `)

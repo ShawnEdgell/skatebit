@@ -191,16 +191,6 @@
 					</li>
 					<li>
 						<a
-							href="/skaterxl/faq"
-							class={classesActive('/skaterxl/faq')}
-							data-sveltekit-preload-data="hover"
-							on:click={closeDrawer}
-						>
-							FAQ
-						</a>
-					</li>
-					<li>
-						<a
 							href="/skaterxl/guides"
 							class={classesActive('/skaterxl/guides')}
 							data-sveltekit-preload-data="hover"

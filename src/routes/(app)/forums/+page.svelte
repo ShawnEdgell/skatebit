@@ -222,8 +222,10 @@
 				</form>
 			{:else}
 				<div class="flex justify-center">
-					<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover"
-						>Login to Chat</a
+					<a
+						href="/login"
+						class="button btn variant-filled-primary"
+						data-sveltekit-preload-data="hover">Login to Create a Thread</a
 					>
 				</div>
 			{/if}

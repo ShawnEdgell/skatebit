@@ -5,6 +5,18 @@ export const mods = [
         modItems: [
             {
                 badge: 'New',
+                title: 'Quick Settings Mod',
+                author: 'Josh',
+                keybind: 'F',
+                features: ['Enable/Disable air tricks', 'First person POV hotkey', 'Slow motion hotkey'],
+                note: '',
+                downloadLinks: [
+                    { url: 'https://discord.com/channels/691268497833066567/1227469548152815616/1233203797397082113', label: 'Discord Link' },
+                    { url: 'https://mod.io/g/bmxs/m/quick-settings-mod', label: 'Mod.io Link' },
+                ]
+            },
+            {
+                badge: 'New',
                 title: 'Mod Map Visual Fix',
                 author: 'Hubba',
                 keybind: 'V',
@@ -40,7 +52,7 @@ export const mods = [
             {
                 badge: 'New',
                 title: 'Part Tweaker Mod',
-                author: 'Josh / Karxem',
+                author: 'Josh',
                 keybind: 'X',
                 features: ['Scaling of Various Bike Parts'],
                 note: '',
@@ -51,7 +63,7 @@ export const mods = [
             {
                 badge: 'New',
                 title: 'Quick Porter Mod',
-                author: 'Josh / Karxem',
+                author: 'Josh',
                 keybind: 'Q',
                 features: ['Teleport to interesting locations'],
                 note: 'You need to be on your bike to use this mod.',

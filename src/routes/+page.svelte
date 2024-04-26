@@ -23,6 +23,8 @@
 		>
 		<a href="/forums" class="btn variant-soft-primary" data-sveltekit-preload-data="hover">Forums</a
 		>
-		<Cards />
+		<div class="p-4 md:p-0">
+			<Cards />
+		</div>
 	</div>
 </div>

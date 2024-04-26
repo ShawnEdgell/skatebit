@@ -272,9 +272,15 @@
 				</form>
 			{:else}
 				<!-- Link to login page if user is not logged in -->
-				<a href="/login" class="button btn variant-filled" data-sveltekit-preload-data="hover">
-					Login to Add Stats
-				</a>
+				<div class="flex justify-center">
+					<a
+						href="/login"
+						class="button btn variant-filled-primary"
+						data-sveltekit-preload-data="hover"
+					>
+						Login to Add Stats
+					</a>
+				</div>
 			{/if}
 		</div>
 
