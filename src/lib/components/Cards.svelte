@@ -27,7 +27,7 @@
 	];
 </script>
 
-<div class="grid md:grid-cols-4 grid-cols-2 gap-4">
+<div class="grid grid-cols-4 gap-2">
 	{#each games as game (game.title)}
 		<a href={game.href} class="block card card-hover rounded-xl overflow-hidden">
 			<div class="relative w-full pb-[100%]">
