@@ -23,7 +23,7 @@
 				For the latest news and updates on Skate. and more, make sure to visit our News section
 				regularly!
 			</p>
-			<a href="/docs/news" class="btn" data-sveltekit-preload-data="hover">Latest News</a>
+			<a href="/news" class="btn" data-sveltekit-preload-data="hover">Latest News</a>
 		</div>
 		<div>
 			<h2>Join the Playtesting Crew</h2>
