@@ -53,7 +53,7 @@
 			</div>
 			<!-- Circular image -->
 			<div class="rounded-full overflow-hidden w-36 h-36 m-4">
-				<img src={game.imageSrc} alt={game.title} class="object-cover w-full h-full" />
+				<img src={game.imageSrc} alt={game.title} class="w-full h-full object-cover" />
 			</div>
 		</div>
 	{/each}
