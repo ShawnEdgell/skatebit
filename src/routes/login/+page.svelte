@@ -16,9 +16,7 @@
 		<p>Access and edit your own profile, upload stats/settings, and more!</p>
 		<Auth
 			supabaseClient={data.supabase}
-			view="magic_link"
-			redirectTo={`${data.url}/auth/callback`}
-			showLinks={false}
+			onlyThirdPartyProviders={true}
 			appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
 			providers={['google', 'discord']}
 		/>

@@ -31,7 +31,7 @@
 			<a href="https://discord.gg/uDkSEBKdga" target="_blank" class="btn">Join Discord</a>
 		</div>
 		<div>
-			<h2>Skater Modding Website</h2>
+			<h2>Skater XL Modding Website</h2>
 			<p>
 				The official Skater XL Modding Website is the go-to spot for downloading and sharing Skater
 				XL mods, maps, gear, and more.

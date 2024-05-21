@@ -19,7 +19,7 @@
 			<h2>Volution Discord</h2>
 			<p>
 				Make sure to join the Volution Discord server to stay up to date with the latest mods and
-				updates. This is where you will download most of your script mods.
+				updates. This is the go-to spot for all your BMX Streets modding needs.
 			</p>
 			<a
 				href="https://discord.com/invite/mgWRUnD"
@@ -29,12 +29,25 @@
 			>
 		</div>
 		<div>
+			<h2>mod.io</h2>
+			<p>
+				Check out mod.io for the latest BMX Streets mods, maps, and more. This is where you will
+				download most of your script mods, maps, and more.
+			</p>
+			<a
+				href="https://mod.io/g/bmxs"
+				target="_blank"
+				class="btn"
+				data-sveltekit-preload-data="hover">mod.io</a
+			>
+		</div>
+		<!-- <div>
 			<h2>Mod List</h2>
 			<p>
 				Here you can find a list of all working script mods. Make sure your have Melon Loader
 				downloaded and installed first, then simply drop these mods into your Mods folder.
 			</p>
 			<Mods />
-		</div>
+		</div> -->
 	</article>
 </div>

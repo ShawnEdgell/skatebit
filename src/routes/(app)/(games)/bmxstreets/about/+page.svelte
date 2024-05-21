@@ -45,6 +45,14 @@
 				data-sveltekit-preload-data="hover">Volution Discord</a
 			>
 		</div>
+		<div>
+			<h2>BMX: Streets Modding Website</h2>
+			<p>
+				The official BMXS Modding Website is the go-to spot for downloading and sharing mods, maps,
+				and more.
+			</p>
+			<a href="https://mod.io/g/bmxs" target="_blank" class="btn">mod.io</a>
+		</div>
 		<h2>Launch Trailer</h2>
 		<iframe
 			class="h-full w-full mt-4"

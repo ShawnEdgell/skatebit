@@ -21,7 +21,8 @@
 		<a href="/news" class="btn variant-filled-primary" data-sveltekit-preload-data="hover"
 			>Latest News</a
 		>
-		<a href="/forums" class="btn variant-soft-primary" data-sveltekit-preload-data="hover">Forums</a
+		<a href="/info" class="btn variant-soft-primary" data-sveltekit-preload-data="hover"
+			>Getting Started</a
 		>
 		<div class="p-0 pt-2">
 			<Cards />
