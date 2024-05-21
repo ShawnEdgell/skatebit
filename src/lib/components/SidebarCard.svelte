@@ -15,7 +15,7 @@
 			imgSrc: '/images/XLGM.webp',
 			altText: 'XL Gear Modifier',
 			title: 'XL Gear Modifier',
-			description: 'Now available on Skater XL v1.2.7.8 (Public)'
+			description: 'Now available on Skater XL v1.2.7.8'
 		},
 		{
 			href: '/skaterxl/xlhub',
@@ -29,7 +29,7 @@
 			imgSrc: '/images/XLWeather.webp',
 			altText: 'Weather Mod by Guru',
 			title: 'Weather Mod by Guru',
-			description: 'Explore the new Weather Mod for Skater XL.'
+			description: 'Explore the new XL Weather Mod'
 		}
 		// Add more ads as needed
 	];
