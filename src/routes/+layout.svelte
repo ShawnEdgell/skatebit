@@ -53,11 +53,13 @@
 
 <AppShell scrollbarGutter="stable both-edges" regionPage="scroll-smooth overscroll-none">
 	<svelte:fragment slot="header">
-		<div class="shadow-xl">
+		<div>
 			<Navigation />
 		</div>
 	</svelte:fragment>
 	<!-- Router Slot -->
+
 	<slot />
+
 	<!-- ---- / ---- -->
 </AppShell>

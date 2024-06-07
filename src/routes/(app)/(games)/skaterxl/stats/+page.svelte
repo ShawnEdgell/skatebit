@@ -291,7 +291,9 @@
 			<ul class="space-y-6 w-full">
 				{#each stats as stat}
 					<li>
-						<div class="flex flex-col sm:flex-row card p-6 justify-between items-center gap-6">
+						<div
+							class="flex flex-col sm:flex-row card rounded-2xl shadow-xl p-6 justify-between items-center gap-6"
+						>
 							<div class="flex flex-col space-y-4 w-full">
 								<h3 class="h3" data-toc-ignore>{stat.title}</h3>
 								<p>{stat.description}</p>

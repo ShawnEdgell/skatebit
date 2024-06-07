@@ -279,9 +279,11 @@
 		</div>
 		<div>
 			<h2>Submissions</h2>
-			<ul class="space-y-6 w-full">
+			<ul class="space-y-6 w-full my-6">
 				{#each submissions as submission (submission.id)}
-					<div class="flex flex-col card p-6 justify-between items-start gap-6">
+					<div
+						class="flex flex-col card rounded-2xl shadow-xl p-6 justify-between items-start gap-6"
+					>
 						<div class="flex w-full flex-col space-y-4">
 							<h3 class="h3" data-toc-ignore>{submission.title}</h3>
 							<iframe
@@ -306,7 +308,7 @@
 							</div>
 							<div class="flex items-center">
 								<button
-									class="btn variant-filled-surface {submission.hasReacted
+									class="btn variant-ghost-surface {submission.hasReacted
 										? 'btn-liked'
 										: 'btn-unliked'} ml-4"
 									on:click={() => handleReaction(submission.id)}

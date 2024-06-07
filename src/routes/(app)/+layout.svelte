@@ -30,7 +30,7 @@
 </div>
 <!-- (Footer) -->
 <div
-	class="flex items-center justify-center md:justify-end h-[22rem] p-4 md:pl-[23rem] sm:p-16 bg-surface-50-900-token"
+	class="card rounded-none flex items-center justify-center md:justify-end h-[22rem] p-4 md:pl-[23rem] sm:p-16 bg-surface-50-900-token"
 >
 	<Footer />
 </div>

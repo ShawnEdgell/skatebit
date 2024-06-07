@@ -27,9 +27,9 @@
 	];
 </script>
 
-<div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+<div class=" grid grid-cols-2 sm:grid-cols-4 gap-2">
 	{#each games as game (game.title)}
-		<a href={game.href} class="block card card-hover rounded-xl overflow-hidden">
+		<a href={game.href} class="block card card-hover rounded-2xl shadow-xl overflow-hidden">
 			<div class="relative w-full pb-[100%]">
 				<!-- Ensuring a square aspect ratio -->
 				<img

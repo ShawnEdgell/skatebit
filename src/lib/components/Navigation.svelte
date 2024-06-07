@@ -11,6 +11,7 @@
 	slotDefault="place-self-center"
 	slotTrail="place-content-end"
 	data-sveltekit-preload-data="hover"
+	background="bg-surface-50-900-token card rounded-none"
 >
 	<svelte:fragment slot="lead">
 		<div class="flex gap-2">

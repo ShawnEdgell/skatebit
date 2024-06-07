@@ -55,12 +55,12 @@
 </script>
 
 <a
-	class="block card card-hover p-0"
+	class="block card card-hover rounded-2xl shadow-xl p-0"
 	href={ads[currentAdIndex].href}
 	target={ads[currentAdIndex].href.startsWith('http') ? '_blank' : '_self'}
 	rel={ads[currentAdIndex].href.startsWith('http') ? 'noopener noreferrer' : ''}
 >
-	<div class="aspect-ratio-16/9 rounded-lg overflow-hidden">
+	<div class="aspect-ratio-16/9 overflow-hidden">
 		<img src={ads[currentAdIndex].imgSrc} alt={ads[currentAdIndex].altText} />
 	</div>
 	<p class="p-4">

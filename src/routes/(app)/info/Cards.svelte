@@ -37,9 +37,9 @@
 
 <div class="grid lg:grid-cols-2 gap-4">
 	{#each games as game (game.title)}
-		<div class="card flex flex-col items-center">
+		<div class="card flex rounded-2xl shadow-xl flex-col items-center">
 			<!-- Image with fixed size -->
-			<div class="w-full rounded-xl h-64 bg-gray-200 overflow-hidden">
+			<div class="w-full h-64 overflow-hidden">
 				<img src={game.imageSrc} alt={game.title} class="w-full h-full object-cover" />
 			</div>
 			<!-- Text content -->

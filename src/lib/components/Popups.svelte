@@ -85,7 +85,11 @@
 </button>
 
 <!-- Corresponding Popup -->
-<div class="card p-4 z-1000" data-popup="popup-0" role="menu">
+<div
+	class="card shadow-xl rounded-2xl p-4 z-1000 bg-surface-200-700-token"
+	data-popup="popup-0"
+	role="menu"
+>
 	<nav class="list-nav">
 		<ul>
 			{#each navItems as item}

@@ -26,7 +26,7 @@
 				Mod, DeckFX Fix, etc.)
 			</blockquote>
 			<a href="https://mod.io/g/skaterxl/m/XLHub" target="_blank">Check Out XL Hub</a>
-			<img src="/images/XLHub.webp" alt="XL Hub" class="rounded-xl my-6" />
+			<img src="/images/XLHub.webp" alt="XL Hub" class=" my-6" />
 		</div>
 		<div>
 			<h2>XL Hub Video Explanation</h2>
