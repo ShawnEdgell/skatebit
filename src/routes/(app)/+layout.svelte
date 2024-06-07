@@ -5,7 +5,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 </script>
 
-<div class="mx-auto w-full flex justify-between">
+<div class="mx-auto w-full h-full flex justify-between">
 	<!-- (Left Sidebar) -->
 	<div class="hidden md:flex fixed top-0 left-0 mt-[4.5rem] h-full w-[22rem]">
 		<SidebarLeft />
@@ -18,7 +18,7 @@
 	</div>
 	<!-- (Right Sidebar) -->
 	<div class="hidden xl:flex sticky top-0 h-full px-4 justify-end">
-		<div class="w-[22rem] flex flex-col justify-end overflow-y-auto">
+		<div class="w-[22rem] flex flex-col justify-start overflow-y-auto">
 			<div class="space-y-6 my-16 px-4">
 				<SidebarCard />
 				<TableOfContents>
