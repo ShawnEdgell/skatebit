@@ -51,7 +51,7 @@
 	<SidebarLeft />
 </Drawer>
 
-<AppShell scrollbarGutter="stable both-edges" regionPage="scroll-smooth overscroll-none">
+<AppShell regionPage="scroll-smooth overscroll-none">
 	<svelte:fragment slot="header">
 		<div>
 			<Navigation />
