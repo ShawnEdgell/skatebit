@@ -23,7 +23,7 @@
 	/>
 </svelte:head>
 
-<aside class="alert variant-filled-warning flex flex-row items-center space-x-4 mb-6">
+<aside class="alert variant-ghost-primary flex flex-row items-center space-x-4 mb-6">
 	<!-- Warning Icon (SVG) -->
 	<div>
 		<svg
@@ -52,8 +52,8 @@
 
 	<!-- Message -->
 	<div>
-		<p class="m-0 font-bold text-xl lg:text-2xl">We're Making Some Changes!</p>
-		<p class="mb-0 mt-2 pr-2">
+		<p class="m-0 font-bold text-xl">We're Making Some Changes!</p>
+		<p class="m-2 pr-2 text-base">
 			Our website is currently undergoing updates to make things easier to find. Stay tuned for
 			exciting new features and improvements!
 		</p>
