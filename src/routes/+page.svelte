@@ -81,7 +81,7 @@
 			</button>
 		{/each}
 	</div>
-	<hr class="border-t-2 my-4" />
+	<hr />
 
 	{#each videos as video (video.videoId)}
 		{#if activePlaylistId === 'ALL' || activePlaylistId === video.playlistId}
