@@ -37,10 +37,7 @@
 			{/if}
 		</p>
 		{#if video.description.length > 100}
-			<button
-				on:click={toggleDescription}
-				class="text-secondary-500 underline hover:no-underline mb-4"
-			>
+			<button on:click={toggleDescription} class="underline hover:no-underline mb-4">
 				{showFullDescription ? 'Show less' : 'Read more'}
 			</button>
 		{/if}
@@ -91,4 +88,5 @@
 			</div>
 		{/if}
 	</div>
+	<hr />
 </div>

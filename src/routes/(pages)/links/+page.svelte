@@ -96,38 +96,42 @@
 	<hr />
 </header>
 
-<h2>skaterxl.mod.io</h2>
-<p>
-	Explore and share a wide range of Skater XL mods, including scripts, gear, maps, and more, on the
-	essential hub for modding.
-</p>
-<a href="https://mod.io/g/skaterxl" target="_blank">skaterxl.mod.io</a>
+<section>
+	<h2>skaterxl.mod.io</h2>
+	<p>
+		Explore and share a wide range of Skater XL mods, including scripts, gear, maps, and more, on
+		the essential hub for modding.
+	</p>
+	<a href="https://mod.io/g/skaterxl" target="_blank">skaterxl.mod.io</a>
+</section>
 
-{#each categories as category}
-	<div>
-		<h2>{category.title}</h2>
-		<p>{category.description}</p>
-		<div class="table-container">
-			<table class="table table-hover">
-				<thead>
-					<tr>
-						<th>Server</th>
-						<th>Owner</th>
-					</tr>
-				</thead>
-				<tbody>
-					{#each category.data as server}
+<section class="pb-8">
+	{#each categories as category}
+		<div>
+			<h2>{category.title}</h2>
+			<p>{category.description}</p>
+			<div class="table-container">
+				<table class="table table-hover">
+					<thead>
 						<tr>
-							<td>
-								<a href={server.link} target="_blank">
-									{server.name}
-								</a>
-							</td>
-							<td>{server.owner}</td>
+							<th>Server</th>
+							<th>Owner</th>
 						</tr>
-					{/each}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{#each category.data as server}
+							<tr>
+								<td>
+									<a href={server.link} target="_blank">
+										{server.name}
+									</a>
+								</td>
+								<td>{server.owner}</td>
+							</tr>
+						{/each}
+					</tbody>
+				</table>
+			</div>
 		</div>
-	</div>
-{/each}
+	{/each}
+</section>

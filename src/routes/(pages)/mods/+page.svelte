@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { TabGroup, Tab, Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import { mods } from './modsData'; // Ensure this path matches the location of your mods data file
+	import UnityDownload from '../../../components/UnityDownload.svelte';
 
 	let tabSet: number = 0;
 
@@ -40,99 +41,113 @@
 	<hr />
 </header>
 
-<h2>UnityModManager</h2>
-<aside class="alert variant-filled-warning mb-4">
-	<strong class="text-base lg:text-lg">
-		Using the correct version of UnityModManager is crucial for successfully installing mods in
-		Skater XL.
-	</strong>
-</aside>
-
-<Accordion>
-	<AccordionItem>
-		<svelte:fragment slot="lead"></svelte:fragment>
-		<svelte:fragment slot="summary"><strong>Skater XL v1.2.2.8 (Alpha)</strong></svelte:fragment>
-		<svelte:fragment slot="content">
-			<a
-				href="https://jvfiwbxwwjhhbfonzgbc.supabase.co/storage/v1/object/public/UnityModManager/Alpha/UnityModManager-21-0-27-4-1690201835.zip"
+<section>
+	<h2>UnityModManager</h2>
+	<aside class="alert variant-filled-warning mb-4">
+		<div class="flex items-center">
+			<svg
+				class="w-16 h-16 ml-2 mr-4"
+				viewBox="0 0 24 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+				><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
+					id="SVGRepo_tracerCarrier"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				></g><g id="SVGRepo_iconCarrier">
+					<circle cx="12" cy="17" r="1" fill="#000000"></circle>
+					<path
+						d="M12 10L12 14"
+						stroke="#000000"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					></path>
+					<path
+						d="M3.44722 18.1056L10.2111 4.57771C10.9482 3.10361 13.0518 3.10362 13.7889 4.57771L20.5528 18.1056C21.2177 19.4354 20.2507 21 18.7639 21H5.23607C3.7493 21 2.78231 19.4354 3.44722 18.1056Z"
+						stroke="#000000"
+						stroke-width="2"
+						stroke-linecap="round"
+						stroke-linejoin="round"
+					></path>
+				</g></svg
 			>
-				Download UnityModManager v0.27.4
-			</a></svelte:fragment
-		>
-	</AccordionItem>
-	<AccordionItem>
-		<svelte:fragment slot="lead"></svelte:fragment>
-		<svelte:fragment slot="summary"><strong>Skater XL v1.2.7.8 (Public)</strong></svelte:fragment>
-		<svelte:fragment slot="content">
-			<a
-				href="https://jvfiwbxwwjhhbfonzgbc.supabase.co/storage/v1/object/public/UnityModManager/Public/UnityModManager-21-0-27-7-1694510711.zip"
-			>
-				Download UnityModManager v0.27.7
-			</a></svelte:fragment
-		>
-	</AccordionItem>
-</Accordion>
-<hr />
-<h2>Working Mod List</h2>
-<p>Select your game version below to browse a curated list of compatible mods.</p>
-<TabGroup>
-	{#each mods as { tab, version }, tabIndex}
-		<Tab bind:group={tabSet} name={`tab${tabIndex}`} value={tabIndex}>
-			<svelte:fragment slot="lead">
-				<strong>{tab}</strong>
-			</svelte:fragment>
-			<span>{version}</span>
-		</Tab>
-	{/each}
+			<p class="text-base font-semibold my-0 lg:text-lg pr-2">
+				Using the correct version of UnityModManager is crucial for successfully installing mods in
+				Skater XL.
+			</p>
+		</div>
+	</aside>
+	<UnityDownload />
+	<hr />
+</section>
 
-	<svelte:fragment slot="panel">
-		{#if tabSet < mods.length}
-			<Accordion>
-				{#each mods[tabSet].modItems as { title, author, workingVersion, keybind, features, note, badge, downloadLinks }}
-					<AccordionItem>
-						<svelte:fragment slot="lead">
-							{#if badge}
-								<!-- Use the getBadgeClass function to determine the class -->
+<section class="pb-8">
+	<h2>Working Mod List</h2>
+	<p>Select your game version below to browse a curated list of compatible mods.</p>
+	<TabGroup>
+		{#each mods as { tab, version }, tabIndex}
+			<Tab bind:group={tabSet} name={`tab${tabIndex}`} value={tabIndex}>
+				<svelte:fragment slot="lead">
+					<strong>{tab}</strong>
+				</svelte:fragment>
+				<span>{version}</span>
+			</Tab>
+		{/each}
 
-								<div class={getBadgeClass(badge)}>{badge}</div>
-							{/if}
-						</svelte:fragment>
-						<svelte:fragment slot="summary">{title}</svelte:fragment>
-						<svelte:fragment slot="content">
-							<div class="card p-4">
-								<div class="font-bold text-lg lg:text-2xl mb-4">{title}</div>
-								<div><strong>Author:</strong> <span>{author}</span></div>
-								<div>
-									<strong>Working Version:</strong>
-									<span>{workingVersion}</span>
-								</div>
-								<div><strong>Keybind:</strong> <span>{keybind}</span></div>
-								<div>
-									<strong>Features:</strong>
-									<span>
-										{#each features as feature, i}
-											{feature}{#if i < features.length - 1},&nbsp;
-											{/if}
-										{/each}
-									</span>
-								</div>
+		<svelte:fragment slot="panel">
+			{#if tabSet < mods.length}
+				<Accordion>
+					{#each mods[tabSet].modItems as { title, author, workingVersion, keybind, features, note, badge, downloadLinks }}
+						<AccordionItem>
+							<svelte:fragment slot="lead">
+								{#if badge}
+									<!-- Use the getBadgeClass function to determine the class -->
 
-								{#if note}
-									<div>
-										<strong>Note:</strong> <span>{note}</span>
-									</div>
+									<div class={getBadgeClass(badge)}>{badge}</div>
 								{/if}
-								<div class="flex items-start">
-									{#each downloadLinks as { url, label }}
-										<strong>Link:&nbsp;</strong>
-										<a href={url} target="_blank" rel="noopener noreferrer">{label}</a>
-									{/each}
+							</svelte:fragment>
+							<svelte:fragment slot="summary">{title}</svelte:fragment>
+							<svelte:fragment slot="content">
+								<div class="card p-4">
+									<div class="font-bold text-lg lg:text-2xl mb-4">{title}</div>
+									<div><strong>Author:</strong> <span>{author}</span></div>
+									<div>
+										<strong>Working Version:</strong>
+										<span>{workingVersion}</span>
+									</div>
+									<div><strong>Keybind:</strong> <span>{keybind}</span></div>
+									<div>
+										<strong>Features:</strong>
+										<span>
+											{#each features as feature, i}
+												{feature}{#if i < features.length - 1},&nbsp;
+												{/if}
+											{/each}
+										</span>
+									</div>
+
+									{#if note}
+										<div>
+											<strong>Note:</strong> <span>{note}</span>
+										</div>
+									{/if}
+									<div class="flex items-start">
+										{#each downloadLinks as { url, label }}
+											<a
+												href={url}
+												class="mt-4 btn variant-filled-secondary no-underline"
+												target="_blank"
+												rel="noopener noreferrer">{label}</a
+											>
+										{/each}
+									</div>
 								</div>
-							</div>
-						</svelte:fragment>
-					</AccordionItem>
-				{/each}
-			</Accordion>
-		{/if}
-	</svelte:fragment>
-</TabGroup>
+							</svelte:fragment>
+						</AccordionItem>
+					{/each}
+				</Accordion>
+			{/if}
+		</svelte:fragment>
+	</TabGroup>
+</section>

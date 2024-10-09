@@ -30,7 +30,7 @@
 		<!-- Logo for larger screens -->
 		<a
 			href="/"
-			class="hidden md:flex items-center text-2xl font-extrabold italic"
+			class="btn p-0 hidden md:flex items-center text-2xl font-extrabold italic"
 			data-sveltekit-preload-data="hover"
 		>
 			<!-- SVG Icon -->
@@ -85,7 +85,7 @@
 	<!-- Center Title for mobile -->
 	<a
 		href="/"
-		class="block md:hidden text-2xl font-extrabold italic"
+		class="block btn p-0 md:hidden text-2xl font-extrabold italic"
 		data-sveltekit-preload-data="hover">Skatebit</a
 	>
 

@@ -26,10 +26,10 @@
 </script>
 
 <Drawer>
-	<ul class="p-6 space-y-4">
+	<ul class="p-4 space-y-2">
 		{#each navItems as { href, label }}
 			<li>
-				<a {href} class="btn btn-lg font-semibold w-full variant-ghost" on:click={closeDrawer}>
+				<a {href} class="btn font-semibold w-full variant-ghost" on:click={closeDrawer}>
 					{label}
 				</a>
 			</li>

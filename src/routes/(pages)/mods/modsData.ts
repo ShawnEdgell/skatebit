@@ -4,30 +4,6 @@ export const mods = [
 		version: 'v1.2.2.8',
 		modItems: [
 			{
-				badge: 'New',
-				title: 'Walking Mod',
-				author: 'Froquede',
-				workingVersion: '1.3.0',
-				keybind: 'X + A or Sqaure + X (controller)',
-				features: ['Walking', 'Custom Animations and Emotes'],
-				note: '',
-				downloadLinks: [
-					{ url: 'https://mod.io/g/skaterxl/m/walking-mod', label: 'skaterxl.mod.io' }
-				]
-			},
-			{
-				badge: 'New',
-				title: 'Grind Tools',
-				author: 'Guru',
-				workingVersion: '1.0.2',
-				keybind: '(automatic)',
-				features: ['Customizable Grind Splines', 'Wax Tool'],
-				note: 'Access this mod through the Pause menu.',
-				downloadLinks: [
-					{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
-				]
-			},
-			{
 				badge: 'Essential', // Specify the badge here
 				title: 'XXL 3 Mod',
 				author: 'DawgVinci',
@@ -211,6 +187,30 @@ export const mods = [
 				]
 			},
 			{
+				badge: 'Useful',
+				title: 'Grind Tools',
+				author: 'Guru',
+				workingVersion: '1.0.2',
+				keybind: '(automatic)',
+				features: ['Customizable Grind Splines', 'Wax Tool'],
+				note: 'Access this mod through the Pause menu.',
+				downloadLinks: [
+					{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
+				]
+			},
+			{
+				badge: 'Fun',
+				title: 'Walking Mod',
+				author: 'Froquede',
+				workingVersion: '1.3.0',
+				keybind: 'X + A or Sqaure + X (controller)',
+				features: ['Walking', 'Custom Animations and Emotes'],
+				note: '',
+				downloadLinks: [
+					{ url: 'https://mod.io/g/skaterxl/m/walking-mod', label: 'skaterxl.mod.io' }
+				]
+			},
+			{
 				badge: 'Fun',
 				title: 'Grab Customizer',
 				author: 'Froquede',
@@ -292,7 +292,7 @@ export const mods = [
 	},
 	{
 		tab: 'Public',
-		version: 'v1.2.7.8',
+		version: 'v1.2.10.4',
 		modItems: [
 			{
 				badge: 'New', // Specify the badge here
@@ -339,7 +339,7 @@ export const mods = [
 					'Enhanced Gameplay Control',
 					'Stance and Steeze Settings'
 				],
-				note: "Navigate to the #xlmod section for Skater XL v1.2.7.8 in DawgVinci's Discord server to download the mod.",
+				note: "Navigate to the #xlmod section for Skater XL v1.2.10.4 in DawgVinci's Discord server to download the mod.",
 				downloadLinks: [
 					{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" }
 				]
