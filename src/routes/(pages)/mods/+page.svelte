@@ -42,11 +42,12 @@
 
 <h2>UnityModManager</h2>
 <aside class="alert variant-filled-warning mb-4">
-	<p class="font-bold m-0">
+	<strong class="text-base lg:text-lg">
 		Using the correct version of UnityModManager is crucial for successfully installing mods in
 		Skater XL.
-	</p>
+	</strong>
 </aside>
+
 <Accordion>
 	<AccordionItem>
 		<svelte:fragment slot="lead"></svelte:fragment>

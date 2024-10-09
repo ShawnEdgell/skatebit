@@ -27,21 +27,21 @@
 		To install custom maps and gear, simply place them in the following directories. Make sure to
 		extract the files from the ZIP folder!
 	</p>
-	<blockquote class="blockquote">
+	<blockquote class="blockquote lg:text-lg">
 		Please note that XLGM gear requires you to install each piece of gear into two folders.
 	</blockquote>
 
 	<h3>Custom Maps:</h3>
-	<pre class="pre md:text-lg">Documents/SkaterXL/Maps</pre>
+	<pre class="pre">Documents/SkaterXL/Maps</pre>
 
 	<h3>Custom Gear:</h3>
-	<pre class="pre md:text-lg">Documents/SkaterXL/Gear</pre>
+	<pre class="pre">Documents/SkaterXL/Gear</pre>
 
 	<h3>XLGM Gear:</h3>
-	<pre class="pre md:text-lg">Documents/SkaterXL/Gear</pre>
+	<pre class="pre">Documents/SkaterXL/Gear</pre>
 
 	<h3>XLGM Assets:</h3>
-	<pre class="pre md:text-lg">Documents/SkaterXL/XLGearModifier/Asset Packs</pre>
+	<pre class="pre">Documents/SkaterXL/XLGearModifier/Asset Packs</pre>
 	<hr />
 </section>
 
@@ -109,7 +109,7 @@
 		path to:
 	</p>
 	<p></p>
-	<p class="text-lg">C:\Program Files (x86)\Steam\steamapps\common\Skater XL</p>
+	<p>C:\Program Files (x86)\Steam\steamapps\common\Skater XL</p>
 
 	<p>Click "Install or Update" to complete the setup.</p>
 
@@ -120,7 +120,7 @@
 			href="/mods">Mods</a
 		> tab for a list of functional mods.
 	</p>
-	<blockquote class="blockquote">
+	<blockquote class="blockquote lg:text-lg">
 		<p>
 			<strong>Note:</strong> "Status: OK" or "Update to X.X.X" in UnityModManager means a mod is installed.
 			Do not update mods within the manager, as it may cause compatibility issues. For manual changes,
