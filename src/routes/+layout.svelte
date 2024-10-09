@@ -1,65 +1,45 @@
-<!-- src/routes/+layout.svelte -->
 <script lang="ts">
 	import '../app.postcss';
-
-	import { AppShell, Drawer, initializeStores } from '@skeletonlabs/skeleton';
-
-	import Navigation from '$lib/components/Navigation.svelte';
-	import SidebarLeft from '$lib/components/SidebarLeft.svelte';
-
-	import { invalidate } from '$app/navigation';
-	import { onMount } from 'svelte';
-
-	import type { AfterNavigate } from '@sveltejs/kit';
-	import { afterNavigate } from '$app/navigation';
-
+	import { initializeStores, Drawer, getDrawerStore, storePopup } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-	import { storePopup } from '@skeletonlabs/skeleton';
-	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
+	import AppBar from '../components/AppBar.svelte';
 
+	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
 	initializeStores();
 
-	export let data;
+	const drawerStore = getDrawerStore();
 
-	let { supabase, session } = data;
-	$: ({ supabase, session } = data);
+	// Define the function to close the drawer
+	function closeDrawer() {
+		drawerStore.close();
+	}
 
-	afterNavigate((params: AfterNavigate) => {
-		const isNewPage = params.from?.url.pathname !== params.to?.url.pathname;
-		const elemPage = document.querySelector('#page');
-		if (isNewPage && elemPage !== null) {
-			elemPage.scrollTop = 0;
-		}
-	});
-
-	onMount(() => {
-		const { data } = supabase.auth.onAuthStateChange((event, _session) => {
-			if (_session?.expires_at !== session?.expires_at) {
-				invalidate('supabase:auth');
-			}
-		});
-
-		return () => data.subscription.unsubscribe();
-	});
+	// Navigation items array
+	const navItems = [
+		{ href: '/guides', label: 'Guides' },
+		{ href: '/mods', label: 'Mods' },
+		{ href: '/links', label: 'Links' },
+		{ href: '/stats', label: 'Stats & Settings' }
+	];
 </script>
 
-<svelte:head>
-	<title>Skatebit</title>
-</svelte:head>
-
 <Drawer>
-	<SidebarLeft />
+	<ul class="p-4 space-y-2">
+		{#each navItems as { href, label }}
+			<li>
+				<a {href} class="btn btn-lg w-full variant-filled" on:click={closeDrawer}>
+					{label}
+				</a>
+			</li>
+		{/each}
+	</ul>
 </Drawer>
 
-<AppShell regionPage="scroll-smooth overscroll-none">
-	<svelte:fragment slot="header">
-		<div>
-			<Navigation />
-		</div>
-	</svelte:fragment>
-	<!-- Router Slot -->
-
-	<slot />
-
-	<!-- ---- / ---- -->
-</AppShell>
+<div class="flex flex-col items-center min-h-screen">
+	<div class="fixed top-0 w-full z-10">
+		<AppBar />
+	</div>
+	<main class="prose lg:prose-xl dark:prose-invert w-full flex-1 mt-[4.5rem] px-4 py-8">
+		<slot />
+	</main>
+</div>
