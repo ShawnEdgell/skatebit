@@ -27,7 +27,7 @@
 	<!-- Warning Icon (SVG) -->
 	<div>
 		<svg
-			class="h-8 w-8 text-current"
+			class="h-10 w-10 text-current"
 			viewBox="0 0 24 24"
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -52,8 +52,8 @@
 
 	<!-- Message -->
 	<div>
-		<p class="m-0 font-bold text-xl">We're Making Some Changes!</p>
-		<p class="mb-0 mt-2">
+		<p class="m-0 font-bold text-xl lg:text-2xl">We're Making Some Changes!</p>
+		<p class="mb-0 mt-2 pr-2">
 			Our website is currently undergoing updates to make things easier to find. Stay tuned for
 			exciting new features and improvements!
 		</p>
