@@ -38,10 +38,10 @@
 		section or ask us questions on
 		<a href="https://discord.gg/hPAstnVJq3" target="_blank">Discord.</a>
 	</p>
-	<hr />
 </header>
 
 <section>
+	<hr />
 	<h2>UnityModManager</h2>
 	<aside class="alert variant-filled-warning mb-4">
 		<div class="flex items-center">
@@ -79,10 +79,10 @@
 		</div>
 	</aside>
 	<UnityDownload />
-	<hr />
 </section>
 
 <section class="pb-8">
+	<hr />
 	<h2>Working Mod List</h2>
 	<p>Select your game version below to browse a curated list of compatible mods.</p>
 	<TabGroup>

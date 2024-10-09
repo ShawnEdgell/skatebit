@@ -18,7 +18,8 @@
 	}
 </script>
 
-<div class="mb-8">
+<section class="mb-8">
+	<hr />
 	<h2 class="font-semibold">{video.title}</h2>
 	<p class:mb-2={video.description?.trim()} class:mb-4={!video.description?.trim()}>
 		{new Date(video.publishedAt).toLocaleDateString('en-US', {
@@ -27,7 +28,6 @@
 			year: 'numeric'
 		})}
 	</p>
-
 	{#if video.description?.trim()}
 		<p class="break-words">
 			{#if showFullDescription || video.description.length <= 100}
@@ -88,5 +88,4 @@
 			</div>
 		{/if}
 	</div>
-	<hr />
-</div>
+</section>

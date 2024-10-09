@@ -43,11 +43,11 @@
 
 	<h3>XLGM Assets:</h3>
 	<pre class="pre">Documents/SkaterXL/XLGearModifier/Asset Packs</pre>
-	<hr />
 </section>
 
 <!-- Getting Started Section -->
 <section>
+	<hr />
 	<h2>Getting Started with Skater XL Modding</h2>
 	<p>
 		This guide will walk you through the essential steps to get you up and running with all the
@@ -111,10 +111,9 @@
 	</p>
 </section>
 
-<hr />
-
 <!-- Video Guides -->
 <section class="pb-8">
+	<hr />
 	<h2>2024 Mod Guide</h2>
 	<iframe
 		src="https://www.youtube.com/embed/veZlQE7tfHw?si=IvYW0f4Fgs5Wt65A"

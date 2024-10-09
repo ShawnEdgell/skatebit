@@ -14,12 +14,11 @@
 <header>
 	<span class="badge variant-filled-primary mb-2">Skater XL</span>
 	<h1>Stats & Settings</h1>
-	<hr />
 </header>
 
-<h2>Downloads</h2>
-
 <section>
+	<hr />
+	<h2>Downloads</h2>
 	<h3>Milky's 'Fishy' Stats (Latest)</h3>
 	<p>
 		14 Gravity. These are the latest stats I've been using. Includes a mixture of old settings with
@@ -53,6 +52,7 @@
 </section>
 
 <section class="pb-8">
+	<hr />
 	<h2>How to Install</h2>
 	<p>
 		Extract the .zip folder to find each of these stat files, and place them in the following

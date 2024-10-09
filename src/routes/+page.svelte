@@ -44,8 +44,6 @@
 			</button>
 		{/each}
 	</div>
-	<hr />
-
 	{#each videos as video (video.videoId)}
 		{#if activePlaylistId === 'ALL' || activePlaylistId === video.playlistId}
 			<VideoItem {video} />
