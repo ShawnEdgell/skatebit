@@ -82,15 +82,26 @@
 </script>
 
 <svelte:head>
-	<title>Skatebit | Links</title>
+	<title>Skatebit | Helpful Links</title>
 </svelte:head>
 
 <!-- Header Section -->
 <header>
-	<span class="badge variant-filled-primary">Skater XL</span>
-	<h1>Links</h1>
+	<span class="badge variant-filled-primary mb-2">Skater XL</span>
+	<h1>Helpful Links</h1>
+	<p>
+		Find essential Discord and website links for Skater XL mods, tutorials, and communities,
+		connecting you with the creators and content that enhance your gaming experience.
+	</p>
 	<hr />
 </header>
+
+<h2>skaterxl.mod.io</h2>
+<p>
+	Explore and share a wide range of Skater XL mods, including scripts, gear, maps, and more, on the
+	essential hub for modding.
+</p>
+<a href="https://mod.io/g/skaterxl" target="_blank">skaterxl.mod.io</a>
 
 {#each categories as category}
 	<div>

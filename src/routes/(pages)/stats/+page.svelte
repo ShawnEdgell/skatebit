@@ -7,7 +7,7 @@
 </svelte:head>
 
 <header>
-	<span class="badge variant-filled-primary">Skater XL</span>
+	<span class="badge variant-filled-primary mb-2">Skater XL</span>
 	<h1>Stats & Settings</h1>
 	<hr />
 </header>

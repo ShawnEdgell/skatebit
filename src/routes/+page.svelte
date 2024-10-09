@@ -23,43 +23,6 @@
 	/>
 </svelte:head>
 
-<aside class="alert variant-ghost-primary flex flex-row items-center space-x-4 mb-6">
-	<!-- Warning Icon (SVG) -->
-	<div>
-		<svg
-			class="h-10 w-10 text-current"
-			viewBox="0 0 24 24"
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-		>
-			<circle cx="12" cy="17" r="1" fill="currentColor"></circle>
-			<path
-				d="M12 10L12 14"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			></path>
-			<path
-				d="M3.44722 18.1056L10.2111 4.57771C10.9482 3.10361 13.0518 3.10362 13.7889 4.57771L20.5528 18.1056C21.2177 19.4354 20.2507 21 18.7639 21H5.23607C3.7493 21 2.78231 19.4354 3.44722 18.1056Z"
-				stroke="currentColor"
-				stroke-width="2"
-				stroke-linecap="round"
-				stroke-linejoin="round"
-			></path>
-		</svg>
-	</div>
-
-	<!-- Message -->
-	<div>
-		<p class="m-0 font-bold text-xl">We're Making Some Changes!</p>
-		<p class="m-2 pr-2 text-base">
-			Our website is currently undergoing updates to make things easier to find. Stay tuned for
-			exciting new features and improvements!
-		</p>
-	</div>
-</aside>
-
 <article>
 	<div class="header">
 		<h1>Recent News</h1>

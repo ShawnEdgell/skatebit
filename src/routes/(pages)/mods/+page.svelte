@@ -28,17 +28,52 @@
 </svelte:head>
 
 <header>
-	<span class="badge variant-filled-primary">Skater XL</span>
+	<span class="badge variant-filled-primary mb-2">Skater XL</span>
 	<h1>Mods</h1>
+	<p>
+		For help with installation, visit our <a href="/guides" data-sveltekit-preload-data="hover"
+			>Guides</a
+		>
+		section or ask us questions on
+		<a href="https://discord.gg/hPAstnVJq3" target="_blank">Discord.</a>
+	</p>
 	<hr />
 </header>
 
-<p>
-	Select your game version below to browse a curated list of compatible mods. For help with
-	installation, visit our <a href="/guides" data-sveltekit-preload-data="hover">Guides</a> section
-	or ask us questions on <a href="https://discord.gg/hPAstnVJq3" target="_blank">Discord.</a>
-</p>
-
+<h2>UnityModManager</h2>
+<aside class="alert variant-filled-warning mb-4">
+	<p class="font-bold m-0">
+		Using the correct version of UnityModManager is crucial for successfully installing mods in
+		Skater XL.
+	</p>
+</aside>
+<Accordion>
+	<AccordionItem>
+		<svelte:fragment slot="lead"></svelte:fragment>
+		<svelte:fragment slot="summary"><strong>Skater XL v1.2.2.8 (Alpha)</strong></svelte:fragment>
+		<svelte:fragment slot="content">
+			<a
+				href="https://jvfiwbxwwjhhbfonzgbc.supabase.co/storage/v1/object/public/UnityModManager/Alpha/UnityModManager-21-0-27-4-1690201835.zip"
+			>
+				Download UnityModManager v0.27.4
+			</a></svelte:fragment
+		>
+	</AccordionItem>
+	<AccordionItem>
+		<svelte:fragment slot="lead"></svelte:fragment>
+		<svelte:fragment slot="summary"><strong>Skater XL v1.2.7.8 (Public)</strong></svelte:fragment>
+		<svelte:fragment slot="content">
+			<a
+				href="https://jvfiwbxwwjhhbfonzgbc.supabase.co/storage/v1/object/public/UnityModManager/Public/UnityModManager-21-0-27-7-1694510711.zip"
+			>
+				Download UnityModManager v0.27.7
+			</a></svelte:fragment
+		>
+	</AccordionItem>
+</Accordion>
+<hr />
+<h2>Working Mod List</h2>
+<p>Select your game version below to browse a curated list of compatible mods.</p>
 <TabGroup>
 	{#each mods as { tab, version }, tabIndex}
 		<Tab bind:group={tabSet} name={`tab${tabIndex}`} value={tabIndex}>

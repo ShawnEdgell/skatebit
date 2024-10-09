@@ -12,8 +12,11 @@
 
 <!-- Header Section -->
 <header>
-	<span class="badge variant-filled-primary">Skater XL</span>
+	<span class="badge variant-filled-primary mb-2">Skater XL</span>
 	<h1>Guides</h1>
+	<p>
+		Essential guides and tutorials to help you master Skater XL mods, gameplay, and customization.
+	</p>
 	<hr />
 </header>
 
@@ -132,3 +135,17 @@
 		problems.
 	</p>
 </section>
+
+<hr />
+
+<!-- Video Guides -->
+
+<h2>2024 Mod Guide</h2>
+<iframe
+	src="https://www.youtube.com/embed/veZlQE7tfHw?si=IvYW0f4Fgs5Wt65A"
+	frameborder="0"
+	allowfullscreen
+	class="w-full h-96"
+	title="2021 Skater XL Modding Guide"
+	loading="lazy"
+></iframe>
