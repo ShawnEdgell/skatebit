@@ -4,8 +4,8 @@ export const mods = [
 		version: 'v1.2.2.8',
 		modItems: [
 			{
-				badge: 'Essential', // Specify the badge here
-				title: 'XXL 3 Mod',
+				badge: 'Essential',
+				title: 'XXL 3 Mod (The Stats Menu)',
 				author: 'DawgVinci',
 				workingVersion: '1.3.3',
 				keybind: 'F7',
@@ -20,19 +20,7 @@ export const mods = [
 				]
 			},
 			{
-				badge: 'Essential', // Specify the badge here
-				title: 'XL Gear Mod (XLGM2)',
-				author: 'mcbtay, Redgouf',
-				workingVersion: '2.0.1',
-				keybind: '(automatic)',
-				features: ['Dynamic Clothing', 'Custom Character Models', 'Unlimited Gear Customization'],
-				note: 'The XL Gear Mod is integrated into the Edit Skater Menu.',
-				downloadLinks: [
-					{ url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' }
-				]
-			},
-			{
-				badge: 'Essential', // Specify the badge here
+				badge: 'Essential',
 				title: 'XL Graphics',
 				author: 'Babbo',
 				workingVersion: '1.1.2',
@@ -42,7 +30,7 @@ export const mods = [
 				downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlgraphics', label: 'skaterxl.mod.io' }]
 			},
 			{
-				badge: 'Essential', // Specify the badge here
+				badge: 'Essential',
 				title: 'Soundmod',
 				author: 'Babbo, jbooogie',
 				workingVersion: '1.3.0',
@@ -62,6 +50,18 @@ export const mods = [
 				downloadLinks: [
 					{ url: 'https://mod.io/g/skaterxl/m/deckfx', label: 'skaterxl.mod.io' },
 					{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" }
+				]
+			},
+			{
+				badge: 'Recommended',
+				title: 'XL Gear Mod (XLGM2)',
+				author: 'mcbtay, Redgouf',
+				workingVersion: '2.0.1',
+				keybind: '(automatic)',
+				features: ['Dynamic Clothing', 'Custom Character Models', 'Unlimited Gear Customization'],
+				note: 'The XL Gear Mod is integrated into the Edit Skater Menu.',
+				downloadLinks: [
+					{ url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' }
 				]
 			},
 			{
@@ -100,6 +100,38 @@ export const mods = [
 			},
 			{
 				badge: 'Recommended',
+				title: 'Decal Fix',
+				author: 'Brookzee99',
+				workingVersion: '1.2.2.8 & 1.2.5.6',
+				keybind: '(automatic)',
+				features: ['Enhanced Decals', 'Screen Space Reflections'],
+				note: 'Download the Decal Fix from mod.io and install version 1.2.2.8.',
+				downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/decal-fix', label: 'skaterxl.mod.io' }]
+			},
+			{
+				badge: 'Useful',
+				title: 'XL Weather',
+				author: 'Guru',
+				workingVersion: '0.3.0',
+				keybind: 'W',
+				features: ['Day/Night cycles', 'Skybox customization', 'Add rain, snow, fog, etc.'],
+				note: '',
+				downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlweather', label: 'skaterxl.mod.io' }]
+			},
+			{
+				badge: 'Useful',
+				title: 'Grind Tools',
+				author: 'Guru',
+				workingVersion: '1.0.2',
+				keybind: '(automatic)',
+				features: ['Customizable Grind Splines', 'Wax Tool'],
+				note: 'Access this mod through the Pause menu.',
+				downloadLinks: [
+					{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
+				]
+			},
+			{
+				badge: 'Useful',
 				title: 'Mutliplayer++',
 				author: 'MateusSXL',
 				workingVersion: '1.0.1',
@@ -109,16 +141,6 @@ export const mods = [
 				downloadLinks: [
 					{ url: 'https://mod.io/g/skaterxl/m/multiplayer', label: 'skaterxl.mod.io' }
 				]
-			},
-			{
-				badge: 'Recommended',
-				title: 'Decal Fix',
-				author: 'Brookzee99',
-				workingVersion: '1.2.2.8 & 1.2.5.6',
-				keybind: '(automatic)',
-				features: ['Enhanced Decals', 'Screen Space Reflections'],
-				note: 'Download the Decal Fix from mod.io and install version 1.2.2.8.',
-				downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/decal-fix', label: 'skaterxl.mod.io' }]
 			},
 			{
 				badge: 'Useful',
@@ -184,18 +206,6 @@ export const mods = [
 				note: '',
 				downloadLinks: [
 					{ url: 'https://mod.io/g/skaterxl/m/controls-editor', label: 'skaterxl.mod.io' }
-				]
-			},
-			{
-				badge: 'Useful',
-				title: 'Grind Tools',
-				author: 'Guru',
-				workingVersion: '1.0.2',
-				keybind: '(automatic)',
-				features: ['Customizable Grind Splines', 'Wax Tool'],
-				note: 'Access this mod through the Pause menu.',
-				downloadLinks: [
-					{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
 				]
 			},
 			{
@@ -295,42 +305,8 @@ export const mods = [
 		version: 'v1.2.10.4',
 		modItems: [
 			{
-				badge: 'New', // Specify the badge here
-				title: 'XL Gear Mod (XLGM2)',
-				author: 'mcbtay, Redgouf',
-				workingVersion: '2.0.2',
-				keybind: '(automatic)',
-				features: ['Dynamic Clothing', 'Custom Character Models', 'Unlimited Gear Customization'],
-				note: 'The XL Gear Mod is integrated into the Edit Skater Menu.',
-				downloadLinks: [
-					{ url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' }
-				]
-			},
-			{
-				badge: 'New', // Specify the badge here
-				title: 'XL Weather',
-				author: 'Guru',
-				workingVersion: '0.3.3',
-				keybind: 'W',
-				features: ['Day/Night cycles', 'Skybox customization', 'Add rain, snow, fog, etc.'],
-				note: '',
-				downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlweather', label: 'skaterxl.mod.io' }]
-			},
-			{
-				badge: 'New',
-				title: 'Grind Tools',
-				author: 'Guru',
-				workingVersion: '2.0.1',
-				keybind: '(automatic)',
-				features: ['Customizable Grind Splines', 'Wax Tool'],
-				note: 'Access this mod through the Pause menu.',
-				downloadLinks: [
-					{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
-				]
-			},
-			{
-				badge: 'Essential', // Specify the badge here
-				title: 'XL Mod (Stats Menu)',
+				badge: 'Essential',
+				title: 'XL Mod (The Stats Menu)',
 				author: 'DawgVinci',
 				workingVersion: '1.0.0c',
 				keybind: 'F7',
@@ -345,7 +321,7 @@ export const mods = [
 				]
 			},
 			{
-				badge: 'Essential', // Specify the badge here
+				badge: 'Essential',
 				title: 'XL Graphics',
 				author: 'Babbo',
 				workingVersion: '2.0.2',
@@ -365,7 +341,7 @@ export const mods = [
 				downloadLinks: [{ url: 'https://discord.com/invite/RDh7tg2Bs5', label: "Guru's Discord" }]
 			},
 			{
-				badge: 'Essential', // Specify the badge here
+				badge: 'Essential',
 				title: 'Soundmod',
 				author: 'Babbo, jbooogie',
 				workingVersion: '1.2.0',
@@ -373,6 +349,18 @@ export const mods = [
 				features: ['Enhanced Gameplay/UI Sounds', 'Custom Soundpacks'],
 				note: "SoundMod version 1.2.0 does not include any pre-installed sounds. You'll need to download and manually install a soundpack to hear any changes.",
 				downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/soundmod', label: 'skaterxl.mod.io' }]
+			},
+			{
+				badge: 'Recommended',
+				title: 'XL Gear Mod (XLGM2)',
+				author: 'mcbtay, Redgouf',
+				workingVersion: '2.0.2',
+				keybind: '(automatic)',
+				features: ['Dynamic Clothing', 'Custom Character Models', 'Unlimited Gear Customization'],
+				note: 'The XL Gear Mod is integrated into the Edit Skater Menu.',
+				downloadLinks: [
+					{ url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' }
+				]
 			},
 			{
 				badge: 'Recommended',
@@ -407,6 +395,28 @@ export const mods = [
 				features: ['Map and Gear Sorting', 'Dark Mode', 'Enahnced UI'],
 				note: 'Download and install the XL Menu Mod v2.6.2. Right-click in the mod in UMM to update to v2.6.3.',
 				downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlmenumod', label: 'skaterxl.mod.io' }]
+			},
+			{
+				badge: 'Useful',
+				title: 'XL Weather',
+				author: 'Guru',
+				workingVersion: '0.3.3',
+				keybind: 'W',
+				features: ['Day/Night cycles', 'Skybox customization', 'Add rain, snow, fog, etc.'],
+				note: '',
+				downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlweather', label: 'skaterxl.mod.io' }]
+			},
+			{
+				badge: 'Useful',
+				title: 'Grind Tools',
+				author: 'Guru',
+				workingVersion: '2.0.1',
+				keybind: '(automatic)',
+				features: ['Customizable Grind Splines', 'Wax Tool'],
+				note: 'Access this mod through the Pause menu.',
+				downloadLinks: [
+					{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }
+				]
 			},
 			{
 				badge: 'Useful',
