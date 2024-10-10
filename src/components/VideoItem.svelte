@@ -16,18 +16,31 @@
 	function loadIframe() {
 		showIframe = true;
 	}
+
+	// Format date for the video
+	function formatDate(dateString: string) {
+		return new Date(dateString).toLocaleDateString('en-US', {
+			month: 'long',
+			day: 'numeric',
+			year: 'numeric'
+		});
+	}
+
+	// Handle keyboard accessibility for the video thumbnail
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Enter' || event.key === ' ') {
+			loadIframe();
+		}
+	}
 </script>
 
 <section class="mb-8">
 	<hr />
 	<h2 class="font-semibold">{video.title}</h2>
 	<p class:mb-2={video.description?.trim()} class:mb-4={!video.description?.trim()}>
-		{new Date(video.publishedAt).toLocaleDateString('en-US', {
-			month: 'long',
-			day: 'numeric',
-			year: 'numeric'
-		})}
+		{formatDate(video.publishedAt)}
 	</p>
+
 	{#if video.description?.trim()}
 		<p class="break-words">
 			{#if showFullDescription || video.description.length <= 100}
@@ -61,11 +74,7 @@
 				role="button"
 				tabindex="0"
 				aria-label="Play video"
-				on:keydown={(e) => {
-					if (e.key === 'Enter' || e.key === ' ') {
-						loadIframe();
-					}
-				}}
+				on:keydown={handleKeydown}
 			>
 				<img
 					class="absolute w-full h-full object-cover"

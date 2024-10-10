@@ -1,7 +1,9 @@
 <script lang="ts">
 	import { TabGroup, Tab, Accordion, AccordionItem } from '@skeletonlabs/skeleton';
-	import { mods } from './modsData'; // Ensure this path matches the location of your mods data file
+	import { mods } from './modsData';
+	import { sounds } from './soundsData';
 	import UnityDownload from '../../../components/UnityDownload.svelte';
+	import ModPacksDownload from '../../../components/ModPacksDownload.svelte';
 
 	let tabSet: number = 0;
 
@@ -28,6 +30,7 @@
 	<title>Skatebit | Mods</title>
 </svelte:head>
 
+<!-- Header Section -->
 <header>
 	<span class="badge variant-filled-primary mb-2">Skater XL</span>
 	<h1>Mods</h1>
@@ -40,9 +43,15 @@
 	</p>
 </header>
 
+<!-- Unity Mod Manager Section -->
 <section>
 	<hr />
 	<h2>UnityModManager</h2>
+	<p>
+		Download the UnityModManager application to start installing mods. This tool is essential for
+		managing and installing all Skater XL script mods.
+	</p>
+
 	<aside class="alert variant-filled-warning mb-4">
 		<div class="flex items-center">
 			<svg
@@ -81,7 +90,35 @@
 	<UnityDownload />
 </section>
 
-<section class="pb-8">
+<!-- Mod Packs Section -->
+<section>
+	<hr />
+	<h2>Mod Packs (new!)</h2>
+	<p>
+		"Mod Packs" allows users to download the complete set of mods for their chosen game version with
+		a single click, making it easy to get all the necessary mods at once.
+	</p>
+	<h3>Additional Notes</h3>
+	<ul>
+		<li>
+			These packs don't include any
+			<a href="/stats" data-sveltekit-preload-data="hover">stats & settings</a>, you will need to
+			install or set these up on your own.
+		</li>
+		<li>
+			Soundmod v1.2.0 for v1.2.10.4 does not include a <a
+				href="https://mod.io/g/skaterxl/m/ovalord-vx-soundmod"
+				data-sveltekit-preload-data="hover"
+				target="_blank">soundpack.</a
+			>
+			You will need to download and install one on your own.
+		</li>
+	</ul>
+	<ModPacksDownload />
+</section>
+
+<!-- Working Mod List Section -->
+<section>
 	<hr />
 	<h2>Working Mod List</h2>
 	<p>Select your game version below to browse a curated list of compatible mods.</p>
@@ -136,7 +173,7 @@
 										{#each downloadLinks as { url, label }}
 											<a
 												href={url}
-												class="mt-4 btn variant-filled-secondary no-underline"
+												class="mt-4 btn mr-2 variant-filled-secondary no-underline"
 												target="_blank"
 												rel="noopener noreferrer">{label}</a
 											>
@@ -150,4 +187,50 @@
 			{/if}
 		</svelte:fragment>
 	</TabGroup>
+</section>
+
+<!-- Sound Packs Section -->
+<section class="pb-8">
+	<hr />
+	<h2>Sound Packs</h2>
+	<p>Download sound packs for the Soundmod to enhance your Skater XL experience.</p>
+
+	<!-- Accordion for Mod Items -->
+	<Accordion>
+		{#each sounds as { modItems }}
+			{#each modItems as { title, author, note, downloadLinks }}
+				<AccordionItem>
+					<!-- Lead Slot for Badge if present -->
+					<svelte:fragment slot="lead"></svelte:fragment>
+
+					<!-- Accordion Summary -->
+					<svelte:fragment slot="summary">{title}</svelte:fragment>
+
+					<!-- Accordion Content -->
+					<svelte:fragment slot="content">
+						<div class="card p-4">
+							<div class="font-bold text-lg lg:text-2xl mb-4">{title}</div>
+							{#if note}
+								<div>
+									<strong>Note:</strong> <span>{note}</span>
+								</div>
+							{/if}
+
+							<!-- Download Links -->
+							<div class="flex items-start">
+								{#each downloadLinks as { url, label }}
+									<a
+										href={url}
+										class="mt-4 btn mr-2 variant-filled-secondary no-underline"
+										target="_blank"
+										rel="noopener noreferrer">{label}</a
+									>
+								{/each}
+							</div>
+						</div>
+					</svelte:fragment>
+				</AccordionItem>
+			{/each}
+		{/each}
+	</Accordion>
 </section>
