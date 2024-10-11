@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import UnityDownload from '../../../components/UnityDownload.svelte';
+	import VideoItem from '../../../components/VideoItem.svelte';
+	import { videos } from './videoData';
 </script>
 
 <svelte:head>
@@ -55,94 +56,82 @@
 	</p>
 
 	<!-- Step 1 -->
-	<div class="card p-4 mb-8">
-		<header class="card-header">
-			<strong>Step 1: Check Your Game Version</strong>
-		</header>
-		<section class="p-4">
-			Ensure you know your Skater XL version, as mod compatibility varies by version. Check the
-			version at launch in the lower-left corner; <strong>v1.2.2.8</strong> and
-			<strong>v1.2.10.4</strong> are the most common.
-		</section>
-	</div>
+
+	<h3>Step 1: Check Your Game Version</h3>
+
+	<section>
+		Ensure you know your Skater XL version, as mod compatibility varies by version. Check the
+		version at launch in the lower-left corner; v1.2.2.8 and v1.2.10.4 are the most common.
+	</section>
 
 	<!-- Step 2 -->
-	<div class="card p-4 mb-8">
-		<header class="card-header">
-			<strong>Step 2: Changing Game Versions (Optional)</strong>
-		</header>
-		<section class="p-4">
-			To switch versions, right-click <em>Skater XL</em> in Steam, select
-			<strong>Properties &gt; Betas</strong>, then choose from the dropdown.
-		</section>
-	</div>
+
+	<h3>Step 2: Changing Game Versions (Optional)</h3>
+	<section>
+		To switch versions, right-click <em>Skater XL</em> in Steam, select Properties &gt; Betas, then choose
+		from the dropdown.
+	</section>
 
 	<!-- Step 3 -->
-	<div class="card p-4 mb-8">
-		<header class="card-header">
-			<strong>Step 3: Download UnityModManager</strong>
-		</header>
-		<section class="p-4">
-			Select your game version below to download UnityModManager (UMM). It's very important that you
-			download and use the correct one.
-		</section>
-		<UnityDownload />
-	</div>
+
+	<h3>Step 3: Download UnityModManager</h3>
+	<section>
+		<p>Select your game version below to download UnityModManager.</p>
+		<blockquote class="blockquote lg:text-lg">
+			Note: It's very important that you download and use the correct UnityModManager. Failure to do
+			so will give you an error and result in your mods not working.
+		</blockquote>
+	</section>
+	<UnityDownload />
 
 	<!-- Step 4 -->
-	<div class="card p-4 mb-8">
-		<header class="card-header">
-			<strong>Step 4: UnityModManager Setup</strong>
-		</header>
-		<section class="p-4">
-			<p>
-				After downloading, unzip the file, open the folder, and run UnityModManager.exe. Set the
-				game path to:
-			</p>
-			<p>C:\Program Files (x86)\Steam\steamapps\common\Skater XL.</p>
-			Click "Install or Update" to complete the setup.
-		</section>
-	</div>
+
+	<h3>Step 4: UnityModManager Setup</h3>
+	<section>
+		<p>
+			After downloading, unzip the file, open the folder, and run <strong
+				>UnityModManager.exe.</strong
+			>
+		</p>
+		<p>Set the game path to:</p>
+		<pre class="pre">C:\Program Files (x86)\Steam\steamapps\common\Skater XL</pre>
+		Click&nbsp;<strong>"Install"</strong>&nbsp;or&nbsp;<strong>"Update"</strong>to complete the
+		setup.
+	</section>
 
 	<!-- Step 5 -->
-	<div class="card p-4 mb-8">
-		<header class="card-header">
-			<strong>Step 5: Download and Install Mods</strong>
-		</header>
-		<section class="p-4">
-			<p>
-				Download mods compatible with your game version and drop them into UnityModManager. Check
-				our <a href="/mods">Mods</a> tab for a list of functional mods.
-			</p>
 
-			<strong>Note:</strong> "Status: OK" or "Update to X.X.X" in UnityModManager means a mod is installed.
-			Do not update mods within the manager, as it may cause compatibility issues. For manual changes,
+	<h3>Step 5: Download and Install Mods</h3>
+	<section>
+		<p>
+			Download mods compatible with your game version and drop them into UnityModManager. Check our <a
+				href="/mods">Mods</a
+			> tab for a list of functional mods.
+		</p>
+
+		<blockquote class="blockquote lg:text-lg">
+			Note: "Status: OK" or "Update to X.X.X" in UnityModManager means a mod is installed. Do not
+			update mods within the manager, as it may cause compatibility issues. For manual changes,
 			right-click the mod.
-		</section>
-	</div>
+		</blockquote>
+	</section>
 
 	<!-- Step 6 -->
-	<div class="card p-4 mb-8">
-		<header class="card-header">
-			<strong>Step 6: Launch Skater XL</strong>
-		</header>
-		<section class="p-4">
-			Start Skater XL. UnityModManager will show each mod's status: green for functioning and red
-			for problems.
-		</section>
-	</div>
+
+	<h3>Step 6: Launch Skater XL</h3>
+	<section>
+		<p>Start Skater XL!</p>
+		<p>
+			If everything went well, UnityModManager will show up upon launch and all of your mods will be
+			listed. Status: green means the mod is working. Status: red means the mod is not working and
+			will need to be updated/removed.
+		</p>
+	</section>
 </section>
 
 <!-- Video Guides -->
 <section class="pb-8">
-	<hr />
-	<h2>2024 Mod Guide</h2>
-	<iframe
-		src="https://www.youtube.com/embed/veZlQE7tfHw?si=IvYW0f4Fgs5Wt65A"
-		frameborder="0"
-		allowfullscreen
-		class="w-full h-96"
-		title="2021 Skater XL Modding Guide"
-		loading="lazy"
-	></iframe>
+	{#each videos as video}
+		<VideoItem {video} />
+	{/each}
 </section>
