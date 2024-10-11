@@ -13,7 +13,7 @@
 			</p>
 			<a
 				class="btn variant-filled-secondary no-underline"
-				href="https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/XL%20Alpha%20(1.2.2.8)%20Mod%20Starter%20Pack.zip?alt=media&token=e754945b-68de-467f-b828-77faed02cfb6"
+				href="https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/XL%20Alpha%20(1.2.2.8)%20Mod%20Starter%20Pack.zip?alt=media&token=b61391d0-b0b7-4ad3-be73-712dd709c30c"
 			>
 				Download XL Alpha (1.2.2.8) Mod Starter Pack
 			</a></svelte:fragment

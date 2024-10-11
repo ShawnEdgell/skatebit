@@ -96,6 +96,7 @@
 	<hr />
 </header>
 
+<!-- mod.io Section -->
 <section>
 	<h2>skaterxl.mod.io</h2>
 	<p>
@@ -105,6 +106,7 @@
 	<a href="https://mod.io/g/skaterxl" target="_blank">skaterxl.mod.io</a>
 </section>
 
+<!-- Discord Links Section -->
 <section>
 	{#each categories as category}
 		<hr />

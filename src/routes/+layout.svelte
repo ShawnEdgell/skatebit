@@ -11,7 +11,7 @@
 	initializeStores();
 </script>
 
-<div class="flex flex-col items-center min-h-screen">
+<div class="flex flex-col items-center">
 	<div class="fixed top-0 w-full z-10">
 		<AppBar />
 	</div>
