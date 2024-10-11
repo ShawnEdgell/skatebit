@@ -7,7 +7,7 @@
 		class="flex flex-col font-semibold sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 items-center justify-center"
 	>
 		{#each navItems as { href, label }}
-			<a {href} class="underline hover:no-underline text-sm" data-sveltekit-preload-data="hover">
+			<a {href} class="underline hover:no-underline" data-sveltekit-preload-data="hover">
 				{label}
 			</a>
 		{/each}
