@@ -6,7 +6,7 @@
 	class="bg-surface-100-800-token text-base-content p-10 flex flex-col items-center w-full gap-6"
 >
 	<!-- Navigation links styled in grid layout -->
-	<nav class="grid grid-flow-col gap-4">
+	<nav class="grid text-center md:grid-flow-col gap-4">
 		{#each navItems as { href, label }}
 			<a
 				{href}
@@ -73,5 +73,5 @@
 	</nav>
 
 	<!-- Footer Text -->
-	<p class="text-center">©2024 Skatebit - Created by Milky 🥛</p>
+	<p class="text-center text-sm">©2024 Skatebit</p>
 </footer>
