@@ -17,7 +17,7 @@
 			<li>
 				<a
 					{href}
-					class="btn font-semibold w-full variant-ghost"
+					class="btn w-full variant-ghost"
 					on:click={closeDrawer}
 					data-focusindex={index + 1}
 				>
