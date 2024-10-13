@@ -26,6 +26,8 @@
 				href="https://www.youtube.com/results?search_query=skater+xl"
 				class="fill-current hover:text-primary"
 				target="_blank"
+				aria-hidden="true"
+				aria-label="YouTube"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 					<path
@@ -38,11 +40,13 @@
 				href="https://www.twitch.tv/search?term=skater%20xl"
 				class="fill-current hover:text-primary"
 				target="_blank"
+				aria-label="Twitch"
 			>
 				<svg
 					class="w-6 h-6"
 					viewBox="-0.5 0 20 20"
 					version="1.1"
+					aria-hidden="true"
 					xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink"
 					><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
@@ -73,5 +77,5 @@
 	</nav>
 
 	<!-- Footer Text -->
-	<p class="text-center text-sm">©2024 Skatebit</p>
+	<p class="text-center">©2024 Skatebit</p>
 </footer>
