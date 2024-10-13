@@ -26,10 +26,15 @@
 				href="https://www.youtube.com/results?search_query=skater+xl"
 				class="fill-current hover:text-primary"
 				target="_blank"
-				aria-hidden="true"
 				aria-label="YouTube"
 			>
-				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+				<svg
+					aria-hidden="true"
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+				>
 					<path
 						d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"
 					></path>
@@ -43,10 +48,10 @@
 				aria-label="Twitch"
 			>
 				<svg
+					aria-hidden="true"
 					class="w-6 h-6"
 					viewBox="-0.5 0 20 20"
 					version="1.1"
-					aria-hidden="true"
 					xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink"
 					><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
