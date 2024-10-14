@@ -1,10 +1,10 @@
 <script lang="ts">
 	const fileUrlFishy =
-		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_FishyStats.zip?alt=media&token=305d8e75-3569-43f3-b074-3ad615560e4e';
+		'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_FishyStats.zip?alt=media&token=ad841464-de0f-40b6-b96a-a3f945babd30';
 	const fileUrlSharky =
-		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_SharkyStats.zip?alt=media&token=3d4abf7d-3f01-4393-8490-ae2e230ab29f';
+		'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_SharkyStats.zip?alt=media&token=9cacaca1-33a8-4ec6-9e39-0da113675b25';
 	const fileUrlFroggy =
-		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_FroggyStats.zip?alt=media&token=0179b9fd-3d9c-4c36-a487-184c64644fb0';
+		'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_FroggyStats.zip?alt=media&token=66ead963-4e6c-4ba9-87d9-c5dc60c8b621';
 </script>
 
 <svelte:head>
