@@ -47,6 +47,7 @@
     "@supabase/auth-ui-svelte": "^0.2.9",
     "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "^2.39.8",
+    "firebase": "^11.0.1",
     "xml2js": "^0.6.2"
   }
 }
