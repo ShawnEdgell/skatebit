@@ -1,10 +1,12 @@
 <script lang="ts">
+	const fileUrlLatest =
+		'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_October-2024_STATS.zip?alt=media&token=4587263d-3c04-49ee-b6b2-fd176cf2ceaf';
 	const fileUrlFishy =
-		'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_FishyStats.zip?alt=media&token=ad841464-de0f-40b6-b96a-a3f945babd30';
+		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_FishyStats.zip?alt=media&token=305d8e75-3569-43f3-b074-3ad615560e4e';
 	const fileUrlSharky =
-		'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_SharkyStats.zip?alt=media&token=9cacaca1-33a8-4ec6-9e39-0da113675b25';
+		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_SharkyStats.zip?alt=media&token=3d4abf7d-3f01-4393-8490-ae2e230ab29f';
 	const fileUrlFroggy =
-		'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_FroggyStats.zip?alt=media&token=66ead963-4e6c-4ba9-87d9-c5dc60c8b621';
+		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_FroggyStats.zip?alt=media&token=0179b9fd-3d9c-4c36-a487-184c64644fb0';
 </script>
 
 <svelte:head>
@@ -19,10 +21,22 @@
 <section>
 	<hr />
 	<h2>Downloads</h2>
+	<h3>Milky's Latest Stats (October 2024)</h3>
+	<p>
+		14 Gravity. These are the latest stats I've been using. Every trick now includes automatic flips
+		with the XXL Mod. I made these stats as easy to use as possible. There are no Boned Ollie
+		Settings included in this pack.
+	</p>
+	<a href={fileUrlLatest} class="btn variant-filled-secondary no-underline" download
+		>Download Latest Stats</a
+	>
+</section>
+
+<section>
 	<h3>Milky's 'Fishy' Stats (Latest)</h3>
 	<p>
-		14 Gravity. These are the latest stats I've been using. Includes a mixture of old settings with
-		new stuff mixed in, a bunch of new steeze settings for high pops.
+		14 Gravity. Includes a mixture of old settings with new stuff mixed in, a bunch of new steeze
+		settings for high pops.
 	</p>
 	<a href={fileUrlFishy} class="btn variant-filled-secondary no-underline" download
 		>Download Fishy Stats</a

@@ -9,18 +9,10 @@
 </script>
 
 <Drawer id="main-menu">
-	<!-- Add a hidden div with a focus index so it gets focused first -->
-	<div data-focusindex="0" tabindex="-1" aria-hidden="true"></div>
-
 	<ul class="p-4 space-y-2">
-		{#each navItems as { href, label }, index}
+		{#each navItems as { href, label }}
 			<li>
-				<a
-					{href}
-					class="btn w-full variant-ghost"
-					on:click={closeDrawer}
-					data-focusindex={index + 1}
-				>
+				<a {href} class="btn font-semibold w-full variant-ghost" on:click={closeDrawer}>
 					{label}
 				</a>
 			</li>

@@ -9,7 +9,7 @@
 		<svelte:fragment slot="content">
 			<a
 				class="btn mt-2 variant-filled-secondary no-underline"
-				href="https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/UnityModManager-21-0-27-4-1690201835.zip?alt=media&token=465b5662-90de-475f-940a-7300715eed7c"
+				href="https://jvfiwbxwwjhhbfonzgbc.supabase.co/storage/v1/object/public/UnityModManager/Alpha/UnityModManager-21-0-27-4-1690201835.zip"
 			>
 				Download UnityModManager v0.27.4
 			</a></svelte:fragment
@@ -21,7 +21,7 @@
 		<svelte:fragment slot="content">
 			<a
 				class="btn mt-2 variant-filled-secondary no-underline"
-				href="https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/UnityModManager-21-0-27-7-1694510711.zip?alt=media&token=05045745-822a-481a-9a98-b1c532af7ad6"
+				href="https://jvfiwbxwwjhhbfonzgbc.supabase.co/storage/v1/object/public/UnityModManager/Public/UnityModManager-21-0-27-7-1694510711.zip"
 			>
 				Download UnityModManager v0.27.7
 			</a></svelte:fragment

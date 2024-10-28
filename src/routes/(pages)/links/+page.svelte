@@ -45,6 +45,7 @@
 			link: 'https://discord.gg/xQMXhCKfQ2',
 			owner: 'ClutchDidThat'
 		},
+		{ name: "Cupid's Discord", link: 'https://discord.gg/jXcU22c2Rz', owner: 'Cupid' },
 		{ name: "Hanzo's Discord", link: 'https://discord.gg/WaAKnSw6Ha', owner: 'Hanzo' },
 		{ name: "Kurbdogg420's Discord", link: 'https://discord.gg/EUkY43zSWd', owner: 'Kurbdogg420' },
 		{ name: 'Makes Discord', link: 'https://discord.gg/47pyuCNuxG', owner: 'Make' },
@@ -103,7 +104,11 @@
 		Explore and share a wide range of Skater XL mods, including scripts, gear, maps, and more, on
 		the essential hub for modding.
 	</p>
-	<a href="https://mod.io/g/skaterxl" target="_blank">skaterxl.mod.io</a>
+	<a
+		href="https://mod.io/g/skaterxl"
+		class="mt-4 btn mr-2 variant-filled-secondary no-underline"
+		target="_blank">skaterxl.mod.io</a
+	>
 </section>
 
 <!-- Discord Links Section -->

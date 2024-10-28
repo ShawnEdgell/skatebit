@@ -9,9 +9,9 @@
 		<svelte:fragment slot="content">
 			<a
 				class="btn mt-2 variant-filled-secondary no-underline"
-				href="https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/XL%20Alpha%20(1.2.2.8)%20Mod%20Starter%20Pack.zip?alt=media&token=0de47512-7c07-44dc-a3b4-d7e778d71e18"
+				href="https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/XL%20Alpha%20(1.2.2.8)%20Mod%20Starter%20Pack.zip?alt=media&token=b61391d0-b0b7-4ad3-be73-712dd709c30c"
 			>
-				Download XL Alpha (1.2.2.8) Mod Starter Pack
+				Download v1.2.2.8 Mod Pack
 			</a></svelte:fragment
 		>
 	</AccordionItem>
@@ -21,9 +21,9 @@
 		<svelte:fragment slot="content">
 			<a
 				class="btn mt-2 variant-filled-secondary no-underline"
-				href="https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/XL%20Public%20(1.2.10.4)%20Mod%20Starter%20Pack.zip?alt=media&token=4606055d-af18-4934-b3fc-b6f05989bf0a"
+				href="https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/XL%20Public%20(1.2.10.4)%20Mod%20Starter%20Pack.zip?alt=media&token=d1980ab9-c365-4585-b226-5360874ee9e4"
 			>
-				Download XL Public (1.2.10.4) Mod Starter Pack
+				Download v1.2.10.4 Mod Pack
 			</a></svelte:fragment
 		>
 	</AccordionItem>

@@ -25,7 +25,7 @@
 	<!-- Lead Slot -->
 	<svelte:fragment slot="lead">
 		<!-- Hamburger Icon -->
-		<button class="md:hidden" aria-label="Open navigation menu" on:click={openDrawer}>
+		<button class="md:hidden" on:click={openDrawer}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				stroke="currentColor"

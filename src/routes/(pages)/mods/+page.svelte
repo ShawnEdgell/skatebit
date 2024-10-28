@@ -49,13 +49,13 @@
 	<h2>UnityModManager</h2>
 	<p>
 		Download the UnityModManager application to start installing mods. This tool is essential for
-		managing and installing all Skater XL script mods.
+		managing and installing all Skater XL script mods. You will need to login to Nexus Mods in order
+		to download the file.
 	</p>
-
 	<aside class="alert variant-filled-warning mb-4">
 		<div class="flex items-center">
 			<svg
-				class="w-16 h-16 ml-2 mr-4"
+				class="w-24 h-24 ml-2 mr-4"
 				viewBox="0 0 24 24"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
@@ -82,18 +82,37 @@
 				</g></svg
 			>
 			<p class="text-base font-semibold my-0 lg:text-lg pr-2">
-				Using the correct version of UnityModManager is crucial for successfully installing mods in
-				Skater XL.
+				The latest UnityModManger has been updated to work with any version of Skater XL. Make sure
+				to select "Skater XL v1.2.2.8" as your game if you are playing on the Alpha branch.
 			</p>
 		</div>
 	</aside>
-	<UnityDownload />
+	<a
+		href="https://www.nexusmods.com/site/mods/21?tab=files"
+		class="mt-4 btn mr-2 variant-filled-secondary no-underline"
+		target="_blank">Nexus Mods Website</a
+	>
+</section>
+
+<!-- XL Hub Section -->
+<section>
+	<hr />
+	<h2>XL Hub</h2>
+	<p>
+		Browse, download, and manage your local and online community maps and mods. This application
+		makes installing mods as easy as a single click.
+	</p>
+	<a
+		href="https://mod.io/g/skaterxl/m/xlhub"
+		class="mt-4 btn mr-2 variant-filled-secondary no-underline"
+		target="_blank">XL Hub on mod.io</a
+	>
 </section>
 
 <!-- Mod Packs Section -->
 <section>
 	<hr />
-	<h2>Mod Packs (new!)</h2>
+	<h2>Mod Packs</h2>
 	<p>
 		"Mod Packs" allows users to download the complete set of mods for their chosen game version with
 		a single click, making it easy to get all the necessary mods at once.
