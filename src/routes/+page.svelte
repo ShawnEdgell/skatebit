@@ -1,10 +1,16 @@
 <script lang="ts">
 	import VideoItem from '../components/VideoItem.svelte';
-	import { channels } from './channelsData';
 
 	export let data;
 	let { videos } = data;
 	let activePlaylistId = 'ALL';
+
+	const channels = [
+		{ name: 'All', playlistId: 'ALL' },
+		{ name: 'Skater XL', playlistId: 'UUpBQRZl7apZt_LQXKgqKQiQ' },
+		{ name: 'Session', playlistId: 'PLWmRSsZZ1RCW-0uQWKlCAiGZVnIaRYaTm' },
+		{ name: 'Skate.', playlistId: 'UUSBQJEWTWOUCO65xvoDfljw' }
+	];
 </script>
 
 <svelte:head>
