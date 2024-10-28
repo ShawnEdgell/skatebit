@@ -1,5 +1,4 @@
 <script lang="ts">
-	// Define the structure for Discord server information
 	interface DiscordServer {
 		name: string;
 		link: string;
@@ -17,8 +16,7 @@
 		{ name: "Guru's Discord", link: 'https://discord.gg/bYK5w53Jg6', owner: 'Guru' }
 	];
 
-	// Define the arrays for other categories with an explicit type
-	const mapDiscords = [
+	const mapDiscords: DiscordServer[] = [
 		{ name: "Aaronb543's Discord", link: 'https://discord.gg/FfF6aFs4MX', owner: 'Aaronb543' },
 		{ name: "B-Row's Discord", link: 'https://discord.gg/DVcJEhPh8M', owner: 'B-Row' },
 		{ name: "BigCat's Discord", link: 'https://discord.gg/qkvAMhrswY', owner: 'BigCat' },
@@ -38,8 +36,8 @@
 		{ name: "Whynot_J's Discord", link: 'https://discord.gg/H5r9PU6zj7', owner: 'Whynot_J' }
 	];
 
-	const gearDiscords = [
-		{ name: 'Antikz Discord', link: 'https://discord.gg/pHQWsYG5Mm', owner: 'Antikz' },
+	const gearDiscords: DiscordServer[] = [
+		{ name: "Antikz's Discord", link: 'https://discord.gg/pHQWsYG5Mm', owner: 'Antikz' },
 		{
 			name: "ClutchDidThat's Discord",
 			link: 'https://discord.gg/xQMXhCKfQ2',
@@ -48,7 +46,7 @@
 		{ name: "Cupid's Discord", link: 'https://discord.gg/jXcU22c2Rz', owner: 'Cupid' },
 		{ name: "Hanzo's Discord", link: 'https://discord.gg/WaAKnSw6Ha', owner: 'Hanzo' },
 		{ name: "Kurbdogg420's Discord", link: 'https://discord.gg/EUkY43zSWd', owner: 'Kurbdogg420' },
-		{ name: 'Makes Discord', link: 'https://discord.gg/47pyuCNuxG', owner: 'Make' },
+		{ name: "Make's Discord", link: 'https://discord.gg/47pyuCNuxG', owner: 'Make' },
 		{
 			name: "Merlon Warlock's Discord",
 			link: 'https://discord.gg/dpXEKGSVxw',
@@ -56,10 +54,9 @@
 		},
 		{ name: "Speekeek's Discord", link: 'https://discord.gg/XHfcp258rv', owner: 'Speekeek' },
 		{ name: "Stevyy's Discord", link: 'https://discord.gg/9EzS82SNqG', owner: 'Stevyy' },
-		{ name: 'Sungodpxllz Discord', link: 'https://discord.gg/cUnwY8ZZej', owner: 'Sungodpxllz' }
+		{ name: "Sungodpxllz's Discord", link: 'https://discord.gg/cUnwY8ZZej', owner: 'Sungodpxllz' }
 	];
 
-	// Aggregate the categories in an array
 	const categories = [
 		{
 			title: 'Modder Discords',
@@ -86,7 +83,6 @@
 	<title>Skatebit | Helpful Links</title>
 </svelte:head>
 
-<!-- Header Section -->
 <header>
 	<span class="badge variant-filled-primary mb-2">Skater XL</span>
 	<h1>Helpful Links</h1>
@@ -97,7 +93,6 @@
 	<hr />
 </header>
 
-<!-- mod.io Section -->
 <section>
 	<h2>skaterxl.mod.io</h2>
 	<p>
@@ -111,7 +106,6 @@
 	>
 </section>
 
-<!-- Discord Links Section -->
 <section>
 	{#each categories as category}
 		<hr />
@@ -130,9 +124,7 @@
 					{#each category.data as server}
 						<tr>
 							<td>
-								<a href={server.link} target="_blank">
-									{server.name}
-								</a>
+								<a href={server.link} target="_blank">{server.name}</a>
 							</td>
 							<td>{server.owner}</td>
 						</tr>
