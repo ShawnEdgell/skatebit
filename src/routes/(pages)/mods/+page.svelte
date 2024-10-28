@@ -26,6 +26,10 @@
 
 <svelte:head>
 	<title>Skatebit | Mods</title>
+	<meta
+		name="description"
+		content="Everything you need to start modding Skater XL mods, including UnityModManager, XL Hub, mod packs, and working mod lists."
+	/>
 </svelte:head>
 
 <header>
