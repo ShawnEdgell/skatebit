@@ -1,12 +1,4 @@
 <script lang="ts">
-	const fileUrlLatest =
-		'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_October-2024_STATS.zip?alt=media&token=4587263d-3c04-49ee-b6b2-fd176cf2ceaf';
-	const fileUrlFishy =
-		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_FishyStats.zip?alt=media&token=305d8e75-3569-43f3-b074-3ad615560e4e';
-	const fileUrlSharky =
-		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_SharkyStats.zip?alt=media&token=3d4abf7d-3f01-4393-8490-ae2e230ab29f';
-	const fileUrlFroggy =
-		'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/Milky_FroggyStats.zip?alt=media&token=0179b9fd-3d9c-4c36-a487-184c64644fb0';
 </script>
 
 <svelte:head>
@@ -21,47 +13,34 @@
 <section>
 	<hr />
 	<h2>Downloads</h2>
-	<h3>Milky's Latest Stats (October 2024)</h3>
+	<h3>Basic Realistic Stats (Goofy & Regular)</h3>
 	<p>
-		14 Gravity. These are the latest stats I've been using. Every trick now includes automatic flips
-		with the XXL Mod. I made these stats as easy to use as possible. There are no Boned Ollie
-		Settings included in this pack.
+		These stats are designed to be as easy to use as possible. They include automatic steeze (flips)
+		with the XXL 3 Mod. Boned Ollie Mod settings aren't included in this pack.
 	</p>
-	<a href={fileUrlLatest} class="btn variant-filled-secondary no-underline" download
-		>Download Latest Stats</a
+	<a
+		href="https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Basic_Realistic_Settings.zip?alt=media&token=0331e15d-225c-4dd5-84f7-d87df00a24b0"
+		class="btn variant-filled-secondary no-underline"
+		download>Download</a
 	>
 </section>
 
 <section>
-	<h3>Milky's 'Fishy' Stats (Latest)</h3>
+	<h3>Milky's Latest Stats (Regular)</h3>
 	<p>
-		14 Gravity. Includes a mixture of old settings with new stuff mixed in, a bunch of new steeze
-		settings for high pops.
+		14 Gravity. These are the latest stats I've been using. You can find more stats from myself and
+		other community memebers in my Discord!
 	</p>
-	<a href={fileUrlFishy} class="btn variant-filled-secondary no-underline" download
-		>Download Fishy Stats</a
+	<a
+		href="https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/Milky_October-2024_STATS.zip?alt=media&token=4587263d-3c04-49ee-b6b2-fd176cf2ceaf"
+		class="btn variant-filled-secondary mr-2 no-underline"
+		download>Download</a
 	>
-</section>
-
-<section>
-	<h3>Milky's 'Sharky' Stats</h3>
-	<p>
-		13 gravity. Automatic steeze set up for most tricks. Custom catch and stances for pretty much
-		everything.
-	</p>
-	<a href={fileUrlSharky} class="btn variant-filled-secondary no-underline" download
-		>Download Sharky Stats</a
-	>
-</section>
-
-<section>
-	<h3>Milky's 'Froggy' Stats</h3>
-	<p>
-		15 Gravity. These stats have a bunch of 'automatic steeze' settings set up with the XXL3 Mod. To
-		make these work properly Fro's Realistic Catch has been turned off.
-	</p>
-	<a href={fileUrlFroggy} class="btn variant-filled-secondary no-underline" download
-		>Download Froggy Stats</a
+	<a
+		href="https://discord.gg/G9aW5uV"
+		class="btn variant-ghost-secondary no-underline"
+		target="_blank"
+		download>Milky's Discord</a
 	>
 </section>
 
