@@ -1,10 +1,12 @@
 <script lang="ts">
 	export let video: {
 		title: string;
-		publishedAt: string;
+		publishedAt?: string;
 		description?: string;
 		videoId: string;
 	};
+
+	export let showDate: boolean = true;
 
 	let showIframe = false;
 	let showFullDescription = false;
@@ -17,8 +19,8 @@
 		showIframe = true;
 	}
 
-	// Format date for the video
-	function formatDate(dateString: string) {
+	function formatDate(dateString: string | undefined) {
+		if (!dateString) return 'N/A'; // Default string if the date is missing
 		return new Date(dateString).toLocaleDateString('en-US', {
 			month: 'long',
 			day: 'numeric',
@@ -26,7 +28,6 @@
 		});
 	}
 
-	// Handle keyboard accessibility for the video thumbnail
 	function handleKeydown(event: KeyboardEvent) {
 		if (event.key === 'Enter' || event.key === ' ') {
 			loadIframe();
@@ -37,9 +38,12 @@
 <section class="mb-8">
 	<hr />
 	<h2 class="font-semibold">{video.title}</h2>
-	<p class:mb-2={video.description?.trim()} class:mb-4={!video.description?.trim()}>
-		{formatDate(video.publishedAt)}
-	</p>
+
+	{#if showDate}
+		<p class:mb-2={video.description?.trim()} class:mb-4={!video.description?.trim()}>
+			{formatDate(video.publishedAt)}
+		</p>
+	{/if}
 
 	{#if video.description?.trim()}
 		<p class="break-words">
