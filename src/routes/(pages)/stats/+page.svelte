@@ -9,7 +9,7 @@
 	<meta name="description" content="Get the latest stats from Milky and the community." />
 </svelte:head>
 
-<Header title="Stats & Settings" description="" />
+<Header title="Stats & Settings" description="Get the latest stats from Milky and the community." />
 
 <DownloadSection />
 <hr />
