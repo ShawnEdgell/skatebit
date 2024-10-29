@@ -42,7 +42,7 @@
 	<Step6LaunchGame />
 </section>
 
-<section class="pb-8">
+<section>
 	{#each videos as video}
 		<VideoItem {video} showDate={false} />
 	{/each}

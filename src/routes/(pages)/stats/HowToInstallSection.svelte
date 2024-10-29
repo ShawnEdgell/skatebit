@@ -1,4 +1,4 @@
-<section class="pb-8">
+<section>
 	<h2>How to Install</h2>
 	<p>
 		Extract the .zip folder to find each of these stat files, and place them in the following

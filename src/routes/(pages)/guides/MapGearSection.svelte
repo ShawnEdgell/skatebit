@@ -1,4 +1,3 @@
-<!-- MapGearSection.svelte -->
 <section>
 	<h2>Maps &amp; Gear</h2>
 	<p>

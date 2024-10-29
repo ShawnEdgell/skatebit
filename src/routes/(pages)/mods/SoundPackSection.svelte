@@ -3,7 +3,7 @@
 	import { sounds } from './soundsData';
 </script>
 
-<section class="pb-8">
+<section>
 	<h2>Sound Packs</h2>
 	<p>Download sound packs for the Soundmod to enhance your Skater XL experience.</p>
 
