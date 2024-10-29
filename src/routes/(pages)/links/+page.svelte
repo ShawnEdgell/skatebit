@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Header from '../../../components/Header.svelte';
+	import Badge from '../../../components/Badge.svelte';
 	import ModioSection from './components/ModioSection.svelte';
 	import XlHubSection from './components/XLHubSection.svelte';
 	import TableSection from './components/TableSection.svelte';
@@ -14,12 +14,16 @@
 	/>
 </svelte:head>
 
-<Header
-	title="Helpful Links"
-	description="Find essential Discord and website links for Skater XL mods, tutorials, and communities,
-   connecting you with the creators and content that enhance your gaming experience."
-/>
+<header>
+	<Badge />
+	<h1>Helpful Links</h1>
+	<p>
+		Find essential Discord and website links for Skater XL mods, tutorials, and communities,
+		connecting you with the creators and content that enhance your gaming experience.
+	</p>
+</header>
 
+<hr />
 <ModioSection />
 <hr />
 <XlHubSection />

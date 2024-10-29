@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Header from '../../../components/Header.svelte';
+	import Badge from '../../../components/Badge.svelte';
 	import MapGearSection from './components/MapGearSection.svelte';
 	import Step1CheckVersion from './components/Step1CheckVersion.svelte';
 	import Step2ChangeVersion from './components/Step2ChangeVersion.svelte';
@@ -19,11 +19,15 @@
 	/>
 </svelte:head>
 
-<Header
-	title="Guides"
-	description="Essential guides and tutorials to help you master Skater XL mods, gameplay, and customization."
-/>
+<header>
+	<Badge />
+	<h1>Guides</h1>
+	<p>
+		Essential guides and tutorials to help you master Skater XL mods, gameplay, and customization.
+	</p>
+</header>
 
+<hr />
 <MapGearSection />
 <hr />
 

@@ -161,7 +161,7 @@
 {#if isLoading}
 	<p>Loading post...</p>
 {:else if errorMessage}
-	<p class="text-red-500">{errorMessage}</p>
+	<p class="text-error-500">{errorMessage}</p>
 {:else if post}
 	{#if isEditing}
 		<!-- Edit Form -->
@@ -188,7 +188,7 @@
 	{:else}
 		<!-- Display Post -->
 		<h1>{post.title}</h1>
-		<p class="text-surface-300">
+		<p>
 			Posted by {post.userName} on {new Date(post.createdAt.seconds * 1000).toLocaleString()}
 		</p>
 		<p>{post.description}</p>

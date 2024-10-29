@@ -1,5 +1,5 @@
 <section>
-	<h2>How to Install</h2>
+	<h2>How to Install Stats & Settings</h2>
 	<p>
 		Download and extract the .ZIP folder to find each of these stat files, and place them in the
 		following directories:
@@ -9,13 +9,15 @@
 		files with the new ones you want to install.
 	</blockquote>
 	<h3>XXL 3 Mod Stats:</h3>
-	<pre class="pre">Documents/SkaterXL/XXLMod3/StatsCollections</pre>
+	<pre class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/XXLMod3/StatsCollections</pre>
 	<h3>XXL 3 Mod Stance:</h3>
-	<pre class="pre">Documents/SkaterXL/XXLMod3/StanceCollections</pre>
+	<pre
+		class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/XXLMod3/StanceCollections</pre>
 	<h3>XXL 3 Mod Steeze:</h3>
-	<pre class="pre">Documents/SkaterXL/XXLMod3/SteezeCollections</pre>
+	<pre
+		class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/XXLMod3/SteezeCollections</pre>
 	<h3>BonedOllieModSettings:</h3>
-	<pre class="pre">Documents/SkaterXL/BonedOllieMod</pre>
+	<pre class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/BonedOllieMod</pre>
 	<h3>Fro's Mod Settings:</h3>
-	<pre class="pre">Steam/steamapps/common/SkaterXL/fro-mod</pre>
+	<pre class="pre text-xs md:text-sm lg:text-base">Steam/steamapps/common/SkaterXL/fro-mod</pre>
 </section>

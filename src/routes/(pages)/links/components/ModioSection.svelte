@@ -6,7 +6,7 @@
 	</p>
 	<a
 		href="https://mod.io/g/skaterxl"
-		class="mt-4 btn mr-2 variant-filled-secondary no-underline"
+		class="btn mr-2 variant-filled-secondary no-underline"
 		target="_blank">skaterxl.mod.io</a
 	>
 </section>

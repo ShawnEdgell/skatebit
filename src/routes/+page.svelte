@@ -24,26 +24,25 @@
 </svelte:head>
 
 <article>
-	<div class="header">
+	{#each channels as { name, playlistId }}
+		<button
+			on:click={() => (activePlaylistId = playlistId)}
+			class="badge lg:btn-sm mr-2 mb-2 {activePlaylistId === playlistId
+				? 'variant-filled-primary'
+				: 'variant-soft-surface'}"
+		>
+			{name}
+		</button>
+	{/each}
+
+	<header>
 		<h1>Recent News</h1>
 		<p>
 			Discover the latest official updates, news, and videos from Skater XL, Session, Skate, and
 			more—all in one place.
 		</p>
-	</div>
+	</header>
 
-	<div class="flex flex-wrap mb-4">
-		{#each channels as { name, playlistId }}
-			<button
-				on:click={() => (activePlaylistId = playlistId)}
-				class="btn btn-sm lg:btn mr-2 mb-2 {activePlaylistId === playlistId
-					? 'variant-filled-primary'
-					: 'bg-gray-100 text-surface-800'}"
-			>
-				{name}
-			</button>
-		{/each}
-	</div>
 	{#each videos as video (video.videoId)}
 		{#if activePlaylistId === 'ALL' || activePlaylistId === video.playlistId}
 			<VideoItem {video} />

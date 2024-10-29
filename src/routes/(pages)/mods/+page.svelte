@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Header from '../../../components/Header.svelte';
+	import Badge from '../../../components/Badge.svelte';
 	import ModPackSection from './components/ModPackSection.svelte';
 	import WorkingModListSection from './components/WorkingModListSection.svelte';
 	import SoundPackSection from './components/SoundPackSection.svelte';
@@ -13,11 +13,17 @@
 	/>
 </svelte:head>
 
-<Header
-	title="Mods"
-	description="For help with installation, visit our Guides section or ask us questions on Discord."
-/>
+<header>
+	<Badge />
+	<h1>Mods</h1>
+	<p>
+		For help with installation, visit our
+		<a href="/guides">Guides</a> section or ask us questions on
+		<a href="https://discord.gg/359SwZ3atS" target="_blank">Discord.</a>
+	</p>
+</header>
 
+<hr />
 <WorkingModListSection />
 <hr />
 <ModPackSection />

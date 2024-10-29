@@ -9,14 +9,15 @@
 	</blockquote>
 
 	<h3>Custom Maps:</h3>
-	<pre>Documents/SkaterXL/Maps</pre>
+	<pre class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/Maps</pre>
 
 	<h3>Custom Gear:</h3>
-	<pre>Documents/SkaterXL/Gear</pre>
+	<pre class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/Gear</pre>
 
 	<h3>XLGM Gear:</h3>
-	<pre>Documents/SkaterXL/Gear</pre>
+	<pre class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/Gear</pre>
 
 	<h3>XLGM Assets:</h3>
-	<pre>Documents/SkaterXL/XLGearModifier/AssetPacks</pre>
+	<pre
+		class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/XLGearModifier/AssetPacks</pre>
 </section>

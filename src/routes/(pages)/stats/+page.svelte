@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Header from '../../../components/Header.svelte';
+	import Badge from '../../../components/Badge.svelte';
 	import HowToInstallSection from './components/HowToInstallSection.svelte';
 	import { user } from '$lib/stores/authStore';
 	import { auth, googleProvider, db, storage } from '$lib/firebase';
@@ -308,16 +308,21 @@
 	<meta name="description" content="Get the latest stats from Milky and the community." />
 </svelte:head>
 
-<Header
-	title="Stats & Settings"
-	description="Download and share stats and settings for the XXL Mod, Boned Ollie Mod, Fro's Mod, XL Graphics, and more."
-/>
+<header>
+	<Badge />
+	<h1>Stats & Settings</h1>
+	<p>
+		Download and share stats and settings for the XXL Mod, Boned Ollie Mod, Fro's Mod, XL Graphics,
+		and more.
+	</p>
+</header>
 
 <!-- Main Container -->
+<hr />
 <div class="flex flex-col items-center">
 	{#if $user}
 		<!-- Welcome Message -->
-		<p class="mt-0">Welcome, <strong>{$user.displayName || $user.email}!</strong></p>
+		<p class="mt-0 text-xl">Welcome, <strong>{$user.displayName || $user.email}!</strong></p>
 
 		<!-- Logout Button -->
 		<button class="btn variant-ghost" on:click={logout} disabled={isAuthLoading}>
@@ -330,7 +335,6 @@
 
 		<!-- Upload Form -->
 		<form class="w-full m-0 p-0" on:submit|preventDefault={handleSubmit}>
-			<hr />
 			<h2 class="mb-8">Upload a File</h2>
 			<div class="mb-4">
 				<input
@@ -398,12 +402,13 @@
 		{/if}
 	{:else}
 		<!-- Login Prompt -->
+
 		<div class="text-center">
-			<p class="mb-4 mt-0">You must be signed-in to upload and comment on posts.</p>
+			<div class="mb-4 mt-0">Please sign-in to upload your own files.</div>
 		</div>
 		<button class="btn variant-ghost" on:click={login} disabled={isAuthLoading}>
 			{#if isAuthLoading}
-				Logging in...
+				Signing in...
 			{:else}
 				<svg
 					class="w-5 h-5 inline-block mr-2"
@@ -447,14 +452,13 @@
 						</g>
 					</g>
 				</svg>
-				<div>Login with Google</div>
+				<div>Sign-in with Google</div>
 			{/if}
 		</button>
 	{/if}
 </div>
 <!-- Display Posts -->
 <div class="flex flex-col w-full">
-	<hr />
 	<h2>Downloads</h2>
 	{#if isLoadingPosts}
 		<p>Loading posts...</p>
@@ -467,10 +471,10 @@
 			{#each posts as post}
 				<a class="no-underline" href="/posts/{post.id}">
 					<div class="card space-y-2 hover:bg-surface-hover-token font-normal p-4">
-						<header class="card-header p-0 text-2xl font-semibold pb-1">
+						<header class="card-header p-0 text-2xl text-secondary-500 font-semibold pb-1">
 							{post.title}
 						</header>
-						<footer class="card-footer text-surface-400 text-sm p-0">
+						<footer class="card-footer text-sm p-0">
 							Posted by {post.userName} on {new Date(
 								post.createdAt.seconds * 1000
 							).toLocaleString()}
