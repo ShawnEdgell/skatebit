@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Header from '../../../components/Header.svelte';
-	import MapGearSection from './MapGearSection.svelte';
-	import Step1CheckVersion from './Step1CheckVersion.svelte';
-	import Step2ChangeVersion from './Step2ChangeVersion.svelte';
-	import Step3DownloadUnityModManager from './Step3DownloadUnityModManager.svelte';
-	import Step4SetupUnityModManager from './Step4SetupUnityModManager.svelte';
-	import Step5InstallMods from './Step5InstallMods.svelte';
-	import Step6LaunchGame from './Step6LaunchGame.svelte';
+	import MapGearSection from './components/MapGearSection.svelte';
+	import Step1CheckVersion from './components/Step1CheckVersion.svelte';
+	import Step2ChangeVersion from './components/Step2ChangeVersion.svelte';
+	import Step3DownloadUnityModManager from './components/Step3DownloadUnityModManager.svelte';
+	import Step4SetupUnityModManager from './components/Step4SetupUnityModManager.svelte';
+	import Step5InstallMods from './components/Step5InstallMods.svelte';
+	import Step6LaunchGame from './components/Step6LaunchGame.svelte';
 	import VideoItem from '../../../components/VideoItem.svelte';
 	import { videos } from './videoData';
 </script>

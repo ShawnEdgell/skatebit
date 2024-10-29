@@ -1,8 +1,8 @@
 <section>
 	<h2>How to Install</h2>
 	<p>
-		Extract the .zip folder to find each of these stat files, and place them in the following
-		directories:
+		Download and extract the .ZIP folder to find each of these stat files, and place them in the
+		following directories:
 	</p>
 	<blockquote class="blockquote lg:text-lg">
 		Note: For the BonedOllieMod and Fro's Mod settings, you'll need to replace the existing settings

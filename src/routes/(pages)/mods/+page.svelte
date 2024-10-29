@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Header from '../../../components/Header.svelte';
-	import ModPackSection from './ModPackSection.svelte';
-	import ModListSection from './ModListSection.svelte';
-	import SoundPackSection from './SoundPackSection.svelte';
+	import ModPackSection from './components/ModPackSection.svelte';
+	import WorkingModListSection from './components/WorkingModListSection.svelte';
+	import SoundPackSection from './components/SoundPackSection.svelte';
 </script>
 
 <svelte:head>
@@ -18,7 +18,7 @@
 	description="For help with installation, visit our Guides section or ask us questions on Discord."
 />
 
-<ModListSection />
+<WorkingModListSection />
 <hr />
 <ModPackSection />
 <hr />

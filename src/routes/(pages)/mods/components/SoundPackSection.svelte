@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton';
-	import { sounds } from './soundsData';
+	import { sounds } from '../soundsData';
 </script>
 
 <section>

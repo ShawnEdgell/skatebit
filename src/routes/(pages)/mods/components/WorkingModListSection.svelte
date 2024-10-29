@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { TabGroup, Tab, Accordion, AccordionItem } from '@skeletonlabs/skeleton';
-	import { mods } from './modsData';
+	import { mods } from '../modsData';
 
 	let tabSet: number = 0;
 

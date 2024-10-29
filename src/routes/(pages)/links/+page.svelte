@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Header from '../../../components/Header.svelte';
-	import ModioSection from './ModioSection.svelte';
-	import XlHubSection from './XLHubSection.svelte';
-	import TableSection from './TableSection.svelte';
+	import ModioSection from './components/ModioSection.svelte';
+	import XlHubSection from './components/XLHubSection.svelte';
+	import TableSection from './components/TableSection.svelte';
 	import { categories } from './linksData';
 </script>
 

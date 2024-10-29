@@ -1,5 +1,5 @@
 <script lang="ts">
-	import UnityDownload from '../../../components/UnityDownload.svelte';
+	import UnityDownload from '../../../../components/UnityDownload.svelte';
 </script>
 
 <section>
