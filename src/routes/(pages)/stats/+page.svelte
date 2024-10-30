@@ -1,4 +1,5 @@
 <script lang="ts">
+	import InstallHelp from '../../../components/InstallHelp.svelte';
 	import Badge from '../../../components/Badge.svelte';
 	import UploadForm from './components/UploadForm.svelte';
 	import LoginPrompt from './components/LoginPrompt.svelte';
@@ -64,6 +65,7 @@
 <header>
 	<Badge />
 	<h1>Stats & Settings</h1>
+	<InstallHelp />
 </header>
 
 <hr />
@@ -98,7 +100,7 @@
 			use:clickOutside
 		>
 			<h2 id="modal-title" class="text-xl font-bold mb-4">Upload Stats</h2>
-			<p class="mt-2 text-gray-700">
+			<p class="mt-2 text-base">
 				Please make sure to only upload <span class="font-semibold">.ZIP</span> files.
 			</p>
 			<button

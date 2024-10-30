@@ -122,7 +122,7 @@
 	></textarea>
 
 	<input
-		class="input mt-1 block w-full mb-4"
+		class="input mt-1 block w-full mb-4 text-base"
 		type="file"
 		accept=".zip"
 		on:change={handleFileChange}
