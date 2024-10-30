@@ -10,8 +10,20 @@
 	import Step6LaunchGame from './components/Step6LaunchGame.svelte';
 	import VideoItem from '../../../components/VideoItem.svelte';
 	import { videos } from './videoData';
+	import TabNavigation from '../../../components/TabNavigation.svelte';
 
 	let tabSet: number = 0;
+
+	const tabLinks = [
+		{ name: 'getting-started', label: 'Getting Started Guide' },
+		{ name: 'maps-gear', label: 'Maps & Gear' },
+		{ name: 'stats-settings', label: 'Stats & Settings' },
+		{ name: 'video-guides', label: 'Video Guides' }
+	];
+
+	const handleTabChange = (e: CustomEvent<number>) => {
+		tabSet = e.detail;
+	};
 </script>
 
 <svelte:head>
@@ -31,36 +43,12 @@
 	<hr />
 </header>
 
-<div class="logo-cloud grid-cols-1 sm:!grid-cols-2 gap-1">
-	<button
-		class="btn py-4 rounded-none logo-item no-underline"
-		on:click={() => (tabSet = 0)}
-		class:selected={tabSet === 0}
-	>
-		<span>Getting Started Guide</span>
-	</button>
-	<button
-		class="btn py-4 rounded-none logo-item no-underline"
-		on:click={() => (tabSet = 1)}
-		class:selected={tabSet === 1}
-	>
-		<span>Maps & Gear</span>
-	</button>
-	<button
-		class="btn py-4 rounded-none logo-item no-underline"
-		on:click={() => (tabSet = 2)}
-		class:selected={tabSet === 2}
-	>
-		<span>Stats & Settings</span>
-	</button>
-	<button
-		class="btn py-4 rounded-none logo-item no-underline"
-		on:click={() => (tabSet = 3)}
-		class:selected={tabSet === 3}
-	>
-		<span>Video Guides</span>
-	</button>
-</div>
+<TabNavigation
+	{tabLinks}
+	{tabSet}
+	columns="grid-cols-1 sm:!grid-cols-2"
+	on:tabChange={handleTabChange}
+/>
 
 {#if tabSet === 0}
 	<section>
