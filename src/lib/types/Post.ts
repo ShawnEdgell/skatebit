@@ -10,4 +10,5 @@ export interface Post {
 		seconds: number;
 		nanoseconds: number;
 	};
+	userPhotoURL: string | null;
 }

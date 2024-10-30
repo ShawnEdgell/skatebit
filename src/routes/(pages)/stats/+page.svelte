@@ -71,11 +71,16 @@
 
 <hr />
 
-<div class="card variant-ringed flex flex-col items-center pb-4">
+<div class="card variant-ringed flex flex-col items-center p-4">
 	{#if $user}
-		<div class="m-0 flex items-center gap-2">
+		<div class="flex items-center gap-2 not-prose p-4">
 			{#if $user.photoURL}
-				<Avatar src={$user.photoURL} width="w-10" rounded="rounded-full" alt="Profile Picture" />
+				<Avatar
+					src={$user.photoURL}
+					width="w-6 h-6 m-0"
+					rounded="rounded-full"
+					alt="Profile Picture"
+				/>
 			{/if}
 			<p>
 				Welcome,&nbsp<strong>{$user.displayName || $user.email}!</strong>

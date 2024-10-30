@@ -14,7 +14,7 @@
 
 <!-- Popup trigger button -->
 <button
-	class="btn text-surface-50/900 hover:text-surface-200/700 hidden md:flex items-center space-x-1 relative"
+	class="btn my-2 hover:bg-primary-500/10 hidden md:flex items-center space-x-1 relative"
 	use:popup={{ ...popupSettings, target: 'popup-0' }}
 	aria-haspopup="true"
 	aria-controls="popup-0"

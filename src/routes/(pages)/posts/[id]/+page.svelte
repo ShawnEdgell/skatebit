@@ -1,24 +1,12 @@
 <script lang="ts">
+	import { Avatar } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { user } from '$lib/stores/authStore';
 	import { db, storage } from '$lib/firebase';
 	import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 	import { ref as storageRef, deleteObject } from 'firebase/storage';
-
-	interface Post {
-		id: string;
-		title: string;
-		description: string;
-		fileURL: string;
-		filePath: string;
-		userId: string;
-		userName: string;
-		createdAt: {
-			seconds: number;
-			nanoseconds: number;
-		};
-	}
+	import type { Post } from '$lib/types/Post'; // Import Post type
 
 	let postId = $page.params.id;
 	let post: Post | null = null;
@@ -204,9 +192,20 @@
 		{/if}
 
 		<!-- Display Post -->
+
 		<h1>{post.title}</h1>
-		<p>
-			Posted by {post.userName} on {new Date(post.createdAt.seconds * 1000).toLocaleString()}
+		<p class="flex items-center gap-2 not-prose">
+			{#if post.userPhotoURL}
+				<Avatar
+					src={post.userPhotoURL}
+					width="w-6 h-6"
+					rounded="rounded-full"
+					alt="Profile Picture"
+				/>
+			{/if}
+			<span>
+				Posted by {post.userName} on {new Date(post.createdAt.seconds * 1000).toLocaleString()}
+			</span>
 		</p>
 		<p>{post.description}</p>
 		<!-- Download Button -->

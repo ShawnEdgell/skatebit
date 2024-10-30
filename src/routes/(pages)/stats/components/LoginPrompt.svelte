@@ -17,7 +17,7 @@
 </script>
 
 <div class="text-center p-4">
-	<div class="mb-4 mt-4">Please sign-in to upload your own files.</div>
+	<div class="mb-4">Please sign-in to upload your own files.</div>
 	<button class="btn variant-ghost" on:click={login} disabled={isAuthLoading}>
 		{#if isAuthLoading}
 			Signing in...

@@ -20,16 +20,14 @@
 
 <Toast />
 <Modal />
+<DrawerMenu />
 
 <div class="flex flex-col items-center h-full">
 	<div class="fixed top-0 w-full z-10">
 		<AppBar />
 	</div>
-	<DrawerMenu />
-	<div class="flex">
-		<main class="prose lg:prose-lg dark:prose-invert w-full flex-1 mt-[2.5rem] px-4 py-12">
-			<slot />
-		</main>
-	</div>
+	<main class="prose lg:prose-lg dark:prose-invert w-full flex-1 mt-[2.5rem] px-4 py-12">
+		<slot />
+	</main>
 	<Footer />
 </div>

@@ -38,6 +38,7 @@
 			}
 			const userId = $user.uid;
 			const userName = $user.displayName || $user.email || 'Anonymous';
+			const userPhotoURL = $user.photoURL || null; // Capture user's profile image URL
 
 			// Upload file to Firebase Storage
 			const filePath = `uploads/${userId}/${Date.now()}_${file.name}`;
@@ -53,6 +54,7 @@
 				filePath,
 				userId,
 				userName,
+				userPhotoURL, // Store the user's profile image URL in the post data
 				createdAt: serverTimestamp()
 			});
 
