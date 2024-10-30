@@ -34,7 +34,7 @@
 			<strong>Features:</strong>
 			<span>
 				{#each features as feature, i}
-					{feature}{#if i < features.length - 1},
+					{feature}{#if i < features.length - 1},&nbsp;
 					{/if}
 				{/each}
 			</span>

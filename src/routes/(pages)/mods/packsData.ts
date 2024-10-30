@@ -1,7 +1,7 @@
 export const modPacks = [
 	{
 		title: 'Skater XL v1.2.2.8 (Alpha)',
-		note: 'This mod pack is designed for alpha testing.',
+		note: 'This mod pack is designed for alpha version.',
 		downloadLinks: [
 			{
 				url: 'https://firebasestorage.googleapis.com/v0/b/stillmilkylive.appspot.com/o/XL%20Alpha%20(1.2.2.8)%20Mod%20Starter%20Pack.zip?alt=media&token=b61391d0-b0b7-4ad3-be73-712dd709c30c',
