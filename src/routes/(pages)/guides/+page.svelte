@@ -73,7 +73,9 @@
 {:else if tabSet === 3}
 	<section>
 		{#each videos as video}
-			<VideoItem {video} showDate={false} />
+			<div class="mt-12">
+				<VideoItem {video} showDate={false} />
+			</div>
 		{/each}
 	</section>
 {/if}

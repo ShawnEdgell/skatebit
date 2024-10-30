@@ -9,28 +9,28 @@
 </script>
 
 <div class="card p-4">
-	<div class="font-bold text-lg lg:text-2xl mb-4">{title}</div>
+	<h3 class="mt-0">{title}</h3>
 
 	{#if author}
-		<div class="mb-2">
+		<div class="mb-1">
 			<strong>Author:</strong> <span>{author}</span>
 		</div>
 	{/if}
 
 	{#if workingVersion}
-		<div class="mb-2">
+		<div class="mb-1">
 			<strong>Working Version:</strong> <span>{workingVersion}</span>
 		</div>
 	{/if}
 
 	{#if keybind}
-		<div class="mb-2">
+		<div class="mb-1">
 			<strong>Keybind:</strong> <span>{keybind}</span>
 		</div>
 	{/if}
 
 	{#if features}
-		<div class="mb-2">
+		<div class="mb-1">
 			<strong>Features:</strong>
 			<span>
 				{#each features as feature, i}
@@ -42,7 +42,7 @@
 	{/if}
 
 	{#if note}
-		<div class="mb-2">
+		<div class="mb-1">
 			<strong>Note:</strong> <span>{note}</span>
 		</div>
 	{/if}

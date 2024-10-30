@@ -36,13 +36,12 @@
 </script>
 
 <section class="mb-8">
-	<h2>{video.title}</h2>
-
 	{#if showDate}
 		<p class:mb-2={video.description?.trim()} class:mb-4={!video.description?.trim()}>
 			{formatDate(video.publishedAt)}
 		</p>
 	{/if}
+	<h2 class="mt-0">{video.title}</h2>
 
 	{#if video.description?.trim()}
 		<p class="break-words">
