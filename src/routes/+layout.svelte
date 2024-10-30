@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { initializeStores, storePopup, Modal } from '@skeletonlabs/skeleton';
+	import { initializeStores, storePopup, Modal, Toast } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import AppBar from '../components/AppBar.svelte';
 	import Footer from '../components/Footer.svelte';
@@ -11,6 +11,7 @@
 	initializeStores();
 </script>
 
+<Toast />
 <Modal />
 
 <div class="flex flex-col items-center h-full">

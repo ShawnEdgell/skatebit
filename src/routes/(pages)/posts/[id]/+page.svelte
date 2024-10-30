@@ -165,42 +165,34 @@
 {:else if post}
 	{#if isEditing}
 		<!-- Edit Form -->
-		<form on:submit|preventDefault={updatePost}>
+		<form class="space-y-4" on:submit|preventDefault={updatePost}>
 			<div>
-				<label for="edit-title">Title:</label>
-				<input id="edit-title" bind:value={editTitle} required />
+				<input class="input" type="text" placeholder="Input" bind:value={editTitle} required />
 			</div>
 
 			<div>
-				<label for="edit-description">Description:</label>
-				<textarea id="edit-description" bind:value={editDescription} required></textarea>
+				<textarea class="textarea" rows="4" bind:value={editDescription} required></textarea>
 			</div>
-
-			<button type="submit" disabled={isUpdating}>
-				{#if isUpdating}
-					Updating...
-				{:else}
-					Update
-				{/if}
-			</button>
-			<button type="button" on:click={cancelEdit}>Cancel</button>
+			<div class="flex justify-center">
+				<button class="btn variant-filled-secondary mr-2" type="submit" disabled={isUpdating}>
+					{#if isUpdating}
+						Updating...
+					{:else}
+						Update
+					{/if}
+				</button>
+				<button class="btn variant-ghost" type="button" on:click={cancelEdit}>Cancel</button>
+			</div>
 		</form>
 	{:else}
-		<!-- Display Post -->
-		<h1>{post.title}</h1>
-		<p>
-			Posted by {post.userName} on {new Date(post.createdAt.seconds * 1000).toLocaleString()}
-		</p>
-		<p>{post.description}</p>
-		<!-- Download Button -->
-		<a href={post.fileURL} class="btn variant-filled-secondary no-underline" download>Download</a>
-
 		<!-- Show edit/delete buttons if current user is the original poster -->
 		{#if $user && $user.uid === post.userId}
-			<button on:click={startEdit} class="btn variant-filled-warning no-underline">Edit</button>
+			<button on:click={startEdit} class="btn btn-sm mb-4 variant-filled-warning no-underline"
+				>Edit</button
+			>
 			<button
 				on:click={deletePost}
-				class="btn variant-filled-error no-underline"
+				class="btn btn-sm mb-4 variant-filled-error no-underline"
 				disabled={isDeleting}
 			>
 				{#if isDeleting}
@@ -210,6 +202,15 @@
 				{/if}
 			</button>
 		{/if}
+
+		<!-- Display Post -->
+		<h1>{post.title}</h1>
+		<p>
+			Posted by {post.userName} on {new Date(post.createdAt.seconds * 1000).toLocaleString()}
+		</p>
+		<p>{post.description}</p>
+		<!-- Download Button -->
+		<a href={post.fileURL} class="btn variant-filled-secondary no-underline" download>Download</a>
 	{/if}
 {:else}
 	<p>Post not found.</p>

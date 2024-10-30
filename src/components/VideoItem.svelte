@@ -35,8 +35,8 @@
 	}
 </script>
 
+<hr />
 <section class="mb-8">
-	<hr />
 	<h2 class="font-semibold">{video.title}</h2>
 
 	{#if showDate}
@@ -60,7 +60,7 @@
 		{/if}
 	{/if}
 
-	<div class="relative w-full pb-[56.25%] h-0 overflow-hidden">
+	<div class="shadow-lg relative w-full pb-[56.25%] h-0 overflow-hidden">
 		{#if showIframe}
 			<iframe
 				class="absolute top-0 left-0 w-full h-full"

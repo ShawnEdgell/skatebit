@@ -9,9 +9,7 @@
 		id: 'main-menu', // Make sure this matches the ID in your layout
 		bgDrawer: 'bg-surface-50-900-token',
 		bgBackdrop: 'bg-gradient-to-tr from-surface-500/50 via-surface-500/50 to-surface-500/50',
-		width: 'w-[280px] md:w-[480px]',
-		padding: 'p-4',
-		rounded: 'rounded-xl'
+		width: 'w-[280px] md:w-[480px]'
 	};
 
 	const openDrawer = () => drawerStore.open(drawerSettings);
