@@ -28,11 +28,10 @@
 	<p>
 		Essential guides and tutorials to help you master Skater XL mods, gameplay, and customization.
 	</p>
+	<hr />
 </header>
 
-<hr />
-
-<div class="logo-cloud grid-cols-1 lg:!grid-cols-2 gap-1">
+<div class="logo-cloud grid-cols-1 sm:!grid-cols-2 gap-1">
 	<button
 		class="btn py-4 rounded-none logo-item no-underline"
 		on:click={() => (tabSet = 0)}
@@ -90,11 +89,3 @@
 		{/each}
 	</section>
 {/if}
-
-<style>
-	.logo-item.selected {
-		/* Styles for selected tab */
-		background-color: #4f46e5; /* Example blue background */
-		color: white;
-	}
-</style>

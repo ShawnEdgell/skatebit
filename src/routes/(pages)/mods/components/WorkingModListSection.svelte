@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { TabGroup, Tab, Accordion, AccordionItem } from '@skeletonlabs/skeleton';
 	import { mods } from '../modsData';
+	import ModCard from '../../../../components/ModCard.svelte';
 
 	let tabSet: number = 0;
 
@@ -47,39 +48,15 @@
 							</svelte:fragment>
 							<svelte:fragment slot="summary">{modItem.title}</svelte:fragment>
 							<svelte:fragment slot="content">
-								<div class="card p-4">
-									<div class="font-bold text-lg lg:text-2xl mb-4">{modItem.title}</div>
-									<div><strong>Author:</strong> <span>{modItem.author}</span></div>
-									<div>
-										<strong>Working Version:</strong>
-										<span>{modItem.workingVersion}</span>
-									</div>
-									<div><strong>Keybind:</strong> <span>{modItem.keybind}</span></div>
-									<div>
-										<strong>Features:</strong>
-										<span>
-											{#each modItem.features as feature, i}
-												{feature}{#if i < modItem.features.length - 1},
-												{/if}
-											{/each}
-										</span>
-									</div>
-									{#if modItem.note}
-										<div>
-											<strong>Note:</strong> <span>{modItem.note}</span>
-										</div>
-									{/if}
-									<div class="flex items-start">
-										{#each modItem.downloadLinks as { url, label }}
-											<a
-												href={url}
-												class="mt-4 btn mr-2 variant-filled-secondary no-underline"
-												target="_blank"
-												rel="noopener noreferrer">{label}</a
-											>
-										{/each}
-									</div>
-								</div>
+								<ModCard
+									title={modItem.title}
+									author={modItem.author}
+									workingVersion={modItem.workingVersion}
+									keybind={modItem.keybind}
+									features={modItem.features}
+									note={modItem.note}
+									downloadLinks={modItem.downloadLinks}
+								/>
 							</svelte:fragment>
 						</AccordionItem>
 					{/each}

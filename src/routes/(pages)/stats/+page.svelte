@@ -67,11 +67,10 @@
 	<Badge />
 	<h1>Stats & Settings</h1>
 	<InstallHelp />
+	<hr />
 </header>
 
-<hr />
-
-<div class="card variant-ringed flex flex-col items-center p-4">
+<div class="card flex flex-col items-center p-4">
 	{#if $user}
 		<div class="flex items-center gap-2 not-prose p-4">
 			{#if $user.photoURL}

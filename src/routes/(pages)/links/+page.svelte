@@ -18,11 +18,10 @@
 	<Badge />
 	<h1>Helpful Links</h1>
 	<p>Find essential Discord and website links for Skater XL mods, tutorials, and communities.</p>
+	<hr />
 </header>
 
-<hr />
 <ModioSection />
-
 <XlHubSection />
 <hr />
 <TableSection {categories} />
