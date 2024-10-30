@@ -1,5 +1,4 @@
 <section>
-	<hr />
 	<h2>How to Install Stats & Settings</h2>
 	<p>
 		Download and extract the .ZIP folder to find each of these stat files, and place them in the

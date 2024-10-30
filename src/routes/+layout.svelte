@@ -1,6 +1,13 @@
 <script lang="ts">
 	import '../app.postcss';
-	import { initializeStores, storePopup, Modal, Toast } from '@skeletonlabs/skeleton';
+	import {
+		initializeStores,
+		storePopup,
+		Modal,
+		Toast,
+		TableOfContents,
+		tocCrawler
+	} from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import AppBar from '../components/AppBar.svelte';
 	import Footer from '../components/Footer.svelte';
@@ -19,8 +26,10 @@
 		<AppBar />
 	</div>
 	<DrawerMenu />
-	<main class="prose lg:prose-xl dark:prose-invert w-full flex-1 mt-[4.5rem] px-4 py-8">
-		<slot />
-	</main>
+	<div class="flex">
+		<main class="prose lg:prose-lg dark:prose-invert w-full flex-1 mt-[2.5rem] px-4 py-12">
+			<slot />
+		</main>
+	</div>
 	<Footer />
 </div>

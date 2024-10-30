@@ -27,7 +27,7 @@
 	{#each channels as { name, playlistId }}
 		<button
 			on:click={() => (activePlaylistId = playlistId)}
-			class="badge lg:btn-sm mr-2 mb-2 {activePlaylistId === playlistId
+			class="badge lg:btn-sm mr-2 mb-4 {activePlaylistId === playlistId
 				? 'variant-filled-primary'
 				: 'variant-soft-surface'}"
 		>
@@ -37,6 +37,10 @@
 
 	<header>
 		<h1>Recent News</h1>
+		<p>
+			Discover the latest official updates, news, and videos from Skater XL, Session, Skate, and
+			more—all in one place.
+		</p>
 	</header>
 
 	{#each videos as video (video.videoId)}

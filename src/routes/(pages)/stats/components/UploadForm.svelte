@@ -135,7 +135,7 @@
 			Cancel
 		</button>
 		<button class="btn variant-filled-secondary" type="submit" disabled={isUploading}>
-			{isUploading ? 'Uploading...' : 'Upload'}
+			{isUploading ? 'Uploading...' : 'Submit'}
 		</button>
 	</div>
 </form>

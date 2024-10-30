@@ -16,6 +16,7 @@
 </script>
 
 <AppBar
+	padding="px-4"
 	gridColumns="grid-cols-3"
 	slotDefault="place-self-center md:place-self-center"
 	slotTrail="place-content-end"
@@ -39,7 +40,7 @@
 		<!-- Logo for larger screens -->
 		<a
 			href="/"
-			class="btn p-0 hidden md:flex items-center text-2xl font-extrabold italic"
+			class="btn px-0 py-2 hidden md:flex items-center text-xl font-extrabold italic"
 			data-sveltekit-preload-data="hover"
 		>
 			Skatebit
@@ -49,13 +50,13 @@
 	<!-- Center Title for mobile -->
 	<a
 		href="/"
-		class="block btn p-0 md:hidden text-2xl font-extrabold italic"
+		class="block btn md:hidden text-xl font-extrabold italic"
 		data-sveltekit-preload-data="hover">Skatebit</a
 	>
 
 	<!-- Trail Slot -->
 	<svelte:fragment slot="trail">
 		<Popups />
-		<LightSwitch />
+		<LightSwitch height="h-5" width="w-10" />
 	</svelte:fragment>
 </AppBar>

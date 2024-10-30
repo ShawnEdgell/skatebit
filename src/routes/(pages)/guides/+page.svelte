@@ -25,34 +25,37 @@
 <header>
 	<Badge />
 	<h1>Guides</h1>
+	<p>
+		Essential guides and tutorials to help you master Skater XL mods, gameplay, and customization.
+	</p>
 </header>
 
 <hr />
 
 <div class="logo-cloud grid-cols-1 lg:!grid-cols-2 gap-1">
 	<button
-		class="btn rounded-none logo-item no-underline"
+		class="btn py-4 rounded-none logo-item no-underline"
 		on:click={() => (tabSet = 0)}
 		class:selected={tabSet === 0}
 	>
 		<span>Getting Started Guide</span>
 	</button>
 	<button
-		class="btn rounded-none logo-item no-underline"
+		class="btn py-4 rounded-none logo-item no-underline"
 		on:click={() => (tabSet = 1)}
 		class:selected={tabSet === 1}
 	>
 		<span>Maps & Gear</span>
 	</button>
 	<button
-		class="btn rounded-none logo-item no-underline"
+		class="btn py-4 rounded-none logo-item no-underline"
 		on:click={() => (tabSet = 2)}
 		class:selected={tabSet === 2}
 	>
 		<span>Stats & Settings</span>
 	</button>
 	<button
-		class="btn rounded-none logo-item no-underline"
+		class="btn py-4 rounded-none logo-item no-underline"
 		on:click={() => (tabSet = 3)}
 		class:selected={tabSet === 3}
 	>
@@ -62,7 +65,6 @@
 
 {#if tabSet === 0}
 	<section>
-		<hr />
 		<h2>Getting Started with Skater XL Modding</h2>
 		<p>
 			This guide will walk you through the essential steps to get you up and running with all the
@@ -84,7 +86,6 @@
 {:else if tabSet === 3}
 	<section>
 		{#each videos as video}
-			<hr />
 			<VideoItem {video} showDate={false} />
 		{/each}
 	</section>
@@ -94,5 +95,6 @@
 	.logo-item.selected {
 		/* Styles for selected tab */
 		background-color: #4f46e5; /* Example blue background */
+		color: white;
 	}
 </style>

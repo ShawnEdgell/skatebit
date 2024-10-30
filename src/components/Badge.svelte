@@ -1,1 +1,1 @@
-<span class="badge lg:btn-sm variant-filled-primary mb-2">Skater XL</span>
+<span class="badge lg:btn-sm variant-filled-primary mb-4">Skater XL</span>

@@ -1,5 +1,4 @@
 <section>
-	<hr />
 	<h2>Maps &amp; Gear</h2>
 	<p>
 		To install custom maps and gear, simply place them in the following directories. Make sure to

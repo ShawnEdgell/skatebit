@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { Avatar } from '@skeletonlabs/skeleton';
 	import InstallHelp from '../../../components/InstallHelp.svelte';
 	import Badge from '../../../components/Badge.svelte';
 	import UploadForm from './components/UploadForm.svelte';
@@ -70,14 +71,19 @@
 
 <hr />
 
-<div class="flex flex-col items-center">
+<div class="card variant-ringed flex flex-col items-center pb-4">
 	{#if $user}
-		<div class="mt-0 mb-4">
-			Welcome, <strong>{$user.displayName || $user.email}!</strong>
+		<div class="m-0 flex items-center gap-2">
+			{#if $user.photoURL}
+				<Avatar src={$user.photoURL} width="w-10" rounded="rounded-full" alt="Profile Picture" />
+			{/if}
+			<p>
+				Welcome,&nbsp<strong>{$user.displayName || $user.email}!</strong>
+			</p>
 		</div>
 
-		<div class="flex space-x-2">
-			<button class="btn variant-filled-secondary" on:click={openModal}>Upload</button>
+		<div class="gap-2 mb-4">
+			<button class="btn variant-filled-secondary" on:click={openModal}>Upload Stats</button>
 			<button class="btn variant-ghost" on:click={logout} disabled={isAuthLoading}>
 				{isAuthLoading ? 'Logging out...' : 'Logout'}
 			</button>
@@ -101,7 +107,7 @@
 		>
 			<h2 id="modal-title" class="text-xl font-bold mb-4">Upload Stats</h2>
 			<p class="mt-2 text-base">
-				Please make sure to only upload <span class="font-semibold">.ZIP</span> files.
+				Please make sure to only upload <strong>.ZIP</strong> files.
 			</p>
 			<button
 				class="absolute top-4 right-4 text-2xl font-bold"
