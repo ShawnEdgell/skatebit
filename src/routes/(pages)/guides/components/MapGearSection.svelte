@@ -1,4 +1,5 @@
 <section>
+	<hr />
 	<h2>Maps &amp; Gear</h2>
 	<p>
 		To install custom maps and gear, simply place them in the following directories. Make sure to
@@ -9,15 +10,14 @@
 	</blockquote>
 
 	<h3>Custom Maps:</h3>
-	<pre class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/Maps</pre>
+	<pre class="pre text-xs md:text-base">Documents/SkaterXL/Maps</pre>
 
 	<h3>Custom Gear:</h3>
-	<pre class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/Gear</pre>
+	<pre class="pre text-xs md:text-base">Documents/SkaterXL/Gear</pre>
 
 	<h3>XLGM Gear:</h3>
-	<pre class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/Gear</pre>
+	<pre class="pre text-xs md:text-base">Documents/SkaterXL/Gear</pre>
 
 	<h3>XLGM Assets:</h3>
-	<pre
-		class="pre text-xs md:text-sm lg:text-base">Documents/SkaterXL/XLGearModifier/AssetPacks</pre>
+	<pre class="pre text-xs md:text-base">Documents/SkaterXL/XLGearModifier/AssetPacks</pre>
 </section>

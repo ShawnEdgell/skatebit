@@ -3,7 +3,6 @@
 	import UploadForm from './components/UploadForm.svelte';
 	import LoginPrompt from './components/LoginPrompt.svelte';
 	import PostsList from './components/PostsList.svelte';
-	import HowToInstallSection from './components/HowToInstallSection.svelte';
 	import { signOut } from 'firebase/auth';
 	import { auth } from '$lib/firebase';
 	import { user } from '$lib/stores/authStore';
@@ -65,10 +64,6 @@
 <header>
 	<Badge />
 	<h1>Stats & Settings</h1>
-	<p>
-		Download and share stats and settings for the XXL Mod, Boned Ollie Mod, Fro's Mod, XL Graphics,
-		and more.
-	</p>
 </header>
 
 <hr />
@@ -92,10 +87,6 @@
 
 <PostsList bind:this={postsListRef} />
 
-<hr />
-
-<HowToInstallSection />
-
 <!-- Modal -->
 {#if showModal}
 	<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
@@ -106,7 +97,10 @@
 			aria-labelledby="modal-title"
 			use:clickOutside
 		>
-			<h2 id="modal-title" class="text-xl font-bold mb-4">Upload Form</h2>
+			<h2 id="modal-title" class="text-xl font-bold mb-4">Upload Stats</h2>
+			<p class="mt-2 text-gray-700">
+				Please make sure to only upload <span class="font-semibold">.ZIP</span> files.
+			</p>
 			<button
 				class="absolute top-4 right-4 text-2xl font-bold"
 				on:click={closeModal}

@@ -35,6 +35,6 @@
 </aside>
 <a
 	href="https://www.nexusmods.com/site/mods/21?tab=files"
-	class="mt-4 btn mr-2 variant-filled-secondary no-underline"
+	class="mt-4 btn lg:btn-lg mr-2 variant-filled-secondary no-underline"
 	target="_blank">Nexus Mods Website</a
 >

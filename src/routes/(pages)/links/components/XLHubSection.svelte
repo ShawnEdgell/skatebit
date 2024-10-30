@@ -1,5 +1,5 @@
 <section>
-	<h2>XL Hub</h2>
+	<h2>XL Hub by Fro</h2>
 	<p>
 		Browse, download, and manage your local and online community maps and mods. This application
 		makes installing mods as easy as a single click.

@@ -1,8 +1,8 @@
 <section>
 	<h2>skaterxl.mod.io</h2>
 	<p>
-		Explore and share a wide range of Skater XL mods, including scripts, gear, maps, and more, on
-		the essential hub for modding.
+		Explore and share a wide range of mods, including scripts, gear, maps, and more, on the main hub
+		for Skater XL modding.
 	</p>
 	<a
 		href="https://mod.io/g/skaterxl"

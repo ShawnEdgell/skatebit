@@ -69,12 +69,11 @@ export const categories = [
 		title: 'Map Discords',
 		data: mapDiscords,
 		description:
-			'Discover new maps and connect with map creators. These Discords offer exclusive previews, downloads, and insider advice on navigating new skate parks and environments.'
+			'Discover new maps and connect with map creators. These Discords offer exclusive  map previews, downloads, and more.'
 	},
 	{
 		title: 'Gear Discords',
 		data: gearDiscords,
-		description:
-			'Find the latest custom gear and designs. These Discord channels are dedicated to customizing your gameplay experience with new gear, outfits, and accessories.'
+		description: 'All the freshest custom gear and accessories.'
 	}
 ];

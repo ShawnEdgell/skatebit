@@ -37,14 +37,11 @@
 
 	<header>
 		<h1>Recent News</h1>
-		<p>
-			Discover the latest official updates, news, and videos from Skater XL, Session, Skate, and
-			more—all in one place.
-		</p>
 	</header>
 
 	{#each videos as video (video.videoId)}
 		{#if activePlaylistId === 'ALL' || activePlaylistId === video.playlistId}
+			<hr />
 			<VideoItem {video} />
 		{/if}
 	{/each}
