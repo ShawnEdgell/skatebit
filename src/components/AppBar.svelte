@@ -50,7 +50,7 @@
 	<!-- Center Title for mobile -->
 	<a
 		href="/"
-		class="block sm:btn md:hidden text-xl font-extrabold italic"
+		class="block md:btn md:hidden text-xl font-extrabold italic"
 		data-sveltekit-preload-data="hover">Skatebit</a
 	>
 

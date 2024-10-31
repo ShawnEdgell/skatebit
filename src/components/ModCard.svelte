@@ -4,6 +4,7 @@
 	export let workingVersion: string | null = null;
 	export let keybind: string | null = null;
 	export let features: string[] | null = null;
+	export let includes: string[] | null = null;
 	export let note: string | null = null;
 	export let downloadLinks: { url: string; label: string }[] = [];
 </script>
@@ -12,25 +13,25 @@
 	<h3 class="mt-0">{title}</h3>
 
 	{#if author}
-		<div class="mb-1">
+		<div class="mb-2">
 			<strong>Author:</strong> <span>{author}</span>
 		</div>
 	{/if}
 
 	{#if workingVersion}
-		<div class="mb-1">
+		<div class="mb-2">
 			<strong>Working Version:</strong> <span>{workingVersion}</span>
 		</div>
 	{/if}
 
 	{#if keybind}
-		<div class="mb-1">
+		<div class="mb-2">
 			<strong>Keybind:</strong> <span>{keybind}</span>
 		</div>
 	{/if}
 
 	{#if features}
-		<div class="mb-1">
+		<div class="mb-2">
 			<strong>Features:</strong>
 			<span>
 				{#each features as feature, i}
@@ -42,8 +43,20 @@
 	{/if}
 
 	{#if note}
-		<div class="mb-1">
+		<div class="mb-2">
 			<strong>Note:</strong> <span>{note}</span>
+		</div>
+	{/if}
+
+	{#if includes}
+		<div class="mb-2">
+			<strong>Includes:</strong>
+			<span>
+				{#each includes as include, i}
+					{include}{#if i < includes.length - 1},&nbsp;
+					{/if}
+				{/each}
+			</span>
 		</div>
 	{/if}
 

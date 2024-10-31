@@ -19,8 +19,10 @@
 	<div class="fixed top-0 w-full z-10">
 		<AppBar />
 	</div>
+
 	<main class="prose lg:prose-xl dark:prose-invert w-full flex-1 mt-[2.5rem] px-4 py-12">
 		<slot />
 	</main>
+
 	<Footer />
 </div>

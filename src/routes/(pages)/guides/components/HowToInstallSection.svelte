@@ -4,13 +4,11 @@
 
 <section>
 	<h2>How to Install Stats & Settings</h2>
-	<p>
-		Download and extract the .ZIP folder to find each of these stat files, and place them in the
-		following directories:
-	</p>
+	<p>To install stats and settings, place the preset files in the following directories.</p>
 	<blockquote class="blockquote lg:text-lg">
-		For the Boned Ollie Mod and Fro's Mod settings, you'll need to replace the existing settings
-		files with the new ones you want to install.
+		For Boned Ollie Mod and Fro's Mod settings, you will need to replace the existing settings files
+		with the new ones you want to install. These settings will be automatically applied you launch
+		the game.
 	</blockquote>
 
 	<h3>XXL 3 Mod Stats:</h3>
