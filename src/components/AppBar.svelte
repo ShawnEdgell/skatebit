@@ -2,6 +2,7 @@
 <script lang="ts">
 	import { AppBar, LightSwitch, getDrawerStore } from '@skeletonlabs/skeleton';
 	import LoginAvatar from './LoginAvatar.svelte'; // Import the new component
+	import Popups from './Popups.svelte';
 
 	const drawerStore = getDrawerStore();
 
@@ -17,7 +18,7 @@
 </script>
 
 <AppBar
-	padding="pr-4"
+	padding="md:py-2 pl-0 pr-4 md:pl-4 md:pr-6"
 	gridColumns="grid-cols-3"
 	slotDefault="place-self-center md:place-self-center"
 	slotTrail="place-content-end"
@@ -25,7 +26,7 @@
 	<!-- Lead Slot -->
 	<svelte:fragment slot="lead">
 		<!-- Hamburger Icon -->
-		<button class="btn md:hidden" on:click={openDrawer}>
+		<button class="btn md:hidden px-4" on:click={openDrawer}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				stroke="currentColor"
@@ -41,7 +42,7 @@
 		<!-- Logo for larger screens -->
 		<a
 			href="/"
-			class="btn py-2 hidden md:flex items-center text-xl font-extrabold italic"
+			class="btn hidden md:flex items-center p-2 py-0 text-2xl font-extrabold italic"
 			data-sveltekit-preload-data="hover"
 		>
 			Skatebit
@@ -60,6 +61,7 @@
 	<!-- Trail Slot -->
 	<svelte:fragment slot="trail">
 		<div class="flex items-center gap-2">
+			<Popups />
 			<LightSwitch height="h-5" width="w-10" />
 			<LoginAvatar />
 		</div>
