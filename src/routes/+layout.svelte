@@ -1,13 +1,6 @@
 <script lang="ts">
 	import '../app.postcss';
-	import {
-		initializeStores,
-		storePopup,
-		Modal,
-		Toast,
-		TableOfContents,
-		tocCrawler
-	} from '@skeletonlabs/skeleton';
+	import { initializeStores, storePopup, Modal, Toast } from '@skeletonlabs/skeleton';
 	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
 	import AppBar from '../components/AppBar.svelte';
 	import Footer from '../components/Footer.svelte';

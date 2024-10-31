@@ -78,15 +78,17 @@
 		{/if}
 	</div>
 
-	<header class="not-prose text-sm card-header">
+	<header class="card-header">
 		{#if showDate}
-			<p class:mb-1={video.description?.trim()} class:mb-2={!video.description?.trim()}>
-				{formatDate(video.publishedAt)}
-			</p>
+			<div class="prose-sm mb-4">
+				<p class:mb-1={video.description?.trim()} class:mb-2={!video.description?.trim()}>
+					{formatDate(video.publishedAt)}
+				</p>
+			</div>
 		{/if}
 	</header>
 	<section class="px-4">
-		<h2 class="not-prose mt-4 text-xl md:text-2xl lg:text-3xl font-bold mb-4">
+		<h2 class="not-prose text-xl md:text-2xl lg:text-3xl font-bold mb-4">
 			{video.title}
 		</h2>
 	</section>
