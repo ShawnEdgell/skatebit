@@ -3,9 +3,17 @@
 @tailwind utilities;
 @tailwind variants;
 
+html {
+	@apply bg-surface-100-800-token;
+}
+
+body {
+	@apply sm:flex sm:flex-col sm:items-center h-full;
+}
+
 html,
 body {
-	@apply overscroll-none scroll-smooth h-full;
+	@apply overscroll-none scroll-smooth;
 }
 
 a {

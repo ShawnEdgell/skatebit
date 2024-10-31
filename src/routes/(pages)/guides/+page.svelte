@@ -1,6 +1,5 @@
 <script lang="ts">
 	import HowToInstallSection from './components/HowToInstallSection.svelte';
-	import Badge from '../../../components/Badge.svelte';
 	import MapGearSection from './components/MapGearSection.svelte';
 	import Step1CheckVersion from './components/Step1CheckVersion.svelte';
 	import Step2ChangeVersion from './components/Step2ChangeVersion.svelte';
@@ -35,7 +34,6 @@
 </svelte:head>
 
 <header>
-	<Badge />
 	<h1>Guides</h1>
 	<p>
 		Essential guides and tutorials to help you master Skater XL mods, gameplay, and customization.

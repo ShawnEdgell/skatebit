@@ -1,6 +1,7 @@
+<!-- src/components/AppBar.svelte -->
 <script lang="ts">
 	import { AppBar, LightSwitch, getDrawerStore } from '@skeletonlabs/skeleton';
-	import Popups from './Popups.svelte';
+	import LoginAvatar from './LoginAvatar.svelte'; // Import the new component
 
 	const drawerStore = getDrawerStore();
 
@@ -51,12 +52,17 @@
 	<a
 		href="/"
 		class="block md:btn md:hidden text-xl font-extrabold italic"
-		data-sveltekit-preload-data="hover">Skatebit</a
+		data-sveltekit-preload-data="hover"
 	>
+		Skatebit
+	</a>
 
 	<!-- Trail Slot -->
 	<svelte:fragment slot="trail">
-		<Popups />
-		<LightSwitch height="h-5" width="w-10" />
+		<div class="flex items-center gap-2">
+			<LightSwitch height="h-5" width="w-10" />
+			<LoginAvatar />
+		</div>
+		<!-- Use the new component here -->
 	</svelte:fragment>
 </AppBar>

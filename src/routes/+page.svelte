@@ -17,7 +17,7 @@
 <svelte:head>
 	<link rel="preconnect" href="https://www.youtube.com" />
 	<link rel="preconnect" href="https://img.youtube.com" />
-	<title>Skatebit</title>
+	<title>Skatebit | Recent News</title>
 	<meta
 		name="description"
 		content="Discover the latest official updates, news, and videos from Skater XL, Session, Skate., and more—all in one place."

@@ -79,7 +79,7 @@
 	</div>
 
 	<div class="space-y-4">
-		<header class="not-prose card-header">
+		<header class="not-prose card-header text-surface-700-200-token">
 			{#if showDate}
 				<p class:one={video.description?.trim()} class:two={!video.description?.trim()}>
 					{formatDate(video.publishedAt)}
@@ -87,13 +87,13 @@
 			{/if}
 		</header>
 		<section class="px-4">
-			<h2 class="not-prose text-xl md:text-2xl lg:text-3xl font-bold">
+			<h2 class="not-prose text-xl md:text-2xl lg:text-3xl font-bold text-surface-900-50-token">
 				{video.title}
 			</h2>
 		</section>
 		<footer class="card-footer">
 			{#if video.description?.trim()}
-				<p class="pb-2 not-prose break-words">
+				<p class="pb-2 not-prose break-words text-surface-900-50-token">
 					{#if showFullDescription || video.description.length <= 100}
 						{video.description}
 					{:else}
@@ -101,7 +101,10 @@
 					{/if}
 				</p>
 				{#if video.description.length > 100}
-					<button on:click={toggleDescription} class="underline hover:no-underline mb-2">
+					<button
+						on:click={toggleDescription}
+						class="text-secondary-500-400-token underline hover:no-underline mb-2"
+					>
 						{showFullDescription ? 'Show less' : 'Read more'}
 					</button>
 				{/if}

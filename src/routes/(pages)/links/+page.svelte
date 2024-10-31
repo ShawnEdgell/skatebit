@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Badge from '../../../components/Badge.svelte';
 	import ModioSection from './components/ModioSection.svelte';
 	import XlHubSection from './components/XLHubSection.svelte';
 	import TableSection from './components/TableSection.svelte';
@@ -15,7 +14,6 @@
 </svelte:head>
 
 <header>
-	<Badge />
 	<h1>Helpful Links</h1>
 	<p>Find essential Discord and website links for Skater XL mods, tutorials, and communities.</p>
 	<hr />
