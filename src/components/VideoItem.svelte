@@ -78,7 +78,7 @@
 		{/if}
 	</div>
 
-	<header class="not-prose text-sm md:text-base my-2 card-header">
+	<header class="not-prose text-sm card-header">
 		{#if showDate}
 			<p class:mb-1={video.description?.trim()} class:mb-2={!video.description?.trim()}>
 				{formatDate(video.publishedAt)}
