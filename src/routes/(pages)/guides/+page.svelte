@@ -49,7 +49,6 @@
 	columns="grid-cols-1 sm:!grid-cols-2"
 	on:tabChange={handleTabChange}
 />
-
 {#if tabSet === 0}
 	<section>
 		<h2>Getting Started with Skater XL Modding</h2>

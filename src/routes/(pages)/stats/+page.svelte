@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Avatar } from '@skeletonlabs/skeleton';
-	import InstallHelp from '../../../components/InstallHelp.svelte';
 	import Badge from '../../../components/Badge.svelte';
 	import UploadForm from './components/UploadForm.svelte';
 	import LoginPrompt from './components/LoginPrompt.svelte';
@@ -66,7 +65,12 @@
 <header>
 	<Badge />
 	<h1>Stats & Settings</h1>
-	<InstallHelp />
+	<p>
+		For help with installation, visit our
+		<a href="/guides">Guides</a> section or ask us questions on
+		<a href="https://discord.gg/359SwZ3atS" target="_blank">Discord.</a>
+	</p>
+
 	<hr />
 </header>
 

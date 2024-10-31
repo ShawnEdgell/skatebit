@@ -16,7 +16,7 @@
 </script>
 
 <AppBar
-	padding="px-4"
+	padding="pr-4"
 	gridColumns="grid-cols-3"
 	slotDefault="place-self-center md:place-self-center"
 	slotTrail="place-content-end"
@@ -24,7 +24,7 @@
 	<!-- Lead Slot -->
 	<svelte:fragment slot="lead">
 		<!-- Hamburger Icon -->
-		<button class="md:hidden" on:click={openDrawer}>
+		<button class="btn md:hidden" on:click={openDrawer}>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
 				stroke="currentColor"
@@ -40,7 +40,7 @@
 		<!-- Logo for larger screens -->
 		<a
 			href="/"
-			class="btn px-0 py-2 hidden md:flex items-center text-xl font-extrabold italic"
+			class="btn py-2 hidden md:flex items-center text-xl font-extrabold italic"
 			data-sveltekit-preload-data="hover"
 		>
 			Skatebit
@@ -50,7 +50,7 @@
 	<!-- Center Title for mobile -->
 	<a
 		href="/"
-		class="block btn md:hidden text-xl font-extrabold italic"
+		class="block sm:btn md:hidden text-xl font-extrabold italic"
 		data-sveltekit-preload-data="hover">Skatebit</a
 	>
 

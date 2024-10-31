@@ -78,34 +78,34 @@
 		{/if}
 	</div>
 
-	<header class="card-header">
-		{#if showDate}
-			<div class="prose-sm mb-4">
-				<p class:mb-1={video.description?.trim()} class:mb-2={!video.description?.trim()}>
+	<div class="space-y-4">
+		<header class="not-prose card-header">
+			{#if showDate}
+				<p class:one={video.description?.trim()} class:two={!video.description?.trim()}>
 					{formatDate(video.publishedAt)}
 				</p>
-			</div>
-		{/if}
-	</header>
-	<section class="px-4">
-		<h2 class="not-prose text-xl md:text-2xl lg:text-3xl font-bold mb-4">
-			{video.title}
-		</h2>
-	</section>
-	<footer class="card-footer">
-		{#if video.description?.trim()}
-			<p class="break-words mb-2">
-				{#if showFullDescription || video.description.length <= 100}
-					{video.description}
-				{:else}
-					{video.description.slice(0, 100)}...
-				{/if}
-			</p>
-			{#if video.description.length > 100}
-				<button on:click={toggleDescription} class="underline hover:no-underline mb-4">
-					{showFullDescription ? 'Show less' : 'Read more'}
-				</button>
 			{/if}
-		{/if}
-	</footer>
+		</header>
+		<section class="px-4">
+			<h2 class="not-prose text-xl md:text-2xl lg:text-3xl font-bold">
+				{video.title}
+			</h2>
+		</section>
+		<footer class="card-footer">
+			{#if video.description?.trim()}
+				<p class="pb-2 not-prose break-words">
+					{#if showFullDescription || video.description.length <= 100}
+						{video.description}
+					{:else}
+						{video.description.slice(0, 100)}...
+					{/if}
+				</p>
+				{#if video.description.length > 100}
+					<button on:click={toggleDescription} class="underline hover:no-underline mb-2">
+						{showFullDescription ? 'Show less' : 'Read more'}
+					</button>
+				{/if}
+			{/if}
+		</footer>
+	</div>
 </section>
