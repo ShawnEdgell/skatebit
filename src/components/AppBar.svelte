@@ -18,7 +18,7 @@
 </script>
 
 <AppBar
-	padding="md:py-2 pl-0 pr-4 md:pl-4 md:pr-6"
+	padding="md:py-2 pl-0 md:pl-4 pr-4"
 	gridColumns="grid-cols-3"
 	slotDefault="place-self-center md:place-self-center"
 	slotTrail="place-content-end"
@@ -62,7 +62,7 @@
 	<svelte:fragment slot="trail">
 		<div class="flex items-center gap-2">
 			<Popups />
-			<LightSwitch height="h-5" width="w-10" />
+			<LightSwitch height="h-5 md:h-6" width="w-10 md:w-12" />
 			<LoginAvatar />
 		</div>
 		<!-- Use the new component here -->
