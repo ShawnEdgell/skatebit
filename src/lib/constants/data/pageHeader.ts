@@ -25,5 +25,10 @@ export const pageHeader = {
 		title: 'Skatebit - Stats & Settings',
 		description: 'Download and share Skater XL stats and settings.',
 		heading: 'Stats & Settings'
+	},
+	profile: {
+		title: 'Skatebit - My Profile',
+		description: 'Manage your username and  links.',
+		heading: 'My Profile'
 	}
 };

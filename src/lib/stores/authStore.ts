@@ -1,15 +1,8 @@
 // src/lib/stores/authStore.ts
 import { writable } from 'svelte/store';
 import { auth, googleProvider } from '$lib/firebase';
-import {
-	signInWithPopup,
-	signInWithRedirect,
-	getRedirectResult,
-	onAuthStateChanged,
-	signOut
-} from 'firebase/auth';
+import { signInWithPopup, getRedirectResult, onAuthStateChanged, signOut } from 'firebase/auth';
 import type { User } from 'firebase/auth';
-import { isMobileDevice } from '$lib/utils/device';
 
 // Create writable stores
 export const user = writable<User | null>(null);
@@ -53,19 +46,12 @@ handleAuthOperation(() => getRedirectResult(auth))
 	});
 
 /**
- * Logs in the user using Google as the provider.
- * Chooses between popup and redirect based on device type.
+ * Logs in the user using Google as the provider with a popup.
  */
 export const login = () =>
 	handleAuthOperation<void>(async () => {
-		if (isMobileDevice()) {
-			// Use redirect for mobile devices
-			await signInWithRedirect(auth, googleProvider);
-		} else {
-			// Use popup for desktop devices
-			const result = await signInWithPopup(auth, googleProvider);
-			user.set(result.user);
-		}
+		const result = await signInWithPopup(auth, googleProvider);
+		user.set(result.user);
 	});
 
 /**

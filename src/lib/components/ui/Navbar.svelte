@@ -14,12 +14,17 @@
 		}
 	}
 
+	// Only add event listeners if `document` is available (i.e., we're in a browser environment)
 	onMount(() => {
-		document.addEventListener('click', handleClickOutside);
+		if (typeof document !== 'undefined') {
+			document.addEventListener('click', handleClickOutside);
+		}
 	});
 
 	onDestroy(() => {
-		document.removeEventListener('click', handleClickOutside);
+		if (typeof document !== 'undefined') {
+			document.removeEventListener('click', handleClickOutside);
+		}
 	});
 </script>
 
@@ -67,7 +72,9 @@
 					on:click={closeDropdown}
 					class="dropdown-content menu bg-base-100 rounded-box z-[10] p-2 shadow"
 				>
-					<LoginActions />
+					<ul class="menu p-2 w-56 bg-base-100 rounded-box shadow space-y-2">
+						<LoginActions />
+					</ul>
 				</button>
 			</details>
 		</div>
