@@ -1,5 +1,26 @@
 <script lang="ts">
 	import { navItems, LoginAvatar, LoginActions } from '$lib';
+	import { onMount, onDestroy } from 'svelte';
+
+	let dropdownRef: HTMLDetailsElement;
+
+	function closeDropdown() {
+		if (dropdownRef) dropdownRef.open = false;
+	}
+
+	function handleClickOutside(event: MouseEvent) {
+		if (dropdownRef && !dropdownRef.contains(event.target as Node)) {
+			closeDropdown();
+		}
+	}
+
+	onMount(() => {
+		document.addEventListener('click', handleClickOutside);
+	});
+
+	onDestroy(() => {
+		document.removeEventListener('click', handleClickOutside);
+	});
 </script>
 
 <div class="drawer">
@@ -25,7 +46,7 @@
 				</label>
 			</div>
 			<div class="mx-2 flex-1">
-				<a href="/" class="btn btn-ghost italic font-black text-xl">SKATEBIT</a>
+				<a href="/" class="btn btn-ghost italic font-extrabold text-xl">SKATEBIT</a>
 			</div>
 			<div class="hidden flex-none sm:block">
 				<ul class="menu menu-horizontal">
@@ -38,12 +59,17 @@
 					{/each}
 				</ul>
 			</div>
-			<div class="dropdown dropdown-end">
-				<div tabindex="0" role="button">
+			<details bind:this={dropdownRef} class="dropdown dropdown-end">
+				<summary class="btn btn-ghost m-1">
 					<LoginAvatar />
-				</div>
-				<LoginActions />
-			</div>
+				</summary>
+				<button
+					on:click={closeDropdown}
+					class="dropdown-content menu bg-base-100 rounded-box z-[10] p-2 shadow"
+				>
+					<LoginActions />
+				</button>
+			</details>
 		</div>
 	</div>
 	<div class="drawer-side">

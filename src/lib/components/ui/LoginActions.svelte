@@ -1,42 +1,31 @@
+<!-- src/components/LoginActions.svelte -->
 <script lang="ts">
 	import { user, login, logout, authError, isLoading } from '$lib/stores/authStore';
 
-	// No need to import 'subscribe' or manually subscribe to stores
-
-	// Function to handle user login
-	const handleLogin = async () => {
-		try {
-			await login();
-		} catch (error) {
-			// Error is already handled in the store; additional handling can be done here if needed
-		}
+	const handleLogin = () => {
+		login().catch(() => {
+			// Errors are handled in the store; additional handling can be implemented here if needed
+		});
 	};
 
-	// Function to handle user logout
-	const handleLogout = async () => {
-		try {
-			await logout();
-		} catch (error) {
-			// Error is already handled in the store; additional handling can be done here if needed
-		}
+	const handleLogout = () => {
+		logout().catch(() => {
+			// Errors are handled in the store; additional handling can be implemented here if needed
+		});
 	};
 </script>
 
-<ul class="menu dropdown-content bg-base-100 rounded-box w-60 p-2 shadow space-y-2">
+<ul class="menu p-2 w-52 bg-base-100 rounded-box shadow space-y-2">
 	{#if $user}
 		<li>
-			<a href="/profile" class="btn">
-				<span>Profile</span>
-			</a>
+			<a href="/profile">Profile</a>
 		</li>
 		<li>
-			<button class="btn" on:click={handleLogout} disabled={$isLoading}>
-				<span>Logout</span>
-			</button>
+			<button on:click={handleLogout} disabled={$isLoading}> Logout </button>
 		</li>
 	{:else}
 		<li>
-			<button class="btn" on:click={handleLogin} disabled={$isLoading}>
+			<button on:click={handleLogin} disabled={$isLoading}>
 				<div class="flex gap-2 items-center">
 					<!-- Google SVG Icon -->
 					<svg
@@ -45,7 +34,7 @@
 						xmlns="http://www.w3.org/2000/svg"
 						fill="currentColor"
 					>
-						<!-- Replace with your SVG paths -->
+						<!-- SVG Paths -->
 						<path
 							d="M9.82727273,24 C9.82727273,22.4757333 10.0804318,21.0144 10.5322727,19.6437333 L2.62345455,13.6042667 C1.08206818,16.7338667 0.213636364,20.2602667 0.213636364,24 C0.213636364,27.7365333 1.081,31.2608 2.62025,34.3882667 L10.5247955,28.3370667 C10.0772273,26.9728 9.82727273,25.5168 9.82727273,24"
 							fill="#FBBC05"
