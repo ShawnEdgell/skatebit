@@ -3,7 +3,7 @@
 	import { page } from '$app/stores';
 	import { user } from '$lib/stores/authStore';
 	import { db, storage } from '$lib/firebase';
-	import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+	import { collection, doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 	import { ref as storageRef, deleteObject } from 'firebase/storage';
 	import type { Post } from '$lib';
 
@@ -31,6 +31,16 @@
 			const docSnap = await getDoc(docRef);
 			if (docSnap.exists()) {
 				post = { id: docSnap.id, ...docSnap.data() } as Post;
+
+				// If user is logged in and matches the post owner, update the display name if needed
+				if ($user && $user.uid === post.userId) {
+					const userDocRef = doc(collection(db, 'users'), $user.uid);
+					const userDoc = await getDoc(userDocRef);
+					if (userDoc.exists()) {
+						const userData = userDoc.data();
+						post.userName = userData.username || $user.displayName || $user.email || 'Anonymous';
+					}
+				}
 			} else {
 				errorMessage = 'Post not found.';
 			}

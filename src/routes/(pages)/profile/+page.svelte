@@ -1,8 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/authStore';
-	import { db } from '$lib/firebase'; // Assuming 'db' is your Firestore instance
-	import { collection, doc, setDoc, getDoc } from 'firebase/firestore';
+	import { db } from '$lib/firebase';
+	import {
+		collection,
+		doc,
+		setDoc,
+		getDoc,
+		query,
+		where,
+		getDocs,
+		updateDoc
+	} from 'firebase/firestore';
 
 	let youtube = '';
 	let twitch = '';
@@ -14,7 +23,7 @@
 
 	// Fetch user profile data once the component is mounted
 	onMount(async () => {
-		const userValue = $user; // Get the user value from the store
+		const userValue = $user;
 		if (userValue) {
 			try {
 				const userDocRef = doc(collection(db, 'users'), userValue.uid);
@@ -45,6 +54,8 @@
 		if (userValue) {
 			try {
 				const userDocRef = doc(collection(db, 'users'), userValue.uid);
+
+				// Update user profile in Firestore
 				await setDoc(
 					userDocRef,
 					{
@@ -57,6 +68,18 @@
 					},
 					{ merge: true }
 				);
+
+				// Also update all posts created by this user with the new username
+				const postsCollectionRef = collection(db, 'posts');
+				const postsQuery = query(postsCollectionRef, where('userId', '==', userValue.uid));
+				const querySnapshot = await getDocs(postsQuery);
+
+				for (const postDoc of querySnapshot.docs) {
+					await updateDoc(postDoc.ref, {
+						userName: username || userValue.displayName || userValue.email || 'Anonymous'
+					});
+				}
+
 				alert('Profile information saved successfully!');
 			} catch (error) {
 				console.error('Error saving user data:', error);
