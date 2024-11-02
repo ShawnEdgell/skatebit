@@ -1,3 +1,4 @@
+// src/routes/+page.server.ts
 import type { PageServerLoad } from './$types';
 import { YOUTUBE_API_KEY } from '$env/static/private';
 import type { YouTubeAPIResponseItem, YouTubeAPIResponse, YouTubeItem } from '$lib';
@@ -8,6 +9,18 @@ const CHANNELS = [
 	{ id: 'PLWmRSsZZ1RCW-0uQWKlCAiGZVnIaRYaTm', type: 'playlist' }, // Session
 	{ id: 'UCSBQJEWTWOUCO65xvoDfljw', type: 'channel' } // Skate
 ];
+
+// Define cache interface
+interface CacheEntry {
+	timestamp: number;
+	data: YouTubeItem[];
+}
+
+// Initialize cache
+let cache: CacheEntry | null = null;
+
+// Constants
+const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
 
 // Simplified function to map API response to YouTubeItem format
 const mapYouTubeData = (data: YouTubeAPIResponse, type: string, id: string): YouTubeItem[] =>
@@ -34,7 +47,7 @@ const fetchYouTubeData = async (id: string, type: string): Promise<YouTubeItem[]
 		const response = await fetch(url);
 		if (!response.ok) throw new Error(`Error: ${response.statusText}`);
 
-		const data = await response.json();
+		const data = (await response.json()) as YouTubeAPIResponse;
 		return mapYouTubeData(data, type, id);
 	} catch (error) {
 		console.error(`Failed to fetch data for ${id}:`, error);
@@ -42,16 +55,40 @@ const fetchYouTubeData = async (id: string, type: string): Promise<YouTubeItem[]
 	}
 };
 
-// Load function for SvelteKit page
+// Load function for SvelteKit page with caching
 export const load: PageServerLoad = async () => {
-	if (!YOUTUBE_API_KEY) throw new Error('API key is missing');
+	if (!YOUTUBE_API_KEY) {
+		console.error('API key is missing');
+		return { videos: [] };
+	}
 
-	const videoResults = await Promise.all(
-		CHANNELS.map(({ id, type }) => fetchYouTubeData(id, type))
-	);
-	const videos = videoResults
-		.flat()
-		.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+	const now = Date.now();
 
-	return { videos };
+	// Check if cache is valid
+	if (cache && now - cache.timestamp < CACHE_DURATION) {
+		console.log('Serving videos from cache');
+		return { videos: cache.data };
+	}
+
+	// Fetch new data
+	try {
+		const videoResults = await Promise.all(
+			CHANNELS.map(({ id, type }) => fetchYouTubeData(id, type))
+		);
+		const videos = videoResults
+			.flat()
+			.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+
+		// Update cache
+		cache = {
+			timestamp: now,
+			data: videos
+		};
+
+		console.log('Fetched new videos and updated cache');
+		return { videos };
+	} catch (error) {
+		console.error('Error fetching videos:', error);
+		return { videos: [] };
+	}
 };
