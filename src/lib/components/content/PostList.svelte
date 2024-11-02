@@ -9,6 +9,7 @@
 	let isLoadingPosts = true;
 	let postsErrorMessage = '';
 
+	// Fetch posts from Firestore (this function can still be used if needed)
 	export async function fetchPosts() {
 		isLoadingPosts = true;
 		postsErrorMessage = '';
@@ -32,6 +33,7 @@
 		}
 	}
 
+	// Initially load posts when the component mounts
 	onMount(async () => {
 		await fetchPosts();
 	});
@@ -47,7 +49,7 @@
 		<p>No posts available.</p>
 	{:else}
 		<div class="w-full flex flex-col space-y-4">
-			{#each posts as post}
+			{#each posts as post (post.id)}
 				<PostCard {post} />
 			{/each}
 		</div>

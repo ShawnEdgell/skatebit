@@ -39,7 +39,7 @@
 			const downloadURL = await getDownloadURL(fileRef);
 
 			// Add post to Firestore
-			await addDoc(collection(db, 'posts'), {
+			const newPost = {
 				title,
 				description,
 				fileURL: downloadURL,
@@ -48,10 +48,11 @@
 				userName,
 				userPhotoURL,
 				createdAt: serverTimestamp()
-			});
+			};
+			const postRef = await addDoc(collection(db, 'posts'), newPost);
 
-			// Dispatch an event after successful upload
-			dispatch('uploadSuccess');
+			// Dispatch an event with the new post data
+			dispatch('uploadSuccess', { post: { ...newPost, id: postRef.id, createdAt: new Date() } });
 
 			// Reset form fields
 			title = '';
@@ -85,9 +86,9 @@
 	};
 </script>
 
-<form class="w-full" on:submit|preventDefault={handleSubmit}>
+<form class="w-full space-y-4" on:submit|preventDefault={handleSubmit}>
 	<input
-		class="input mt-1 block w-full mb-4"
+		class="input input-bordered w-full"
 		type="text"
 		placeholder="Enter title"
 		bind:value={title}
@@ -95,7 +96,7 @@
 	/>
 
 	<textarea
-		class="textarea mt-1 block w-full mb-4"
+		class="textarea textarea-bordered w-full"
 		rows="4"
 		placeholder="Enter description"
 		bind:value={description}
@@ -103,7 +104,7 @@
 	></textarea>
 
 	<input
-		class="input mt-1 block w-full mb-4 text-base"
+		class="file-input input-bordered w-full"
 		type="file"
 		accept=".zip"
 		on:change={handleFileChange}
@@ -111,11 +112,11 @@
 		bind:this={fileInput}
 	/>
 
-	<div class="flex space-x-2 justify-center pt-2">
-		<button class="btn variant-ghost" type="button" on:click={cancelUpload} disabled={isUploading}>
+	<div class="flex justify-center w-full space-x-2">
+		<button class="btn" type="button" on:click={cancelUpload} disabled={isUploading}>
 			Cancel
 		</button>
-		<button class="btn variant-filled-secondary" type="submit" disabled={isUploading}>
+		<button class="btn btn-primary" type="submit" disabled={isUploading}>
 			{isUploading ? 'Uploading...' : 'Submit'}
 		</button>
 	</div>

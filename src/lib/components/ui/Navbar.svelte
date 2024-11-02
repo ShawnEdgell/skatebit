@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { navItems, LoginAvatar } from '$lib';
+	import { navItems, LoginAvatar, LoginActions } from '$lib';
 </script>
 
 <div class="drawer">
@@ -31,14 +31,19 @@
 				<ul class="menu menu-horizontal">
 					{#each navItems as { href, label }}
 						<li>
-							<a {href}>
+							<a class="btn btn-ghost rounded-btn" {href}>
 								<span>{label}</span>
 							</a>
 						</li>
 					{/each}
 				</ul>
 			</div>
-			<LoginAvatar />
+			<div class="dropdown dropdown-end">
+				<div tabindex="0" role="button">
+					<LoginAvatar />
+				</div>
+				<LoginActions />
+			</div>
 		</div>
 	</div>
 	<div class="drawer-side">

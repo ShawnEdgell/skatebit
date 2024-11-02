@@ -23,7 +23,7 @@ export const pageHeader = {
 	},
 	stats: {
 		title: 'Skatebit - Stats & Settings',
-		description: 'Download and share your Skater XL stats and settings.',
+		description: 'Download and share Skater XL stats and settings.',
 		heading: 'Stats & Settings'
 	}
 };

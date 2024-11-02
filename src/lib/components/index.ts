@@ -1,5 +1,6 @@
 export { default as GettingStarted } from './content/GettingStarted.svelte';
 export { default as Help } from './content/Help.svelte';
+
 export { default as MapGear } from './content/MapGear.svelte';
 export { default as ModListSection } from './content/ModListSection.svelte';
 export { default as ModPackSection } from './content/ModPackSection.svelte';
@@ -13,6 +14,7 @@ export { default as UploadForm } from './content/UploadForm.svelte';
 export { default as XLHub } from './content/XLHub.svelte';
 
 export { default as Footer } from './ui/Footer.svelte';
+export { default as LoginActions } from './ui/LoginActions.svelte';
 export { default as LoginAvatar } from './ui/LoginAvatar.svelte';
 export { default as Navbar } from './ui/Navbar.svelte';
 export { default as Tables } from './ui/Tables.svelte';

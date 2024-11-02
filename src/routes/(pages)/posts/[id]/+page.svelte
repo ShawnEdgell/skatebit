@@ -148,27 +148,38 @@
 {#if isLoading}
 	<p>Loading post...</p>
 {:else if errorMessage}
-	<p class="text-error-500">{errorMessage}</p>
+	<p class="text-error">{errorMessage}</p>
 {:else if post}
 	{#if isEditing}
 		<!-- Edit Form -->
 		<form class="space-y-4" on:submit|preventDefault={updatePost}>
 			<div>
-				<input class="input" type="text" placeholder="Input" bind:value={editTitle} required />
+				<input
+					class="input input-bordered w-full"
+					type="text"
+					placeholder="Input"
+					bind:value={editTitle}
+					required
+				/>
 			</div>
 
 			<div>
-				<textarea class="textarea" rows="4" bind:value={editDescription} required></textarea>
+				<textarea
+					class="textarea textarea-bordered w-full"
+					rows="4"
+					bind:value={editDescription}
+					required
+				></textarea>
 			</div>
-			<div class="flex justify-center">
-				<button class="btn variant-filled-secondary mr-2" type="submit" disabled={isUpdating}>
+			<div class="flex justify-center space-x-2">
+				<button class="btn" type="button" on:click={cancelEdit}>Cancel</button>
+				<button class="btn btn-primary" type="submit" disabled={isUpdating}>
 					{#if isUpdating}
 						Updating...
 					{:else}
 						Update
 					{/if}
 				</button>
-				<button class="btn variant-ghost" type="button" on:click={cancelEdit}>Cancel</button>
 			</div>
 		</form>
 	{:else}
