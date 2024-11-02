@@ -32,9 +32,9 @@
 			<strong>Includes:</strong> <span>{modPack.includes.join(', ')}</span>
 		{/if}
 
-		<div class="flex flex-wrap items-start">
+		<div class="flex flex-wrap items-start not-prose">
 			{#each modPack.downloadLinks as { url, label }}
-				<a href={url} class="btn no-underline" target="_blank" rel="noopener noreferrer">
+				<a href={url} class="btn btn-primary mt-4" target="_blank" rel="noopener noreferrer">
 					{label}
 				</a>
 			{/each}

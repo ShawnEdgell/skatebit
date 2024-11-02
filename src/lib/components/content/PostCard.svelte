@@ -25,6 +25,6 @@
 		</p>
 	</section>
 	<div>
-		<a class="btn no-underline" href="/posts/{post.id}">View Post</a>
+		<a class="btn btn-neutral mb-2" href="/posts/{post.id}">View Post</a>
 	</div>
 </div>

@@ -15,9 +15,13 @@
 		from the dropdown.
 	</p>
 	<h3>Step 3: Download UnityModManager</h3>
+	<p>
+		Download the latest version of UnityModManager from the Nexus Mods website. The latest version
+		has been updated to work with any version of Skater XL.
+	</p>
 	<a
 		href="https://www.nexusmods.com/site/mods/21?tab=files"
-		class="btn no-underline"
+		class="btn btn-neutral not-prose"
 		target="_blank">Nexus Mods Website</a
 	>
 	<h3>Step 4: UnityModManager Setup</h3>

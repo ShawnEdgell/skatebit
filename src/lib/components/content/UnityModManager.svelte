@@ -11,7 +11,7 @@
 	</p>
 	<a
 		href="https://www.nexusmods.com/site/mods/21?tab=files"
-		class="btn no-underline"
+		class="btn btn-neutral not-prose"
 		target="_blank">Nexus Mods Website</a
 	>
 </section>

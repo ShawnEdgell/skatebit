@@ -205,11 +205,11 @@
 		</p>
 		<p>{post.description}</p>
 		<!-- Download Button -->
-		<a href={post.fileURL} class="btn no-underline" download>Download</a>
+		<a href={post.fileURL} class="btn btn-primary not-prose" download>Download</a>
 		<!-- Show edit/delete buttons if current user is the original poster -->
 		{#if $user && $user.uid === post.userId}
-			<button on:click={startEdit} class="btn">Edit</button>
-			<button on:click={deletePost} class="btn" disabled={isDeleting}>
+			<button on:click={startEdit} class="btn btn-warning">Edit</button>
+			<button on:click={deletePost} class="btn btn-error" disabled={isDeleting}>
 				{#if isDeleting}
 					Deleting...
 				{:else}
