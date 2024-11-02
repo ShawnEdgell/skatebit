@@ -1,12 +1,11 @@
 <script lang="ts">
-	import { Avatar } from '@skeletonlabs/skeleton';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { user } from '$lib/stores/authStore';
 	import { db, storage } from '$lib/firebase';
 	import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
 	import { ref as storageRef, deleteObject } from 'firebase/storage';
-	import type { Post } from '$lib/types/Post'; // Import Post type
+	import type { Post } from '$lib';
 
 	let postId = $page.params.id;
 	let post: Post | null = null;
@@ -173,35 +172,11 @@
 			</div>
 		</form>
 	{:else}
-		<!-- Show edit/delete buttons if current user is the original poster -->
-		{#if $user && $user.uid === post.userId}
-			<button on:click={startEdit} class="btn btn-sm mb-4 variant-filled-warning no-underline"
-				>Edit</button
-			>
-			<button
-				on:click={deletePost}
-				class="btn btn-sm mb-4 variant-filled-error no-underline"
-				disabled={isDeleting}
-			>
-				{#if isDeleting}
-					Deleting...
-				{:else}
-					Delete
-				{/if}
-			</button>
-		{/if}
-
 		<!-- Display Post -->
-
 		<h1>{post.title}</h1>
-		<p class="flex items-center gap-2 not-prose">
+		<p class="flex items-center gap-2">
 			{#if post.userPhotoURL}
-				<Avatar
-					src={post.userPhotoURL}
-					width="w-6 h-6"
-					rounded="rounded-full"
-					alt="Profile Picture"
-				/>
+				<img src={post.userPhotoURL} class="w-6 h-6 m-0 rounded-full" alt="Profile" />
 			{/if}
 			<span>
 				Posted by {post.userName} on {new Date(post.createdAt.seconds * 1000).toLocaleString()}
@@ -209,7 +184,18 @@
 		</p>
 		<p>{post.description}</p>
 		<!-- Download Button -->
-		<a href={post.fileURL} class="btn variant-filled-secondary no-underline" download>Download</a>
+		<a href={post.fileURL} class="btn no-underline" download>Download</a>
+		<!-- Show edit/delete buttons if current user is the original poster -->
+		{#if $user && $user.uid === post.userId}
+			<button on:click={startEdit} class="btn">Edit</button>
+			<button on:click={deletePost} class="btn" disabled={isDeleting}>
+				{#if isDeleting}
+					Deleting...
+				{:else}
+					Delete
+				{/if}
+			</button>
+		{/if}
 	{/if}
 {:else}
 	<p>Post not found.</p>

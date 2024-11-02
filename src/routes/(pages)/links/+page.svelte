@@ -1,25 +1,20 @@
 <script lang="ts">
-	import ModioSection from './components/ModioSection.svelte';
-	import XlHubSection from './components/XLHubSection.svelte';
-	import TableSection from './components/TableSection.svelte';
-	import { categories } from './linksData';
+	import { pageHeader, categories, ModWebsite, XLHub, Tables } from '$lib';
+
+	const { title, description, heading } = pageHeader.links;
 </script>
 
 <svelte:head>
-	<title>Skatebit | Helpful Links</title>
-	<meta
-		name="description"
-		content="Discover popular Skater XL Discord servers and websites for additional mods, tutorials, and communities."
-	/>
+	<title>{title}</title>
+	<meta name="description" content={description} />
 </svelte:head>
 
-<header>
-	<h1>Helpful Links</h1>
-	<p>Find essential Discord and website links for Skater XL mods, tutorials, and communities.</p>
+<section>
+	<h1>{heading}</h1>
+	<p>{description}</p>
 	<hr />
-</header>
+</section>
 
-<ModioSection />
-<XlHubSection />
-<hr />
-<TableSection {categories} />
+<ModWebsite />
+<XLHub />
+<Tables {categories} />

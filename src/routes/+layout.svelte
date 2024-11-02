@@ -1,26 +1,16 @@
 <script lang="ts">
-	import '../app.postcss';
-	import { initializeStores, storePopup, Modal, Toast } from '@skeletonlabs/skeleton';
-	import { computePosition, autoUpdate, offset, shift, flip, arrow } from '@floating-ui/dom';
-	import AppBar from '../components/AppBar.svelte';
-	import Footer from '../components/Footer.svelte';
-	import DrawerMenu from '../components/DrawerMenu.svelte'; // Import the new DrawerMenu component
-
-	// Initialize stores for Skeleton UI and floating UI
-	storePopup.set({ computePosition, autoUpdate, offset, shift, flip, arrow });
-	initializeStores();
+	import '../app.css';
+	import { Navbar, Footer } from '$lib';
 </script>
 
-<Toast />
-<Modal />
-<DrawerMenu />
-
-<div class="flex flex-col items-center h-full">
-	<div class="fixed top-0 w-full z-10">
-		<AppBar />
+<div>
+	<div data-theme="light" class="flex flex-col min-h-screen w-full items-center">
+		<div class="fixed top-0 w-full z-10">
+			<Navbar />
+		</div>
+		<main class="prose lg:prose-xl w-full px-4 pt-24 lg:pt-28 pb-8 overscroll-none">
+			<slot />
+		</main>
 	</div>
-	<main class="prose lg:prose-xl dark:prose-invert w-full flex-1 mt-[3.5rem] px-4 py-8">
-		<slot />
-	</main>
 	<Footer />
 </div>

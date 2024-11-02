@@ -1,9 +1,9 @@
-<!-- src/routes/stats-settings/StatsSettings.svelte -->
 <script lang="ts">
-	import { Avatar } from '@skeletonlabs/skeleton';
-	import UploadForm from './components/UploadForm.svelte';
-	import PostsList from './components/PostsList.svelte';
+	import { pageHeader, Help } from '$lib';
+	import { UploadForm, PostList } from '$lib';
 	import { user, login, logout } from '$lib/stores/authStore'; // Import login and logout from the store
+
+	const { title, description, heading } = pageHeader.stats;
 
 	let showModal = false;
 
@@ -42,52 +42,46 @@
 </script>
 
 <svelte:head>
-	<title>Skatebit | Stats & Settings</title>
-	<meta name="description" content="Get the latest stats from Milky and the community." />
+	<title>{title}</title>
+	<meta name="description" content={description} />
 </svelte:head>
 
-<header>
-	<h1>Stats & Settings</h1>
-	<p>
-		For help with installation, visit our
-		<a href="/guides#stats-settings">Guides</a> section or ask us questions on
-		<a href="https://discord.gg/359SwZ3atS" target="_blank" rel="noopener noreferrer">Discord.</a>
-	</p>
-
+<section>
+	<h1>{heading}</h1>
+	<p>{description}</p>
+	<Help />
 	<hr />
-</header>
+</section>
 
-<div class="card flex flex-col items-center p-4">
+<div class="flex flex-col items-center">
 	{#if $user}
-		<div class="flex items-center gap-2 not-prose p-4">
+		<div class="flex items-center gap-2">
 			{#if $user.photoURL}
-				<Avatar
-					src={$user.photoURL}
-					width="w-6 h-6 m-0"
-					rounded="rounded-full"
-					alt="Profile Picture"
-				/>
+				<img src={$user.photoURL} class="w-6 h-6 rounded-full" alt="Profile" />
 			{:else}
-				<Avatar width="w-6 h-6 m-0" rounded="rounded-full" alt="Profile Picture" />
+				<img class="w-6 h-6" alt="Profile" />
 			{/if}
+
 			<p>
 				Welcome, <strong>{$user.displayName || $user.email}!</strong>
 			</p>
 		</div>
 
-		<!-- Upload Button -->
-		<div class="btn variant-filled-secondary gap-2 mb-4">
-			<button on:click={openModal}>Upload Stats</button>
-			<!-- Removed classes -->
-		</div>
+		<div>
+			<!-- Upload Button -->
+			<div class="btn">
+				<button on:click={openModal}>Upload Stats</button>
+				<!-- Removed classes -->
+			</div>
 
-		<!-- Logout Button -->
-		<div class="btn variant-ghost gap-2 mb-4">
-			<button on:click={logout}>Logout</button>
-			<!-- Added Logout button without classes -->
+			<!-- Logout Button -->
+			<div class="btn">
+				<button on:click={logout}>Logout</button>
+				<!-- Added Logout button without classes -->
+			</div>
 		</div>
 	{:else}
-		<div class="px-4 pb-4 text-center">
+		<div class="text-center">
 			<p>Please sign in to upload your own files.</p>
 			<!-- Login Button -->
 			<button class="btn variant-ghost" on:click={login}>
@@ -140,8 +134,8 @@
 	{/if}
 </div>
 
-<!-- Always show PostsList for all users -->
-<PostsList />
+<!-- Always show PostList for all users -->
+<PostList />
 
 <!-- Modal for Uploading Stats (only for authenticated users) -->
 {#if showModal && $user}

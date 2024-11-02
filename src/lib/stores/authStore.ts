@@ -1,5 +1,3 @@
-// src/lib/stores/authStore.ts
-
 import { writable } from 'svelte/store';
 import { auth, googleProvider } from '$lib/firebase';
 import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';

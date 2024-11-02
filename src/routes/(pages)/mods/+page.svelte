@@ -1,57 +1,32 @@
 <script lang="ts">
-	import ModPackSection from './components/ModPackSection.svelte';
-	import WorkingModListSection from './components/WorkingModListSection.svelte';
-	import SoundPackSection from './components/SoundPackSection.svelte';
-	import TabNavigation from '../../../components/TabNavigation.svelte';
+	import {
+		pageHeader,
+		ModPackSection,
+		ModListSection,
+		SoundPackSection,
+		Help,
+		TabSwitcher
+	} from '$lib';
 
-	let tabSet: number = 0;
+	const { title, description, heading } = pageHeader.mods;
 
-	const tabLinks = [
-		{ name: 'working-mod-list', label: 'Working Mod List' },
-		{ name: 'mod-packs', label: 'Mod Packs' },
-		{ name: 'sound-packs', label: 'Sound Packs' }
+	const tabs = [
+		{ id: 'modList', label: 'Working Mod List', component: ModListSection },
+		{ id: 'modPacks', label: 'Mod Packs', component: ModPackSection },
+		{ id: 'soundPacks', label: 'Sound Packs', component: SoundPackSection }
 	];
-
-	const handleTabChange = (e: CustomEvent<number>) => {
-		tabSet = e.detail;
-	};
 </script>
 
 <svelte:head>
-	<title>Skatebit | Mods</title>
-	<meta
-		name="description"
-		content="Everything you need to start modding Skater XL mods, including UnityModManager, XL Hub, mod packs, and working mod lists."
-	/>
+	<title>{title}</title>
+	<meta name="description" content={description} />
 </svelte:head>
 
-<header>
-	<h1>Mods</h1>
-	<p>
-		For help with installation, visit our
-		<a href="/guides#stats-settings">Guides</a> section or ask us questions on
-		<a href="https://discord.gg/359SwZ3atS" target="_blank">Discord.</a>
-	</p>
+<section>
+	<h1>{heading}</h1>
+	<p>{description}</p>
+	<Help />
 	<hr />
-</header>
+</section>
 
-<TabNavigation
-	{tabLinks}
-	{tabSet}
-	columns="grid-cols-1 sm:!grid-cols-3"
-	on:tabChange={handleTabChange}
-/>
-
-{#if tabSet === 0}
-	<section>
-		<WorkingModListSection />
-	</section>
-{:else if tabSet === 1}
-	<section>
-		<ModPackSection />
-	</section>
-{:else if tabSet === 2}
-	<section>
-		<SoundPackSection />
-	</section>
-{/if}
+<TabSwitcher {tabs} />
