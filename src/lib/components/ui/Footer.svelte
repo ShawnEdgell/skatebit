@@ -11,7 +11,7 @@
 		{/each}
 	</nav>
 
-	<nav>
+	<!-- <nav>
 		<div class="flex justify-center gap-4 sm:grid sm:grid-flow-col">
 			<svg
 				xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@
 				></path>
 			</svg>
 		</div>
-	</nav>
+	</nav> -->
 
 	<aside class="text-center">
 		<p>Skatebit {new Date().getFullYear()} - The Skater XL Modding Community</p>

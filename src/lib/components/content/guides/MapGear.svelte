@@ -1,5 +1,4 @@
 <section>
-	<h2>How to Install Maps &amp; Gear</h2>
 	<p>
 		To install custom maps and gear, simply place them in the following directories. Make sure to
 		extract the files from the ZIP folder!

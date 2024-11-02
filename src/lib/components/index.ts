@@ -1,21 +1,33 @@
-export { default as GettingStarted } from './content/GettingStarted.svelte';
-export { default as Help } from './content/Help.svelte';
+//unitymodmanager
+export { default as UnityModManagerButton } from './content/unitymodmanager/UnityModManagerButton.svelte';
+export { default as UnityModManagerSection } from './content//unitymodmanager/UnityModManagerSection.svelte';
 
-export { default as MapGear } from './content/MapGear.svelte';
-export { default as ModListSection } from './content/ModListSection.svelte';
-export { default as ModPackSection } from './content/ModPackSection.svelte';
-export { default as ModWebsite } from './content/ModWebsite.svelte';
-export { default as PostCard } from './content/PostCard.svelte';
-export { default as PostList } from './content/PostList.svelte';
-export { default as SoundPackSection } from './content/SoundPackSection.svelte';
-export { default as StatsSettings } from './content/StatsSettings.svelte';
-export { default as UnityModManager } from './content/UnityModManager.svelte';
-export { default as UploadForm } from './content/UploadForm.svelte';
-export { default as XLHub } from './content/XLHub.svelte';
+//mods
+export { default as ModListSection } from './content/mods/ModListSection.svelte';
+export { default as ModPackSection } from './content/mods/ModPackSection.svelte';
+export { default as SoundPackSection } from './content/mods/SoundPackSection.svelte';
 
-export { default as Footer } from './ui/Footer.svelte';
+// guides
+export { default as GettingStarted } from './content/guides/GettingStarted.svelte';
+export { default as MapGear } from './content/guides/MapGear.svelte';
+export { default as StatsSettings } from './content/guides/StatsSettings.svelte';
+
+// posts
+export { default as PostCard } from './content/posts/PostCard.svelte';
+export { default as PostList } from './content/posts/PostList.svelte';
+export { default as UploadForm } from './content/posts/UploadForm.svelte';
+
+// general
+export { default as Help } from './content/general/Help.svelte';
+export { default as ModWebsite } from './content/general/ModWebsite.svelte';
+export { default as XLHub } from './content/general/XLHub.svelte';
+
+// login
 export { default as LoginActions } from './ui/LoginActions.svelte';
 export { default as LoginAvatar } from './ui/LoginAvatar.svelte';
+
+// ui
+export { default as Footer } from './ui/Footer.svelte';
 export { default as Navbar } from './ui/Navbar.svelte';
 export { default as Tables } from './ui/Tables.svelte';
 export { default as TabSwitcher } from './ui/TabSwitcher.svelte';

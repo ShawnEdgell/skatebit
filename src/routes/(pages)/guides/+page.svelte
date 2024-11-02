@@ -4,7 +4,7 @@
 		GettingStarted,
 		MapGear,
 		StatsSettings,
-		UnityModManager,
+		UnityModManagerSection,
 		TabSwitcher
 	} from '$lib';
 
@@ -13,9 +13,9 @@
 	// Define the tabs for the guides page
 	const tabs = [
 		{ id: 'gettingStarted', label: 'Getting Started', component: GettingStarted },
-		{ id: 'mapGear', label: 'Map & Gear', component: MapGear },
+		{ id: 'mapGear', label: 'Maps & Gear', component: MapGear },
 		{ id: 'statsSettings', label: 'Stats & Settings', component: StatsSettings },
-		{ id: 'unityModManager', label: 'Unity Mod Manager', component: UnityModManager }
+		{ id: 'unityModManager', label: 'Unity Mod Manager', component: UnityModManagerSection }
 	];
 </script>
 
@@ -31,4 +31,5 @@
 </section>
 
 <!-- Use TabSwitcher with the defined tabs -->
+<h2>{heading}</h2>
 <TabSwitcher {tabs} />

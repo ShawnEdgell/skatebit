@@ -1,5 +1,4 @@
 <section>
-	<h2>How to Install Stats & Settings</h2>
 	<p>To install stats and settings, place the preset files in the following directories.</p>
 	<p>
 		For Boned Ollie Mod and Fro's Mod settings, you will need to replace the existing settings files

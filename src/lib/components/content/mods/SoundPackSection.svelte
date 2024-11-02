@@ -3,7 +3,6 @@
 </script>
 
 <section>
-	<h2 class="text-2xl font-bold mb-4">Sound Packs</h2>
 	<p class="mb-6">Download sound packs for the Soundmod to enhance your Skater XL experience.</p>
 
 	<div class="space-y-4 not-prose">

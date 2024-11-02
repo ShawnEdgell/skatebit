@@ -12,7 +12,6 @@
 </script>
 
 <section>
-	<h2 class="text-2xl font-bold mb-4">Working Mod List</h2>
 	<p class="mb-6">Select your game version below to view a list of compatible mods.</p>
 
 	<!-- Tabs Navigation -->

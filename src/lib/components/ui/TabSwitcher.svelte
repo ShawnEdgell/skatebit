@@ -16,10 +16,9 @@
 	{/each}
 </div>
 
-<div class="p-4">
-	{#each tabs as { id, component }}
-		{#if activeTab === id}
-			<svelte:component this={component} />
-		{/if}
-	{/each}
-</div>
+{#each tabs as { id, label, component }}
+	{#if activeTab === id}
+		<h2>{label}</h2>
+		<svelte:component this={component} />
+	{/if}
+{/each}
