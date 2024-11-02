@@ -1,3 +1,5 @@
+// src/lib/firebase.js
+
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
@@ -28,4 +30,5 @@ export const storage = getStorage(app);
 // Initialize Google Auth Provider
 export const googleProvider = new GoogleAuthProvider();
 
+// Export the Firebase app in case you need it elsewhere
 export { app };
