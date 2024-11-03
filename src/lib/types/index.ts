@@ -1,3 +1,4 @@
-export * from './data/DiscordTypes';
-export * from './data/YouTubeTypes';
-export * from './data/Post';
+export * from './discord/DiscordTypes';
+export * from './youtube/YouTubeTypes';
+export * from './posts/Post';
+export * from './header/pageHeader';

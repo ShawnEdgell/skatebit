@@ -24,12 +24,15 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<section>
+<header>
 	<h1>{heading}</h1>
 	<p>{description}</p>
 	<hr />
-</section>
+</header>
 
-<!-- Use TabSwitcher with the defined tabs -->
-<h2>{heading}</h2>
-<TabSwitcher {tabs} />
+<main>
+	<article>
+		<h2>{heading}</h2>
+		<TabSwitcher {tabs} />
+	</article>
+</main>

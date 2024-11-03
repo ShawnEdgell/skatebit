@@ -9,12 +9,16 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<section>
+<header>
 	<h1>{heading}</h1>
 	<p>{description}</p>
 	<hr />
-</section>
+</header>
 
-<ModWebsite />
-<XLHub />
-<Tables {categories} />
+<main>
+	<article>
+		<ModWebsite />
+		<XLHub />
+		<Tables {categories} />
+	</article>
+</main>

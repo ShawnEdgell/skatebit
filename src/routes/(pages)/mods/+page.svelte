@@ -22,11 +22,15 @@
 	<meta name="description" content={description} />
 </svelte:head>
 
-<section>
+<header>
 	<h1>{heading}</h1>
 	<p>{description}</p>
 	<Help />
 	<hr />
-</section>
+</header>
 
-<TabSwitcher {tabs} />
+<main>
+	<article>
+		<TabSwitcher {tabs} />
+	</article>
+</main>

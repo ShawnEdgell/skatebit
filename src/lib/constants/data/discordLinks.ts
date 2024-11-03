@@ -1,6 +1,6 @@
 // src/lib/stores/discordData.ts
 
-import type { DiscordLink, Category } from '$lib';
+import type { DiscordLink, Category } from '$lib/types';
 
 /**
  * List of Discord links for Modders.
@@ -174,6 +174,6 @@ export const categories: Category[] = [
 	{
 		title: 'Gear Discords',
 		data: gearDiscords,
-		description: 'All the freshest custom gear and accessories.'
+		description: ''
 	}
 ];

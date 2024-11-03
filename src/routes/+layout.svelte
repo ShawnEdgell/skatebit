@@ -10,14 +10,12 @@
 	});
 </script>
 
-<div>
-	<div class="flex flex-col min-h-screen w-full items-center" data-theme="light">
-		<div class="fixed top-0 w-full z-10">
-			<Navbar />
-		</div>
-		<main class="prose lg:prose-xl w-full px-4 pt-28 pb-8 overscroll-none">
-			<slot />
-		</main>
+<div class="flex flex-col min-h-screen w-full items-center" data-theme="light">
+	<div class="fixed top-0 w-full z-10">
+		<Navbar />
 	</div>
-	<Footer />
+	<main class="prose lg:prose-xl w-full px-4 pt-28 pb-8 overscroll-none">
+		<slot />
+	</main>
 </div>
+<Footer />

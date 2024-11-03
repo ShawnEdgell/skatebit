@@ -50,15 +50,12 @@ handleAuthOperation(() => getRedirectResult(auth))
  */
 export const login = () =>
 	handleAuthOperation<void>(async () => {
-		const result = await signInWithPopup(auth, googleProvider);
-		user.set(result.user);
+		await signInWithPopup(auth, googleProvider);
+		// No need to manually set user; onAuthStateChanged handles it
 	});
 
-/**
- * Logs out the current user.
- */
 export const logout = () =>
 	handleAuthOperation<void>(async () => {
 		await signOut(auth);
-		user.set(null);
+		// No need to manually set user; onAuthStateChanged handles it
 	});

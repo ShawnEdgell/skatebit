@@ -1,4 +1,8 @@
-export const pageHeader = {
+// src/lib/constants/pageHeader.ts
+
+import type { PageHeader } from '$lib/types';
+
+export const pageHeader: PageHeader = {
 	news: {
 		title: 'Skatebit - Recent News',
 		description:
@@ -28,7 +32,7 @@ export const pageHeader = {
 	},
 	profile: {
 		title: 'Skatebit - My Profile',
-		description: 'Manage your username and  links.',
+		description: 'Manage your username and links.',
 		heading: 'My Profile'
 	},
 	post: {

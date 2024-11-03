@@ -1,8 +1,6 @@
-// Constants
+// src/lib/index.ts
+
+// Export all components, constants, types, etc.
 export * from './constants';
-
-// Types
 export * from './types';
-
-// Components
 export * from './components';

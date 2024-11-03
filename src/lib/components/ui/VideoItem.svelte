@@ -1,20 +1,23 @@
 <script lang="ts">
-	export let video: {
-		title: string;
-		publishedAt: string;
-		description: string;
-		videoId: string;
-		playlistId: string;
-		showFullDescription: boolean;
-	};
+	import type { YouTubeItem } from '$lib/types/youtube/YouTubeTypes';
+	export let video: YouTubeItem;
 
 	let showIframe = false;
+	let showFullDescription = false;
 
+	/**
+	 * Toggles the visibility of the full video description.
+	 */
 	function toggleDescription() {
-		video.showFullDescription = !video.showFullDescription;
+		showFullDescription = !showFullDescription;
 	}
 
-	function formatDate(dateString: string) {
+	/**
+	 * Formats the published date to a readable string.
+	 * @param dateString - The ISO date string.
+	 * @returns A formatted date string.
+	 */
+	function formatDate(dateString: string): string {
 		return new Date(dateString).toLocaleDateString('en-US', {
 			month: 'long',
 			day: 'numeric',
@@ -22,6 +25,9 @@
 		});
 	}
 
+	/**
+	 * Loads the iframe to play the video.
+	 */
 	function loadIframe() {
 		showIframe = true;
 	}
@@ -29,18 +35,18 @@
 
 <div class="mb-8">
 	<h2 class="text-xl font-semibold">{video.title}</h2>
-	<p class="text-sm lg:text-base text-gray-500">{formatDate(video.publishedAt)}</p>
+	<p>{formatDate(video.publishedAt)}</p>
 
 	{#if video.description?.trim()}
 		{#if video.description.length > 100}
-			{#if video.showFullDescription}
+			{#if showFullDescription}
 				<p>{video.description}</p>
-				<button on:click={toggleDescription} class="text-blue-700 hover:underline mb-4">
+				<button on:click={toggleDescription} class="text-primary hover:underline mb-4">
 					Show less
 				</button>
 			{:else}
 				<p>{video.description.slice(0, 100)}...</p>
-				<button on:click={toggleDescription} class="text-blue-700 hover:underline mb-4">
+				<button on:click={toggleDescription} class="text-primary hover:underline mb-4">
 					Read more
 				</button>
 			{/if}

@@ -232,6 +232,7 @@
 <div class="mb-8">
 	<a href="/stats">Back to Uploads</a>
 </div>
+
 {#if isLoading}
 	<p>Loading post...</p>
 {:else if errorMessage}
@@ -271,29 +272,31 @@
 		</form>
 	{:else}
 		<!-- Display Post -->
-		<h1>{post.title}</h1>
-		<p class="flex items-center gap-2">
-			{#if post.userPhotoURL}
-				<img src={post.userPhotoURL} class="w-6 h-6 m-0 rounded-full" alt="Profile" />
-			{/if}
-			<span>
-				Posted by {post.userName} on {new Date(post.createdAt.seconds * 1000).toLocaleString()}
-			</span>
-		</p>
-		<p>{post.description}</p>
-		<!-- Download Button -->
-		<a href={post.fileURL} class="btn btn-primary not-prose" download>Download</a>
-		<!-- Show edit/delete buttons if current user is the original poster -->
-		{#if $user && $user.uid === post.userId}
-			<button on:click={startEdit} class="btn btn-warning">Edit</button>
-			<button on:click={deletePost} class="btn btn-error" disabled={isDeleting}>
-				{#if isDeleting}
-					Deleting...
-				{:else}
-					Delete
+		<header>
+			<h1>{post.title}</h1>
+			<p class="flex items-center gap-2">
+				{#if post.userPhotoURL}
+					<img src={post.userPhotoURL} class="w-6 h-6 m-0 rounded-full" alt="Profile" />
 				{/if}
-			</button>
-		{/if}
+				<span>
+					Posted by {post.userName} on {new Date(post.createdAt.seconds * 1000).toLocaleString()}
+				</span>
+			</p>
+			<p>{post.description}</p>
+			<!-- Download Button -->
+			<a href={post.fileURL} class="btn btn-primary not-prose" download>Download</a>
+			<!-- Show edit/delete buttons if current user is the original poster -->
+			{#if $user && $user.uid === post.userId}
+				<button on:click={startEdit} class="btn btn-warning">Edit</button>
+				<button on:click={deletePost} class="btn btn-error" disabled={isDeleting}>
+					{#if isDeleting}
+						Deleting...
+					{:else}
+						Delete
+					{/if}
+				</button>
+			{/if}
+		</header>
 	{/if}
 {/if}
 

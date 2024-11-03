@@ -1,3 +1,5 @@
+// src/lib/types/posts/Post.ts
+
 export interface Post {
 	id: string;
 	title: string;
@@ -11,4 +13,15 @@ export interface Post {
 		nanoseconds: number;
 	};
 	userPhotoURL: string | null;
+}
+
+export interface Comment {
+	id: string;
+	content: string;
+	createdAt: {
+		seconds: number;
+		nanoseconds: number;
+	};
+	userId: string;
+	userName: string;
 }
