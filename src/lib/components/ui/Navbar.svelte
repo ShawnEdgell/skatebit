@@ -65,26 +65,11 @@
 			</div>
 
 			<div class="dropdown dropdown-end">
-				<button aria-haspopup="true" class="btn btn-ghost m-1">
+				<button aria-haspopup="true" class="btn m-1">
 					<span>Theme</span>
-					<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-						><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
-							id="SVGRepo_tracerCarrier"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						></g><g id="SVGRepo_iconCarrier">
-							<path
-								d="M7 10L12 15L17 10"
-								stroke="currentColor"
-								stroke-width="1.5"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							></path>
-						</g></svg
-					>
 				</button>
 				<ul
-					class="dropdown-content menu shadow bg-base-100 rounded-box w-64 h-96 overflow-y-scroll p-4 space-y-2"
+					class="dropdown-content menu shadow bg-base-100 rounded-box w-64 h-96 overflow-y-scroll p-4 space-y-2 z-10"
 				>
 					<div>
 						{#each ['dark', 'cupcake', 'bumblebee', 'emerald', 'corporate', 'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black', 'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade', 'night', 'coffee', 'winter', 'dim', 'nord', 'sunset'] as theme}
@@ -98,22 +83,9 @@
 
 			<details bind:this={dropdownRef} class="dropdown dropdown-end">
 				<summary class="btn btn-ghost m-1">
-					<LoginAvatar />
-					<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-						><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g
-							id="SVGRepo_tracerCarrier"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						></g><g id="SVGRepo_iconCarrier">
-							<path
-								d="M7 10L12 15L17 10"
-								stroke="currentColor"
-								stroke-width="1.5"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-							></path>
-						</g></svg
-					>
+					<div>
+						<LoginAvatar />
+					</div>
 				</summary>
 				<button
 					on:click={closeDropdown}
