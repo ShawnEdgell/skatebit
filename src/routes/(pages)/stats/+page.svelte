@@ -105,7 +105,6 @@
 			</section>
 		{/if}
 		<section>
-			<h2>Latest Posts</h2>
 			<PostList {posts} />
 		</section>
 		<Toast isVisible={toastVisible} message={toastMessage} type={toastType} />

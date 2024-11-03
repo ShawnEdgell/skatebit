@@ -23,8 +23,8 @@ export { default as ModWebsite } from './content/general/ModWebsite.svelte';
 export { default as XLHub } from './content/general/XLHub.svelte';
 
 // login
-export { default as LoginActions } from './ui/LoginActions.svelte';
-export { default as LoginAvatar } from './ui/LoginAvatar.svelte';
+export { default as LoginActions } from './login/LoginActions.svelte';
+export { default as LoginAvatar } from './login/LoginAvatar.svelte';
 
 // ui
 export { default as Footer } from './ui/Footer.svelte';

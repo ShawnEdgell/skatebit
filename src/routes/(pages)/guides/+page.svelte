@@ -31,8 +31,7 @@
 </header>
 
 <main>
-	<article>
-		<h2>{heading}</h2>
-		<TabSwitcher {tabs} />
-	</article>
+	<article></article>
 </main>
+<h2>{heading}</h2>
+<TabSwitcher {tabs} />

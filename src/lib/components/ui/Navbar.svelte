@@ -2,25 +2,48 @@
 	import { navItems, LoginAvatar, LoginActions } from '$lib';
 	import { onMount } from 'svelte';
 
+	// References to the dropdown elements
+	let themeDropdown: HTMLDetailsElement;
+	let profileDropdown: HTMLDetailsElement;
+
+	// Function to set the theme
 	function setTheme(theme: string) {
 		document.documentElement.setAttribute('data-theme', theme);
 		localStorage.setItem('theme', theme);
 	}
 
+	// Handle keyboard interactions for accessibility
 	function handleKeyboardClick(event: KeyboardEvent) {
-		// Allow activation with Enter or Space keys
 		if (event.key === 'Enter' || event.key === ' ') {
 			event.preventDefault();
 			(event.currentTarget as HTMLElement).click();
 		}
 	}
 
+	// Function to handle clicks outside the dropdowns
+	function handleClickOutside(event: MouseEvent) {
+		if (themeDropdown && !themeDropdown.contains(event.target as Node)) {
+			themeDropdown.removeAttribute('open');
+		}
+		if (profileDropdown && !profileDropdown.contains(event.target as Node)) {
+			profileDropdown.removeAttribute('open');
+		}
+	}
+
 	onMount(() => {
-		// Check for stored theme in localStorage and apply it on load
+		// Apply saved theme on load
 		const savedTheme = localStorage.getItem('theme');
 		if (savedTheme) {
 			setTheme(savedTheme);
 		}
+
+		// Add global click listener
+		document.addEventListener('click', handleClickOutside);
+
+		// Cleanup listener on component destroy
+		return () => {
+			document.removeEventListener('click', handleClickOutside);
+		};
 	});
 </script>
 
@@ -31,6 +54,7 @@
 		<div class="navbar bg-base-300 w-full">
 			<div class="flex-none sm:hidden">
 				<label for="my-drawer-3" class="btn btn-square btn-ghost" aria-label="Open sidebar">
+					<!-- Hamburger Icon -->
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
@@ -57,8 +81,8 @@
 				</ul>
 			</div>
 
-			<!-- Theme Dropdown using details and summary tags -->
-			<details class="dropdown dropdown-end">
+			<!-- Theme Dropdown -->
+			<details class="dropdown dropdown-end" bind:this={themeDropdown}>
 				<summary tabindex="0" class="btn btn-ghost" on:keydown={handleKeyboardClick}>
 					<span>Theme</span>
 				</summary>
@@ -83,8 +107,8 @@
 				</ul>
 			</details>
 
-			<!-- Profile Dropdown using details and summary tags -->
-			<details class="dropdown dropdown-end">
+			<!-- Profile Dropdown -->
+			<details class="dropdown dropdown-end" bind:this={profileDropdown}>
 				<summary tabindex="0" class="btn btn-ghost" on:keydown={handleKeyboardClick}>
 					<LoginAvatar />
 				</summary>
@@ -95,6 +119,7 @@
 		</div>
 	</div>
 
+	<!-- Sidebar -->
 	<div class="drawer-side">
 		<label for="my-drawer-3" class="drawer-overlay" aria-label="Close sidebar"></label>
 		<ul class="menu menu-lg bg-base-200 min-h-full w-80 p-4">

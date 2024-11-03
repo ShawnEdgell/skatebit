@@ -176,10 +176,12 @@
 	<main>
 		<article>
 			<div class="flex justify-center text-center">
-				<h1>Login</h1>
-				<p>Please sign-in to upload stats and make changes to your profile.</p>
-				<hr />
-				<LoginActions />
+				<div>
+					<h1>Login</h1>
+					<p>Please sign-in to upload stats and make changes to your profile.</p>
+					<hr />
+					<LoginActions />
+				</div>
 			</div>
 		</article>
 	</main>
