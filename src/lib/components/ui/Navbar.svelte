@@ -2,10 +2,10 @@
 	import { navItems, LoginAvatar, LoginActions } from '$lib';
 	import { onMount, onDestroy } from 'svelte';
 
-	let dropdownRef: HTMLDetailsElement;
+	let dropdownRef: HTMLDivElement;
 
 	function closeDropdown() {
-		if (dropdownRef) dropdownRef.open = false;
+		if (dropdownRef) dropdownRef.removeAttribute('open'); // Remove any focus indication manually if needed
 	}
 
 	function handleClickOutside(event: MouseEvent) {
@@ -14,17 +14,39 @@
 		}
 	}
 
+	function handleKeydown(event: KeyboardEvent) {
+		// Close the dropdown when "Escape" is pressed
+		if (event.key === 'Escape') {
+			closeDropdown();
+		}
+	}
+
 	onMount(() => {
 		if (typeof document !== 'undefined') {
 			document.addEventListener('click', handleClickOutside);
+			document.addEventListener('keydown', handleKeydown);
 		}
 	});
 
 	onDestroy(() => {
 		if (typeof document !== 'undefined') {
 			document.removeEventListener('click', handleClickOutside);
+			document.removeEventListener('keydown', handleKeydown);
 		}
 	});
+
+	function setTheme(theme: string) {
+		document.documentElement.setAttribute('data-theme', theme);
+		localStorage.setItem('theme', theme);
+	}
+
+	function handleKeyboardClick(event: KeyboardEvent) {
+		// Allow activation with Enter or Space keys
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
+			(event.currentTarget as HTMLElement).click();
+		}
+	}
 </script>
 
 <div class="drawer">
@@ -64,40 +86,56 @@
 				</ul>
 			</div>
 
+			<!-- Theme Dropdown using div with role="button" -->
 			<div class="dropdown dropdown-end">
-				<button aria-haspopup="true" class="btn m-1">
+				<div
+					role="button"
+					tabindex="0"
+					class="btn btn-ghost"
+					aria-haspopup="true"
+					on:keydown={handleKeyboardClick}
+				>
 					<span>Theme</span>
-				</button>
+				</div>
 				<ul
-					class="dropdown-content menu shadow bg-base-100 rounded-box w-64 h-96 overflow-y-scroll p-4 space-y-2 z-10"
+					class="dropdown-content menu shadow bg-base-100 rounded-box w-64 h-96 overflow-y-scroll p-3 z-10"
 				>
 					<div>
 						{#each ['dark', 'cupcake', 'bumblebee', 'emerald', 'corporate', 'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black', 'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade', 'night', 'coffee', 'winter', 'dim', 'nord', 'sunset'] as theme}
 							<li>
-								<button class="p-4" data-set-theme={theme} data-act-class="active">{theme}</button>
+								<div
+									class="p-4"
+									role="button"
+									tabindex="0"
+									on:click={() => setTheme(theme)}
+									on:keydown={handleKeyboardClick}
+								>
+									{theme}
+								</div>
 							</li>
 						{/each}
 					</div>
 				</ul>
 			</div>
 
-			<details bind:this={dropdownRef} class="dropdown dropdown-end">
-				<summary class="btn btn-ghost m-1">
-					<div>
-						<LoginAvatar />
-					</div>
-				</summary>
-				<button
-					on:click={closeDropdown}
-					class="dropdown-content menu bg-base-100 rounded-box z-[10] p-2 shadow"
+			<!-- Profile Dropdown using div with role="button" -->
+			<div class="dropdown dropdown-end" bind:this={dropdownRef}>
+				<div
+					role="button"
+					tabindex="0"
+					class="btn btn-ghost"
+					aria-haspopup="true"
+					on:keydown={handleKeyboardClick}
 				>
-					<ul class="menu p-2 w-56 bg-base-100 rounded-box shadow space-y-2">
-						<LoginActions />
-					</ul>
-				</button>
-			</details>
+					<LoginAvatar />
+				</div>
+				<ul class="dropdown-content menu bg-base-100 rounded-box z-[10] p-3 space-y-2 shadow w-56">
+					<LoginActions />
+				</ul>
+			</div>
 		</div>
 	</div>
+
 	<div class="drawer-side">
 		<label for="my-drawer-3" class="drawer-overlay" aria-label="Close sidebar"></label>
 		<ul class="menu menu-lg bg-base-200 min-h-full w-80 p-4">
