@@ -2,46 +2,44 @@
 	import { navItems, LoginAvatar, LoginActions } from '$lib';
 	import { onMount, onDestroy } from 'svelte';
 
-	let dropdownRef: HTMLDivElement;
+	let dropdownRef: HTMLDetailsElement;
+	let isLoginDropdownOpen = false;
 
-	function closeDropdown() {
-		if (dropdownRef) dropdownRef.removeAttribute('open'); // Remove any focus indication manually if needed
-	}
-
-	function handleClickOutside(event: MouseEvent) {
-		if (dropdownRef && !dropdownRef.contains(event.target as Node)) {
-			closeDropdown();
-		}
-	}
-
-	function handleKeydown(event: KeyboardEvent) {
-		// Close the dropdown when "Escape" is pressed
-		if (event.key === 'Escape') {
-			closeDropdown();
-		}
-	}
-
-	onMount(() => {
-		if (typeof document !== 'undefined') {
-			document.addEventListener('click', handleClickOutside);
-			document.addEventListener('keydown', handleKeydown);
-		}
-	});
-
-	onDestroy(() => {
-		if (typeof document !== 'undefined') {
-			document.removeEventListener('click', handleClickOutside);
-			document.removeEventListener('keydown', handleKeydown);
-		}
-	});
-
+	// Apply the selected theme and save it in localStorage
 	function setTheme(theme: string) {
 		document.documentElement.setAttribute('data-theme', theme);
-		localStorage.setItem('theme', theme);
+		localStorage.setItem('selected-theme', theme);
+	}
+
+	// Check for stored theme in localStorage and apply it on load
+	onMount(() => {
+		const savedTheme = localStorage.getItem('selected-theme');
+		if (savedTheme) {
+			setTheme(savedTheme);
+		}
+
+		if (typeof document !== 'undefined') {
+			document.addEventListener('click', (event) => {
+				if (!(event.target as HTMLElement).closest('.login-dropdown')) {
+					closeLoginDropdown();
+				}
+			});
+		}
+	});
+
+	function closeDropdown() {
+		if (dropdownRef) dropdownRef.open = false;
+	}
+
+	function closeLoginDropdown() {
+		isLoginDropdownOpen = false;
+	}
+
+	function toggleLoginDropdown() {
+		isLoginDropdownOpen = !isLoginDropdownOpen;
 	}
 
 	function handleKeyboardClick(event: KeyboardEvent) {
-		// Allow activation with Enter or Space keys
 		if (event.key === 'Enter' || event.key === ' ') {
 			event.preventDefault();
 			(event.currentTarget as HTMLElement).click();
@@ -52,7 +50,6 @@
 <div class="drawer">
 	<input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col">
-		<!-- Navbar -->
 		<div class="navbar bg-base-300 w-full">
 			<div class="flex-none sm:hidden">
 				<label for="my-drawer-3" class="btn btn-square btn-ghost" aria-label="Open sidebar">
@@ -77,16 +74,12 @@
 			<div class="hidden flex-none sm:block">
 				<ul class="menu menu-horizontal">
 					{#each navItems as { href, label }}
-						<li>
-							<a class="btn btn-ghost rounded-btn" {href}>
-								<span>{label}</span>
-							</a>
-						</li>
+						<li><a class="btn btn-ghost rounded-btn" {href}><span>{label}</span></a></li>
 					{/each}
 				</ul>
 			</div>
 
-			<!-- Theme Dropdown using div with role="button" -->
+			<!-- Theme Dropdown -->
 			<div class="dropdown dropdown-end">
 				<div
 					role="button"
@@ -100,38 +93,41 @@
 				<ul
 					class="dropdown-content menu shadow bg-base-100 rounded-box w-64 h-96 overflow-y-scroll p-3 z-10"
 				>
-					<div>
-						{#each ['dark', 'cupcake', 'bumblebee', 'emerald', 'corporate', 'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black', 'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade', 'night', 'coffee', 'winter', 'dim', 'nord', 'sunset'] as theme}
-							<li>
-								<div
-									class="p-4"
-									role="button"
-									tabindex="0"
-									on:click={() => setTheme(theme)}
-									on:keydown={handleKeyboardClick}
-								>
-									{theme}
-								</div>
-							</li>
-						{/each}
-					</div>
+					{#each ['dark', 'cupcake', 'bumblebee', 'emerald', 'corporate', 'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black', 'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade', 'night', 'coffee', 'winter', 'dim', 'nord', 'sunset'] as theme}
+						<li>
+							<div
+								class="p-4"
+								role="button"
+								tabindex="0"
+								on:click={() => setTheme(theme)}
+								on:keydown={handleKeyboardClick}
+							>
+								{theme}
+							</div>
+						</li>
+					{/each}
 				</ul>
 			</div>
 
-			<!-- Profile Dropdown using div with role="button" -->
-			<div class="dropdown dropdown-end" bind:this={dropdownRef}>
+			<!-- Profile/Login Dropdown -->
+			<div class="dropdown dropdown-end login-dropdown">
 				<div
 					role="button"
 					tabindex="0"
 					class="btn btn-ghost"
 					aria-haspopup="true"
+					on:click={toggleLoginDropdown}
 					on:keydown={handleKeyboardClick}
 				>
 					<LoginAvatar />
 				</div>
-				<ul class="dropdown-content menu bg-base-100 rounded-box z-[10] p-3 space-y-2 shadow w-56">
-					<LoginActions />
-				</ul>
+				{#if isLoginDropdownOpen}
+					<ul
+						class="dropdown-content menu bg-base-100 rounded-box z-[10] p-3 space-y-2 shadow w-56"
+					>
+						<LoginActions />
+					</ul>
+				{/if}
 			</div>
 		</div>
 	</div>
@@ -140,11 +136,7 @@
 		<label for="my-drawer-3" class="drawer-overlay" aria-label="Close sidebar"></label>
 		<ul class="menu menu-lg bg-base-200 min-h-full w-80 p-4">
 			{#each navItems as { href, label }}
-				<li>
-					<a {href}>
-						<span>{label}</span>
-					</a>
-				</li>
+				<li><a {href}><span>{label}</span></a></li>
 			{/each}
 		</ul>
 	</div>
