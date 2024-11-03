@@ -1,42 +1,30 @@
 <script lang="ts">
 	import { navItems, LoginAvatar, LoginActions } from '$lib';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 
-	let dropdownRef: HTMLDetailsElement;
 	let isLoginDropdownOpen = false;
+	let isThemeDropdownOpen = false;
 
-	// Apply the selected theme and save it in localStorage
 	function setTheme(theme: string) {
 		document.documentElement.setAttribute('data-theme', theme);
 		localStorage.setItem('selected-theme', theme);
 	}
 
-	// Check for stored theme in localStorage and apply it on load
 	onMount(() => {
 		const savedTheme = localStorage.getItem('selected-theme');
 		if (savedTheme) {
 			setTheme(savedTheme);
 		}
-
-		if (typeof document !== 'undefined') {
-			document.addEventListener('click', (event) => {
-				if (!(event.target as HTMLElement).closest('.login-dropdown')) {
-					closeLoginDropdown();
-				}
-			});
-		}
 	});
 
-	function closeDropdown() {
-		if (dropdownRef) dropdownRef.open = false;
-	}
-
-	function closeLoginDropdown() {
-		isLoginDropdownOpen = false;
-	}
-
-	function toggleLoginDropdown() {
-		isLoginDropdownOpen = !isLoginDropdownOpen;
+	function toggleDropdown(dropdown: 'theme' | 'login') {
+		if (dropdown === 'theme') {
+			isThemeDropdownOpen = !isThemeDropdownOpen;
+			isLoginDropdownOpen = false;
+		} else if (dropdown === 'login') {
+			isLoginDropdownOpen = !isLoginDropdownOpen;
+			isThemeDropdownOpen = false;
+		}
 	}
 
 	function handleKeyboardClick(event: KeyboardEvent) {
@@ -86,27 +74,30 @@
 					tabindex="0"
 					class="btn btn-ghost"
 					aria-haspopup="true"
+					on:click={() => toggleDropdown('theme')}
 					on:keydown={handleKeyboardClick}
 				>
 					<span>Theme</span>
 				</div>
-				<ul
-					class="dropdown-content menu shadow bg-base-100 rounded-box w-64 h-96 overflow-y-scroll p-3 z-10"
-				>
-					{#each ['dark', 'cupcake', 'bumblebee', 'emerald', 'corporate', 'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black', 'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade', 'night', 'coffee', 'winter', 'dim', 'nord', 'sunset'] as theme}
-						<li>
-							<div
-								class="p-4"
-								role="button"
-								tabindex="0"
-								on:click={() => setTheme(theme)}
-								on:keydown={handleKeyboardClick}
-							>
-								{theme}
-							</div>
-						</li>
-					{/each}
-				</ul>
+				{#if isThemeDropdownOpen}
+					<ul
+						class="dropdown-content menu shadow bg-base-100 rounded-box w-64 h-96 overflow-y-scroll p-3 z-10"
+					>
+						{#each ['dark', 'cupcake', 'bumblebee', 'emerald', 'corporate', 'synthwave', 'retro', 'cyberpunk', 'valentine', 'halloween', 'garden', 'forest', 'aqua', 'lofi', 'pastel', 'fantasy', 'wireframe', 'black', 'luxury', 'dracula', 'cmyk', 'autumn', 'business', 'acid', 'lemonade', 'night', 'coffee', 'winter', 'dim', 'nord', 'sunset'] as theme}
+							<li>
+								<div
+									class="p-4"
+									role="button"
+									tabindex="0"
+									on:click={() => setTheme(theme)}
+									on:keydown={handleKeyboardClick}
+								>
+									{theme}
+								</div>
+							</li>
+						{/each}
+					</ul>
+				{/if}
 			</div>
 
 			<!-- Profile/Login Dropdown -->
@@ -116,7 +107,7 @@
 					tabindex="0"
 					class="btn btn-ghost"
 					aria-haspopup="true"
-					on:click={toggleLoginDropdown}
+					on:click={() => toggleDropdown('login')}
 					on:keydown={handleKeyboardClick}
 				>
 					<LoginAvatar />
