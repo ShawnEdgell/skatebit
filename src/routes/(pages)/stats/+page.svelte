@@ -10,6 +10,9 @@
 	const { title, description, heading } = pageHeader.stats;
 
 	let posts: Post[] = []; // Explicitly set type as Post[]
+	let toastVisible = false;
+	let toastMessage = '';
+	let toastType = 'success'; // Controls the style of the toast (e.g., success, error)
 
 	// Fetch the initial set of posts when the page loads
 	const fetchPosts = async () => {
@@ -23,13 +26,28 @@
 			})) as Post[];
 		} catch (error) {
 			console.error('Error fetching posts:', error);
+			showToast('Failed to fetch posts.', 'error');
 		}
+	};
+
+	// Show toast with a message and type (success or error)
+	const showToast = (message: string, type: 'success' | 'error') => {
+		toastMessage = message;
+		toastType = type;
+		toastVisible = true;
+		setTimeout(() => (toastVisible = false), 3000); // Hide toast after 3 seconds
 	};
 
 	// Handle successful upload and add it to the posts list
 	const onUploadSuccess = (event: CustomEvent<{ post: Post }>) => {
 		const newPost = event.detail.post;
 		posts = [newPost, ...posts]; // Add the new post to the beginning of the posts list
+		showToast('Upload successful!', 'success');
+	};
+
+	// Handle upload failure
+	const onUploadFailure = () => {
+		showToast('Upload failed. Please try again.', 'error');
 	};
 
 	onMount(async () => {
@@ -52,7 +70,7 @@
 {#if $user}
 	<h2>Upload Stats</h2>
 	<p>Please make sure to only upload <strong>.ZIP</strong> files.</p>
-	<UploadForm on:uploadSuccess={onUploadSuccess} />
+	<UploadForm on:uploadSuccess={onUploadSuccess} on:uploadFailure={onUploadFailure} />
 {:else}
 	<div role="alert" class="alert alert-warning">
 		<svg
@@ -74,3 +92,11 @@
 
 <!-- Always show PostList for all users -->
 <PostList {posts} />
+
+{#if toastVisible}
+	<div class="toast toast-center">
+		<div class="alert alert-{toastType}">
+			<span>{toastMessage}</span>
+		</div>
+	</div>
+{/if}
