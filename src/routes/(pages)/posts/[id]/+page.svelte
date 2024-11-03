@@ -3,9 +3,31 @@
 	import { page } from '$app/stores';
 	import { user } from '$lib/stores/authStore';
 	import { db, storage } from '$lib/firebase';
-	import { collection, doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore';
+	import {
+		collection,
+		doc,
+		getDoc,
+		updateDoc,
+		deleteDoc,
+		addDoc,
+		onSnapshot,
+		orderBy,
+		query
+	} from 'firebase/firestore';
 	import { ref as storageRef, deleteObject } from 'firebase/storage';
 	import type { Post } from '$lib';
+
+	// Define a Comment type
+	type Comment = {
+		id: string;
+		content: string;
+		createdAt: {
+			seconds: number;
+			nanoseconds: number;
+		};
+		userId: string;
+		userName: string;
+	};
 
 	let postId = $page.params.id;
 	let post: Post | null = null;
@@ -19,8 +41,14 @@
 	let editTitle = '';
 	let editDescription = '';
 
+	// Comments related variables
+	let comments: Comment[] = []; // Explicitly defining comments as an array of Comment objects
+	let newComment: string = ''; // Explicitly defining newComment as a string
+	let commentError: string = '';
+
 	onMount(async () => {
 		await fetchPost();
+		fetchComments();
 	});
 
 	const fetchPost = async () => {
@@ -146,6 +174,51 @@
 			isDeleting = false;
 		}
 	};
+
+	// Fetch comments for the post
+	const fetchComments = () => {
+		const commentsRef = collection(db, `posts/${postId}/comments`);
+		const q = query(commentsRef, orderBy('createdAt', 'asc'));
+
+		// Listen for real-time updates to comments
+		onSnapshot(q, (querySnapshot) => {
+			comments = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })) as Comment[];
+		});
+	};
+
+	// Add a new comment
+	const addComment = async () => {
+		if (!newComment.trim()) return;
+		if (!$user) {
+			commentError = 'User not authenticated.';
+			return;
+		}
+
+		try {
+			const commentsRef = collection(db, `posts/${postId}/comments`);
+			await addDoc(commentsRef, {
+				content: newComment,
+				createdAt: new Date(),
+				userId: $user.uid,
+				userName: $user.displayName || 'Anonymous'
+			});
+			newComment = '';
+		} catch (error) {
+			console.error('Error adding comment:', error);
+		}
+	};
+
+	// Delete a comment
+	const deleteComment = async (commentId: string) => {
+		// Explicitly defining commentId as a string
+		if (!confirm('Are you sure you want to delete this comment?')) return;
+
+		try {
+			await deleteDoc(doc(db, `posts/${postId}/comments/${commentId}`));
+		} catch (error) {
+			console.error('Error deleting comment:', error);
+		}
+	};
 </script>
 
 <svelte:head>
@@ -218,6 +291,45 @@
 			</button>
 		{/if}
 	{/if}
-{:else}
-	<p>Post not found.</p>
 {/if}
+
+<hr />
+
+<!-- Comments Section -->
+<h2>Comments</h2>
+<div>
+	{#if comments.length === 0}
+		<p>No comments yet.</p>
+	{/if}
+
+	{#each comments as comment}
+		<div class={comment.userId === $user?.uid ? 'chat chat-end' : 'chat chat-start'}>
+			<div class="chat-header flex items-center gap-2 mb-1">
+				{#if post?.userPhotoURL}
+					<img src={post?.userPhotoURL} class="w-6 h-6 m-0 rounded-full" alt="Profile" />
+				{/if}
+				{comment.userName}
+				<time class="text-xs opacity-50"
+					>{new Date(comment.createdAt.seconds * 1000).toLocaleString()}</time
+				>
+			</div>
+			<div class="chat-bubble">{comment.content}</div>
+		</div>
+		<div class="flex w-full justify-end">
+			{#if $user && $user.uid === comment.userId}
+				<button on:click={() => deleteComment(comment.id)} class="btn btn-xs btn-error"
+					>Delete</button
+				>{/if}
+		</div>
+	{/each}
+
+	<div class="flex gap-2">
+		<input
+			type="text"
+			placeholder="Type your comment"
+			class="input w-full input-bordered mt-2"
+			bind:value={newComment}
+		/>
+		<button on:click={addComment} class="btn btn-primary mt-2">Send</button>
+	</div>
+</div>
