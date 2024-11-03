@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { LoginActions } from '$lib';
+	import { LoginActions, pageHeader } from '$lib';
 	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/authStore';
 	import { db } from '$lib/firebase';
@@ -13,6 +13,8 @@
 		getDocs,
 		updateDoc
 	} from 'firebase/firestore';
+
+	const { title, description } = pageHeader.profile;
 
 	let youtube = '';
 	let twitch = '';
@@ -88,6 +90,11 @@
 		}
 	};
 </script>
+
+<svelte:head>
+	<title>{title}</title>
+	<meta name="description" content={description} />
+</svelte:head>
 
 {#if $user}
 	{#if isLoading}

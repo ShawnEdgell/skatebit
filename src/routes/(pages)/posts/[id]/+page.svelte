@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { pageHeader } from '$lib';
 	import { page } from '$app/stores';
 	import { user } from '$lib/stores/authStore';
 	import { db, storage } from '$lib/firebase';
@@ -16,6 +17,8 @@
 	} from 'firebase/firestore';
 	import { ref as storageRef, deleteObject } from 'firebase/storage';
 	import type { Post } from '$lib';
+
+	const { title, description } = pageHeader.post;
 
 	// Define a Comment type
 	type Comment = {
@@ -42,8 +45,8 @@
 	let editDescription = '';
 
 	// Comments related variables
-	let comments: Comment[] = []; // Explicitly defining comments as an array of Comment objects
-	let newComment: string = ''; // Explicitly defining newComment as a string
+	let comments: Comment[] = [];
+	let newComment: string = '';
 	let commentError: string = '';
 
 	onMount(async () => {
@@ -222,7 +225,8 @@
 </script>
 
 <svelte:head>
-	<title>Skatebit | {post ? post.title : 'Post'}</title>
+	<title>{title} - {post ? post.title : 'Post'}</title>
+	<meta name="description" content={description} />
 </svelte:head>
 
 <div class="mb-8">

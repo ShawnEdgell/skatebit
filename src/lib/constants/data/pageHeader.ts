@@ -30,5 +30,10 @@ export const pageHeader = {
 		title: 'Skatebit - My Profile',
 		description: 'Manage your username and  links.',
 		heading: 'My Profile'
+	},
+	post: {
+		title: 'Skatebit',
+		description: 'Forum posts and discussions.',
+		heading: 'Comments'
 	}
 };
