@@ -317,9 +317,10 @@
 		</div>
 		<div class="flex w-full justify-end">
 			{#if $user && $user.uid === comment.userId}
-				<button on:click={() => deleteComment(comment.id)} class="btn btn-xs btn-error"
-					>Delete</button
-				>{/if}
+				<button on:click={() => deleteComment(comment.id)} class="btn btn-xs btn-error">
+					Delete
+				</button>
+			{/if}
 		</div>
 	{/each}
 
@@ -329,7 +330,8 @@
 			placeholder="Type your comment"
 			class="input w-full input-bordered mt-2"
 			bind:value={newComment}
+			disabled={!$user}
 		/>
-		<button on:click={addComment} class="btn btn-primary mt-2">Send</button>
+		<button on:click={addComment} class="btn btn-primary mt-2" disabled={!$user}> Send </button>
 	</div>
 </div>
