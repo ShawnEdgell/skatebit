@@ -1,10 +1,17 @@
 <script lang="ts">
 	import '../app.css';
 	import { Navbar, Footer } from '$lib';
+	import { onMount } from 'svelte';
+	import { themeChange } from 'theme-change';
+
+	onMount(() => {
+		// Initialize theme-change globally
+		themeChange(false);
+	});
 </script>
 
 <div>
-	<div data-theme="light" class="flex flex-col min-h-screen w-full items-center">
+	<div class="flex flex-col min-h-screen w-full items-center" data-theme="light">
 		<div class="fixed top-0 w-full z-10">
 			<Navbar />
 		</div>

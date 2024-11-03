@@ -4,7 +4,7 @@
 	export let post: Post;
 </script>
 
-<a href="/posts/{post.id}" class="card bg-base-200 hover:bg-base-300 border shadow-lg not-prose">
+<a href="/posts/{post.id}" class="card bg-base-200 hover:bg-base-300 shadow-lg not-prose">
 	<div class="card-body">
 		<h2 class="card-title">{post.title}</h2>
 		<div class="flex items-center gap-2 text-sm lg:text-base">

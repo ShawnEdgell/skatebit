@@ -1,18 +1,17 @@
 <script lang="ts">
-	import { pageHeader, Help } from '$lib';
-	import { UploadForm, PostList } from '$lib';
+	import { pageHeader, Help, UploadForm, PostList, Toast } from '$lib';
+	import type { Post } from '$lib';
 	import { user } from '$lib/stores/authStore';
 	import { onMount } from 'svelte';
 	import { db } from '$lib/firebase';
 	import { collection, getDocs, orderBy, query } from 'firebase/firestore';
-	import type { Post } from '$lib'; // Importing the Post type
 
 	const { title, description, heading } = pageHeader.stats;
 
-	let posts: Post[] = []; // Explicitly set type as Post[]
+	let posts: Post[] = [];
 	let toastVisible = false;
 	let toastMessage = '';
-	let toastType = 'success'; // Controls the style of the toast (e.g., success, error)
+	let toastType: 'success' | 'error' = 'success';
 
 	// Fetch the initial set of posts when the page loads
 	const fetchPosts = async () => {
@@ -30,7 +29,6 @@
 		}
 	};
 
-	// Show toast with a message and type (success or error)
 	const showToast = (message: string, type: 'success' | 'error') => {
 		toastMessage = message;
 		toastType = type;
@@ -38,14 +36,14 @@
 		setTimeout(() => (toastVisible = false), 3000); // Hide toast after 3 seconds
 	};
 
-	// Handle successful upload and add it to the posts list
+	// Handle successful upload and show toast
 	const onUploadSuccess = (event: CustomEvent<{ post: Post }>) => {
 		const newPost = event.detail.post;
-		posts = [newPost, ...posts]; // Add the new post to the beginning of the posts list
+		posts = [newPost, ...posts];
 		showToast('Upload successful!', 'success');
 	};
 
-	// Handle upload failure
+	// Handle upload failure and show toast
 	const onUploadFailure = () => {
 		showToast('Upload failed. Please try again.', 'error');
 	};
@@ -90,13 +88,6 @@
 	</div>
 {/if}
 
-<!-- Always show PostList for all users -->
 <PostList {posts} />
 
-{#if toastVisible}
-	<div class="toast toast-center">
-		<div class="alert alert-{toastType}">
-			<span>{toastMessage}</span>
-		</div>
-	</div>
-{/if}
+<Toast isVisible={toastVisible} message={toastMessage} type={toastType} />

@@ -31,4 +31,6 @@ export { default as Footer } from './ui/Footer.svelte';
 export { default as Navbar } from './ui/Navbar.svelte';
 export { default as Tables } from './ui/Tables.svelte';
 export { default as TabSwitcher } from './ui/TabSwitcher.svelte';
+export { default as Toast } from './ui/Toast.svelte';
+export { default as UserAlert } from './ui/UserAlert.svelte';
 export { default as VideoItem } from './ui/VideoItem.svelte';

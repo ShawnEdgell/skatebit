@@ -1,5 +1,11 @@
 <!doctype html>
 <html lang="en">
+	<script>
+		(function () {
+			const theme = localStorage.getItem('theme') || 'dark'; // Fallback to dark if no theme is set
+			document.documentElement.setAttribute('data-theme', theme);
+		})();
+	</script>
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
