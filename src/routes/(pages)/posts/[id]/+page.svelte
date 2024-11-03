@@ -324,7 +324,7 @@
 		</div>
 	{/each}
 
-	<div class="flex gap-2">
+	<div class="flex gap-2 mb-8">
 		<input
 			type="text"
 			placeholder="Type your comment"
