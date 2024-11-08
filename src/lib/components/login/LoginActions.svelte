@@ -19,11 +19,11 @@
 	<a class="btn" href="/profile">Profile</a>
 	<button class="btn" on:click={handleLogout} disabled={$isLoading}> Logout </button>
 {:else}
-	<button class="btn" on:click={handleLogin} disabled={$isLoading}>
+	<button class="btn btn-neutral" on:click={handleLogin} disabled={$isLoading}>
 		<div class="flex gap-2 items-center">
 			<!-- Google SVG Icon -->
 			<svg
-				class="h-6 w-6"
+				class="h-5 w-5"
 				viewBox="0 0 48 48"
 				xmlns="http://www.w3.org/2000/svg"
 				fill="currentColor"

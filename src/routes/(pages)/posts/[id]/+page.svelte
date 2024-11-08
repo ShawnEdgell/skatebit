@@ -311,13 +311,9 @@
 
 	{#each comments as comment}
 		<div class={comment.userId === $user?.uid ? 'chat chat-end' : 'chat chat-start'}>
-			<div class="chat-header flex items-center gap-2 mb-1">
-				{#if post?.userPhotoURL}
-					<img src={post?.userPhotoURL} class="w-6 h-6 m-0 rounded-full" alt="Profile" />
-				{/if}
+			<div class="chat-header flex items-center gap-2 mb-1 prose">
 				{comment.userName}
-				<time class="text-xs opacity-50"
-					>{new Date(comment.createdAt.seconds * 1000).toLocaleString()}</time
+				<time class="opacity-50">{new Date(comment.createdAt.seconds * 1000).toLocaleString()}</time
 				>
 			</div>
 			<div class="chat-bubble">{comment.content}</div>
@@ -331,14 +327,14 @@
 		</div>
 	{/each}
 
-	<div class="flex gap-2 mb-8">
+	<div class="flex gap-2">
 		<input
 			type="text"
 			placeholder="Type your comment"
-			class="input w-full input-bordered mt-2"
+			class="input w-full input-bordered mt-4"
 			bind:value={newComment}
 			disabled={!$user}
 		/>
-		<button on:click={addComment} class="btn btn-primary mt-2" disabled={!$user}> Send </button>
+		<button on:click={addComment} class="btn btn-primary mt-4" disabled={!$user}> Send </button>
 	</div>
 </div>

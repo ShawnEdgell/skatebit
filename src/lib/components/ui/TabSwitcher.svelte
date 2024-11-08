@@ -3,7 +3,7 @@
 	let activeTab = tabs[0].id;
 </script>
 
-<div class="flex flex-col lg:grid sm:grid-cols-3 gap-4">
+<div class="flex flex-col lg:grid sm:grid-cols-3 gap-2">
 	{#each tabs as { id, label }}
 		<button
 			type="button"

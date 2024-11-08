@@ -78,35 +78,30 @@
 	<hr />
 </header>
 
-<main>
-	<article>
-		{#if $user}
-			<section class="mb-8">
-				<h2 class="text-2xl font-semibold mb-2">Upload Stats</h2>
-				<p class="mb-4">Please make sure to only upload <strong>.ZIP</strong> files.</p>
-				<UploadForm on:uploadSuccess={onUploadSuccess} on:uploadFailure={onUploadFailure} />
-			</section>
-		{:else}
-			<section role="alert" class="alert">
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					fill="none"
-					viewBox="0 0 24 24"
-					class="h-6 w-6 inline-block mr-2 stroke-current"
-				>
-					<path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-					></path>
-				</svg>
-				<span>Please sign in to upload your own files.</span>
-			</section>
-		{/if}
-		<section>
-			<PostList {posts} />
-		</section>
-		<Toast isVisible={toastVisible} message={toastMessage} type={toastType} />
-	</article>
-</main>
+{#if $user}
+	<div class="alert flex flex-col">
+		<h2>Upload Stats</h2>
+		<p>Please make sure to only upload <strong>.ZIP</strong> files.</p>
+		<UploadForm on:uploadSuccess={onUploadSuccess} on:uploadFailure={onUploadFailure} />
+	</div>
+{:else}
+	<div role="alert" class="alert">
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			class="h-6 w-6 inline-block mr-2 stroke-current"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				stroke-width="2"
+				d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+			></path>
+		</svg>
+		<span>Please sign in to upload your own files.</span>
+	</div>
+{/if}
+
+<PostList {posts} />
+<Toast isVisible={toastVisible} message={toastMessage} type={toastType} />

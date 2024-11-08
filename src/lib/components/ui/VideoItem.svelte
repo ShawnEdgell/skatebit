@@ -34,7 +34,7 @@
 </script>
 
 <div class="mb-8">
-	<h2 class="text-xl font-semibold">{video.title}</h2>
+	<h2>{video.title}</h2>
 	<p>{formatDate(video.publishedAt)}</p>
 
 	{#if video.description?.trim()}

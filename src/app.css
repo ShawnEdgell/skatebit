@@ -5,7 +5,7 @@
 
 html,
 body {
-	@apply h-full w-full break-words overscroll-none  scroll-smooth;
+	@apply h-full w-full break-words scroll-smooth;
 }
 
 a {

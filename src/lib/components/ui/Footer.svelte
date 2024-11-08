@@ -2,8 +2,8 @@
 	import { navItems } from '$lib';
 </script>
 
-<footer class="footer footer-center bg-base-100 p-10">
-	<nav class="grid gap-4 sm:grid-flow-col sm:auto-cols-auto text-center">
+<footer class="footer footer-center p-10 bg-base-300">
+	<nav class="grid gap-4 md:grid-flow-col md:auto-cols-auto text-center">
 		{#each navItems as { href, label }}
 			<a {href} class="underline">
 				<span>{label}</span>
@@ -12,7 +12,7 @@
 	</nav>
 
 	<nav>
-		<div class="flex justify-center gap-4 sm:grid sm:grid-flow-col">
+		<div class="flex justify-center gap-4 md:grid md:grid-flow-col">
 			<a href="https://www.youtube.com/@SkaterXL" target="_blank">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
