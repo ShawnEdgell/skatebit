@@ -4,7 +4,7 @@
 </script>
 
 {#if $user?.photoURL}
-	<img src={$user.photoURL} class="w-8 h-8 rounded-full" alt="Profile" />
+	<img src={$user.photoURL} class="w-6 h-6 rounded-full" alt="Profile" />
 {:else}
 	<svg class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 		<path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" />

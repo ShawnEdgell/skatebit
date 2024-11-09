@@ -131,7 +131,7 @@
 				</label>
 				<!-- Dropdown Content: Theme Options -->
 				<div
-					class="bg-base-200 menu dropdown-content max-h-96 w-56 overflow-y-scroll rounded-box p-2 shadow"
+					class=" bg-base-200 menu dropdown-content max-h-96 w-56 overflow-y-scroll rounded-box p-2 shadow"
 				>
 					<ul tabindex="0">
 						{#each themes as theme}
@@ -152,7 +152,11 @@
 
 			<!-- Profile Dropdown -->
 			<details class="dropdown dropdown-end" bind:this={profileDropdown}>
-				<summary tabindex="0" class="btn btn-ghost" on:keydown={handleKeyboardClick}>
+				<summary
+					tabindex="0"
+					class="btn btn-ghost flex items-center gap-0 md:gap-x-1"
+					on:keydown={handleKeyboardClick}
+				>
 					<LoginAvatar />
 					<!-- Dropdown Arrow -->
 					<svg
