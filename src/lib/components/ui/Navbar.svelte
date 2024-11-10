@@ -72,7 +72,7 @@
 				</label>
 			</div>
 			<div class="mx-2 flex-1">
-				<a href="/" class="btn btn-ghost italic font-extrabold text-xl">SKATEBIT</a>
+				<a href="/" class="btn btn-ghost italic font-black text-xl">SKATEBIT</a>
 			</div>
 			<!-- Skater XL Dropdown -->
 			<div class="dropdown dropdown-end hidden md:inline-block">

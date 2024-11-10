@@ -39,5 +39,15 @@ export const pageHeader: PageHeader = {
 		title: 'Skatebit',
 		description: 'Forum posts and discussions.',
 		heading: 'Comments'
+	},
+	videos: {
+		title: 'Skatebit - Videos',
+		description: 'View the latest Skater XL clips and videos.',
+		heading: 'Videos'
+	},
+	video: {
+		title: 'Skatebit',
+		description: 'Video posts and discussions.',
+		heading: 'Comments'
 	}
 };

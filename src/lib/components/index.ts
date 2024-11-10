@@ -18,6 +18,7 @@ export { default as PostList } from './content/posts/PostList.svelte';
 export { default as UploadForm } from './content/posts/UploadForm.svelte';
 
 // general
+export { default as Comments } from './content/general/Comments.svelte';
 export { default as Help } from './content/general/Help.svelte';
 export { default as ModWebsite } from './content/general/ModWebsite.svelte';
 export { default as XLHub } from './content/general/XLHub.svelte';
@@ -34,3 +35,8 @@ export { default as TabSwitcher } from './ui/TabSwitcher.svelte';
 export { default as Toast } from './ui/Toast.svelte';
 export { default as UserAlert } from './ui/UserAlert.svelte';
 export { default as VideoItem } from './ui/VideoItem.svelte';
+
+//videos
+export { default as VideoCard } from './content/videos/VideoCard.svelte';
+export { default as VideoUploadForm } from './content/videos/VideoUploadForm.svelte';
+export { default as VideoList } from './content/videos/VideoList.svelte';

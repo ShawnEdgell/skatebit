@@ -1,34 +1,34 @@
-<!-- src/routes/stats/+page.svelte -->
+<!-- src/routes/videos/+page.svelte -->
 <script lang="ts">
-	import type { Post } from '$lib/types';
-	import { pageHeader, Help, UploadForm, PostList, Toast } from '$lib';
+	import type { Video } from '$lib/types/videos/Video';
+	import { pageHeader, VideoUploadForm, VideoList, Toast } from '$lib';
 	import { user } from '$lib/stores/authStore';
 	import { onMount } from 'svelte';
 	import { db } from '$lib/firebase';
 	import { collection, getDocs, orderBy, query } from 'firebase/firestore';
 
-	const { title, description, heading } = pageHeader.stats;
+	const { title, description, heading } = pageHeader.videos; // Ensure you have a videos section in pageHeader
 
-	let posts: Post[] = [];
+	let videos: Video[] = [];
 	let toastVisible = false;
 	let toastMessage = '';
 	let toastType: 'success' | 'error' = 'success';
 
 	/**
-	 * Fetches posts from Firestore ordered by creation date descending.
+	 * Fetches videos from Firestore ordered by creation date descending.
 	 */
-	const fetchPosts = async () => {
+	const fetchVideos = async () => {
 		try {
-			const postsCollection = collection(db, 'posts');
-			const postsQuery = query(postsCollection, orderBy('createdAt', 'desc'));
-			const querySnapshot = await getDocs(postsQuery);
-			posts = querySnapshot.docs.map((doc) => ({
+			const videosCollection = collection(db, 'videos');
+			const videosQuery = query(videosCollection, orderBy('createdAt', 'desc'));
+			const querySnapshot = await getDocs(videosQuery);
+			videos = querySnapshot.docs.map((doc) => ({
 				id: doc.id,
 				...doc.data()
-			})) as Post[];
+			})) as Video[];
 		} catch (error) {
-			console.error('Error fetching posts:', error);
-			showToast('Failed to fetch posts.', 'error');
+			console.error('Error fetching videos:', error);
+			showToast('Failed to fetch videos.', 'error');
 		}
 	};
 
@@ -45,12 +45,12 @@
 	};
 
 	/**
-	 * Handles successful upload of a post.
-	 * @param event - The custom event containing the new post.
+	 * Handles successful upload of a video.
+	 * @param event - The custom event containing the new video.
 	 */
-	const onUploadSuccess = (event: CustomEvent<{ post: Post }>) => {
-		const newPost = event.detail.post;
-		posts = [newPost, ...posts];
+	const onUploadSuccess = (event: CustomEvent<{ video: Video }>) => {
+		const newVideo = event.detail.video;
+		videos = [newVideo, ...videos];
 		showToast('Upload successful!', 'success');
 	};
 
@@ -62,7 +62,7 @@
 	};
 
 	onMount(async () => {
-		await fetchPosts();
+		await fetchVideos();
 	});
 </script>
 
@@ -74,15 +74,14 @@
 <header>
 	<h1>{heading}</h1>
 	<p>{description}</p>
-	<Help />
 	<hr />
 </header>
 
 {#if $user}
 	<div class="alert flex flex-col">
-		<h2>Upload Stats</h2>
-		<p>Please make sure to only upload <strong>.ZIP</strong> files.</p>
-		<UploadForm on:uploadSuccess={onUploadSuccess} on:uploadFailure={onUploadFailure} />
+		<h2>Upload Video</h2>
+		<p>Please make sure to enter a valid YouTube URL.</p>
+		<VideoUploadForm on:uploadSuccess={onUploadSuccess} on:uploadFailure={onUploadFailure} />
 	</div>
 {:else}
 	<div role="alert" class="alert flex justify-center flex-wrap">
@@ -99,9 +98,9 @@
 				d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
 			></path>
 		</svg>
-		<span>Please sign in to upload your own files.</span>
+		<span>Please sign in to upload your own videos.</span>
 	</div>
 {/if}
 
-<PostList {posts} />
+<VideoList {videos} />
 <Toast isVisible={toastVisible} message={toastMessage} type={toastType} />

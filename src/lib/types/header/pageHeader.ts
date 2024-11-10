@@ -14,4 +14,6 @@ export interface PageHeader {
 	stats: PageHeaderSection;
 	profile: PageHeaderSection;
 	post: PageHeaderSection;
+	videos: PageHeaderSection;
+	video: PageHeaderSection;
 }

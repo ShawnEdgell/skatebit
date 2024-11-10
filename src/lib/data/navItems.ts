@@ -18,5 +18,9 @@ export const navItems = [
 	{
 		href: '/stats',
 		label: 'Stats & Settings'
+	},
+	{
+		href: '/videos',
+		label: 'Videos'
 	}
 ];
