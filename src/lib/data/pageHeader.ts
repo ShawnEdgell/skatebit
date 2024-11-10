@@ -42,7 +42,7 @@ export const pageHeader: PageHeader = {
 	},
 	videos: {
 		title: 'Skatebit - Videos',
-		description: 'View the latest Skater XL clips and videos.',
+		description: 'Skater XL clips and videos.',
 		heading: 'Videos'
 	},
 	video: {
