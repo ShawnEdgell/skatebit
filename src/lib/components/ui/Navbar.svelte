@@ -90,7 +90,7 @@
 					</svg>
 				</label>
 				<!-- Dropdown Content -->
-				<ul tabindex="0" class="bg-base-200 menu dropdown-content w-56 rounded-box p-2 shadow">
+				<ul tabindex="0" class="bg-base-100 menu dropdown-content w-56 rounded-box p-2 shadow-lg">
 					{#each navItems as link}
 						<li>
 							<a href={link.href} class="btn btn-ghost">{link.label}</a>
@@ -131,7 +131,7 @@
 				</label>
 				<!-- Dropdown Content: Theme Options -->
 				<div
-					class=" bg-base-200 menu dropdown-content max-h-96 w-56 overflow-y-scroll rounded-box p-2 shadow"
+					class=" bg-base-100 menu dropdown-content max-h-96 w-56 overflow-y-scroll rounded-box p-2 shadow-lg"
 				>
 					<ul tabindex="0">
 						{#each themes as theme}
@@ -169,7 +169,9 @@
 						<path d="M7 10l5 5 5-5z" />
 					</svg>
 				</summary>
-				<ul class="dropdown-content menu bg-base-200 rounded-box z-[10] p-3 space-y-2 shadow w-56">
+				<ul
+					class="dropdown-content menu bg-base-100 rounded-box z-[10] p-3 space-y-2 shadow-lg w-56"
+				>
 					<LoginActions />
 				</ul>
 			</details>
@@ -179,7 +181,7 @@
 	<!-- Sidebar -->
 	<div class="drawer-side">
 		<label for="my-drawer-3" class="drawer-overlay" aria-label="Close sidebar"></label>
-		<ul class="menu menu-lg bg-base-200 min-h-full w-80 p-4">
+		<ul class="menu menu-lg bg-base-100 min-h-full w-80 p-4">
 			{#each navItems as { href, label }}
 				<li><a {href}><span>{label}</span></a></li>
 			{/each}

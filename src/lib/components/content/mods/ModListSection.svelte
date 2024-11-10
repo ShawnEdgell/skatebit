@@ -32,60 +32,55 @@
 	<div class="space-y-4 not-prose mt-8">
 		{#each tabs as tab}
 			{#if activeTab === tab.id}
-				<div>
-					{#each tab.mods as modItem, index}
-						<div
-							class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mb-2"
+				{#each tab.mods as modItem, index}
+					<div class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box mb-2">
+						<input
+							type="radio"
+							name={`mod-accordion-${tab.id}`}
+							id={`mod-${tab.id}-${index}`}
+							class="peer"
+						/>
+						<label
+							for={`mod-${tab.id}-${index}`}
+							class="collapse-title text-xl font-medium cursor-pointer"
 						>
-							<input
-								type="radio"
-								name={`mod-accordion-${tab.id}`}
-								id={`mod-${tab.id}-${index}`}
-								class="peer"
-							/>
-							<label
-								for={`mod-${tab.id}-${index}`}
-								class="collapse-title text-xl font-medium cursor-pointer"
-							>
-								{modItem.title}
-							</label>
-							<div class="collapse-content">
-								<p><strong>Author:</strong> {modItem.author || 'Unknown'}</p>
-								<p><strong>Working Version:</strong> {modItem.workingVersion || 'N/A'}</p>
+							{modItem.title}
+						</label>
+						<div class="collapse-content space-y-1">
+							<p><strong>Author:</strong> {modItem.author || 'Unknown'}</p>
+							<p><strong>Working Version:</strong> {modItem.workingVersion || 'N/A'}</p>
 
-								{#if modItem.keybind}
-									<p><strong>Keybind:</strong> {modItem.keybind}</p>
-								{/if}
+							{#if modItem.keybind}
+								<p><strong>Keybind:</strong> {modItem.keybind}</p>
+							{/if}
 
-								{#if modItem.features && modItem.features.length > 0}
-									<p><strong>Features:</strong> {modItem.features.join(', ')}</p>
-								{/if}
+							{#if modItem.features && modItem.features.length > 0}
+								<p><strong>Features:</strong> {modItem.features.join(', ')}</p>
+							{/if}
 
-								{#if modItem.note}
-									<p><strong>Note:</strong> {modItem.note}</p>
-								{/if}
+							{#if modItem.note}
+								<p><strong>Note:</strong> {modItem.note}</p>
+							{/if}
 
-								{#if modItem.downloadLinks && modItem.downloadLinks.length > 0}
-									<p><strong>Download Links:</strong></p>
-									<div class="flex flex-wrap gap-2 mt-2">
-										{#each modItem.downloadLinks as { url, label }}
-											<li>
-												<a
-													class="text-blue-500 underline"
-													href={url}
-													target="_blank"
-													rel="noopener noreferrer"
-												>
-													{label}
-												</a>
-											</li>
-										{/each}
-									</div>
-								{/if}
-							</div>
+							{#if modItem.downloadLinks && modItem.downloadLinks.length > 0}
+								<p><strong>Download Links:</strong></p>
+
+								{#each modItem.downloadLinks as { url, label }}
+									<li>
+										<a
+											class="text-blue-500 underline"
+											href={url}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{label}
+										</a>
+									</li>
+								{/each}
+							{/if}
 						</div>
-					{/each}
-				</div>
+					</div>
+				{/each}
 			{/if}
 		{/each}
 	</div>

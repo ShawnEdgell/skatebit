@@ -12,7 +12,7 @@
 				<label for={`sound-${index}`} class="collapse-title text-xl font-medium cursor-pointer">
 					{sound.title}
 				</label>
-				<div class="collapse-content">
+				<div class="collapse-content space-y-1">
 					{#if sound.note}
 						<p><strong>Note:</strong> {sound.note}</p>
 					{/if}

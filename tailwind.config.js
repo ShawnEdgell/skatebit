@@ -13,6 +13,7 @@ export default {
 	plugins: [daisyui, typography, aspectRatio],
 	daisyui: {
 		themes: [
+			'light',
 			'dark',
 			'cupcake',
 			'bumblebee',

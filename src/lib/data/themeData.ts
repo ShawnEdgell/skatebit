@@ -1,6 +1,7 @@
-// src/lib/constants/themeData.ts
+// src/lib/data/themeData.ts
 
 export const themes = [
+	'light',
 	'dark',
 	'cupcake',
 	'bumblebee',
