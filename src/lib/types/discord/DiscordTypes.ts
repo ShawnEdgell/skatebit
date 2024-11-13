@@ -41,6 +41,7 @@ export interface DownloadLink {
  * Represents a mod with detailed information.
  */
 export interface Mod {
+	badge: string;
 	title: string;
 	authors: string[];
 	workingVersion: string;

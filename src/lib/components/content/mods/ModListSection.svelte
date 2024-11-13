@@ -44,7 +44,12 @@
 							for={`mod-${tab.id}-${index}`}
 							class="collapse-title text-xl font-medium cursor-pointer"
 						>
-							{modItem.title}
+							<div class="flex items-center gap-2">
+								<div class="badge badge-neutral">
+									{modItem.badge}
+								</div>
+								{modItem.title}
+							</div>
 						</label>
 						<div class="collapse-content space-y-1">
 							<p><strong>Author:</strong> {modItem.author || 'Unknown'}</p>
