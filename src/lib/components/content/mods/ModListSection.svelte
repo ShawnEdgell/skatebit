@@ -44,8 +44,8 @@
 							for={`mod-${tab.id}-${index}`}
 							class="collapse-title text-xl font-medium cursor-pointer"
 						>
-							<div class="flex items-center gap-2">
-								<div class="badge badge-neutral">
+							<div class="flex items-center gap-3">
+								<div class="hidden sm:badge sm:badge-neutral">
 									{modItem.badge}
 								</div>
 								{modItem.title}
@@ -68,7 +68,7 @@
 							{/if}
 
 							{#if modItem.downloadLinks && modItem.downloadLinks.length > 0}
-								<p><strong>Download Links:</strong></p>
+								<p><strong>Links:</strong></p>
 
 								{#each modItem.downloadLinks as { url, label }}
 									<li>

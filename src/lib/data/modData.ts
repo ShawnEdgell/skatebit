@@ -1,13 +1,19 @@
 export const alphaMods = [
 	{
 		badge: 'Essential',
-		title: 'XXL 3 Mod (The Stats Menu)',
+		title: 'XXL 3 Mod (Stats Menu)',
 		author: 'DawgVinci',
 		workingVersion: '1.3.3',
 		keybind: 'F7',
 		features: ['Stats Customization', 'Enhanced Gameplay Control', 'Stance and Steeze Settings'],
-		note: "Navigate to the #xxlmod section for Skater XL v1.2.2.8 (Legacy) in DawgVinci's Discord server to download the mod.",
-		downloadLinks: [{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" }]
+		note: "You will need to be a member of DawgVinci's Discord for the download link to work.",
+		downloadLinks: [
+			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
+			{
+				url: 'https://cdn.discordapp.com/attachments/752879229842096239/927636535644397568/XXLMod3_1.3.3_1.2.3.11_Preview.zip?ex=67895658&is=678804d8&hm=11d105dc93cc3f57af3daeaf5f97acefb4c12bd2c145500676b06d993f0144a8&',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Essential',
@@ -17,7 +23,13 @@ export const alphaMods = [
 		keybind: 'Backspace',
 		features: ['Camera Customization', 'Fisheye Lens Effect', 'Follow Camera'],
 		note: '',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlgraphics', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlgraphics', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/138060/files/2240553/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Essential',
@@ -27,7 +39,13 @@ export const alphaMods = [
 		keybind: '(automatic)',
 		features: ['Enhanced Gameplay/UI Sounds', 'Custom Soundpacks'],
 		note: 'The soundmod is auto-enabled upon launch. You can customize your sounds by adding a different Soundpack.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/soundmod', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/soundmod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/137917/files/3843257/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Essential',
@@ -36,10 +54,14 @@ export const alphaMods = [
 		workingVersion: '1.4',
 		keybind: 'F3',
 		features: ['Board, Truck, Wheel Customization'],
-		note: "After installing this mod, you should also navigate to DawgVinvi's Discord to download and install the DeckFX Fix from the #xxlmod section. Download and extract DeckFX fix for 1.2.0.0b (BETA), then place the .dll file into your DeckFX mod. This will fix the issue with the trucks getting stuck to the side and will make your game feel much better.",
+		note: 'This mod has a known bug where your trucks might get stuck during certain tricks. No extra steps required though—this download already includes DawgVinci’s DeckFX Fix, so you’re good to go once the mod is installed.',
 		downloadLinks: [
 			{ url: 'https://mod.io/g/skaterxl/m/deckfx', label: 'skaterxl.mod.io' },
-			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" }
+			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
+			{
+				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/deckfx_1-4-0.zip?alt=media&token=8a76158a-dccd-4ddf-9088-55bae0175984',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -50,7 +72,13 @@ export const alphaMods = [
 		keybind: '(automatic)',
 		features: ['Dynamic Clothing', 'Custom Character Models', 'Unlimited Gear Customization'],
 		note: 'The XL Gear Mod is integrated into the Edit Skater Menu.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/953573/files/2706420/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Recommended',
@@ -61,7 +89,11 @@ export const alphaMods = [
 		features: ['Enhanced Physics', 'Custom Animations'],
 		note: '',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/fros-experimental-mod', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/fros-experimental-mod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/2224308/files/5090058/download',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -73,7 +105,11 @@ export const alphaMods = [
 		features: ['Advanced Trick Customization', 'Enhanced Control'],
 		note: '',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/boned-ollie-mod', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/boned-ollie-mod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/1987561/files/2611972/download',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -84,7 +120,13 @@ export const alphaMods = [
 		keybind: '(automatic)',
 		features: ['Map and Gear Sorting', 'Dark Mode', 'Enahnced UI'],
 		note: 'This mod is a must-have, especially if you are using the XLGM mod and have a lot of gear/maps.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlmenumod', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlmenumod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/135638/files/2706045/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Recommended',
@@ -93,8 +135,14 @@ export const alphaMods = [
 		workingVersion: '1.2.2.8 & 1.2.5.6',
 		keybind: '(automatic)',
 		features: ['Enhanced Decals', 'Screen Space Reflections'],
-		note: 'Download the Decal Fix from mod.io and install version 1.2.2.8.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/decal-fix', label: 'skaterxl.mod.io' }]
+		note: 'Please refer to mod.io description on how to install. This mod DOES NOT go into Unity Mod Manager.',
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/decal-fix', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/1635126/files/2693365/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -104,7 +152,13 @@ export const alphaMods = [
 		keybind: 'W',
 		features: ['Day/Night cycles', 'Skybox customization', 'Add rain, snow, fog, etc.'],
 		note: '',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlweather', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlweather', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/3866066/files/4965727/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -114,7 +168,13 @@ export const alphaMods = [
 		keybind: '(automatic)',
 		features: ['Customizable Grind Splines', 'Wax Tool'],
 		note: 'Access this mod through the Pause menu.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/3435627/files/4444199/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -124,7 +184,13 @@ export const alphaMods = [
 		keybind: '(automatic)',
 		features: ['Improved Mutliplayer UI'],
 		note: '',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/multiplayer', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/multiplayer', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/2154245/files/2704744/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -135,7 +201,11 @@ export const alphaMods = [
 		features: ['Camera Light', 'Advanced Replay Tracking'],
 		note: 'Configure this mod by using the drop down menu in the UnityModManager window.',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/better-replay-mod', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/better-replay-mod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/2153273/files/4033621/download',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -147,26 +217,10 @@ export const alphaMods = [
 		features: ['Custom Objects', "NPC's"],
 		note: 'This mod is integrated into the Pause menu.',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/xlobjectdropper', label: 'skaterxl.mod.io' }
-		]
-	},
-	{
-		badge: 'Useful',
-		title: 'Better Object Dropper',
-		author: 'manu & mu35li',
-		workingVersion: '2.0.1',
-		keybind: 'L3 on controller while in normal Object Dropper mode',
-		features: [
-			'Flexible Object Movement',
-			'Group Manipulation',
-			'Advanced Scaling',
-			'Preset Saves'
-		],
-		note: '',
-		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlobjectdropper', label: 'skaterxl.mod.io' },
 			{
-				url: 'https://mod.io/g/skaterxl/m/better-object-dropper-mod-by-manu-mu35li',
-				label: 'skaterxl.mod.io'
+				url: 'https://g-629.modapi.io/v1/games/629/mods/176938/files/2964580/download',
+				label: 'Download'
 			}
 		]
 	},
@@ -178,7 +232,13 @@ export const alphaMods = [
 		keybind: 'N',
 		features: ['Remove shoe highlighting when using controller the overlay'],
 		note: 'Follow the steps on mod.io to use this mod.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/notmyfeet', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/notmyfeet', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/145102/files/177398/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -189,7 +249,11 @@ export const alphaMods = [
 		features: ['Control Customization', 'Personalized Trick Mechanics'],
 		note: '',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/controls-editor', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/controls-editor', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/138210/files/1170040/download',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -200,7 +264,13 @@ export const alphaMods = [
 		keybind: 'X + A or Sqaure + X (controller)',
 		features: ['Walking', 'Custom Animations and Emotes'],
 		note: '',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/walking-mod', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/walking-mod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/2959629/files/4439420/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Fun',
@@ -211,7 +281,11 @@ export const alphaMods = [
 		features: ['Comprehensive Grab Customization'],
 		note: '',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/grabs-customizer-mod', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/grabs-customizer-mod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/2124873/files/4014973/download',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -226,6 +300,10 @@ export const alphaMods = [
 			{
 				url: 'https://mod.io/g/skaterxl/m/late-flip-mod-with-animations',
 				label: 'skaterxl.mod.io'
+			},
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/1932034/files/2654843/download',
+				label: 'Download'
 			}
 		]
 	},
@@ -237,7 +315,13 @@ export const alphaMods = [
 		keybind: 'B',
 		features: ['Board Break Mechanics'],
 		note: 'The board will break automatically by default, or by pressing B on keyboard.',
-		downloadLinks: [{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" }]
+		downloadLinks: [
+			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
+			{
+				url: 'https://cdn.discordapp.com/attachments/853721430931931217/853721711995519036/BreakFX_0.0.1.zip?ex=678961cd&is=6788104d&hm=56ba6ba02ed213ef09feeca78d293aa46804c7fd4f380c99ce721ef4a66da4c2&',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Fun',
@@ -247,7 +331,13 @@ export const alphaMods = [
 		keybind: 'X or Square on controller while Map Menu is open',
 		features: ['Map seletion Randomizer'],
 		note: '',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlrandommap', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlrandommap', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/1867421/files/2340978/download',
+				label: 'Download'
+			}
+		]
 	},
 
 	{
@@ -258,7 +348,13 @@ export const alphaMods = [
 		keybind: 'G',
 		features: ['Custom Accessories'],
 		note: "Nagivate to the #gearutilies section within DawgVinci's Discord to find this mod.",
-		downloadLinks: [{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" }]
+		downloadLinks: [
+			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
+			{
+				url: 'https://drive.google.com/file/d/1vxhbZh6GW1Xs_CMAaZwZVD7AwOgZRj4e/',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Fun',
@@ -269,7 +365,11 @@ export const alphaMods = [
 		features: ['Customizable Rumble Feedback'],
 		note: '',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/controller-rumble', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/controller-rumble', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/138381/files/2260117/download',
+				label: 'Download'
+			}
 		]
 	}
 	// Add more public mods as needed
@@ -278,13 +378,19 @@ export const alphaMods = [
 export const publicMods = [
 	{
 		badge: 'Essential',
-		title: 'XL Mod (The Stats Menu)',
+		title: 'XL Mod (Stats Menu)',
 		author: 'DawgVinci',
 		workingVersion: '1.0.0c',
 		keybind: 'F7',
 		features: ['Stats Customization', 'Enhanced Gameplay Control', 'Stance and Steeze Settings'],
-		note: "Navigate to the #xlmod section for Skater XL v1.2.10.4 in DawgVinci's Discord server to download the mod.",
-		downloadLinks: [{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" }]
+		note: "You will need to be a member of DawgVinci's Discord for the download link to work.",
+		downloadLinks: [
+			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
+			{
+				url: 'https://cdn.discordapp.com/attachments/1149342837045985351/1150520285766893660/XLMod_1.0.0c_for_SkaterXL_1.2.7.8.zip?ex=67896483&is=67881303&hm=1428929907560efebcc40770ffa0addceab8022e0c8999483cf85b4f30c33fc8&',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Essential',
@@ -293,8 +399,14 @@ export const publicMods = [
 		workingVersion: '2.0.2',
 		keybind: 'Backspace',
 		features: ['Camera Customization', 'Fisheye Lens Effect', 'Follow Camera'],
-		note: "Navigate to the #open-source-mods section in Fro's Discord to download this mod.",
-		downloadLinks: [{ url: 'https://discord.gg/mBJ5wCchVm', label: "Fro's Discord" }]
+		note: "You will need to be a member of Fro's Discord for the download link to work.",
+		downloadLinks: [
+			{ url: 'https://discord.gg/mBJ5wCchVm', label: "Fro's Discord" },
+			{
+				url: 'https://cdn.discordapp.com/attachments/1081602450580049970/1146887538808725514/XLGraphics_v2.0.2.zip?ex=67895c41&is=67880ac1&hm=65049d34e2274b91c9f5c2ae59d526bbb9d29d9dadc4dca4af19f5fa9f2b4e2f&',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Essential',
@@ -303,8 +415,14 @@ export const publicMods = [
 		workingVersion: '0.0.2',
 		keybind: 'CTRL + D',
 		features: ['Board, Truck, Wheel Customization'],
-		note: "Navigate to the #deck-tools section in Guru's Discord to download this mod.",
-		downloadLinks: [{ url: 'https://discord.com/invite/RDh7tg2Bs5', label: "Guru's Discord" }]
+		note: "You will need to be a member of Guru's Discord for the download link to work.",
+		downloadLinks: [
+			{ url: 'https://discord.com/invite/RDh7tg2Bs5', label: "Guru's Discord" },
+			{
+				url: 'https://cdn.discordapp.com/attachments/1083192572484255777/1089356556228907110/DeckTools_v0.0.2_for_SXL_1.2.6.0.zip?ex=6789aeda&is=67885d5a&hm=f40614f7abdf64b876ec1e556a3fb8e6e6e879058b5004e75532330a033570fd&',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Essential',
@@ -314,7 +432,13 @@ export const publicMods = [
 		keybind: '(automatic)',
 		features: ['Enhanced Gameplay/UI Sounds', 'Custom Soundpacks'],
 		note: "SoundMod version 1.2.0 does not include any pre-installed sounds. You'll need to download and manually install a soundpack to hear any changes.",
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/soundmod', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/soundmod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/137917/files/3606405/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Recommended',
@@ -324,7 +448,13 @@ export const publicMods = [
 		keybind: '(automatic)',
 		features: ['Dynamic Clothing', 'Custom Character Models', 'Unlimited Gear Customization'],
 		note: 'The XL Gear Mod is integrated into the Edit Skater Menu.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlgearmodifier', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/953573/files/4988510/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Recommended',
@@ -335,7 +465,11 @@ export const publicMods = [
 		features: ['Enhanced Physics', 'Custom Animations'],
 		note: '',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/fros-experimental-mod', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/fros-experimental-mod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/2224308/files/3614492/download',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -347,7 +481,11 @@ export const publicMods = [
 		features: ['Advanced Trick Customization', 'Enhanced Control'],
 		note: '',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/boned-ollie-mod', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/boned-ollie-mod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/1987561/files/4445162/download',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -358,7 +496,13 @@ export const publicMods = [
 		keybind: '(automatic)',
 		features: ['Map and Gear Sorting', 'Dark Mode', 'Enahnced UI'],
 		note: 'Download and install the XL Menu Mod v2.6.2. Right-click in the mod in UMM to update to v2.6.3.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlmenumod', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlmenumod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/135638/files/5001412/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -368,7 +512,13 @@ export const publicMods = [
 		keybind: 'W',
 		features: ['Day/Night cycles', 'Skybox customization', 'Add rain, snow, fog, etc.'],
 		note: '',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/xlweather', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/xlweather', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/3866066/files/5079355/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -378,7 +528,13 @@ export const publicMods = [
 		keybind: '(automatic)',
 		features: ['Customizable Grind Splines', 'Wax Tool'],
 		note: 'Access this mod through the Pause menu.',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/grind-tools', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/3435627/files/4431380/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -388,7 +544,13 @@ export const publicMods = [
 		keybind: '(automatic)',
 		features: ['Improved Mutliplayer UI'],
 		note: '',
-		downloadLinks: [{ url: 'https://mod.io/g/skaterxl/m/multiplayer', label: 'skaterxl.mod.io' }]
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/multiplayer', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/2154245/files/3593904/download',
+				label: 'Download'
+			}
+		]
 	},
 	{
 		badge: 'Useful',
@@ -399,7 +561,11 @@ export const publicMods = [
 		features: ['Camera Light', 'Advanced Replay Tracking'],
 		note: 'Configure this mod by using the drop down menu in the UnityModManager window.',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/better-replay-mod', label: 'skaterxl.mod.io' }
+			{ url: 'https://mod.io/g/skaterxl/m/better-replay-mod', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/2153273/files/3655726/download',
+				label: 'Download'
+			}
 		]
 	},
 	{
@@ -409,8 +575,14 @@ export const publicMods = [
 		workingVersion: '1.0.0',
 		keybind: 'F6',
 		features: ['Skateboard Deck Shapes', 'Custom Materials'],
-		note: "Navigate to the #shapefx section in DawgVinci's to download this mod.",
-		downloadLinks: [{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" }]
+		note: "You will need to be a member of DawgVinci's Discord for the download link to work.",
+		downloadLinks: [
+			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
+			{
+				url: 'https://cdn.discordapp.com/attachments/1090389011924779130/1090389534103044257/ShapeFX_1.0.0_for_SXL_1.2.6.0.zip?ex=67897c63&is=67882ae3&hm=0b54b09a8232d788481c29a4f99c095a175413af2b6e5506e6da6f543b8d762f&',
+				label: 'Download'
+			}
+		]
 	}
 	// Add more public mods as needed
 ];

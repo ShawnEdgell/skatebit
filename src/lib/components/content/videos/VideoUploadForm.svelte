@@ -80,8 +80,6 @@
 
 <form class="w-full space-y-4" on:submit|preventDefault={handleSubmit}>
 	<input
-		min="1"
-		max="25"
 		class="input input-bordered w-full"
 		type="text"
 		placeholder="Enter title"
