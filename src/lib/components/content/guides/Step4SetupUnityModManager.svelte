@@ -9,7 +9,7 @@
 		dropdown menu. If you are playing a different version, simply select 'Skater XL.'
 	</p>
 	<p>Set the game path to:</p>
-	<p>C:\ProgramFiles(x86)\Steam\steamapps\common\SkaterXL" /></p>
+	<p>C:\ProgramFiles(x86)\Steam\steamapps\common\SkaterXL</p>
 	<p>
 		Click <strong>"Install"</strong> or <strong>"Update"</strong> to complete the setup.
 	</p>

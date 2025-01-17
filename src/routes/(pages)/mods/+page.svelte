@@ -4,6 +4,7 @@
 		ModPackSection,
 		ModListSection,
 		SoundPackSection,
+		UnityModManagerSection,
 		Help,
 		TabSwitcher
 	} from '$lib';
