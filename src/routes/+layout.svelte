@@ -4,13 +4,15 @@
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+	injectSpeedInsights();
+	injectAnalytics();
 
 	onMount(() => {
 		// Initialize theme-change globally
 		themeChange(false);
 	});
-
-	injectAnalytics();
 </script>
 
 <div class="flex flex-col min-h-screen w-full items-center">
