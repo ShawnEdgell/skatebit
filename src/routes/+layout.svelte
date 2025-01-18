@@ -3,11 +3,14 @@
 	import { Navbar, Footer } from '$lib';
 	import { onMount } from 'svelte';
 	import { themeChange } from 'theme-change';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 
 	onMount(() => {
 		// Initialize theme-change globally
 		themeChange(false);
 	});
+
+	injectAnalytics();
 </script>
 
 <div class="flex flex-col min-h-screen w-full items-center">

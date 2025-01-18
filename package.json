@@ -37,6 +37,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@vercel/analytics": "^1.4.1",
     "firebase": "^11.0.1",
     "firebase-admin": "^12.7.0",
     "theme-change": "^2.5.0"
