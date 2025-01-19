@@ -111,7 +111,7 @@ export const gearDiscords: DiscordLink[] = [
 	{
 		name: "BreadCrumbs' Discord",
 		link: 'https://discord.gg/pHQWsYG5Mm',
-		owner: 'Antikz'
+		owner: 'BreadCrumbs'
 	},
 	{
 		name: "ClutchDidThat's Discord",
