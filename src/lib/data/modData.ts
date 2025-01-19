@@ -10,7 +10,7 @@ export const alphaMods = [
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://cdn.discordapp.com/attachments/752879229842096239/927636535644397568/XXLMod3_1.3.3_1.2.3.11_Preview.zip?ex=67895658&is=678804d8&hm=11d105dc93cc3f57af3daeaf5f97acefb4c12bd2c145500676b06d993f0144a8&',
+				url: 'https://cdn.discordapp.com/attachments/752879229842096239/927636535644397568/XXLMod3_1.3.3_1.2.3.11_Preview.zip?ex=678df398&is=678ca218&hm=76d7fbfedd93f9f242afcf1fc8c7da3a4e032c8d656703b314ce6a44e0c7372f&',
 				label: 'Download'
 			}
 		]
@@ -387,7 +387,7 @@ export const publicMods = [
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://cdn.discordapp.com/attachments/1149342837045985351/1150520285766893660/XLMod_1.0.0c_for_SkaterXL_1.2.7.8.zip?ex=67896483&is=67881303&hm=1428929907560efebcc40770ffa0addceab8022e0c8999483cf85b4f30c33fc8&',
+				url: 'https://cdn.discordapp.com/attachments/1081325021236056137/1095277106512007269/XLMod_0.0.9b_for_SXL_1.2.6.0.zip?ex=678d6c8b&is=678c1b0b&hm=589085011bdf3836c2891bbd59a695b996018d1883fa90cf2cccf764c9afcce7&',
 				label: 'Download'
 			}
 		]
