@@ -6,11 +6,11 @@ export const alphaMods = [
 		workingVersion: '1.3.3',
 		keybind: 'F7',
 		features: ['Stats Customization', 'Enhanced Gameplay Control', 'Stance and Steeze Settings'],
-		note: "You will need to be a member of DawgVinci's Discord for the download link to work.",
+		note: '',
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://cdn.discordapp.com/attachments/752879229842096239/927636535644397568/XXLMod3_1.3.3_1.2.3.11_Preview.zip?ex=678df398&is=678ca218&hm=76d7fbfedd93f9f242afcf1fc8c7da3a4e032c8d656703b314ce6a44e0c7372f&',
+				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/XXLMod3_1.3.3_1.2.3.11_Preview.zip?alt=media&token=4c0eb81b-66cf-4cc5-8cdf-bd0df5fe46bf',
 				label: 'Download'
 			}
 		]
@@ -318,7 +318,7 @@ export const alphaMods = [
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://cdn.discordapp.com/attachments/853721430931931217/853721711995519036/BreakFX_0.0.1.zip?ex=678961cd&is=6788104d&hm=56ba6ba02ed213ef09feeca78d293aa46804c7fd4f380c99ce721ef4a66da4c2&',
+				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/BreakFX_0.0.1.zip?alt=media&token=cbfbe749-2001-4c6e-a6b0-61e22987ef53',
 				label: 'Download'
 			}
 		]
@@ -383,11 +383,11 @@ export const publicMods = [
 		workingVersion: '1.0.0c',
 		keybind: 'F7',
 		features: ['Stats Customization', 'Enhanced Gameplay Control', 'Stance and Steeze Settings'],
-		note: "You will need to be a member of DawgVinci's Discord for the download link to work.",
+		note: '',
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://cdn.discordapp.com/attachments/1081325021236056137/1095277106512007269/XLMod_0.0.9b_for_SXL_1.2.6.0.zip?ex=678d6c8b&is=678c1b0b&hm=589085011bdf3836c2891bbd59a695b996018d1883fa90cf2cccf764c9afcce7&',
+				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/XLMod_1.0.0c_for_SkaterXL_1.2.7.8.zip?alt=media&token=ebf3926b-dda1-4ea4-bed5-8952c360d5e4',
 				label: 'Download'
 			}
 		]
@@ -399,11 +399,11 @@ export const publicMods = [
 		workingVersion: '2.0.2',
 		keybind: 'Backspace',
 		features: ['Camera Customization', 'Fisheye Lens Effect', 'Follow Camera'],
-		note: "You will need to be a member of Fro's Discord for the download link to work.",
+		note: '',
 		downloadLinks: [
 			{ url: 'https://discord.gg/mBJ5wCchVm', label: "Fro's Discord" },
 			{
-				url: 'https://cdn.discordapp.com/attachments/1081602450580049970/1146887538808725514/XLGraphics_v2.0.2.zip?ex=67895c41&is=67880ac1&hm=65049d34e2274b91c9f5c2ae59d526bbb9d29d9dadc4dca4af19f5fa9f2b4e2f&',
+				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/XLGraphics_v2.0.2.zip?alt=media&token=293d54f0-2f17-475b-b029-36651774ed56',
 				label: 'Download'
 			}
 		]
@@ -415,11 +415,11 @@ export const publicMods = [
 		workingVersion: '0.0.2',
 		keybind: 'CTRL + D',
 		features: ['Board, Truck, Wheel Customization'],
-		note: "You will need to be a member of Guru's Discord for the download link to work.",
+		note: '',
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/RDh7tg2Bs5', label: "Guru's Discord" },
 			{
-				url: 'https://cdn.discordapp.com/attachments/1083192572484255777/1089356556228907110/DeckTools_v0.0.2_for_SXL_1.2.6.0.zip?ex=6789aeda&is=67885d5a&hm=f40614f7abdf64b876ec1e556a3fb8e6e6e879058b5004e75532330a033570fd&',
+				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/DeckTools_v0.0.2_for_SXL_1.2.6.0.zip?alt=media&token=ad8d4909-b20f-4275-bc29-2c3b7b3035b3',
 				label: 'Download'
 			}
 		]
@@ -575,11 +575,11 @@ export const publicMods = [
 		workingVersion: '1.0.0',
 		keybind: 'F6',
 		features: ['Skateboard Deck Shapes', 'Custom Materials'],
-		note: "You will need to be a member of DawgVinci's Discord for the download link to work.",
+		note: '',
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://cdn.discordapp.com/attachments/1090389011924779130/1090389534103044257/ShapeFX_1.0.0_for_SXL_1.2.6.0.zip?ex=67897c63&is=67882ae3&hm=0b54b09a8232d788481c29a4f99c095a175413af2b6e5506e6da6f543b8d762f&',
+				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/ShapeFX_1.0.0_for_SXL_1.2.6.0.zip?alt=media&token=00fcc7c8-82f8-44da-8f71-e43a30b557af',
 				label: 'Download'
 			}
 		]
