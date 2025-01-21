@@ -13,7 +13,6 @@
 
 	const tabs = [
 		{ id: 'modList', label: 'Working Mod List', component: ModListSection },
-		{ id: 'modPacks', label: 'Mod Packs', component: ModPackSection },
 		{ id: 'soundPacks', label: 'Sound Packs', component: SoundPackSection }
 	];
 </script>

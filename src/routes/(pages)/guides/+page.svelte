@@ -14,8 +14,8 @@
 	const tabs = [
 		{ id: 'gettingStarted', label: 'Getting Started', component: GettingStarted },
 		{ id: 'mapGear', label: 'Maps & Gear', component: MapGear },
-		{ id: 'statsSettings', label: 'Stats & Settings', component: StatsSettings },
-		{ id: 'unityModManager', label: 'Unity Mod Manager', component: UnityModManagerSection }
+		{ id: 'statsSettings', label: 'Stats & Settings', component: StatsSettings }
+		// { id: 'unityModManager', label: 'Unity Mod Manager', component: UnityModManagerSection }
 	];
 </script>
 

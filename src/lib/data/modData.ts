@@ -10,7 +10,7 @@ export const alphaMods = [
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/XXLMod3_1.3.3_1.2.3.11_Preview.zip?alt=media&token=4c0eb81b-66cf-4cc5-8cdf-bd0df5fe46bf',
+				url: 'https://damp-limit-8cd1.milky-irl.workers.dev/XXLMod3_1.3.3_1.2.3.11_Preview.zip',
 				label: 'Download'
 			}
 		]
@@ -54,12 +54,11 @@ export const alphaMods = [
 		workingVersion: '1.4',
 		keybind: 'F3',
 		features: ['Board, Truck, Wheel Customization'],
-		note: 'This mod has a known bug where your trucks might get stuck during certain tricks. No extra steps required though—this download already includes DawgVinci’s DeckFX Fix, so you’re good to go once the mod is installed.',
+		note: '',
 		downloadLinks: [
 			{ url: 'https://mod.io/g/skaterxl/m/deckfx', label: 'skaterxl.mod.io' },
-			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/deckfx_1-4-0.zip?alt=media&token=8a76158a-dccd-4ddf-9088-55bae0175984',
+				url: 'https://g-629.modapi.io/v1/games/629/mods/539230/files/1388935/download',
 				label: 'Download'
 			}
 		]
@@ -318,7 +317,7 @@ export const alphaMods = [
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/BreakFX_0.0.1.zip?alt=media&token=cbfbe749-2001-4c6e-a6b0-61e22987ef53',
+				url: 'https://damp-limit-8cd1.milky-irl.workers.dev/BreakFX_0.0.1.zip',
 				label: 'Download'
 			}
 		]
@@ -387,7 +386,7 @@ export const publicMods = [
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/XLMod_1.0.0c_for_SkaterXL_1.2.7.8.zip?alt=media&token=ebf3926b-dda1-4ea4-bed5-8952c360d5e4',
+				url: 'https://damp-limit-8cd1.milky-irl.workers.dev/XLMod_1.0.0c_for_SkaterXL_1.2.7.8.zip',
 				label: 'Download'
 			}
 		]
@@ -403,7 +402,7 @@ export const publicMods = [
 		downloadLinks: [
 			{ url: 'https://discord.gg/mBJ5wCchVm', label: "Fro's Discord" },
 			{
-				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/XLGraphics_v2.0.2.zip?alt=media&token=293d54f0-2f17-475b-b029-36651774ed56',
+				url: 'https://damp-limit-8cd1.milky-irl.workers.dev/XLGraphics_v2.0.2.zip',
 				label: 'Download'
 			}
 		]
@@ -419,7 +418,7 @@ export const publicMods = [
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/RDh7tg2Bs5', label: "Guru's Discord" },
 			{
-				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/DeckTools_v0.0.2_for_SXL_1.2.6.0.zip?alt=media&token=ad8d4909-b20f-4275-bc29-2c3b7b3035b3',
+				url: 'https://damp-limit-8cd1.milky-irl.workers.dev/DeckTools_v0.0.2_for_SXL_1.2.6.0.zip',
 				label: 'Download'
 			}
 		]
@@ -579,7 +578,7 @@ export const publicMods = [
 		downloadLinks: [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
-				url: 'https://firebasestorage.googleapis.com/v0/b/skatebit-65c51.appspot.com/o/ShapeFX_1.0.0_for_SXL_1.2.6.0.zip?alt=media&token=00fcc7c8-82f8-44da-8f71-e43a30b557af',
+				url: 'https://damp-limit-8cd1.milky-irl.workers.dev/ShapeFX_1.0.0_for_SXL_1.2.6.0.zip',
 				label: 'Download'
 			}
 		]
