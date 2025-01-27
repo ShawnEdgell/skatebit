@@ -1,4 +1,5 @@
 <script lang="ts">
+	import VideoGuide from './VideoGuide.svelte';
 	import Step1CheckGameVersion from './Step1CheckGameVersion.svelte';
 	import Step2ChangeGameVersion from './Step2ChangeGameVersion.svelte';
 	import Step3DownloadUnityModManager from './Step3DownloadUnityModManager.svelte';
@@ -12,6 +13,7 @@
 		This guide will walk you through the essential steps to get you up and running with all the
 		latest mods.
 	</p>
+	<VideoGuide />
 	<Step1CheckGameVersion />
 	<Step2ChangeGameVersion />
 	<Step3DownloadUnityModManager />
