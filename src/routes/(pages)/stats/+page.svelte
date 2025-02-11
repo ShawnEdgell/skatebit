@@ -108,20 +108,24 @@
 <div>
 	<h3>Basic Realistic Settings (Goofy and Regular)</h3>
 	<p>A good starting point for building your own stats.</p>
-	<a
-		class="btn btn-primary no-underline"
-		href="https://damp-limit-8cd1.milky-irl.workers.dev/BasicRealisticSettings.zip"
-		download>Download</a
-	>
+	<li>
+		<a
+			class="text-blue-500 underline"
+			href="https://damp-limit-8cd1.milky-irl.workers.dev/BasicRealisticSettings.zip"
+			download>Download</a
+		>
+	</li>
 </div>
 <div>
 	<h3>Milky's Latest Stats (Regular)</h3>
 	<p>14 Gravity. Latest stats as seen in recent streams and videos.</p>
-	<a
-		class="btn btn-primary no-underline"
-		href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
-		download>Download</a
-	>
+	<li>
+		<a
+			class="text-blue-500 underline"
+			href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
+			download>Download</a
+		>
+	</li>
 </div>
 
 <!-- <PostList {posts} /> -->

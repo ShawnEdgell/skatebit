@@ -1,4 +1,4 @@
-<!-- src/lib/components/VideoList.svelte -->
+<!-- src/lib/components/VideoList.svelte
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { db } from '$lib/firebase';
@@ -57,4 +57,4 @@
 			{/each}
 		</div>
 	{/if}
-</div>
+</div> -->
