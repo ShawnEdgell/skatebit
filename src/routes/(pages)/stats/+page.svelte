@@ -1,7 +1,7 @@
 <!-- src/routes/stats/+page.svelte -->
 <script lang="ts">
 	import type { Post } from '$lib/types';
-	import { pageHeader, Help, UploadForm, PostList, Toast } from '$lib';
+	import { pageHeader, Help, UploadForm, PostList, Toast, SiteAlert } from '$lib';
 	import { user } from '$lib/stores/authStore';
 	import { onMount } from 'svelte';
 	import { db } from '$lib/firebase';
@@ -78,7 +78,9 @@
 	<hr />
 </header>
 
-{#if $user}
+<SiteAlert />
+
+<!-- {#if $user}
 	<div class="alert flex flex-col">
 		<h2>Upload Stats</h2>
 		<p>Please make sure to only upload <strong>.ZIP</strong> files.</p>
@@ -101,7 +103,26 @@
 		</svg>
 		<span>Please sign in to upload your own files.</span>
 	</div>
-{/if}
+{/if} -->
 
-<PostList {posts} />
+<div>
+	<h3>Basic Realistic Settings (Goofy and Regular)</h3>
+	<p>A good starting point for building your own stats.</p>
+	<a
+		class="btn btn-primary no-underline"
+		href="https://damp-limit-8cd1.milky-irl.workers.dev/BasicRealisticSettings.zip"
+		download>Download</a
+	>
+</div>
+<div>
+	<h3>Milky's Latest Stats (Regular)</h3>
+	<p>14 Gravity. Latest stats as seen in recent streams and videos.</p>
+	<a
+		class="btn btn-primary no-underline"
+		href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
+		download>Download</a
+	>
+</div>
+
+<!-- <PostList {posts} /> -->
 <Toast isVisible={toastVisible} message={toastMessage} type={toastType} />
