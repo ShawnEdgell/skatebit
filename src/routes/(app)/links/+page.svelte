@@ -23,7 +23,7 @@
 			Explore and share a wide range of mods, including scripts, gear, maps, and more, on the main
 			hub for Skater XL modding.
 		</p>
-		<a href="https://mod.io/g/skaterxl" class="btn btn-primary not-prose" target="_blank">
+		<a href="https://mod.io/g/skaterxl" class="btn btn-soft not-prose" target="_blank">
 			skaterxl.mod.io
 		</a>
 	</section>
@@ -34,7 +34,7 @@
 			Browse, download, and manage your local and online community maps and mods. This application
 			makes installing mods as easy as a single click.
 		</p>
-		<a href="https://mod.io/g/skaterxl/m/xlhub" class="btn btn-primary not-prose" target="_blank">
+		<a href="https://mod.io/g/skaterxl/m/xlhub" class="btn btn-soft not-prose" target="_blank">
 			XL Hub on mod.io
 		</a>
 	</section>

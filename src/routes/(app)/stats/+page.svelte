@@ -26,7 +26,7 @@
 	<p>A good starting point for building your own stats.</p>
 
 	<a
-		class="btn btn-primary not-prose"
+		class="btn btn-soft not-prose"
 		href="https://damp-limit-8cd1.milky-irl.workers.dev/BasicRealisticSettings.zip"
 		download>Download</a
 	>
@@ -36,7 +36,7 @@
 	<p>14 Gravity. Latest stats as seen in recent streams and videos.</p>
 
 	<a
-		class="btn btn-primary not-prose"
+		class="btn btn-soft not-prose"
 		href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
 		download>Download</a
 	>

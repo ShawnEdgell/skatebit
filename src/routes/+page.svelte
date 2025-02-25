@@ -13,6 +13,7 @@
 	more—all in one place.
 </p>
 <div class="divider"></div>
+
 <h2>Website Update!</h2>
 <div role="alert" class="alert alert-info">
 	<svg

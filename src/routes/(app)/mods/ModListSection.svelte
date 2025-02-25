@@ -1,48 +1,38 @@
 <script lang="ts">
-	import { alphaMods, publicMods } from '$lib/data/modData'; // Adjust the import path as needed
+	import { alphaMods, publicMods } from '$lib/data/modData';
 
-	// Define the tabs
+	// Define the tabs with their respective mod lists
 	const tabs = [
 		{ id: 'alphaMods', label: 'Skater XL v1.2.2.8 (Alpha)', mods: alphaMods },
 		{ id: 'publicMods', label: 'Skater XL v1.2.10.4 (Public)', mods: publicMods }
 	];
-
-	// Initialize the active tab to the first one
-	let activeTab = tabs[0].id;
 </script>
 
 <section>
 	<h2>Working Mod List</h2>
 	<p class="mb-6">Select your game version below to view a list of compatible mods.</p>
 
-	<!-- Tabs Navigation -->
-	<div class="my-8 flex flex-wrap justify-center gap-2">
-		{#each tabs as tab}
-			<button
-				type="button"
-				class="btn"
-				class:btn-warning={activeTab === tab.id}
-				on:click={() => (activeTab = tab.id)}
-			>
-				{tab.label}
-			</button>
-		{/each}
-	</div>
-
-	<!-- Tabs Content -->
-	<div class="not-prose mt-8 space-y-4">
-		{#each tabs as tab}
-			{#if activeTab === tab.id}
-				{#each tab.mods as modItem, index}
+	<!-- Updated Tabs -->
+	<div class="flex flex-col">
+		{#each tabs as tab, index}
+			<input
+				type="radio"
+				name="modlist_tabs"
+				class="tab btn w-full"
+				aria-label={tab.label}
+				checked={index === 0}
+			/>
+			<div class="tab-content not-prose mt-6">
+				{#each tab.mods as modItem, modIndex}
 					<div class="collapse-arrow border-base-300 bg-base-100 rounded-box collapse mb-2 border">
 						<input
 							type="radio"
 							name={`mod-accordion-${tab.id}`}
-							id={`mod-${tab.id}-${index}`}
+							id={`mod-${tab.id}-${modIndex}`}
 							class="peer"
 						/>
 						<label
-							for={`mod-${tab.id}-${index}`}
+							for={`mod-${tab.id}-${modIndex}`}
 							class="collapse-title cursor-pointer text-xl font-medium"
 						>
 							<div class="flex items-center gap-3">
@@ -67,10 +57,9 @@
 
 							{#if modItem.downloadLinks && modItem.downloadLinks.length > 0}
 								<p><strong>Links:</strong></p>
-
 								<div class="flex flex-col gap-2">
 									{#each modItem.downloadLinks as { url, label }}
-										<a class="btn btn-primary" href={url} target="_blank" rel="noopener noreferrer">
+										<a class="btn btn-soft" href={url} target="_blank" rel="noopener noreferrer">
 											{label}
 										</a>
 									{/each}
@@ -79,7 +68,7 @@
 						</div>
 					</div>
 				{/each}
-			{/if}
+			</div>
 		{/each}
 	</div>
 </section>
