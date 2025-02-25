@@ -2,22 +2,19 @@
 	import GettingStarted from './GettingStarted.svelte';
 	import MapsGear from './MapsGear.svelte';
 	import StatsSettings from './StatsSettings.svelte';
+
+	const pageTitle = 'Guides';
+	const pageDescription =
+		'These guides will walk you through the essential steps to get you up and running with all the latest mods.';
 </script>
 
 <svelte:head>
-	<title>Skatebit | Guides</title>
-	<meta
-		name="description"
-		content="These guides will walk you through the essential steps to get you up and running with all the
-	latest mods."
-	/>
+	<title>Skatebit | {pageTitle}</title>
+	<meta name="description" content={pageDescription} />
 </svelte:head>
 
-<h1>Guides</h1>
-<p>
-	These guides will walk you through the essential steps to get you up and running with all the
-	latest mods.
-</p>
+<h1>{pageTitle}</h1>
+<p>{pageDescription}</p>
 <div class="divider"></div>
 
 <!-- Tabs -->

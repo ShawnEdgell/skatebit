@@ -1,17 +1,16 @@
+<script lang="ts">
+	const pageTitle = 'Recent News';
+	const pageDescription =
+		'Discover the latest official updates, news, and videos from Skater XL, Session, Skate, and more—all in one place.';
+</script>
+
 <svelte:head>
-	<title>Skatebit | Recent News</title>
-	<meta
-		name="description"
-		content="Discover the latest official updates, news, and videos from Skater XL, Session, Skate, and
-	more—all in one place."
-	/>
+	<title>Skatebit | {pageTitle}</title>
+	<meta name="description" content={pageDescription} />
 </svelte:head>
 
-<h1 class="line-through">Recent News</h1>
-<p class="line-through">
-	Discover the latest official updates, news, and videos from Skater XL, Session, Skate, and
-	more—all in one place.
-</p>
+<h1 class="line-through">{pageTitle}</h1>
+<p class="line-through">{pageDescription}</p>
 <div class="divider"></div>
 
 <h2>Website Update!</h2>
@@ -31,7 +30,7 @@
 	</svg>
 	<span>
 		We're making some improvements to enhance your experience. During this update, our news feed
-		will be temporarily offline and a few features may be rearranged. Thank you for your patience!</span
-	>
+		will be temporarily offline and a few features may be rearranged. Thank you for your patience!
+	</span>
 </div>
 <img src="Lateflip.webp" alt="Lateflip" />
