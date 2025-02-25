@@ -53,9 +53,28 @@
 
 <section>
 	<h2>Step 5: Install Mods</h2>
+	<p>Select the <b>Mods</b> tab in UnityModManager.</p>
 	<p>
 		Download your desired mods from the <a href="/mods" class="hover:no-underline">Mods</a> page. Drag
 		and drop the downloaded .zip files into the UnityModManager window to install them.
 	</p>
+	<blockquote>
+		Status = "OK" means the mod is installed. If the status is blank your mod is NOT installed. You
+		can right click each mod in your list to manually install/uninstall at any time.
+	</blockquote>
 	<ImageModal imageUrl="Step4.webp" altText="Lateflip" buttonText="View Example" />
+</section>
+
+<section>
+	<h2>Step 6: Launch Skater XL!</h2>
+	<p>Upon launch you should notice the Skater XL Mod Menu.</p>
+	<p>Status 🟢 = mod is working</p>
+	<p>
+		Status 🔴 = mod is NOT working (you should never see this, all broken mods should be removed)
+	</p>
+	<blockquote>
+		If you do not see this menu it means UnityModMager is not installed. Please refer back to step
+		4.
+	</blockquote>
+	<ImageModal imageUrl="Step5.webp" altText="Lateflip" buttonText="View Example" />
 </section>
