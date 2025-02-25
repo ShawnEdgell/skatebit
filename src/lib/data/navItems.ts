@@ -13,14 +13,10 @@ export const navItems = [
 	},
 	{
 		href: '/links',
-		label: 'Helpful Links'
+		label: 'Links'
 	},
 	{
 		href: '/stats',
-		label: 'Stats & Settings'
+		label: 'Stats'
 	}
-	// {
-	// 	href: '/videos',
-	// 	label: 'Videos'
-	// }
 ];

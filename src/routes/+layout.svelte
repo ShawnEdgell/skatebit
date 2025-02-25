@@ -1,26 +1,17 @@
 <script lang="ts">
 	import '../app.css';
-	import { Navbar, Footer } from '$lib';
-	import { onMount } from 'svelte';
-	import { themeChange } from 'theme-change';
-	import { injectAnalytics } from '@vercel/analytics/sveltekit';
-	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import Navbar from '$lib/components/Navbar.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 
-	injectSpeedInsights();
-	injectAnalytics();
-
-	onMount(() => {
-		// Initialize theme-change globally
-		themeChange(false);
-	});
+	let { children } = $props();
 </script>
 
-<div class="flex flex-col min-h-screen w-full items-center">
-	<div class="fixed top-0 w-full z-10">
+<div class="flex min-h-screen w-full flex-col items-center">
+	<div class="fixed top-0 z-10 w-full">
 		<Navbar />
 	</div>
-	<main class="prose md:prose-xl w-full px-4 pt-28 md:pt-32 pb-8 overscroll-none">
-		<slot />
+	<main class="prose lg:prose-lg w-full overscroll-none px-4 pt-28 pb-8 md:pt-32">
+		{@render children()}
 	</main>
 </div>
 <Footer />

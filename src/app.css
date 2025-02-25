@@ -1,13 +1,9 @@
-/* src/app.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html,
-body {
-	@apply h-full w-full break-words scroll-smooth;
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@plugin "daisyui" {
+	themes: all;
 }
 
-a {
-	@apply hover:no-underline;
+html {
+	@apply scroll-smooth;
 }

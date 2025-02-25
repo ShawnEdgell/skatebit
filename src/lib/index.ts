@@ -1,6 +1,1 @@
-// src/lib/index.ts
-
-// Export all components, constants, types, etc.
-export * from './data';
-export * from './types';
-export * from './components';
+// place files you want to import through the `$lib` alias in this folder.
