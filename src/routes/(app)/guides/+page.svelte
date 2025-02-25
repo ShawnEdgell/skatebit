@@ -26,21 +26,21 @@
 	<input
 		type="radio"
 		name="guide_tabs"
-		class="tab btn mt-6"
+		class="tab btn mt-6 w-full"
 		aria-label="Gettings Started"
 		checked="checked"
 	/>
-	<div class="tab-content min-w-full">
+	<div class="tab-content">
 		<GettingStarted />
 	</div>
 	<!-- Maps & Gear -->
-	<input type="radio" name="guide_tabs" class="tab btn" aria-label="Maps & Gear" />
-	<div class="tab-content min-w-full">
+	<input type="radio" name="guide_tabs" class="tab btn w-full" aria-label="Maps & Gear" />
+	<div class="tab-content">
 		<MapsGear />
 	</div>
 	<!-- Stats & Settings -->
-	<input type="radio" name="guide_tabs" class="tab btn" aria-label="Stats & Settings" />
-	<div class="tab-content min-w-full">
+	<input type="radio" name="guide_tabs" class="tab btn w-full" aria-label="Stats & Settings" />
+	<div class="tab-content">
 		<StatsSettings />
 	</div>
 </div>
