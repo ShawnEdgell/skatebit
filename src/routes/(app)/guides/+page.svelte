@@ -21,7 +21,7 @@
 <div class="divider"></div>
 
 <!-- Tabs -->
-<div class="flex w-full flex-col">
+<div class="flex min-w-full flex-col justify-center">
 	<!-- Getting Started -->
 	<input
 		type="radio"
@@ -30,17 +30,17 @@
 		aria-label="Gettings Started"
 		checked="checked"
 	/>
-	<div class="tab-content">
+	<div class="tab-content min-w-full">
 		<GettingStarted />
 	</div>
 	<!-- Maps & Gear -->
 	<input type="radio" name="guide_tabs" class="tab btn" aria-label="Maps & Gear" />
-	<div class="tab-content">
+	<div class="tab-content min-w-full">
 		<MapsGear />
 	</div>
 	<!-- Stats & Settings -->
 	<input type="radio" name="guide_tabs" class="tab btn" aria-label="Stats & Settings" />
-	<div class="tab-content">
+	<div class="tab-content min-w-full">
 		<StatsSettings />
 	</div>
 </div>
