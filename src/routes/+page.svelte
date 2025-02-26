@@ -32,10 +32,7 @@
 <section>
 	<h2>New Skater XL Mod Guide</h2>
 	<p class="text-sm lg:text-base">January 16, 2025</p>
-	<p>
-		We're making some improvements to enhance your experience. During this update, our news feed
-		will be temporarily offline and a few features may be rearranged. Thank you for your patience!
-	</p>
+	<p>A step-by-step modding guide covering custom maps, gear, and script mods for Skater XL.</p>
 	<div class="my-8 aspect-video w-full">
 		<iframe
 			load="lazy"
