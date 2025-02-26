@@ -2,6 +2,7 @@
 	import ImageModal from '$lib/components/ImageModal.svelte';
 </script>
 
+<!-- Step 1 -->
 <section>
 	<h2>Step 1: Check Your Game Version</h2>
 	<p>
@@ -11,6 +12,7 @@
 	<ImageModal imageUrl="Step1.webp" altText="Lateflip" buttonText="View Example" />
 </section>
 
+<!-- Step 2 -->
 <section>
 	<h2>Step 2: Changing Game Versions (Optional)</h2>
 	<p>
@@ -20,6 +22,7 @@
 	<ImageModal imageUrl="Step2.webp" altText="Lateflip" buttonText="View Example" />
 </section>
 
+<!-- Step 3 -->
 <section>
 	<h2>Step 3: Download UnityModManager</h2>
 	<p>
@@ -38,6 +41,7 @@
 	>
 </section>
 
+<!-- Step 4 -->
 <section>
 	<h2>Step 4: UnityModManager Setup</h2>
 	<p>After downloading, unzip the file, open the folder, and run UnityModManager.exe.</p>
@@ -51,6 +55,7 @@
 	<ImageModal imageUrl="Step3.webp" altText="Lateflip" buttonText="View Example" />
 </section>
 
+<!-- Step 5 -->
 <section>
 	<h2>Step 5: Install Mods</h2>
 	<p>Select the <b>Mods</b> tab in UnityModManager.</p>
@@ -65,6 +70,7 @@
 	<ImageModal imageUrl="Step4.webp" altText="Lateflip" buttonText="View Example" />
 </section>
 
+<!-- Step 6 -->
 <section>
 	<h2>Step 6: Launch Skater XL!</h2>
 	<p>Upon launch you should notice the Skater XL Mod Menu.</p>

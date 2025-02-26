@@ -5,15 +5,20 @@
 	const pageDescription = 'Helpful links and resources to get you started with Skater XL modding.';
 </script>
 
+<!-- Page Data -->
 <svelte:head>
 	<title>Skatebit | {pageTitle}</title>
 	<meta name="description" content={pageDescription} />
 </svelte:head>
 
-<h1>{pageTitle}</h1>
-<p>{pageDescription}</p>
-<div class="divider"></div>
+<!-- Header -->
+<section>
+	<h1>{pageTitle}</h1>
+	<p>{pageDescription}</p>
+	<div class="divider"></div>
+</section>
 
+<!-- Skater XL Mod.io -->
 <section>
 	<h2>skaterxl.mod.io</h2>
 	<p>
@@ -25,6 +30,7 @@
 	</a>
 </section>
 
+<!-- XL Hub by Fro -->
 <section>
 	<h2>XL Hub by Fro</h2>
 	<p>
@@ -36,6 +42,7 @@
 	</a>
 </section>
 
+<!-- Tabels -->
 <section>
 	{#each categories as category}
 		<section>

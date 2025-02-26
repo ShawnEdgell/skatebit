@@ -1,9 +1,14 @@
 <script lang="ts">
 	import { navItems } from '$lib/data/navItems';
+	let drawerOpen = false;
+
+	function closeDrawer() {
+		drawerOpen = false;
+	}
 </script>
 
 <div class="drawer">
-	<input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+	<input id="my-drawer-3" type="checkbox" class="drawer-toggle" bind:checked={drawerOpen} />
 	<div class="drawer-content flex flex-col">
 		<!-- Navbar -->
 		<div class="navbar bg-base-200 w-full justify-between">
@@ -49,7 +54,7 @@
 			<!-- Sidebar content here -->
 			{#each navItems as { href, label }}
 				<li>
-					<a class="btn-lg" {href}>
+					<a class="btn-xl" {href} on:click={closeDrawer}>
 						<span>{label}</span>
 					</a>
 				</li>
