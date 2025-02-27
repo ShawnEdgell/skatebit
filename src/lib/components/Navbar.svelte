@@ -1,4 +1,5 @@
 <script lang="ts">
+	import ThemeController from './ThemeController.svelte';
 	import { navItems } from '$lib/data/navItems';
 	let drawerOpen = false;
 
@@ -34,16 +35,17 @@
 					<a href="/" class="text-lg font-bold">skatebit</a>
 				</div>
 			</div>
-			<div class="hidden flex-none lg:block">
+			<div class="flex-none">
 				<ul class="menu menu-horizontal">
 					<!-- Navbar menu content here -->
 					{#each navItems as { href, label }}
-						<li>
+						<li class="hidden lg:block">
 							<a {href}>
 								<span>{label}</span>
 							</a>
 						</li>
 					{/each}
+					<li><ThemeController /></li>
 				</ul>
 			</div>
 		</div>

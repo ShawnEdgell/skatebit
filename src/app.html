@@ -2,6 +2,14 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
+		<script>
+			(function () {
+				const theme = localStorage.getItem('theme');
+				if (theme) {
+					document.documentElement.setAttribute('data-theme', theme);
+				}
+			})();
+		</script>
 		<link rel="icon" href="%sveltekit.assets%/skater.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
