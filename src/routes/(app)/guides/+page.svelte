@@ -7,6 +7,17 @@
 	const pageTitle = 'Guides';
 	const pageDescription =
 		'These guides will walk you through the essential steps to get you up and running with all the latest mods.';
+
+	// Define the tabs with their labels and IDs
+	const tabs = [
+		{ id: 'gettingStarted', label: 'Getting Started' },
+		{ id: 'mapsGear', label: 'Maps & Gear' },
+		{ id: 'statsSettings', label: 'Stats & Settings' },
+		{ id: 'videoGuides', label: 'Video Guides' }
+	];
+
+	// Initialize the selected tab (first tab by default)
+	let selectedTab = tabs[0].id;
 </script>
 
 <svelte:head>
@@ -18,35 +29,31 @@
 <section>
 	<h1>{pageTitle}</h1>
 	<p>{pageDescription}</p>
-	<div class="divider"></div>
+	<div class="divider mb-6"></div>
 </section>
 
-<!-- Tabs -->
-<div class="flex min-w-full flex-col justify-center">
-	<!-- Getting Started -->
-	<input
-		type="radio"
-		name="guide_tabs"
-		class="tab btn mt-6 w-full"
-		aria-label="Gettings Started"
-		checked="checked"
-	/>
-	<div class="tab-content">
-		<GettingStarted />
-	</div>
-	<!-- Maps & Gear -->
-	<input type="radio" name="guide_tabs" class="tab btn w-full" aria-label="Maps & Gear" />
-	<div class="tab-content">
-		<MapsGear />
-	</div>
-	<!-- Stats & Settings -->
-	<input type="radio" name="guide_tabs" class="tab btn w-full" aria-label="Stats & Settings" />
-	<div class="tab-content">
-		<StatsSettings />
-	</div>
-	<!-- Video Guides -->
-	<input type="radio" name="guide_tabs" class="tab btn w-full" aria-label="Video Guides" />
-	<div class="tab-content">
-		<VideoGuides />
-	</div>
+<!-- Tab Selector using buttons -->
+<div class="flex flex-col">
+	{#each tabs as tab}
+		<button
+			class="btn w-full {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"
+			on:click={() => (selectedTab = tab.id)}
+			aria-label={tab.label}
+		>
+			{tab.label}
+		</button>
+	{/each}
 </div>
+
+<!-- Tab Content -->
+<section>
+	{#if selectedTab === 'gettingStarted'}
+		<GettingStarted />
+	{:else if selectedTab === 'mapsGear'}
+		<MapsGear />
+	{:else if selectedTab === 'statsSettings'}
+		<StatsSettings />
+	{:else if selectedTab === 'videoGuides'}
+		<VideoGuides />
+	{/if}
+</section>
