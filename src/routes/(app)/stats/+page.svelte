@@ -44,19 +44,20 @@
 
 <!-- Basic Realistic Settings -->
 <section>
-	<h3>Basic Realistic Settings (Goofy and Regular)</h3>
+	<h2>Basic Realistic Settings (Goofy and Regular)</h2>
 	<p>A good starting point for building your own stats.</p>
 
 	<a
 		class="btn btn-soft not-prose"
 		href="https://damp-limit-8cd1.milky-irl.workers.dev/BasicRealisticSettings.zip"
-		download>Download</a
-	>
+		download
+		>Download
+	</a>
 </section>
 
 <!-- Milky's Latest Settings -->
 <section>
-	<h3>Milky's Latest Stats (Regular)</h3>
+	<h2>Milky's Latest Stats (Regular)</h2>
 	<p>14 Gravity. Latest stats as seen in recent streams and videos.</p>
 
 	<a

@@ -183,6 +183,7 @@ export const categories: Category[] = [
 	{
 		title: 'Gear Discords',
 		data: gearDiscords,
-		description: ''
+		description:
+			'Find the latest gear and connect with the creators. These Discords are perfect for those looking to customize their Skater XL experience.'
 	}
 ];

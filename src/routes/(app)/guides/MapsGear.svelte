@@ -1,3 +1,14 @@
+<script lang="ts">
+	import Card from '$lib/components/Card.svelte';
+
+	const mapGearData = [
+		{ title: 'Custom Maps', content: 'Documents / SkaterXL / Maps' },
+		{ title: 'Custom Gear', content: 'Documents / SkaterXL / Gear' },
+		{ title: 'XLGM Gear (Textures)', content: 'Documents / SkaterXL / Gear' },
+		{ title: 'XLGM Gear (Assets)', content: 'Documents / SkaterXL / XLGearModifier / AssetPacks' }
+	];
+</script>
+
 <section>
 	<h2>Maps & Gear</h2>
 	<p>
@@ -8,12 +19,9 @@
 </section>
 
 <section>
-	<h3>Custom Maps:</h3>
-	<p>Documents / SkaterXL / Maps</p>
-	<h3>Custom Gear:</h3>
-	<p>Documents / SkaterXL / Gear</p>
-	<h3>XLGM Gear (Textures):</h3>
-	<p>Documents / SkaterXL / Gear</p>
-	<h3>XLGM Gear (Assets):</h3>
-	<p>Documents / Documents / SkaterXL / XLGearModifier / AssetPacks</p>
+	<div class="flex flex-col gap-4">
+		{#each mapGearData as { title, content }}
+			<Card {title} {content} />
+		{/each}
+	</div>
 </section>

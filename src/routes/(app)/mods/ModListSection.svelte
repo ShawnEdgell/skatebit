@@ -34,7 +34,7 @@
 				<div>
 					{#each tab.mods as modItem, modIndex}
 						<div
-							class="collapse-arrow border-base-300 bg-base-100 rounded-box collapse mb-2 border"
+							class="collapse-arrow border-base-200 bg-base-200 rounded-box not-prose collapse mb-2 border"
 						>
 							<input type="checkbox" class="peer hidden" id={`mod-${tab.id}-${modIndex}`} />
 							<label
@@ -56,10 +56,14 @@
 									<p><strong>Note:</strong> {modItem.note}</p>
 								{/if}
 								{#if modItem.downloadLinks && modItem.downloadLinks.length > 0}
-									<p><strong>Links:</strong></p>
-									<div class="flex flex-col gap-2">
+									<div class="mt-4 flex flex-col gap-2">
 										{#each modItem.downloadLinks as { url, label }}
-											<a class="btn btn-soft" href={url} target="_blank" rel="noopener noreferrer">
+											<a
+												class="btn btn-soft no-underline"
+												href={url}
+												target="_blank"
+												rel="noopener noreferrer"
+											>
 												{label}
 											</a>
 										{/each}

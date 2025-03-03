@@ -20,56 +20,63 @@
 
 <!-- Skater XL Mod.io -->
 <section>
-	<h2>skaterxl.mod.io</h2>
-	<p>
-		Explore and share a wide range of mods, including scripts, gear, maps, and more, on the main hub
-		for Skater XL modding.
-	</p>
-	<a href="https://mod.io/g/skaterxl" class="btn btn-soft not-prose" target="_blank">
-		skaterxl.mod.io
-	</a>
+	<div class="card bg-base-300 card-lg not-prose mb-4 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title font-bold">skaterxl.mod.io</h2>
+			<p>
+				Explore and share a wide range of mods, including scripts, gear, maps, and more, on the main
+				hub for Skater XL modding.
+			</p>
+
+			<a href="https://mod.io/g/skaterxl" class="btn btn-primary mt-2" target="_blank">
+				skaterxl.mod.io
+			</a>
+		</div>
+	</div>
 </section>
 
 <!-- XL Hub by Fro -->
 <section>
-	<h2>XL Hub by Fro</h2>
-	<p>
-		Browse, download, and manage your local and online community maps and mods. This application
-		makes installing mods as easy as a single click.
-	</p>
-	<a href="https://mod.io/g/skaterxl/m/xlhub" class="btn btn-soft not-prose" target="_blank">
-		XL Hub on mod.io
-	</a>
+	<div class="card bg-base-300 card-lg not-prose mt-4 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title font-bold">XL Hub by Fro</h2>
+			<p>
+				Browse, download, and manage your local and online community maps and mods. This application
+				makes installing mods as easy as a single click.
+			</p>
+			<a href="https://mod.io/g/skaterxl/m/xlhub" class="btn btn-primary mt-2" target="_blank">
+				XL Hub on mod.io
+			</a>
+		</div>
+	</div>
 </section>
 
 <!-- Tabels -->
 <section>
 	{#each categories as category}
 		<section>
-			<div>
-				<h2>{category.title}</h2>
-				<p>{category.description}</p>
-				<table class="table-hover table">
-					<thead>
+			<h2>{category.title}</h2>
+			<p>{category.description}</p>
+			<table class="table-hover table">
+				<thead>
+					<tr>
+						<th>Server</th>
+						<th>Owner</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each category.data as server}
 						<tr>
-							<th>Server</th>
-							<th>Owner</th>
+							<td>
+								<a class="hover:no-underline" href={server.link} target="_blank">
+									{server.name}
+								</a>
+							</td>
+							<td>{server.owner}</td>
 						</tr>
-					</thead>
-					<tbody>
-						{#each category.data as server}
-							<tr>
-								<td>
-									<a class="hover:no-underline" href={server.link} target="_blank">
-										{server.name}
-									</a>
-								</td>
-								<td>{server.owner}</td>
-							</tr>
-						{/each}
-					</tbody>
-				</table>
-			</div>
+					{/each}
+				</tbody>
+			</table>
 		</section>
 	{/each}
 </section>
