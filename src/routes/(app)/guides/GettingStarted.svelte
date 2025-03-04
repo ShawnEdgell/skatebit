@@ -27,9 +27,7 @@
 		{
 			step: 'Step 3',
 			title: 'Download UnityModManager',
-			descriptionTop: [
-				'Download the UnityModManager application to start installing mods. You will need to log in to Nexus Mods in order to download the file.'
-			],
+			descriptionTop: ['Download the UnityModManager application to start installing mods.'],
 			list: [
 				'Visit the Nexus Mods website',
 				'Create an account or log in',
@@ -45,7 +43,7 @@
 				'Unzip the file, open the folder, and run UnityModManager.exe.',
 				"If playing on version 1.2.2.8 (Alpha), select 'Skater XL v1.2.2.8' as your game.",
 				"If playing a different version, simply select 'Skater XL' as your game.",
-				'Set the game path to: C:/ProgramFiles(x86)/Steam/steamapps/common/SkaterXL',
+				'Set the game path to: C: / ProgramFiles(x86) / Steam / steamapps / common / SkaterXL',
 				'Click Install or Update to complete the setup.'
 			],
 			imageUrl: 'Step3.webp'
@@ -85,7 +83,7 @@
 <div class="flex flex-col gap-4">
 	{#each steps as { step, title, list, descriptionTop, descriptionBottom, imageUrl, link }}
 		<div class="not-prose">
-			<div class="card bg-base-200 shadow-sm">
+			<div class="card card-lg bg-base-200 shadow-sm">
 				<div class="card-body">
 					<span class="badge badge-warning">{step}</span>
 					<h2 class="card-title text mb-6 text-2xl">{title}</h2>
