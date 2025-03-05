@@ -8,7 +8,7 @@ import { db } from '../firebase';
 interface YouTubePlaylistItem {
 	snippet: {
 		title: string;
-		publishedAt: string;
+		publishedAt?: string; // Make it optional if needed
 		description: string;
 		resourceId?: {
 			videoId: string;
@@ -64,8 +64,12 @@ function normalizeVideo(video: YouTubePlaylistItem): YouTubeItem {
 async function fetchYouTubeVideos(): Promise<YouTubeItem[]> {
 	const results = await Promise.all(SOURCES.map((source) => fetchPlaylistVideos(source.id)));
 	const allVideos = results.flat().map(normalizeVideo);
-	// Sort videos by published date (newest first)
-	allVideos.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
+	// Sort videos by published date (newest first). If publishedAt is undefined, treat as 0.
+	allVideos.sort((a, b) => {
+		const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+		const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+		return dateB - dateA;
+	});
 	return allVideos;
 }
 

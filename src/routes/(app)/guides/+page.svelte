@@ -3,12 +3,12 @@
 	import MapsGear from './MapsGear.svelte';
 	import StatsSettings from './StatsSettings.svelte';
 	import VideoGuides from './VideoGuides.svelte';
+	import type { YouTubeItem } from '$lib/types/YoutubeTypes';
 
 	const pageTitle = 'Guides';
 	const pageDescription =
 		'These guides will walk you through the essential steps to get you up and running with all the latest mods.';
 
-	// Define the tabs with their labels and IDs
 	const tabs = [
 		{ id: 'gettingStarted', label: 'Getting Started' },
 		{ id: 'mapsGear', label: 'Maps & Gear' },
@@ -16,8 +16,11 @@
 		{ id: 'videoGuides', label: 'Video Guides' }
 	];
 
-	// Initialize the selected tab (first tab by default)
 	let selectedTab = tabs[0].id;
+
+	// Data loaded from the server
+	export let data: { videoGuides: YouTubeItem[] };
+	const videoGuides = data.videoGuides;
 </script>
 
 <svelte:head>
@@ -32,7 +35,7 @@
 	<div class="divider mb-6"></div>
 </section>
 
-<!-- Tab Selector using buttons -->
+<!-- Tab Selector -->
 <div class="flex flex-col">
 	{#each tabs as tab}
 		<button
@@ -54,6 +57,6 @@
 	{:else if selectedTab === 'statsSettings'}
 		<StatsSettings />
 	{:else if selectedTab === 'videoGuides'}
-		<VideoGuides />
+		<VideoGuides videos={videoGuides} />
 	{/if}
 </section>

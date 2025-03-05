@@ -34,7 +34,12 @@
 </script>
 
 <h2>{video.title}</h2>
-<p class="text-sm lg:text-base">{formatDate(video.publishedAt)}</p>
+{#if video.publishedAt}
+	<p class="text-sm lg:text-base">{formatDate(video.publishedAt)}</p>
+{:else}
+	<p class="text-sm lg:text-base"></p>
+{/if}
+
 {#if video.description?.trim()}
 	{#if video.description.length > 100}
 		{#if showFullDescription}
