@@ -37,6 +37,7 @@
     "vite": "^6.0.0"
   },
   "dependencies": {
+    "firebase": "^11.4.0",
     "theme-change": "^2.5.0"
   }
 }

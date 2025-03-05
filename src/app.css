@@ -7,3 +7,8 @@
 html {
 	@apply scroll-smooth;
 }
+
+html,
+body {
+	@apply h-full;
+}
