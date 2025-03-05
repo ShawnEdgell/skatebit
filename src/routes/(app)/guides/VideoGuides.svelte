@@ -5,7 +5,7 @@
 </script>
 
 {#each videos as video}
-	<section class="mb-8">
+	<section>
 		<VideoItem {video} />
 	</section>
 {/each}
