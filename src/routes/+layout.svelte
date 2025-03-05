@@ -2,6 +2,12 @@
 	import '../app.css';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import { dev } from '$app/environment';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+
+	injectSpeedInsights();
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
 	let { children } = $props();
 </script>
