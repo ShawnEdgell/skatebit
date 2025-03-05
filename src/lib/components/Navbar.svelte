@@ -9,7 +9,13 @@
 </script>
 
 <div class="drawer">
-	<input id="my-drawer-3" type="checkbox" class="drawer-toggle" bind:checked={drawerOpen} />
+	<input
+		id="my-drawer-3"
+		type="checkbox"
+		class="drawer-toggle"
+		bind:checked={drawerOpen}
+		aria-label="Toggle navigation drawer"
+	/>
 	<div class="drawer-content flex flex-col">
 		<!-- Navbar -->
 		<div class="navbar bg-base-200 w-full justify-between">

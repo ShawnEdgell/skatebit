@@ -49,10 +49,8 @@
 			<path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
 		</svg>
 	</div>
-	<ul
-		tabindex="0"
-		class="dropdown-content bg-base-200 rounded-box top-12 z-1 mt-6 w-52 p-2 shadow-2xl"
-	>
+	<!-- Removed tabindex from the <ul> -->
+	<ul class="dropdown-content bg-base-200 rounded-box top-12 z-1 mt-6 w-52 p-2 shadow-2xl">
 		{#each themes as { label, value }}
 			<li>
 				<input

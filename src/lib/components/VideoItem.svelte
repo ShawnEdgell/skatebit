@@ -39,12 +39,15 @@
 	{#if video.description.length > 100}
 		{#if showFullDescription}
 			<p>{video.description}</p>
-			<button on:click={toggleDescription} class="text-info mb-4 cursor-pointer hover:underline">
+			<button
+				on:click={toggleDescription}
+				class=" mb-4 cursor-pointer underline hover:no-underline"
+			>
 				Show less
 			</button>
 		{:else}
 			<p class="mb-2">{video.description.slice(0, 100)}...</p>
-			<button on:click={toggleDescription} class="text-info mb-4 cursor-pointer hover:underline">
+			<button on:click={toggleDescription} class="mb-4 cursor-pointer underline hover:no-underline">
 				Read more
 			</button>
 		{/if}
@@ -62,7 +65,6 @@
 			frameborder="0"
 			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 			allowfullscreen
-			loading="lazy"
 			class="absolute top-0 left-0 h-full w-full"
 		></iframe>
 	{:else}
@@ -81,7 +83,6 @@
 			<img
 				src={`https://img.youtube.com/vi/${video.videoId}/hqdefault.jpg`}
 				alt={video.title}
-				loading="lazy"
 				class="absolute h-full w-full object-cover"
 			/>
 			<svg
