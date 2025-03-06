@@ -1,70 +1,113 @@
 // +page.server.ts
 import type { PageServerLoad } from './$types';
-import { PUBLIC_YOUTUBE_API_KEY } from '$env/static/public';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from '../firebase';
-
-// Define an interface for a YouTube playlist item returned from the API
-interface YouTubePlaylistItem {
-	snippet: {
-		title: string;
-		publishedAt?: string; // Make it optional if needed
-		description: string;
-		resourceId?: {
-			videoId: string;
-		};
-	};
-	// The id can either be a string or an object containing a videoId
-	id: string | { videoId: string };
-}
-
-// Your app's YouTube item type (used by your VideoItem component)
-import type { YouTubeItem } from '$lib/types/YoutubeTypes';
+import { PUBLIC_YOUTUBE_API_KEY } from '$env/static/public';
 
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';
-// Only using the Skater XL playlist now
-const SOURCES = [{ id: 'UUpBQRZl7apZt_LQXKgqKQiQ', type: 'playlist' }];
-const MAX_RESULTS = 5;
-
-// Cache configuration
 const CACHE_COLLECTION = 'youtubeCache';
-const CACHE_DOC = 'skaterXLVideos';
-const CACHE_DURATION = 60 * 60 * 1000; // 1 hour in milliseconds
+const CACHE_DOC = 'cacheAllVideos';
+const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
+
+// Define channels/sources. Easily add or remove channels by updating this array.
+const CHANNELS = [
+	{ id: 'UUpBQRZl7apZt_LQXKgqKQiQ', type: 'playlist', label: 'Skater XL' },
+	{ id: 'PLWmRSsZZ1RCW-0uQWKlCAiGZVnIaRYaTm', type: 'playlist', label: 'Session' },
+	{ id: 'UCSBQJEWTWOUCO65xvoDfljw', type: 'channel', label: 'Skate' }
+];
+
+export interface YouTubeItem {
+	title: string;
+	publishedAt?: string;
+	description?: string;
+	videoId: string;
+	source: string; // Added to identify the origin
+}
 
 /**
- * Removes any content starting with "Check Out Skater XL on:" from the description.
+ * Interface for a YouTube API response item.
  */
-function cleanDescription(desc: string): string {
-	return desc.replace(/Check Out Skater XL on:[\s\S]*/g, '').trim();
-}
-
-// Fetch videos from a playlist and type the response properly
-async function fetchPlaylistVideos(playlistId: string): Promise<YouTubePlaylistItem[]> {
-	const res = await fetch(
-		`${YOUTUBE_API_BASE}/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=${MAX_RESULTS}&key=${PUBLIC_YOUTUBE_API_KEY}`
-	);
-	const data = await res.json();
-	return data.items || [];
-}
-
-// Normalize video data to match the expected structure for VideoItem.svelte
-function normalizeVideo(video: YouTubePlaylistItem): YouTubeItem {
-	const snippet = video.snippet;
-	const videoId =
-		snippet.resourceId?.videoId ?? (typeof video.id === 'object' ? video.id.videoId : video.id);
-	return {
-		title: snippet.title,
-		publishedAt: snippet.publishedAt,
-		description: cleanDescription(snippet.description || ''),
-		videoId: videoId
+interface YouTubeAPIItem {
+	id: string | { videoId: string };
+	snippet: {
+		title: string;
+		publishedAt?: string;
+		description: string;
+		resourceId?: { videoId: string };
 	};
 }
 
-// Fetch fresh videos from YouTube and return a sorted array of YouTubeItem
+/**
+ * Cleans up the description based on its source.
+ * - For Skater XL: Removes text starting with "Check Out Skater XL on:".
+ * - For Session: Removes text starting with a sequence of dashes followed by the social links.
+ * - For Skate (or others): Leaves the description unchanged.
+ */
+function cleanDescription(desc: string, source: string): string {
+	if (source === 'Skater XL') {
+		return desc.replace(/Check Out Skater XL on:[\s\S]*/g, '').trim();
+	} else if (source === 'Session') {
+		// Remove text starting with 10 or more dashes followed by the fixed text.
+		return desc
+			.replace(
+				/-{10,}\s*For news about our other games and products, you can also follow us on:[\s\S]*/g,
+				''
+			)
+			.trim();
+	}
+	// For Skate and any other sources, do not trim the description.
+	return desc;
+}
+
+/**
+ * Fetches videos for a given source.
+ */
+async function fetchVideosForSource(source: {
+	id: string;
+	type: string;
+	label: string;
+}): Promise<YouTubeItem[]> {
+	const { id, type, label } = source;
+	const endpoint = type === 'playlist' ? 'playlistItems' : 'search';
+	const params =
+		type === 'playlist'
+			? `playlistId=${id}&part=snippet&maxResults=5`
+			: `channelId=${id}&order=date&type=video&videoDuration=medium&part=snippet&maxResults=5`;
+	const url = `${YOUTUBE_API_BASE}/${endpoint}?${params}&key=${PUBLIC_YOUTUBE_API_KEY}`;
+
+	try {
+		const res = await fetch(url);
+		const data = await res.json();
+		if (!data.items) return [];
+		return (data.items as YouTubeAPIItem[]).map((item) => {
+			const snippet = item.snippet;
+			const videoId =
+				type === 'playlist'
+					? (snippet.resourceId?.videoId ??
+						(typeof item.id !== 'string' ? item.id.videoId : item.id))
+					: typeof item.id !== 'string'
+						? item.id.videoId
+						: item.id;
+			return {
+				title: snippet.title,
+				publishedAt: snippet.publishedAt,
+				description: cleanDescription(snippet.description || '', label),
+				videoId,
+				source: label
+			} as YouTubeItem;
+		});
+	} catch (error) {
+		console.error(`Failed to fetch videos for ${label}:`, error);
+		return [];
+	}
+}
+
+/**
+ * Fetches and aggregates videos from all channels.
+ */
 async function fetchYouTubeVideos(): Promise<YouTubeItem[]> {
-	const results = await Promise.all(SOURCES.map((source) => fetchPlaylistVideos(source.id)));
-	const allVideos = results.flat().map(normalizeVideo);
-	// Sort videos by published date (newest first). If publishedAt is undefined, treat as 0.
+	const results = await Promise.all(CHANNELS.map((source) => fetchVideosForSource(source)));
+	const allVideos = results.flat();
 	allVideos.sort((a, b) => {
 		const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
 		const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
@@ -76,19 +119,16 @@ async function fetchYouTubeVideos(): Promise<YouTubeItem[]> {
 export const load: PageServerLoad = async () => {
 	let videos: YouTubeItem[] = [];
 	try {
-		// Reference the cache document in your Firestore collection "youtubeCache"
 		const cacheRef = doc(db, CACHE_COLLECTION, CACHE_DOC);
 		const cacheSnap = await getDoc(cacheRef);
 		let useCache = false;
 		if (cacheSnap.exists()) {
 			const cacheData = cacheSnap.data();
-			// Use the cached data if it's still fresh
 			if (cacheData.lastUpdated && Date.now() - cacheData.lastUpdated < CACHE_DURATION) {
 				videos = cacheData.videos;
 				useCache = true;
 			}
 		}
-		// If no fresh cache exists, fetch new data and update Firestore
 		if (!useCache) {
 			const freshVideos = await fetchYouTubeVideos();
 			videos = freshVideos;
@@ -96,7 +136,6 @@ export const load: PageServerLoad = async () => {
 		}
 	} catch (e) {
 		console.error(e);
-		// Optionally, you can include an error property in the returned data.
 	}
 	return { videos };
 };

@@ -7,9 +7,23 @@
 
 	const pageTitle = 'Recent News';
 	const pageDescription =
-		'Discover the latest official updates, news, and videos from Skater XL—all in one place.';
+		'Discover the latest official updates, news, and videos from Skater XL, Session, and Skate—all in one place.';
 
 	const { videos } = data;
+
+	// Define tab options for filtering the feed.
+	const tabs = [
+		{ id: 'all', label: 'All' },
+		{ id: 'Skater XL', label: 'Skater XL' },
+		{ id: 'Session', label: 'Session' },
+		{ id: 'Skate', label: 'Skate' }
+	];
+
+	let selectedTab = 'all';
+
+	// Reactive statement to filter videos based on the selected tab.
+	$: filteredVideos =
+		selectedTab === 'all' ? videos : videos.filter((video) => video.source === selectedTab);
 </script>
 
 <svelte:head>
@@ -24,8 +38,22 @@
 	<div class="divider"></div>
 </section>
 
-{#if videos && videos.length > 0}
-	{#each videos as video}
+<!-- Tab Switcher using Daisy UI -->
+<div class="mt-6 flex flex-col">
+	{#each tabs as tab}
+		<button
+			class="btn {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"
+			on:click={() => (selectedTab = tab.id)}
+			aria-label={tab.label}
+		>
+			{tab.label}
+		</button>
+	{/each}
+</div>
+
+<!-- News Feed Display -->
+{#if filteredVideos && filteredVideos.length > 0}
+	{#each filteredVideos as video (video.videoId)}
 		<VideoItem {video} />
 	{/each}
 {:else}

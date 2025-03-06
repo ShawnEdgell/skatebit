@@ -32,11 +32,11 @@
 <section>
 	<h1>{pageTitle}</h1>
 	<p>{pageDescription}</p>
-	<div class="divider mb-6"></div>
+	<div class="divider"></div>
 </section>
 
 <!-- Tab Selector -->
-<div class="flex flex-col">
+<div class="mt-6 flex flex-col">
 	{#each tabs as tab}
 		<button
 			class="btn w-full {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"

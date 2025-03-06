@@ -1,5 +1,21 @@
 <script lang="ts">
 	import Help from '$lib/components/Help.svelte';
+	import Card from '$lib/components/Card.svelte';
+
+	const statsData = [
+		{
+			title: 'Basic Realistic Settings (Goofy and Regular)',
+			content:
+				"A good starting point for building your own stats. Includes XXL Mod Presets and Fro's Mod settings.",
+			download: 'https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip'
+		},
+		{
+			title: "Milky's Latest Stats (Regular)",
+			content:
+				"14 Gravity. Latest stats as seen in recent streams and videos. Includes XXL Mod Presets and Fro's Mod settings.",
+			download: 'https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip'
+		}
+	];
 
 	const pageTitle = 'Stats & Settings';
 	const pageDescription = 'Download presets for your Skater XL mods.';
@@ -20,7 +36,7 @@
 
 <!-- Alert Message -->
 <section>
-	<div role="alert" class="alert alert-info">
+	<div role="alert" class="alert alert-info mt-6">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
@@ -42,27 +58,10 @@
 	</div>
 </section>
 
-<!-- Basic Realistic Settings -->
 <section>
-	<h2>Basic Realistic Settings (Goofy and Regular)</h2>
-	<p>A good starting point for building your own stats.</p>
-
-	<a
-		class="btn btn-soft not-prose"
-		href="https://damp-limit-8cd1.milky-irl.workers.dev/BasicRealisticSettings.zip"
-		download
-		>Download
-	</a>
-</section>
-
-<!-- Milky's Latest Settings -->
-<section>
-	<h2>Milky's Latest Stats (Regular)</h2>
-	<p>14 Gravity. Latest stats as seen in recent streams and videos.</p>
-
-	<a
-		class="btn btn-soft not-prose"
-		href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
-		download>Download</a
-	>
+	<div class="mt-6 flex flex-col gap-4">
+		{#each statsData as { title, content, download }}
+			<Card {title} {content} {download} />
+		{/each}
+	</div>
 </section>
