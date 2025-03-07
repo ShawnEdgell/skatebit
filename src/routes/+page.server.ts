@@ -74,10 +74,10 @@ async function fetchVideosForSource(source: {
 	let params = '';
 	if (type === 'playlist') {
 		// For playlists, we still fetch 5 videos.
-		params = `playlistId=${id}&part=snippet&maxResults=5`;
+		params = `playlistId=${id}&part=snippet&maxResults=10`;
 	} else {
 		// For channel type (e.g. Skate), limit to 5 videos.
-		params = `channelId=${id}&order=date&type=video&part=snippet&maxResults=5`;
+		params = `channelId=${id}&order=date&type=video&part=snippet&maxResults=10`;
 	}
 	const url = `${YOUTUBE_API_BASE}/${type === 'playlist' ? 'playlistItems' : 'search'}?${params}&key=${PUBLIC_YOUTUBE_API_KEY}`;
 
