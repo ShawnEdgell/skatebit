@@ -80,7 +80,9 @@
 					<li>Unzip the file, open the folder, and run UnityModManager.exe.</li>
 					<li>If playing on version 1.2.2.8 (Alpha), select "Skater XL v1.2.2.8" as your game.</li>
 					<li>If playing a different version, simply select "Skater XL" as your game.</li>
-					<li>Set the game path to: C:/ProgramFiles(x86)/Steam/steamapps/common/SkaterXL</li>
+					<li>
+						Set the game path to: C: / ProgramFiles(x86) / Steam / steamapps / common/ SkaterXL
+					</li>
 					<li>Click Install or Update to complete the setup.</li>
 				</ul>
 				<ImageModal imageUrl="Step3.webp" altText="Step Image" buttonText="View Example" />
