@@ -40,23 +40,27 @@ interface YouTubeAPIItem {
 /**
  * Cleans up the description based on its source.
  * - For Skater XL: Removes text starting with "Check Out Skater XL on:".
- * - For Session: Removes text starting with a sequence of dashes followed by the social links.
+ * - For Session: Removes the unwanted line (exact copy-pasted content) and any trailing social links.
  * - For Skate (or others): Leaves the description unchanged.
  */
 function cleanDescription(desc: string, source: string): string {
-	if (source === 'Skater XL') {
-		return desc.replace(/Check Out Skater XL on:[\s\S]*/g, '').trim();
-	} else if (source === 'Session') {
-		// Remove text starting with 10 or more dashes followed by the fixed text.
-		return desc
-			.replace(
-				/-{10,}\s*For news about our other games and products, you can also follow us on:[\s\S]*/g,
-				''
-			)
-			.trim();
+	let cleaned = desc;
+
+	// Always remove Skater XL specific text if it exists.
+	cleaned = cleaned.replace(/Check Out Skater XL on:[\s\S]*/g, '').trim();
+
+	if (source === 'Session') {
+		// Remove the exact unwanted line by matching it at the beginning.
+		// The regex uses flexible whitespace (\s*) between tokens.
+		cleaned = cleaned.replace(
+			/^Play Session:\s*Skate Sim now:\s*https:\/\/store\.steampowered\.com\/app\/861650\/Session_Skate_Sim\/\s*Dobrý den,\s*/i,
+			''
+		);
+		// Remove any trailing social links starting with "Follow us on Twitter:".
+		cleaned = cleaned.replace(/Follow us on Twitter:.*$/is, '').trim();
 	}
-	// For Skate and any other sources, do not trim the description.
-	return desc;
+
+	return cleaned;
 }
 
 /**

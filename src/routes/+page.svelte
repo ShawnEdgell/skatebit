@@ -54,9 +54,7 @@
 <!-- News Feed Display -->
 {#if filteredVideos && filteredVideos.length > 0}
 	{#each filteredVideos as video (video.videoId)}
-		<div class="break-words">
-			<VideoItem {video} />
-		</div>
+		<VideoItem {video} />
 	{/each}
 {:else}
 	<p>No videos available.</p>
