@@ -40,7 +40,8 @@ interface YouTubeAPIItem {
 /**
  * Cleans up the description based on its source.
  * - For Skater XL: Removes text starting with "Check Out Skater XL on:".
- * - For Session: Removes the unwanted line (exact copy-pasted content) and any trailing social links.
+ * - For Session: Removes the unwanted line (exact copy-pasted content), any trailing social links,
+ *   and any trailing content starting with a long line of dashes.
  * - For Skate (or others): Leaves the description unchanged.
  */
 function cleanDescription(desc: string, source: string): string {
@@ -51,55 +52,66 @@ function cleanDescription(desc: string, source: string): string {
 
 	if (source === 'Session') {
 		// Remove the exact unwanted line by matching it at the beginning.
-		// The regex uses flexible whitespace (\s*) between tokens.
 		cleaned = cleaned.replace(
 			/^Play Session:\s*Skate Sim now:\s*https:\/\/store\.steampowered\.com\/app\/861650\/Session_Skate_Sim\/\s*Dobrý den,\s*/i,
 			''
 		);
 		// Remove any trailing social links starting with "Follow us on Twitter:".
 		cleaned = cleaned.replace(/Follow us on Twitter:.*$/is, '').trim();
+		// Additionally, remove any trailing content starting with a long line of dashes.
+		cleaned = cleaned.replace(/-{10,}[\s\S]*$/g, '').trim();
 	}
 
 	return cleaned;
 }
 
-/**
- * Fetches videos for a given source.
- */
 async function fetchVideosForSource(source: {
 	id: string;
 	type: string;
 	label: string;
 }): Promise<YouTubeItem[]> {
 	const { id, type, label } = source;
-	const endpoint = type === 'playlist' ? 'playlistItems' : 'search';
-	const params =
-		type === 'playlist'
-			? `playlistId=${id}&part=snippet&maxResults=5`
-			: `channelId=${id}&order=date&type=video&videoDuration=medium&part=snippet&maxResults=5`;
-	const url = `${YOUTUBE_API_BASE}/${endpoint}?${params}&key=${PUBLIC_YOUTUBE_API_KEY}`;
+	let params = '';
+	if (type === 'playlist') {
+		// For playlists, we still fetch 5 videos.
+		params = `playlistId=${id}&part=snippet&maxResults=5`;
+	} else {
+		// For channel type (e.g. Skate), limit to 5 videos.
+		params = `channelId=${id}&order=date&type=video&part=snippet&maxResults=5`;
+	}
+	const url = `${YOUTUBE_API_BASE}/${type === 'playlist' ? 'playlistItems' : 'search'}?${params}&key=${PUBLIC_YOUTUBE_API_KEY}`;
 
 	try {
 		const res = await fetch(url);
 		const data = await res.json();
 		if (!data.items) return [];
-		return (data.items as YouTubeAPIItem[]).map((item) => {
-			const snippet = item.snippet;
-			const videoId =
-				type === 'playlist'
-					? (snippet.resourceId?.videoId ??
-						(typeof item.id !== 'string' ? item.id.videoId : item.id))
-					: typeof item.id !== 'string'
-						? item.id.videoId
-						: item.id;
-			return {
-				title: snippet.title,
-				publishedAt: snippet.publishedAt,
-				description: cleanDescription(snippet.description || '', label),
-				videoId,
-				source: label
-			} as YouTubeItem;
-		});
+		return (
+			(data.items as YouTubeAPIItem[])
+				.map((item) => {
+					const snippet = item.snippet;
+					const videoId =
+						type === 'playlist'
+							? (snippet.resourceId?.videoId ??
+								(typeof item.id !== 'string' ? item.id.videoId : item.id))
+							: typeof item.id !== 'string'
+								? item.id.videoId
+								: item.id;
+					return {
+						title: snippet.title,
+						publishedAt: snippet.publishedAt,
+						description: cleanDescription(snippet.description || '', label),
+						videoId,
+						source: label
+					} as YouTubeItem;
+				})
+				// Remove any Session video with "ANZ" in the title (case-insensitive)
+				.filter((video) => {
+					if (video.source === 'Session' && video.title.toUpperCase().includes('ANZ')) {
+						return false;
+					}
+					return true;
+				})
+		);
 	} catch (error) {
 		console.error(`Failed to fetch videos for ${label}:`, error);
 		return [];
