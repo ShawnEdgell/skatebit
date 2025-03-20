@@ -18,5 +18,9 @@ export const navItems = [
 	{
 		href: '/stats',
 		label: 'Stats'
+	},
+	{
+		href: '/dashboard',
+		label: 'Dashboard'
 	}
 ];
