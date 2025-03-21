@@ -8,13 +8,16 @@
 		addDoc,
 		updateDoc,
 		deleteDoc,
-		serverTimestamp
+		serverTimestamp,
+		query,
+		orderBy
 	} from 'firebase/firestore';
 	import { db } from '$lib/firebase';
 	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/auth';
 	import type { Timestamp } from 'firebase/firestore';
 	import type { ForumPost, ForumComment } from '$lib/types/forum';
+	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
 
 	// Helper function to format a Date or Firebase Timestamp.
 	function formatTimestamp(ts: Date | Timestamp | null): string {
@@ -49,7 +52,9 @@
 				console.error('No post found for id:', threadId);
 				post = null;
 			}
-			const commentsSnapshot = await getDocs(collection(postRef, 'comments'));
+			// Query comments ordered by createdAt descending (newest first)
+			const commentsQuery = query(collection(postRef, 'comments'), orderBy('createdAt', 'desc'));
+			const commentsSnapshot = await getDocs(commentsQuery);
 			comments = commentsSnapshot.docs.map((doc) => ({
 				id: doc.id,
 				...doc.data()
@@ -74,6 +79,7 @@
 				text: newComment,
 				authorId: $user?.uid || '',
 				authorName: $user?.displayName || 'Anonymous',
+				authorAvatar: $user?.photoURL || 'default-avatar-url.png',
 				createdAt: new Date(),
 				updatedAt: new Date()
 			};
@@ -127,11 +133,10 @@
 	// New function: edit the thread.
 	async function updateThread(): Promise<void> {
 		if (!post) return;
-		// Prompt for new title and content.
 		const newTitle = prompt('Enter new thread title:', post.title);
-		if (newTitle === null) return; // Cancelled.
+		if (newTitle === null) return;
 		const newContent = prompt('Enter new thread content:', post.content);
-		if (newContent === null) return; // Cancelled.
+		if (newContent === null) return;
 		try {
 			const postRef = doc(db, 'posts', threadId);
 			await updateDoc(postRef, {
@@ -150,6 +155,8 @@
 	<title>Skatebit | {post ? post.title : 'Forum Thread'}</title>
 	<meta name="description" content={post ? post.content.substring(0, 150) : 'Forum thread'} />
 </svelte:head>
+
+<a href="/forum" class="btn btn-sm btn-soft mb-6 no-underline">Back to Forum</a>
 
 {#if loading}
 	<p>Loading thread...</p>
@@ -178,31 +185,39 @@
 				placeholder="Add a comment..."
 				class="textarea textarea-bordered w-full"
 			></textarea>
-
-			<button type="submit" class="btn btn-primary mt-2">Post Comment</button>
+			<div class="mt-2">
+				<button type="submit" class="btn btn-primary">Post Comment</button>
+			</div>
 		</form>
 	</section>
 {:else}
 	<section>
 		<p>Log in to join the discussion!</p>
+		<GoogleLoginButton />
 	</section>
 {/if}
-<h2>Comments</h2>
-{#each comments as comment}
-	<p class="text-sm opacity-50">
-		{comment.authorName} on {formatTimestamp(comment.createdAt)}
-	</p>
-	<p>{comment.text}</p>
 
-	{#if comment.authorId === $user?.uid}
-		<button
-			class="btn btn-sm"
-			on:click={() => {
-				const newText = prompt('New text:', comment.text);
-				if (newText !== null) updateComment(comment.id, newText);
-			}}>Edit</button
-		>
-		<button class="btn btn-sm" on:click={() => deleteComment(comment.id)}>Delete</button>
-	{/if}
-	<div class="divider"></div>
-{/each}
+<h2>Comments</h2>
+{#if comments.length > 0}
+	{#each comments as comment}
+		<p class="text-sm opacity-50">
+			{comment.authorName} on {formatTimestamp(comment.createdAt)}
+		</p>
+		<p>{comment.text}</p>
+		{#if comment.authorId === $user?.uid}
+			<button
+				class="btn btn-sm"
+				on:click={() => {
+					const newText = prompt('New text:', comment.text);
+					if (newText !== null) updateComment(comment.id, newText);
+				}}
+			>
+				Edit
+			</button>
+			<button class="btn btn-sm" on:click={() => deleteComment(comment.id)}>Delete</button>
+		{/if}
+		<div class="divider"></div>
+	{/each}
+{:else}
+	<p class="text-sm opacity-50">No comments yet. Be the first to comment!</p>
+{/if}

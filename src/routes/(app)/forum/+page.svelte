@@ -1,4 +1,6 @@
 <script lang="ts">
+	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
+	import Alert from '$lib/components/Alert.svelte';
 	import { db } from '$lib/firebase';
 	import { collection, getDocs, addDoc, serverTimestamp, query, orderBy } from 'firebase/firestore';
 	import { onMount } from 'svelte';
@@ -72,10 +74,26 @@
 	<div class="divider"></div>
 </section>
 
+<Alert
+	message="This feature is currently under development and will be fully available in upcoming updates.
+			We appreciate your patience as we work to bring you new stuff!"
+/>
+
+<!-- Welcome Message with Google Avatar & Username -->
+{#if $user}
+	<section class="mb-4 flex items-center space-x-4">
+		<img
+			class="h-10 w-10 rounded-full"
+			src={$user?.photoURL || 'https://via.placeholder.com/40'}
+			alt={$user?.displayName || 'User'}
+		/>
+		<p>Welcome, {$user.displayName}!</p>
+	</section>
+{/if}
+
 <!-- Create Thread Form / Login Prompt -->
 {#if $user}
 	<section>
-		<h2>Create a New Thread</h2>
 		<form on:submit|preventDefault={createThread}>
 			<div>
 				<input
@@ -100,6 +118,7 @@
 {:else}
 	<section>
 		<p>To create posts or comment, please log in.</p>
+		<GoogleLoginButton />
 	</section>
 {/if}
 
@@ -115,6 +134,6 @@
 			<div class="divider"></div>
 		{/each}
 	{:else}
-		<p>No posts yet. Be the first to post!</p>
+		<p class="text-sm opacity-50">No posts yet. Be the first to post!</p>
 	{/if}
 </section>
