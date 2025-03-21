@@ -1,7 +1,7 @@
 // +page.server.ts
 import type { PageServerLoad } from './$types';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
-import { db } from '../firebase';
+import { db } from '../lib/firebase';
 import { PUBLIC_YOUTUBE_API_KEY } from '$env/static/public';
 
 const YOUTUBE_API_BASE = 'https://www.googleapis.com/youtube/v3';

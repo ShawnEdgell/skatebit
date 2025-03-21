@@ -22,5 +22,9 @@ export const navItems = [
 	{
 		href: '/dashboard',
 		label: 'Dashboard'
+	},
+	{
+		href: '/forum',
+		label: 'Forum'
 	}
 ];

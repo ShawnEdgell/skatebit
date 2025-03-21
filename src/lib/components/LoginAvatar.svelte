@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { auth, googleProvider } from '../../firebase'; // adjust the path as needed
+	import { auth, googleProvider } from '$lib/firebase';
 	import { signInWithPopup, signOut, onAuthStateChanged, type User } from 'firebase/auth';
 
 	let user: User | null = null;
