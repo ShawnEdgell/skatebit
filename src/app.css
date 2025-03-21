@@ -10,5 +10,5 @@ html {
 
 html,
 body {
-	@apply h-full;
+	@apply bg-base-200 h-full;
 }
