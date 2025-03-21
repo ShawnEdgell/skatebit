@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Alert from '$lib/components/Alert.svelte';
 	import Help from '$lib/components/Help.svelte';
 	import Card from '$lib/components/Card.svelte';
 
@@ -34,29 +35,11 @@
 	<div class="divider"></div>
 </section>
 
-<!-- Alert Message -->
-<section>
-	<div role="alert" class="alert alert-info mt-6">
-		<svg
-			xmlns="http://www.w3.org/2000/svg"
-			fill="none"
-			viewBox="0 0 24 24"
-			class="h-6 w-6 shrink-0 stroke-current"
-		>
-			<path
-				stroke-linecap="round"
-				stroke-linejoin="round"
-				stroke-width="2"
-				d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-			></path>
-		</svg>
-		<span>
-			We’re currently moving stuff around on our backend, which has temporarily affected some upload
+<Alert
+	message="We’re currently moving stuff around on our backend, which has temporarily affected some upload
 			and download features. You can still download files using our temporary links below. Thank you
-			for your patience and understanding!
-		</span>
-	</div>
-</section>
+			for your patience and understanding!"
+/>
 
 <section>
 	<div class="mt-6 flex flex-col gap-4">
