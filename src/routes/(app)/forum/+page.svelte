@@ -36,6 +36,7 @@
 				content: newThreadContent,
 				authorId: $user?.uid ?? '',
 				authorName: $user?.displayName ?? 'Anonymous',
+				authorAvatar: $user?.photoURL || 'https://via.placeholder.com/40',
 				createdAt: serverTimestamp(),
 				updatedAt: serverTimestamp()
 			};
@@ -74,26 +75,27 @@
 	<div class="divider"></div>
 </section>
 
-<Alert
-	message="This feature is currently under development and will be fully available in upcoming updates.
-			We appreciate your patience as we work to bring you new stuff!"
-/>
-
 <!-- Welcome Message with Google Avatar & Username -->
 {#if $user}
-	<section class="mb-4 flex items-center space-x-4">
-		<img
-			class="h-10 w-10 rounded-full"
-			src={$user?.photoURL || 'https://via.placeholder.com/40'}
-			alt={$user?.displayName || 'User'}
-		/>
-		<p>Welcome, {$user.displayName}!</p>
-	</section>
+	<div class="card bg-base-200 card-lg px-6">
+		<section class="flex items-center justify-between">
+			<div class="flex items-center space-x-4">
+				<img
+					class="h-10 w-10 rounded-full"
+					src={$user?.photoURL || 'https://via.placeholder.com/40'}
+					alt={$user?.displayName || 'User'}
+				/>
+				<p>Welcome, {$user.displayName}!</p>
+			</div>
+			<GoogleLoginButton />
+		</section>
+	</div>
 {/if}
 
 <!-- Create Thread Form / Login Prompt -->
 {#if $user}
 	<section>
+		<h2>Create a New Thread</h2>
 		<form on:submit|preventDefault={createThread}>
 			<div>
 				<input
@@ -127,9 +129,20 @@
 	<h2>Forum Posts</h2>
 	{#if forumPosts.length > 0}
 		{#each forumPosts as post}
-			<a class="hover:no-underline" href={`/forum/${post.id}`}>{post.title}</a>
-			<div class="text-sm opacity-50">
-				Posted by {post.authorName} on {formatTimestamp(post.createdAt)}
+			<div class="not-prose flex items-center">
+				<img
+					src={post.authorAvatar || 'https://via.placeholder.com/40'}
+					alt={post.authorName}
+					class="mr-2 h-8 w-8 rounded-full"
+				/>
+				<div class="prose">
+					<a class="font-semibold underline hover:no-underline" href={`/forum/${post.id}`}
+						>{post.title}</a
+					>
+					<div class="text-sm opacity-50">
+						Posted by {post.authorName} on {formatTimestamp(post.createdAt)}
+					</div>
+				</div>
 			</div>
 			<div class="divider"></div>
 		{/each}

@@ -51,7 +51,7 @@
 							</a>
 						</li>
 					{/each}
-					<li><ThemeController /></li>
+					<!-- <li><ThemeController /></li> -->
 				</ul>
 			</div>
 		</div>

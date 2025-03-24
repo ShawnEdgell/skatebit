@@ -64,7 +64,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		badge: 'Essential',
 		title: 'XL Gear Mod (XLGM2)',
 		author: 'mcbtay, Redgouf',
 		workingVersion: '2.0.1',
@@ -80,7 +80,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		badge: 'Essential',
 		title: "Fro's Experimental Mod",
 		author: 'Froquede',
 		workingVersion: '1.19.0',
@@ -96,7 +96,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		badge: 'Essential',
 		title: 'Boned Ollie Mod',
 		author: 'MateusSXL',
 		workingVersion: '2.2.0',
@@ -112,7 +112,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		badge: 'Essential',
 		title: 'XL Menu Mod',
 		author: 'mcbtay',
 		workingVersion: '2.6.1',
@@ -128,7 +128,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		// badge: 'Recommended',
 		title: 'Decal Fix',
 		author: 'Brookzee99',
 		workingVersion: '1.2.2.8 & 1.2.5.6',
@@ -144,7 +144,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'XL Weather',
 		author: 'Guru',
 		workingVersion: '0.3.0',
@@ -160,7 +160,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'Grind Tools',
 		author: 'Guru',
 		workingVersion: '1.0.2',
@@ -176,7 +176,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'Mutliplayer++',
 		author: 'MateusSXL',
 		workingVersion: '1.0.1',
@@ -192,7 +192,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'Better Replay Mod',
 		author: 'Froquede',
 		workingVersion: '1.5.0',
@@ -208,7 +208,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'XL Object Dropper',
 		author: 'mcbtay, SqueegeeDinoToy',
 		workingVersion: '1.0.5',
@@ -224,7 +224,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'Not My Feet',
 		author: 'M4cs',
 		workingVersion: '1.1',
@@ -240,7 +240,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'Controls Editor',
 		author: 'Silentbaws',
 		workingVersion: '0.1.1',
@@ -256,7 +256,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Fun',
+		// badge: 'Fun',
 		title: 'Walking Mod',
 		author: 'Froquede',
 		workingVersion: '1.3.0',
@@ -272,7 +272,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Fun',
+		// badge: 'Fun',
 		title: 'Grab Customizer',
 		author: 'Froquede',
 		workingVersion: '1.7.2',
@@ -288,7 +288,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Fun',
+		// badge: 'Fun',
 		title: 'Lateflip Mod',
 		author: 'MateusSXL',
 		workingVersion: '1.1.1',
@@ -307,7 +307,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Fun',
+		// badge: 'Fun',
 		title: 'BreakFX',
 		author: 'DawgVinci',
 		workingVersion: '0.0.1',
@@ -323,7 +323,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Fun',
+		// badge: 'Fun',
 		title: 'XL Random Map',
 		author: 'mcbtay',
 		workingVersion: '0.0.2',
@@ -340,7 +340,7 @@ export const alphaMods = [
 	},
 
 	{
-		badge: 'Fun',
+		// badge: 'Fun',
 		title: 'Gear Utilities',
 		author: 'DawgVinci',
 		workingVersion: '2.0d',
@@ -356,7 +356,7 @@ export const alphaMods = [
 		]
 	},
 	{
-		badge: 'Fun',
+		// badge: 'Fun',
 		title: 'Controller Rumble',
 		author: 'billowper, Froquede',
 		workingVersion: '1.2.3',
@@ -440,7 +440,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		badge: 'Essential',
 		title: 'XL Gear Mod (XLGM2)',
 		author: 'mcbtay, Redgouf',
 		workingVersion: '2.0.2',
@@ -456,7 +456,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		badge: 'Essential',
 		title: "Fro's Experimental Mod",
 		author: 'Froquede',
 		workingVersion: '2.0.1',
@@ -472,7 +472,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		badge: 'Essential',
 		title: 'Boned Ollie Mod',
 		author: 'MateusSXL',
 		workingVersion: '2.4.0',
@@ -488,7 +488,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Recommended',
+		badge: 'Essential',
 		title: 'XL Menu Mod',
 		author: 'mcbtay',
 		workingVersion: '2.6.3',
@@ -504,7 +504,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'XL Weather',
 		author: 'Guru',
 		workingVersion: '0.3.3',
@@ -520,7 +520,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'Grind Tools',
 		author: 'Guru',
 		workingVersion: '2.0.1',
@@ -536,7 +536,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'Mutliplayer++',
 		author: 'MateusSXL',
 		workingVersion: '1.0.2',
@@ -552,7 +552,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'Better Replay Mod',
 		author: 'Froquede',
 		workingVersion: '2.1.0',
@@ -568,7 +568,7 @@ export const publicMods = [
 		]
 	},
 	{
-		badge: 'Useful',
+		// badge: 'Useful',
 		title: 'ShapeFX',
 		author: 'DawgVinci ',
 		workingVersion: '1.0.0',

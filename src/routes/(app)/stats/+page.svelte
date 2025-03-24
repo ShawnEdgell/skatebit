@@ -35,12 +35,6 @@
 	<div class="divider"></div>
 </section>
 
-<Alert
-	message="We’re currently moving stuff around on our backend, which has temporarily affected some upload
-			and download features. You can still download files using our temporary links below. Thank you
-			for your patience and understanding!"
-/>
-
 <section>
 	<div class="mt-6 flex flex-col gap-4">
 		{#each statsData as { title, content, download }}

@@ -41,6 +41,9 @@
 								for={`mod-${tab.id}-${modIndex}`}
 								class="collapse-title cursor-pointer text-xl font-medium"
 							>
+								{#if modItem.badge}
+									<span class="badge badge-soft badge-success badge-sm mr-2">{modItem.badge}</span>
+								{/if}
 								{modItem.title}
 							</label>
 							<div class="collapse-content hidden space-y-2 p-4 peer-checked:block">

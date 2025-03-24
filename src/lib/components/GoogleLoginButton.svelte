@@ -38,9 +38,11 @@
 </script>
 
 {#if loading}
-	<span class="loading loading-spinner loading-xl"></span>
+	<div class="mt-12 flex w-full items-center justify-center">
+		<span class="loading loading-spinner loading-xl"></span>
+	</div>
 {:else if user}
-	<button on:click={logout} class="btn btn-error">Logout</button>
+	<button on:click={logout} class="btn btn-soft">Logout</button>
 {:else}
 	<button on:click={login} class="btn btn-primary">
 		<svg

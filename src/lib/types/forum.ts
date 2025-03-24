@@ -6,6 +6,7 @@ export interface ForumPost {
 	content: string;
 	authorId: string;
 	authorName: string; // uploader's display name
+	authorAvatar?: string; // optional profile picture URL
 	createdAt: Timestamp | Date | null;
 	updatedAt: Timestamp | Date | null;
 }
@@ -15,6 +16,7 @@ export interface ForumComment {
 	text: string;
 	authorId: string;
 	authorName: string; // commenter's display name
+	authorAvatar?: string; // optional profile picture URL
 	createdAt: Timestamp | Date | null;
 	updatedAt: Timestamp | Date | null;
 }

@@ -3,7 +3,7 @@
 </script>
 
 <footer class="footer footer-center bg-base-300 flex flex-col p-10">
-	<nav class="grid gap-4 text-center md:auto-cols-auto md:grid-flow-col">
+	<nav class="flex flex-wrap justify-center gap-4 text-center">
 		{#each navItems as { href, label }}
 			<a {href} class="underline hover:no-underline">
 				<span>{label}</span>

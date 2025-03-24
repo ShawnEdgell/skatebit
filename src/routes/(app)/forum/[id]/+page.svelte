@@ -79,7 +79,7 @@
 				text: newComment,
 				authorId: $user?.uid || '',
 				authorName: $user?.displayName || 'Anonymous',
-				authorAvatar: $user?.photoURL || 'default-avatar-url.png',
+				authorAvatar: $user?.photoURL || 'https://via.placeholder.com/40',
 				createdAt: new Date(),
 				updatedAt: new Date()
 			};
@@ -163,13 +163,20 @@
 {:else if post}
 	<h1>{post.title}</h1>
 	<p>{post.content}</p>
-	<p class="text-sm opacity-50">
-		Posted by {post.authorName} on {formatTimestamp(post.createdAt)}
-	</p>
+	<div class="flex items-center gap-2">
+		<img
+			src={post.authorAvatar || 'https://via.placeholder.com/40'}
+			alt={post.authorName}
+			class="not-prose h-8 w-8 rounded-full"
+		/>
+		<span class="text-sm opacity-50"
+			>Posted by {post.authorName} on {formatTimestamp(post.createdAt)}</span
+		>
+	</div>
 	{#if post.authorId === $user?.uid}
 		<!-- Show Edit and Delete buttons for the thread -->
-		<button class="btn btn-sm" on:click={updateThread}>Edit</button>
-		<button class="btn btn-sm" on:click={deleteThread}>Delete</button>
+		<button class="btn btn-sm mt-6" on:click={updateThread}>Edit</button>
+		<button class="btn btn-sm mt-6" on:click={deleteThread}>Delete</button>
 	{/if}
 {:else}
 	<p>Thread not found.</p>
@@ -197,26 +204,41 @@
 	</section>
 {/if}
 
-<h2>Comments</h2>
+<div class="mb-12">
+	<h2>Comments</h2>
+</div>
 {#if comments.length > 0}
 	{#each comments as comment}
-		<p class="text-sm opacity-50">
-			{comment.authorName} on {formatTimestamp(comment.createdAt)}
-		</p>
-		<p>{comment.text}</p>
-		{#if comment.authorId === $user?.uid}
-			<button
-				class="btn btn-sm"
-				on:click={() => {
-					const newText = prompt('New text:', comment.text);
-					if (newText !== null) updateComment(comment.id, newText);
-				}}
-			>
-				Edit
-			</button>
-			<button class="btn btn-sm" on:click={() => deleteComment(comment.id)}>Delete</button>
-		{/if}
-		<div class="divider"></div>
+		<div>
+			<!-- Header: Avatar and timestamp in-line -->
+			<div class="not-prose flex items-center gap-2">
+				<img
+					src={comment.authorAvatar || 'https://via.placeholder.com/40'}
+					alt={comment.authorName}
+					class="h-8 w-8 rounded-full"
+				/>
+				<p class="text-sm opacity-50">
+					{comment.authorName} on {formatTimestamp(comment.createdAt)}
+				</p>
+			</div>
+			<!-- Comment text below the header -->
+			<div>
+				<p>{comment.text}</p>
+				{#if comment.authorId === $user?.uid}
+					<button
+						class="btn btn-sm"
+						on:click={() => {
+							const newText = prompt('New text:', comment.text);
+							if (newText !== null) updateComment(comment.id, newText);
+						}}
+					>
+						Edit
+					</button>
+					<button class="btn btn-sm" on:click={() => deleteComment(comment.id)}> Delete </button>
+				{/if}
+			</div>
+			<div class="divider"></div>
+		</div>
 	{/each}
 {:else}
 	<p class="text-sm opacity-50">No comments yet. Be the first to comment!</p>

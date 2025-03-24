@@ -171,19 +171,16 @@ export const categories: Category[] = [
 	{
 		title: 'Modder Discords',
 		data: modderDiscords,
-		description:
-			'Connect with the creative minds behind your favorite mods. These Discord communities are hubs for developers and users to share tips, mods, and tutorials.'
+		description: 'Connect with the creative minds behind your favorite mods.'
 	},
 	{
 		title: 'Map Discords',
 		data: mapDiscords,
-		description:
-			'Discover new maps and connect with map creators. These Discords offer exclusive map previews, downloads, and more.'
+		description: 'Discover new maps and connect with map creators.'
 	},
 	{
 		title: 'Gear Discords',
 		data: gearDiscords,
-		description:
-			'Find the latest gear and connect with the creators. These Discords are perfect for those looking to customize their Skater XL experience.'
+		description: 'Find the latest gear and connect with the creators.'
 	}
 ];
