@@ -161,7 +161,7 @@
 	<meta name="description" content={post ? post.content.substring(0, 150) : 'Forum thread'} />
 </svelte:head>
 
-<a href="/forum" class="btn btn-sm btn-soft mb-6 no-underline">Back to Forum</a>
+<a href="/forum" class="btn btn-soft mb-6 no-underline">Back to Forum</a>
 
 {#if loading}
 	<p>Loading thread...</p>
