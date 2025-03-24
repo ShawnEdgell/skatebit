@@ -223,7 +223,7 @@
 					class="mr-1 h-8 w-8 rounded-full"
 				/>
 				<p>
-					<span class=" mr-1 text-base">{comment.authorName}</span>
+					<span class="mr-1 text-base">{comment.authorName}</span>
 					<span class="text-sm opacity-50">{formatTimestamp(comment.createdAt)}</span>
 				</p>
 			</div>
