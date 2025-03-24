@@ -55,6 +55,7 @@
 {#if filteredVideos && filteredVideos.length > 0}
 	{#each filteredVideos as video (video.videoId)}
 		<VideoItem {video} />
+		<div class="divider mt-6"></div>
 	{/each}
 {:else}
 	<p>No videos available.</p>

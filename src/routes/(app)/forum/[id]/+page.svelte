@@ -22,10 +22,15 @@
 	// Helper function to format a Date or Firebase Timestamp.
 	function formatTimestamp(ts: Date | Timestamp | null): string {
 		if (!ts) return '';
+		let date: Date;
 		if ('toDate' in ts) {
-			return ts.toDate().toLocaleString();
+			date = ts.toDate();
+		} else {
+			date = ts as Date;
 		}
-		return (ts as Date).toLocaleString();
+		// Format the date as "Mar 1, 2025"
+		const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric', year: 'numeric' };
+		return date.toLocaleDateString('en-US', options);
 	}
 
 	// Read the dynamic parameter from the page store.
@@ -215,10 +220,11 @@
 				<img
 					src={comment.authorAvatar || 'https://via.placeholder.com/40'}
 					alt={comment.authorName}
-					class="h-8 w-8 rounded-full"
+					class="mr-1 h-8 w-8 rounded-full"
 				/>
-				<p class="text-sm opacity-50">
-					{comment.authorName} on {formatTimestamp(comment.createdAt)}
+				<p>
+					<span class=" mr-1 text-base">{comment.authorName}</span>
+					<span class="text-sm opacity-50">{formatTimestamp(comment.createdAt)}</span>
 				</p>
 			</div>
 			<!-- Comment text below the header -->

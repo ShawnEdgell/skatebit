@@ -56,10 +56,15 @@
 	// Helper function to format timestamps.
 	function formatTimestamp(ts: Date | Timestamp | null): string {
 		if (!ts) return '';
-		if (typeof (ts as any).toDate === 'function') {
-			return (ts as Timestamp).toDate().toLocaleString();
+		let date: Date;
+		if ('toDate' in ts) {
+			date = ts.toDate();
+		} else {
+			date = ts as Date;
 		}
-		return (ts as Date).toLocaleString();
+		// Format the date as "Mar 1, 2025"
+		const options: Intl.DateTimeFormatOptions = { month: 'short', day: 'numeric', year: 'numeric' };
+		return date.toLocaleDateString('en-US', options);
 	}
 </script>
 
