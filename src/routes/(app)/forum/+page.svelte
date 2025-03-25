@@ -13,10 +13,19 @@
 	let newThreadTitle: string = '';
 	let newThreadContent: string = '';
 	let forumPosts: ForumPost[] = [];
+	let sortOption: 'latest' | 'popular' = 'latest';
 
 	async function loadForumPosts() {
 		try {
-			forumPosts = await getForumPosts();
+			const posts = await getForumPosts();
+			forumPosts =
+				sortOption === 'popular'
+					? [...posts].sort((a, b) => (b.likes ?? 0) - (a.likes ?? 0))
+					: [...posts].sort((a, b) => {
+							const dateA = a.createdAt instanceof Date ? a.createdAt : a.createdAt?.toDate?.();
+							const dateB = b.createdAt instanceof Date ? b.createdAt : b.createdAt?.toDate?.();
+							return (dateB?.getTime() || 0) - (dateA?.getTime() || 0);
+						});
 		} catch (error) {
 			console.error('Error loading posts:', error);
 		}
@@ -116,7 +125,14 @@
 {/if}
 
 <section>
-	<h2>Forum Posts</h2>
+	<h2 class="flex flex-wrap items-center justify-between gap-2">
+		<span>Forum Posts</span>
+		<select bind:value={sortOption} on:change={loadForumPosts} class="select select-sm w-24">
+			<option value="latest">Latest</option>
+			<option value="popular">Popular</option>
+		</select>
+	</h2>
+
 	{#if forumPosts.length > 0}
 		{#each forumPosts as post}
 			<div class="flex items-center justify-between gap-4">

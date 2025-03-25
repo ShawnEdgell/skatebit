@@ -52,7 +52,7 @@
 		</div>
 	</nav>
 
-	<aside class="text-center">
+	<aside class="text-center text-xs opacity-50">
 		<p>Skatebit {new Date().getFullYear()} - The Skater XL Modding Community</p>
 	</aside>
 </footer>
