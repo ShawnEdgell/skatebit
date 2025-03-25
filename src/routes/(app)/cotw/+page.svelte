@@ -103,7 +103,7 @@
 			return;
 		}
 
-		const videoId = extractYouTubeVideoId(youtubeUrl);
+		const videoId = extractYouTubeVideoId(youtubeUrl.trim());
 		if (!videoId) {
 			error = 'Invalid YouTube URL.';
 			return;
@@ -131,7 +131,7 @@
 
 	function extractYouTubeVideoId(url: string): string | null {
 		const match = url.match(
-			/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([\w-]{11})/
+			/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([\w-]{11})/
 		);
 		return match?.[1] ?? null;
 	}

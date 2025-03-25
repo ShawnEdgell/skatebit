@@ -43,10 +43,24 @@ export async function getClipPosts(sortBy: 'latest' | 'popular' = 'latest'): Pro
 	);
 
 	const snapshot = await getDocs(baseQuery);
-	return snapshot.docs.map((doc) => ({
-		id: doc.id,
-		...doc.data()
-	})) as ClipPost[];
+
+	const clipsWithCounts: ClipPost[] = await Promise.all(
+		snapshot.docs.map(async (docSnap) => {
+			const clipData = docSnap.data() as ClipPost;
+			const clipId = docSnap.id;
+
+			// Fetch and count comments
+			const commentsSnap = await getDocs(collection(db, 'clips', clipId, 'comments'));
+
+			return {
+				id: clipId,
+				...clipData,
+				commentsCount: commentsSnap.size
+			};
+		})
+	);
+
+	return clipsWithCounts;
 }
 
 export async function getUserClipThisWeek(uid: string, weekId: string): Promise<ClipPost | null> {
