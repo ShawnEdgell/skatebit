@@ -143,7 +143,7 @@
 </svelte:head>
 
 <section>
-	<h1>{pageTitle}</h1>
+	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
 	<p class="text-primary mt-2 font-semibold">⏳ {countdown}</p>
 	<ul class="list-inside list-disc text-sm">
