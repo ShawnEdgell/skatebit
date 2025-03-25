@@ -18,7 +18,7 @@
 	<div class="sticky top-0 z-50 w-full">
 		<Navbar />
 	</div>
-	<main class="prose lg:prose-lg w-full overscroll-none px-4 pt-12 pb-8 lg:pt-16">
+	<main class="prose lg:prose-lg w-full px-4 pt-12 pb-8 lg:pt-16">
 		{@render children()}
 	</main>
 </div>

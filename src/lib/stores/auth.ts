@@ -1,7 +1,8 @@
 // src/lib/stores/auth.ts
 import { writable } from 'svelte/store';
-import { auth } from '$lib/firebase';
-import { onAuthStateChanged, type User } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '$lib/firebase/init';
+import type { User } from 'firebase/auth';
 
 export const user = writable<User | null>(null);
 

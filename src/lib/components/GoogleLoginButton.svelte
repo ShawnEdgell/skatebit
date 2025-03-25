@@ -1,48 +1,33 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { auth, googleProvider } from '$lib/firebase';
-	import { signInWithPopup, signOut, onAuthStateChanged, type User } from 'firebase/auth';
+	import { signInWithGoogle, logout } from '$lib/firebase/auth';
+	import { user } from '$lib/stores/auth';
 
-	let user: User | null = null;
-	let loading = true;
 	let errorMessage = '';
+	$: $user; // Auto-subscribe
 
 	async function login() {
 		errorMessage = '';
 		try {
-			// Opens a popup to sign in with Google.
-			await signInWithPopup(auth, googleProvider);
+			await signInWithGoogle();
 		} catch (error) {
 			errorMessage = 'Login failed. Please try again.';
-			console.error('Login error:', error);
 		}
 	}
 
-	async function logout() {
+	async function handleLogout() {
 		try {
-			await signOut(auth);
+			await logout();
 		} catch (error) {
 			errorMessage = 'Logout failed. Please try again.';
-			console.error('Logout error:', error);
 		}
 	}
-
-	onMount(() => {
-		// Listen for auth state changes.
-		const unsubscribe = onAuthStateChanged(auth, (u: User | null) => {
-			user = u;
-			loading = false;
-		});
-		return unsubscribe;
-	});
 </script>
 
-{#if loading}
-	<div class="mt-12 flex w-full items-center justify-center">
-		<span class="loading loading-spinner loading-xl"></span>
-	</div>
-{:else if user}
-	<button on:click={logout} class="btn btn-soft">Logout</button>
+{#if typeof window === 'undefined'}
+	<!-- Avoid SSR flash -->
+	<p>Loading...</p>
+{:else if $user}
+	<button on:click={handleLogout} class="btn btn-soft">Logout</button>
 {:else}
 	<button on:click={login} class="btn btn-primary">
 		<svg
@@ -94,5 +79,5 @@
 {/if}
 
 {#if errorMessage}
-	<p class="text-error">{errorMessage}</p>
+	<p class="text-error mt-2">{errorMessage}</p>
 {/if}

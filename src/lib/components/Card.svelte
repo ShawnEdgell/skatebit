@@ -1,7 +1,6 @@
 <script lang="ts">
 	export let title: string;
 	export let content: string = '';
-	// Default to an empty string if not provided.
 	export let download: string = '';
 </script>
 

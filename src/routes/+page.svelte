@@ -1,9 +1,8 @@
 <script lang="ts">
-	// Data loaded from the server
-	export let data: { videos: YouTubeItem[] };
-
 	import VideoItem from '$lib/components/VideoItem.svelte';
-	import type { YouTubeItem } from '$lib/types/YoutubeTypes';
+	import type { YouTubeItem } from '$lib/types/youtube';
+
+	export let data: { videos: YouTubeItem[] };
 
 	const pageTitle = 'Recent News';
 	const pageDescription =
@@ -11,7 +10,6 @@
 
 	const { videos } = data;
 
-	// Define tab options for filtering the feed.
 	const tabs = [
 		{ id: 'all', label: 'All' },
 		{ id: 'Skater XL', label: 'Skater XL' },
@@ -21,7 +19,6 @@
 
 	let selectedTab = 'all';
 
-	// Reactive statement to filter videos based on the selected tab.
 	$: filteredVideos =
 		selectedTab === 'all' ? videos : videos.filter((video) => video.source === selectedTab);
 </script>
@@ -31,14 +28,12 @@
 	<meta name="description" content={pageDescription} />
 </svelte:head>
 
-<!-- Header -->
 <section>
 	<h1>{pageTitle}</h1>
 	<p>{pageDescription}</p>
 	<div class="divider"></div>
 </section>
 
-<!-- Tab Switcher using Daisy UI -->
 <div class="mt-6 flex flex-col">
 	{#each tabs as tab}
 		<button
@@ -51,7 +46,6 @@
 	{/each}
 </div>
 
-<!-- News Feed Display -->
 {#if filteredVideos && filteredVideos.length > 0}
 	{#each filteredVideos as video (video.videoId)}
 		<VideoItem {video} />

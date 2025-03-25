@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { YouTubeItem } from '$lib/types/YoutubeTypes';
+	import type { YouTubeItem } from '$lib/types/youtube';
 	export let video: YouTubeItem;
 
 	let showIframe = false;
