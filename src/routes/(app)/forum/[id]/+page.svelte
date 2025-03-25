@@ -119,7 +119,7 @@
 	<h1>{post.title}</h1>
 	<p>{post.content}</p>
 
-	<div class="mb-2 flex items-center gap-2">
+	<div class="not-prose my-6 flex items-center gap-2">
 		<img
 			src={post.authorAvatar || 'https://via.placeholder.com/40'}
 			alt={post.authorName}
