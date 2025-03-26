@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ThemeController from './ThemeController.svelte';
+	import LoginAvatar from './LoginAvatar.svelte';
 	import { navItems } from '$lib/data/navItems';
 	let drawerOpen = false;
 
@@ -51,8 +51,8 @@
 							</a>
 						</li>
 					{/each}
-					<!-- <li><ThemeController /></li> -->
 				</ul>
+				<LoginAvatar />
 			</div>
 		</div>
 	</div>

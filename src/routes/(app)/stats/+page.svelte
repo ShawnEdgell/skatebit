@@ -1,22 +1,5 @@
 <script lang="ts">
-	import Alert from '$lib/components/Alert.svelte';
 	import Help from '$lib/components/Help.svelte';
-	import Card from '$lib/components/Card.svelte';
-
-	const statsData = [
-		{
-			title: 'Basic Realistic Settings (Goofy and Regular)',
-			content:
-				"A good starting point for building your own stats. Includes XXL Mod Presets and Fro's Mod settings.",
-			download: 'https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip'
-		},
-		{
-			title: "Milky's Latest Stats (Regular)",
-			content:
-				"14 Gravity. Latest stats as seen in recent streams and videos. Includes XXL Mod Presets and Fro's Mod settings.",
-			download: 'https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip'
-		}
-	];
 
 	const pageTitle = 'Stats & Settings';
 	const pageDescription = 'Download presets for your Skater XL mods.';
@@ -35,15 +18,43 @@
 	<div class="divider"></div>
 </section>
 
-<Alert
-	message="We are currently performing updates on this page, which has temporarily disabled our upload functionality. In the meantime, you may download files using the temporary links provided below. We appreciate your patience!"
-/>
-
+<!-- Basic Realistic Settings -->
 <section>
-	<div class="mt-6 flex flex-col gap-4">
-		{#each statsData as { title, content, download }}
-			<Card {title} {content} {download} />
-		{/each}
+	<div class="card bg-base-200 card-lg not-prose mt-4 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title font-bold">Basic Realistic Settings (Goofy and Regular)</h2>
+			<p>
+				A good starting point for building your own stats. Includes XXL Mod Presets and Fro's Mod
+				settings.
+			</p>
+			<a
+				href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
+				class="btn btn-primary mt-2"
+				target="_blank"
+			>
+				Download
+			</a>
+		</div>
+	</div>
+</section>
+
+<!-- Milky's Latest Settings -->
+<section>
+	<div class="card bg-base-200 card-lg not-prose mt-4 shadow-sm">
+		<div class="card-body">
+			<h2 class="card-title font-bold">Milky's Latest Stats (Regular)</h2>
+			<p>
+				14 Gravity. Latest stats as seen in recent streams and videos. Includes XXL Mod Presets and
+				Fro's Mod settings.
+			</p>
+			<a
+				href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
+				class="btn btn-primary mt-2"
+				target="_blank"
+			>
+				Download
+			</a>
+		</div>
 	</div>
 </section>
 
@@ -57,7 +68,6 @@
 		Please note that these recommended values are just suggestions. You can adjust them to suit your
 		personal preference.
 	</p>
-	<h3>XXL 3 Mod</h3>
 
 	<div class="overflow-x-auto">
 		<table class="table">

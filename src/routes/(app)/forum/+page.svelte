@@ -78,22 +78,6 @@
 </section>
 
 {#if $user}
-	<div class="card bg-base-200 card-lg px-6">
-		<section class="flex items-center justify-between">
-			<div class="flex items-center space-x-4">
-				<img
-					class="h-10 w-10 rounded-full"
-					src={$user?.photoURL || 'https://via.placeholder.com/40'}
-					alt={$user?.displayName || 'User'}
-				/>
-				<p>Welcome, {$user.displayName}!</p>
-			</div>
-			<GoogleLoginButton />
-		</section>
-	</div>
-{/if}
-
-{#if $user}
 	<section>
 		<h2>Create a New Thread</h2>
 		<form on:submit|preventDefault={createThread}>

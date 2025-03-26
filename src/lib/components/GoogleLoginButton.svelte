@@ -27,7 +27,7 @@
 	<!-- Avoid SSR flash -->
 	<p>Loading...</p>
 {:else if $user}
-	<button on:click={handleLogout} class="btn btn-soft">Logout</button>
+	<button on:click={handleLogout} class="btn btn-error">Logout</button>
 {:else}
 	<button on:click={login} class="btn btn-primary">
 		<svg

@@ -27,4 +27,8 @@ export const navItems = [
 		href: '/forum',
 		label: 'Forum'
 	}
+	// {
+	// 	href: '/dashboard',
+	// 	label: 'Dashboard'
+	// }
 ];

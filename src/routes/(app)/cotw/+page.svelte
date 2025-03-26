@@ -1,12 +1,13 @@
 <script lang="ts">
-	import VideoItem from '$lib/components/VideoItem.svelte';
 	import { formatDate } from '$lib/utils/formatDate';
 	import { onMount, onDestroy } from 'svelte';
 	import { user } from '$lib/stores/auth';
 	import { submitClipPost, getUserClipThisWeek, getClipPosts } from '$lib/firebase/clips';
 	import { getCurrentWeekId, getEndOfCurrentWeek } from '$lib/utils/week';
 	import type { ClipPost } from '$lib/types/clips';
+
 	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
+	import VideoItem from '$lib/components/VideoItem.svelte';
 
 	const pageTitle = 'Clip of the Week';
 	const pageDescription =
@@ -145,7 +146,7 @@
 <section>
 	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
-	<p class="text-primary mt-2 font-semibold">⏳ {countdown}</p>
+	<p class="text-primary font-semibold">⏳ {countdown}</p>
 	<ul class="list-disc text-sm">
 		<li>1 submission allowed per week</li>
 		<li>Top post gets featured for 1 week</li>
@@ -154,22 +155,6 @@
 	</ul>
 	<div class="divider"></div>
 </section>
-
-{#if $user}
-	<div class="card bg-base-200 card-lg px-6">
-		<section class="flex items-center justify-between">
-			<div class="flex items-center space-x-4">
-				<img
-					class="h-10 w-10 rounded-full"
-					src={$user?.photoURL || 'https://via.placeholder.com/40'}
-					alt={$user?.displayName || 'User'}
-				/>
-				<p>Welcome, {$user.displayName}!</p>
-			</div>
-			<GoogleLoginButton />
-		</section>
-	</div>
-{/if}
 
 <section>
 	{#if checkingSubmission}
