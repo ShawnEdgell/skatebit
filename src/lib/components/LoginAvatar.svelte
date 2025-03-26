@@ -4,7 +4,7 @@
 </script>
 
 <div class="dropdown dropdown-end">
-	<label tabindex="0" class="btn btn-circle avatar mr-3 h-9 w-9">
+	<label tabindex="0" class="btn btn-circle avatar mr-3 h-8 w-8">
 		{#if $user}
 			<img
 				class="rounded-full"
