@@ -10,7 +10,7 @@
 
 	const pageTitle = 'Clip of the Week';
 	const pageDescription =
-		'Submit your best clip for a chance to be for 1 week and earn a spot in the Hall of Fame!';
+		'Submit your best clip for a chance to be featured on the site for 1 week and earn a spot in the Hall of Fame!';
 
 	let youtubeUrl = '';
 	let error = '';
