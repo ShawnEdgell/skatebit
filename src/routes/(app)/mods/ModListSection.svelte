@@ -33,31 +33,32 @@
 			{#if selectedTab === tab.id}
 				<div>
 					{#each tab.mods as modItem, modIndex}
-						<div
-							class="collapse-arrow border-base-200 bg-base-200 rounded-box not-prose collapse mb-2 border"
-						>
+						<div class="collapse-arrow bg-base-200 rounded-box not-prose collapse mb-2">
 							<input type="checkbox" class="peer hidden" id={`mod-${tab.id}-${modIndex}`} />
 							<label
 								for={`mod-${tab.id}-${modIndex}`}
-								class="collapse-title cursor-pointer text-xl font-medium"
+								class="collapse-title cursor-pointer font-semibold"
 							>
 								{#if modItem.badge}
 									<span class="badge badge-soft badge-success badge-sm mr-2">{modItem.badge}</span>
 								{/if}
 								{modItem.title}
 							</label>
-							<div class="collapse-content hidden space-y-2 p-4 peer-checked:block">
-								<p><strong>Author:</strong> {modItem.author || 'Unknown'}</p>
-								<p><strong>Working Version:</strong> {modItem.workingVersion || 'N/A'}</p>
-								{#if modItem.keybind}
-									<p><strong>Keybind:</strong> {modItem.keybind}</p>
-								{/if}
-								{#if modItem.features && modItem.features.length > 0}
-									<p><strong>Features:</strong> {modItem.features.join(', ')}</p>
-								{/if}
-								{#if modItem.note}
-									<p><strong>Note:</strong> {modItem.note}</p>
-								{/if}
+							<div class="collapse-content hidden peer-checked:block">
+								<ul class="list-disc pl-5">
+									<li><strong>Author:</strong> {modItem.author || 'Unknown'}</li>
+									<li><strong>Working Version:</strong> {modItem.workingVersion || 'N/A'}</li>
+									{#if modItem.keybind}
+										<li><strong>Keybind:</strong> {modItem.keybind}</li>
+									{/if}
+									{#if modItem.features && modItem.features.length > 0}
+										<li><strong>Features:</strong> {modItem.features.join(', ')}</li>
+									{/if}
+									{#if modItem.note}
+										<li><strong>Note:</strong> {modItem.note}</li>
+									{/if}
+								</ul>
+
 								{#if modItem.downloadLinks && modItem.downloadLinks.length > 0}
 									<div class="mt-4 flex flex-col gap-2">
 										{#each modItem.downloadLinks as { url, label }}

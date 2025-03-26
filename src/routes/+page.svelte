@@ -37,7 +37,7 @@
 <div class="mt-6 flex flex-col">
 	{#each tabs as tab}
 		<button
-			class="btn {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"
+			class="btn {selectedTab === tab.id ? 'btn-primary  ' : 'btn-base'}"
 			on:click={() => (selectedTab = tab.id)}
 			aria-label={tab.label}
 		>

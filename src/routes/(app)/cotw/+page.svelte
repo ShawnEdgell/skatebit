@@ -146,7 +146,7 @@
 	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
 	<p class="text-primary mt-2 font-semibold">⏳ {countdown}</p>
-	<ul class="list-inside list-disc text-sm">
+	<ul class="list-disc text-sm">
 		<li>1 submission allowed per week</li>
 		<li>Top post gets featured for 1 week</li>
 		<li>Winning clips will be archived in the Hall of Fame</li>
