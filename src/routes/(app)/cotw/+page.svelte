@@ -204,9 +204,9 @@
 	<h2 class="flex flex-wrap items-center justify-between gap-2">
 		<span>This Week's Clips</span>
 		{#if clips.length > 0}
-			<select bind:value={sortOption} on:change={loadClips} class="select select-sm w-24">
+			<select bind:value={sortOption} on:change={loadClips} class="select select-sm w-28">
 				<option value="latest">Newest</option>
-				<option value="popular">Most Popular</option>
+				<option value="popular">Popular</option>
 			</select>
 		{/if}
 	</h2>
@@ -214,34 +214,35 @@
 	{#if loadingClips}
 		<p class="mt-4 text-sm opacity-50">Loading clips...</p>
 	{:else if clips.length > 0}
-		{#each clips as clip}
-			<div class="not-prose bg-base-200 card w-full">
-				<VideoItem video={clip} />
+		<div class="space-y-8">
+			{#each clips as clip}
+				<div class="not-prose bg-base-200 card w-full">
+					<VideoItem video={clip} />
 
-				<!-- Wrap entire footer in a link to the individual clip page -->
-				<a href={`/cotw/${clip.id}`} class="card hover:bg-base-300 block p-4">
-					<div class="flex items-center justify-between text-sm">
-						<div class="flex items-center gap-3">
-							<img
-								src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
-								alt={clip.userDisplayName}
-								class="h-8 w-8 rounded-full"
-							/>
-							<div>
-								<p class="font-semibold">{clip.userDisplayName}</p>
-								<p class="text-xs opacity-50">Uploaded on {formatDate(clip.timestamp)}</p>
+					<a href={`/cotw/${clip.id}`} class="card hover:bg-base-300 block p-4">
+						<div class="flex items-center justify-between text-sm">
+							<div class="flex items-center gap-3">
+								<img
+									src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
+									alt={clip.userDisplayName}
+									class="h-8 w-8 rounded-full"
+								/>
+								<div>
+									<p class="font-semibold">{clip.userDisplayName}</p>
+									<p class="text-xs opacity-50">Uploaded on {formatDate(clip.timestamp)}</p>
+								</div>
+							</div>
+							<div class="flex items-center gap-4 text-sm">
+								{#if clip.likes > 0}
+									<span class="text-success">❤️ {clip.likes}</span>
+								{/if}
+								<span class="opacity-50">💬 {clip.commentsCount ?? 0}</span>
 							</div>
 						</div>
-						<div class="flex items-center gap-4 text-sm">
-							{#if clip.likes > 0}
-								<span class="text-success">❤️ {clip.likes}</span>
-							{/if}
-							<span class="opacity-50">💬 {clip.commentsCount ?? 0}</span>
-						</div>
-					</div>
-				</a>
-			</div>
-		{/each}
+					</a>
+				</div>
+			{/each}
+		</div>
 	{:else}
 		<p class="text-sm opacity-50">No clips yet. Be the first to submit!</p>
 	{/if}
