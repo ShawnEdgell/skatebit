@@ -1,13 +1,14 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils/formatDate';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/auth';
 	import { submitClipPost, getUserClipThisWeek, getClipPosts } from '$lib/firebase/clips';
-	import { getCurrentWeekId, getEndOfCurrentWeek } from '$lib/utils/week';
+	import { getCurrentWeekId } from '$lib/utils/week';
 	import type { ClipPost } from '$lib/types/clips';
 
 	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
 	import VideoItem from '$lib/components/VideoItem.svelte';
+	import CountdownTimer from '$lib/components/CountdownTimer.svelte'; // new import
 
 	const pageTitle = 'Clip of the Week';
 	const pageDescription =
@@ -28,28 +29,6 @@
 	let uid = '';
 	let displayName = 'Anonymous';
 	let photoURL: string | undefined;
-
-	let countdown = '';
-	let interval: ReturnType<typeof setInterval>;
-
-	function updateCountdown() {
-		const now = new Date();
-		const endOfWeek = getEndOfCurrentWeek(); // returns a Date
-		const diff = endOfWeek.getTime() - now.getTime();
-
-		if (diff <= 0) {
-			clearInterval(interval);
-			countdown = 'Submissions closed';
-			return;
-		}
-
-		const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-		const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-		const minutes = Math.floor((diff / (1000 * 60)) % 60);
-		const seconds = Math.floor((diff / 1000) % 60);
-
-		countdown = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-	}
 
 	// Reactive user data
 	$: if ($user) {
@@ -74,13 +53,7 @@
 
 	onMount(() => {
 		hasMounted = true;
-		updateCountdown();
-		interval = setInterval(updateCountdown, 1000);
 		loadClips();
-	});
-
-	onDestroy(() => {
-		clearInterval(interval);
 	});
 
 	async function loadClips() {
@@ -117,7 +90,9 @@
 				uid,
 				userDisplayName: displayName,
 				userPhotoURL: photoURL,
-				weekId
+				weekId,
+				title: 'Untitled Clip',
+				description: ''
 			});
 
 			success = 'Clip submitted successfully!';
@@ -146,7 +121,7 @@
 <section>
 	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
-	<p class="text-primary font-semibold">⏳ {countdown}</p>
+	<CountdownTimer />
 	<ul class="list-disc text-sm">
 		<li>1 submission allowed per week</li>
 		<li>Top post gets featured for 1 week</li>

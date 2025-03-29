@@ -3,7 +3,7 @@
 	import MapsGear from './MapsGear.svelte';
 	import StatsSettings from './StatsSettings.svelte';
 	import VideoGuides from './VideoGuides.svelte';
-	import type { YouTubeItem } from '$lib/types/YoutubeTypes';
+	import type { YouTubeItem } from '$lib/types/youtube';
 
 	const pageTitle = 'Guides';
 	const pageDescription =
