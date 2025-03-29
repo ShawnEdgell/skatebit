@@ -33,7 +33,7 @@
 		</div>
 
 		<!-- Main Content -->
-		<main class="prose lg:prose-lg w-full px-4 pt-12 pb-8 lg:pt-16">
+		<main class="prose md:prose-lg w-full px-4 pt-12 pb-8 md:pt-16">
 			{@render children()}
 		</main>
 

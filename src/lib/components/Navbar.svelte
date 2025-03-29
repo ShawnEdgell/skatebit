@@ -20,7 +20,7 @@
 		<!-- Navbar -->
 		<div class="navbar bg-base-200 w-full justify-between">
 			<div class="flex items-center">
-				<div class="flex-none lg:hidden">
+				<div class="flex-none md:hidden">
 					<label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@
 				<ul class="menu menu-horizontal">
 					<!-- Navbar menu content here -->
 					{#each navItems as { href, label }}
-						<li class="hidden lg:block">
+						<li class="hidden md:block">
 							<a {href}>
 								<span>{label}</span>
 							</a>

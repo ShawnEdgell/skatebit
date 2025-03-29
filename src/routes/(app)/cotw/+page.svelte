@@ -174,7 +174,7 @@
 	{#if loadingClips}
 		<p class="mt-4 text-sm opacity-50">Loading clips...</p>
 	{:else if clips.length > 0}
-		<div class="space-y-8">
+		<div class="space-y-6">
 			{#each clips as clip}
 				<div class="not-prose bg-base-200 card w-full">
 					<VideoItem video={clip} />

@@ -12,14 +12,14 @@
 </script>
 
 <section>
-	<h2>Working Mod List</h2>
+	<h2>Select Your Game Version</h2>
 	<p class="mb-6">Select your game version below to view a list of compatible mods.</p>
 
 	<!-- Tab Selector -->
 	<div class="flex flex-col">
 		{#each tabs as tab}
 			<button
-				class="btn w-full {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"
+				class="btn {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"
 				on:click={() => (selectedTab = tab.id)}
 			>
 				{tab.label}
@@ -28,7 +28,8 @@
 	</div>
 
 	<!-- Tab Content -->
-	<div class="mt-6">
+	<div class="mt-16">
+		<h2>{selectedTab === 'alphaMods' ? 'Alpha Mod List' : 'Public Mod List'}</h2>
 		{#each tabs as tab}
 			{#if selectedTab === tab.id}
 				<div>

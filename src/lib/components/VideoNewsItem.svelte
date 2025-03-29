@@ -33,7 +33,7 @@
 	}
 </script>
 
-<div class="not-prose card bg-base-200 mt-12 shadow-md">
+<div class="not-prose card bg-base-200 mt-6 shadow-md">
 	<!-- Video -->
 	<div class="relative h-0 w-full overflow-hidden bg-black pb-[56.25%]">
 		{#if showIframe}

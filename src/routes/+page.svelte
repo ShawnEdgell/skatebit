@@ -47,9 +47,11 @@
 </div> -->
 
 {#if filteredVideos && filteredVideos.length > 0}
-	{#each filteredVideos as video (video.videoId)}
-		<VideoNewsItem {video} />
-	{/each}
+	<div class="mt-16">
+		{#each filteredVideos as video (video.videoId)}
+			<VideoNewsItem {video} />
+		{/each}
+	</div>
 {:else}
 	<p>No videos available.</p>
 {/if}
