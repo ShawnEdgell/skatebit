@@ -1,5 +1,5 @@
 <script lang="ts">
-	import VideoItem from '$lib/components/VideoItem.svelte';
+	import VideoNewsItem from '$lib/components/VideoNewsItem.svelte';
 	import type { YouTubeItem } from '$lib/types/youtube';
 
 	export let data: { videos: YouTubeItem[] };
@@ -34,7 +34,7 @@
 	<div class="divider"></div>
 </section>
 
-<div class="mt-6 flex flex-col">
+<!-- <div class="mt-6 flex flex-col">
 	{#each tabs as tab}
 		<button
 			class="btn {selectedTab === tab.id ? 'btn-primary  ' : 'btn-base'}"
@@ -44,12 +44,11 @@
 			{tab.label}
 		</button>
 	{/each}
-</div>
+</div> -->
 
 {#if filteredVideos && filteredVideos.length > 0}
 	{#each filteredVideos as video (video.videoId)}
-		<VideoItem {video} />
-		<div class="divider mt-6"></div>
+		<VideoNewsItem {video} />
 	{/each}
 {:else}
 	<p>No videos available.</p>
