@@ -5,10 +5,11 @@
 	import { submitClipPost, getUserClipThisWeek, getClipPosts } from '$lib/firebase/clips';
 	import { getCurrentWeekId } from '$lib/utils/week';
 	import type { ClipPost } from '$lib/types/clips';
-
 	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
 	import VideoItem from '$lib/components/VideoItem.svelte';
-	import CountdownTimer from '$lib/components/CountdownTimer.svelte'; // new import
+	import CountdownTimer from '$lib/components/CountdownTimer.svelte';
+	import { getPreviousWeekId } from '$lib/utils/week';
+	import { saveWeeklyWinner } from '$lib/firebase/hallOfFame';
 
 	const pageTitle = 'Clip of the Week';
 	const pageDescription =
@@ -24,13 +25,12 @@
 	let hasMounted = false;
 	let loadingClips = false;
 
-	const weekId = getCurrentWeekId();
+	let weekId = getCurrentWeekId();
 
 	let uid = '';
 	let displayName = 'Anonymous';
 	let photoURL: string | undefined;
 
-	// Reactive user data
 	$: if ($user) {
 		uid = $user.uid;
 		displayName = $user.displayName ?? 'Anonymous';
@@ -111,6 +111,18 @@
 		);
 		return match?.[1] ?? null;
 	}
+
+	async function handleCountdownEnd() {
+		const newWeekId = getCurrentWeekId();
+		weekId = newWeekId;
+		alreadySubmitted = false;
+
+		await loadClips();
+
+		// Save winner of the previous week
+		const lastWeekId = getPreviousWeekId();
+		await saveWeeklyWinner(lastWeekId);
+	}
 </script>
 
 <svelte:head>
@@ -121,7 +133,7 @@
 <section>
 	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
-	<CountdownTimer />
+	<CountdownTimer on:countdownEnded={handleCountdownEnd} />
 	<ul class="list-disc text-sm">
 		<li>1 submission allowed per week</li>
 		<li>Top post gets featured for 1 week</li>

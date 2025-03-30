@@ -1,11 +1,12 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount, onDestroy, createEventDispatcher } from 'svelte';
 	import { getEndOfCurrentWeek } from '$lib/utils/week';
 
 	export let label = '⏳';
 
 	let countdown = '';
 	let interval: ReturnType<typeof setInterval>;
+	const dispatch = createEventDispatcher();
 
 	function updateCountdown() {
 		const now = new Date();
@@ -15,6 +16,7 @@
 		if (diff <= 0) {
 			clearInterval(interval);
 			countdown = 'Submissions closed';
+			dispatch('countdownEnded');
 			return;
 		}
 

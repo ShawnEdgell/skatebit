@@ -2,6 +2,7 @@
 	import '../app.css';
 	import AlertBar from '$lib/components/AlertBar.svelte';
 	import CoTwWidget from '$lib/components/CoTWWidget.svelte';
+	import HallOfFame from '$lib/components/HallOfFame.svelte';
 	import WhatsNewWidget from '$lib/components/WhatsNewWidget.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
@@ -42,6 +43,7 @@
 			<div class="sticky top-24 space-y-6">
 				<WhatsNewWidget />
 				<CoTwWidget />
+				<HallOfFame />
 			</div>
 		</div>
 	</div>

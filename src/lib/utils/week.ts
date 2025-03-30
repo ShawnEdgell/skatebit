@@ -13,3 +13,11 @@ export function getEndOfCurrentWeek(): Date {
 	endOfWeek.setHours(0, 0, 0, 0);
 	return endOfWeek;
 }
+
+export function getPreviousWeekId(): string {
+	const now = new Date();
+	const prevWeek = new Date(now);
+	prevWeek.setDate(now.getDate() - now.getDay() - 7); // Go back one full week
+	prevWeek.setHours(0, 0, 0, 0);
+	return prevWeek.toISOString().split('T')[0];
+}

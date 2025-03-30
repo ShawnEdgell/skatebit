@@ -22,10 +22,8 @@
 			<CountdownTimer />
 		</div>
 
-		<!-- Lazy-loaded video -->
 		<VideoItem video={topClip} />
 
-		<!-- User Info -->
 		<div class="my-3">
 			<a href={`/cotw/${topClip.id}`} class="flex items-center gap-3 transition hover:opacity-90">
 				<img
@@ -40,14 +38,21 @@
 			</a>
 		</div>
 
-		<!-- Link to full page -->
 		<a href="/cotw" class="btn btn-sm btn-outline btn-primary w-full text-center">
 			View All Clips
 		</a>
 	</div>
 {:else}
 	<div class="card bg-base-200 p-4 shadow">
-		<h3 class="text-lg font-semibold">🎬 Clip of the Week</h3>
-		<p class="mt-2 text-sm opacity-60">No clips submitted yet!</p>
+		<h3 class="mb-2 text-lg font-semibold">🎬 Clip of the Week</h3>
+		<div class="mb-2">
+			<CountdownTimer />
+		</div>
+		<p class="text-sm opacity-60">
+			No clips submitted yet. Be the first to upload and claim the spotlight!
+		</p>
+		<a href="/cotw" class="btn btn-sm btn-outline btn-primary mt-4 w-full text-center">
+			Submit a Clip
+		</a>
 	</div>
 {/if}
