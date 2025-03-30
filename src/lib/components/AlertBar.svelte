@@ -8,5 +8,5 @@
 	<p class="text-sm md:pl-2 md:text-base">
 		Submit your best clips on our new <b>Clip of the Week</b> page!
 	</p>
-	<button class="btn">Clip of the Week</button>
+	<a href="/cotw" class="btn">Clip of the Week</a>
 </div>
