@@ -1,4 +1,4 @@
-<a href="/cotw" class="navbar bg-primary flex justify-center px-4 md:hidden">
+<a href="/cotw" class="navbar bg-primary flex justify-center px-4 text-center md:hidden">
 	<p class="text-sm md:pl-2 md:text-base">
 		Submit your best clips on our new <b>Clip of the Week</b> page!
 	</p>

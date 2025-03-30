@@ -4,7 +4,7 @@
 
 <!-- Alert Message -->
 <section>
-	<div role="alert" class="alert alert-info mt-16">
+	<div role="alert" class="alert alert-error mt-16">
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"

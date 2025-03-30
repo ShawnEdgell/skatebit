@@ -2,7 +2,7 @@
 	import { formatDate } from '$lib/utils/formatDate';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { user } from '$lib/stores/auth';
+	import { authReady, user } from '$lib/stores/auth';
 	import { submitClipPost, getUserClipThisWeek, getClipPosts } from '$lib/firebase/clips';
 	import { getCurrentWeekId, getPreviousWeekId } from '$lib/utils/week';
 	import { clipUpdated, alreadySubmitted } from '$lib/stores/clipUpdated';
@@ -11,6 +11,7 @@
 	import VideoItem from '$lib/components/VideoItem.svelte';
 	import CountdownTimer from '$lib/components/CountdownTimer.svelte';
 	import { saveWeeklyWinner } from '$lib/firebase/hallOfFame';
+	import Alert from '$lib/components/Alert.svelte';
 
 	const pageTitle = 'Clip of the Week';
 	const pageDescription =
@@ -127,11 +128,20 @@
 		console.log('🏆 Winner result:', winner);
 	}
 
-	// On mount, refresh the submission state and clip list
 	onMount(async () => {
-		await checkSubmissionStatus();
+		if ($user) {
+			await checkSubmissionStatus();
+		} else {
+			// If no user at mount, you might delay the check or set up a watcher
+			checkingSubmission = false; // stop loading, show login prompt for now
+		}
 		await loadClips();
 	});
+
+	$: if ($user && $user.uid) {
+		// User just logged in or became known – re-check submissions
+		checkSubmissionStatus();
+	}
 </script>
 
 <svelte:head>
@@ -148,15 +158,16 @@
 	</section>
 
 	<section>
-		{#if checkingSubmission}
-			<p>Checking submission status...</p>
+		{#if !$authReady}
+			<!-- Initial load -->
+			<div class="pt-12">Loading...</div>
 		{:else if !$user}
-			<p class="mb-4">Please log in to submit a clip.</p>
+			<!-- Auth loaded but not logged in -->
 			<GoogleLoginButton />
 		{:else if $alreadySubmitted}
+			<!-- Auth loaded + submitted -->
 			<h2>Submit</h2>
-			<CountdownTimer on:countdownEnded={handleCountdownEnd} />
-			<p class="text-success">You've already submitted a clip for this week.</p>
+			<p class="text-success">You already submitted a clip this week!</p>
 		{:else}
 			<form on:submit|preventDefault={handleSubmit}>
 				<h2>Submit</h2>
