@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/auth';
 	import {
@@ -16,6 +17,8 @@
 	import VideoItem from '$lib/components/VideoItem.svelte';
 	import { formatDate } from '$lib/utils/formatDate';
 	import type { ClipPost, ClipComment } from '$lib/types/clips';
+	import { getCurrentWeekId } from '$lib/utils/week';
+	import { getUserClipThisWeek } from '$lib/firebase/clips';
 
 	let clip: ClipPost | null = null;
 	let comments: ClipComment[] = [];
@@ -72,12 +75,29 @@
 		comments = await getClipComments(clipId);
 	}
 
+	async function waitForDeletionToPropagate(uid: string, weekId: string) {
+		for (let i = 0; i < 10; i++) {
+			const exists = await getUserClipThisWeek(uid, weekId);
+			if (!exists) return true;
+			await new Promise((r) => setTimeout(r, 250));
+		}
+		console.warn('⚠️ Deletion not reflected in Firestore after multiple attempts');
+		return false;
+	}
+
 	async function removeClip() {
 		if (!clipId) return;
 		const confirmed = window.confirm('Are you sure you want to delete this clip?');
 		if (!confirmed) return;
 		await deleteClipPost(clipId);
-		window.location.href = '/cotw';
+
+		if ($user) {
+			const weekId = getCurrentWeekId();
+			await waitForDeletionToPropagate($user.uid, weekId);
+		}
+
+		// Use SPA-style navigation after confirming deletion
+		goto('/cotw');
 	}
 </script>
 
@@ -86,7 +106,7 @@
 	<meta name="description" content="Watch this week's submitted skate clip." />
 </svelte:head>
 
-<a href="/cotw" class="btn btn-soft no-underline">Back to Clips</a>
+<a href="/cotw" class="btn btn-soft mb-6 no-underline">Back to Clips</a>
 
 {#if loading}
 	<p>Loading clip...</p>

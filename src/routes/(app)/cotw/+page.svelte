@@ -1,14 +1,15 @@
 <script lang="ts">
 	import { formatDate } from '$lib/utils/formatDate';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	import { user } from '$lib/stores/auth';
 	import { submitClipPost, getUserClipThisWeek, getClipPosts } from '$lib/firebase/clips';
-	import { getCurrentWeekId } from '$lib/utils/week';
+	import { getCurrentWeekId, getPreviousWeekId } from '$lib/utils/week';
+	import { clipUpdated, alreadySubmitted } from '$lib/stores/clipUpdated';
 	import type { ClipPost } from '$lib/types/clips';
 	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
 	import VideoItem from '$lib/components/VideoItem.svelte';
 	import CountdownTimer from '$lib/components/CountdownTimer.svelte';
-	import { getPreviousWeekId } from '$lib/utils/week';
 	import { saveWeeklyWinner } from '$lib/firebase/hallOfFame';
 
 	const pageTitle = 'Clip of the Week';
@@ -18,48 +19,42 @@
 	let youtubeUrl = '';
 	let error = '';
 	let success = '';
-	let alreadySubmitted = false;
 	let checkingSubmission = true;
 	let clips: ClipPost[] = [];
 	let sortOption: 'latest' | 'popular' = 'latest';
-	let hasMounted = false;
 	let loadingClips = false;
-
 	let weekId = getCurrentWeekId();
 
 	let uid = '';
 	let displayName = 'Anonymous';
 	let photoURL: string | undefined;
 
-	$: if ($user) {
-		uid = $user.uid;
-		displayName = $user.displayName ?? 'Anonymous';
-		photoURL = $user.photoURL ?? undefined;
-
+	// Fetch whether the user has a clip this week and update the global store
+	async function checkSubmissionStatus() {
 		checkingSubmission = true;
-		getUserClipThisWeek(uid, weekId).then((existing) => {
-			alreadySubmitted = !!existing;
-			checkingSubmission = false;
-		});
-	} else {
-		uid = '';
-		alreadySubmitted = false;
+		if ($user) {
+			uid = $user.uid;
+			displayName = $user.displayName ?? 'Anonymous';
+			photoURL = $user.photoURL ?? undefined;
+			try {
+				const existing = await getUserClipThisWeek(uid, weekId);
+				alreadySubmitted.set(!!existing);
+			} catch (e) {
+				console.error('Error checking submission status:', e);
+				alreadySubmitted.set(false);
+			}
+		} else {
+			uid = '';
+			alreadySubmitted.set(false);
+		}
 		checkingSubmission = false;
 	}
 
-	$: if (sortOption && hasMounted) {
-		loadClips();
-	}
-
-	onMount(() => {
-		hasMounted = true;
-		loadClips();
-	});
-
+	// Load the clips for the current week
 	async function loadClips() {
 		loadingClips = true;
 		try {
-			clips = await getClipPosts(sortOption);
+			clips = await getClipPosts(sortOption, weekId);
 		} catch (err) {
 			console.error('Error loading clips:', err);
 			clips = [];
@@ -68,6 +63,7 @@
 		}
 	}
 
+	// Handle clip submission (note: no extra check here; the UI only shows the form if no clip exists)
 	async function handleSubmit() {
 		error = '';
 		success = '';
@@ -83,28 +79,35 @@
 			return;
 		}
 
-		try {
-			await submitClipPost({
-				videoId,
-				source: 'user',
-				uid,
-				userDisplayName: displayName,
-				userPhotoURL: photoURL,
-				weekId,
-				title: 'Untitled Clip',
-				description: ''
-			});
+		const postData = {
+			videoId,
+			source: 'user',
+			uid,
+			userDisplayName: displayName,
+			userPhotoURL: photoURL ?? '',
+			weekId,
+			timestamp: new Date(),
+			title: 'Untitled Clip',
+			description: '',
+			likes: 0,
+			likedBy: []
+		};
 
+		try {
+			await submitClipPost(postData);
 			success = 'Clip submitted successfully!';
 			youtubeUrl = '';
-			alreadySubmitted = true;
+			await new Promise((r) => setTimeout(r, 250)); // Give Firestore time to sync
+			await checkSubmissionStatus();
 			await loadClips();
+			clipUpdated.set(true);
 		} catch (err) {
 			error = 'Submission failed. Try again.';
 			console.error(err);
 		}
 	}
 
+	// Extract the YouTube video ID from a URL
 	function extractYouTubeVideoId(url: string): string | null {
 		const match = url.match(
 			/(?:youtube\.com\/(?:watch\?v=|embed\/|v\/|shorts\/)|youtu\.be\/)([\w-]{11})/
@@ -112,17 +115,23 @@
 		return match?.[1] ?? null;
 	}
 
+	// Handle countdown end and save the weekly winner
 	async function handleCountdownEnd() {
-		const newWeekId = getCurrentWeekId();
-		weekId = newWeekId;
-		alreadySubmitted = false;
-
+		console.log('⏰ Timer ended — attempting to save weekly winner');
+		weekId = getCurrentWeekId();
+		await checkSubmissionStatus();
 		await loadClips();
-
-		// Save winner of the previous week
 		const lastWeekId = getPreviousWeekId();
-		await saveWeeklyWinner(lastWeekId);
+		console.log('Looking up winner for previous week:', lastWeekId);
+		const winner = await saveWeeklyWinner(lastWeekId);
+		console.log('🏆 Winner result:', winner);
 	}
+
+	// On mount, refresh the submission state and clip list
+	onMount(async () => {
+		await checkSubmissionStatus();
+		await loadClips();
+	});
 </script>
 
 <svelte:head>
@@ -130,92 +139,95 @@
 	<meta name="description" content={pageDescription} />
 </svelte:head>
 
-<section>
-	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
-	<p>{pageDescription}</p>
-	<CountdownTimer on:countdownEnded={handleCountdownEnd} />
-	<ul class="list-disc text-sm">
-		<li>1 submission allowed per week</li>
-		<li>Top post gets featured for 1 week</li>
-		<li>Winning clips will be archived in the Hall of Fame</li>
-		<li>Only YouTube links are accepted</li>
-	</ul>
-	<div class="divider"></div>
-</section>
+<!-- The keyed wrapper forces a full remount whenever the URL changes -->
+<div key={$page.url.pathname}>
+	<section>
+		<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
+		<p>{pageDescription}</p>
+		<div class="divider"></div>
+	</section>
 
-<section>
-	{#if checkingSubmission}
-		<p>Checking submission status...</p>
-	{:else if !$user}
-		<p class="mb-4">Please log in to submit a clip.</p>
-		<GoogleLoginButton />
-	{:else if alreadySubmitted}
-		<h2>Submit</h2>
-		<p class="text-success">You've already submitted a clip for this week.</p>
-	{:else}
-		<form on:submit|preventDefault={handleSubmit} class="space-y-4">
+	<section>
+		{#if checkingSubmission}
+			<p>Checking submission status...</p>
+		{:else if !$user}
+			<p class="mb-4">Please log in to submit a clip.</p>
+			<GoogleLoginButton />
+		{:else if $alreadySubmitted}
 			<h2>Submit</h2>
-			<input
-				type="text"
-				bind:value={youtubeUrl}
-				placeholder="YouTube URL"
-				class="input input-bordered w-full"
-			/>
-			{#if error}
-				<p class="text-error">{error}</p>
-			{/if}
-			{#if success}
-				<p class="text-success">{success}</p>
-			{/if}
-			<button type="submit" class="btn btn-primary">Submit Clip</button>
-		</form>
-	{/if}
-</section>
-
-<section>
-	<h2 class="flex flex-wrap items-center justify-between gap-2">
-		<span>This Week's Clips</span>
-		{#if clips.length > 0}
-			<select bind:value={sortOption} on:change={loadClips} class="select select-sm w-28">
-				<option value="latest">Newest</option>
-				<option value="popular">Popular</option>
-			</select>
+			<CountdownTimer on:countdownEnded={handleCountdownEnd} />
+			<p class="text-success">You've already submitted a clip for this week.</p>
+		{:else}
+			<form on:submit|preventDefault={handleSubmit}>
+				<h2>Submit</h2>
+				<CountdownTimer on:countdownEnded={handleCountdownEnd} />
+				<ul class="list-disc text-sm">
+					<li>1 submission allowed per week</li>
+					<li>Top post gets featured for 1 week</li>
+					<li>Winning clips will be archived in the Hall of Fame</li>
+					<li>Only YouTube links are accepted</li>
+				</ul>
+				<input
+					type="text"
+					bind:value={youtubeUrl}
+					placeholder="YouTube URL"
+					class="input input-bordered mt-4 w-full"
+				/>
+				{#if error}
+					<p class="text-error">{error}</p>
+				{/if}
+				{#if success}
+					<p class="text-success">{success}</p>
+				{/if}
+				<button type="submit" class="btn btn-primary mt-4">Submit Clip</button>
+			</form>
 		{/if}
-	</h2>
+	</section>
 
-	{#if loadingClips}
-		<p class="mt-4 text-sm opacity-50">Loading clips...</p>
-	{:else if clips.length > 0}
-		<div class="space-y-6">
-			{#each clips as clip}
-				<div class="not-prose bg-base-200 card w-full">
-					<VideoItem video={clip} />
+	<section>
+		<h2 class="flex flex-wrap items-center justify-between gap-2">
+			<span>This Week's Clips</span>
+			{#if clips.length > 0}
+				<select bind:value={sortOption} on:change={loadClips} class="select select-sm w-28">
+					<option value="latest">Newest</option>
+					<option value="popular">Popular</option>
+				</select>
+			{/if}
+		</h2>
 
-					<a href={`/cotw/${clip.id}`} class="card hover:bg-base-300 block p-4">
-						<div class="flex items-center justify-between text-sm">
-							<div class="flex items-center gap-3">
-								<img
-									src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
-									alt={clip.userDisplayName}
-									class="h-8 w-8 rounded-full"
-								/>
-								<div>
-									<p class="font-semibold">{clip.userDisplayName}</p>
-									<p class="text-xs opacity-50">Uploaded on {formatDate(clip.timestamp)}</p>
+		{#if loadingClips}
+			<p class="mt-4 text-sm opacity-50">Loading clips...</p>
+		{:else if clips.length > 0}
+			<div class="space-y-6">
+				{#each clips as clip}
+					<div class="not-prose bg-base-200 card w-full">
+						<VideoItem video={clip} />
+						<a href={`/cotw/${clip.id}`} class="card hover:bg-base-300 block p-4">
+							<div class="flex items-center justify-between text-sm">
+								<div class="flex items-center gap-3">
+									<img
+										src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
+										alt={clip.userDisplayName}
+										class="h-8 w-8 rounded-full"
+									/>
+									<div>
+										<p class="font-semibold">{clip.userDisplayName}</p>
+										<p class="text-xs opacity-50">Uploaded on {formatDate(clip.timestamp)}</p>
+									</div>
+								</div>
+								<div class="flex items-center gap-4 text-sm">
+									{#if clip.likes > 0}
+										<span class="text-success">❤️ {clip.likes}</span>
+									{/if}
+									<span class="opacity-50">💬 {clip.commentsCount ?? 0}</span>
 								</div>
 							</div>
-							<div class="flex items-center gap-4 text-sm">
-								{#if clip.likes > 0}
-									<span class="text-success">❤️ {clip.likes}</span>
-								{/if}
-								<span class="opacity-50">💬 {clip.commentsCount ?? 0}</span>
-							</div>
-						</div>
-					</a>
-				</div>
-			{/each}
-		</div>
-	{:else}
-		<p class="text-sm opacity-50">No clips yet. Be the first to submit!</p>
-	{/if}
-</section>
+						</a>
+					</div>
+				{/each}
+			</div>
+		{:else}
+			<p class="text-sm opacity-50">No clips yet. Be the first to submit!</p>
+		{/if}
+	</section>
+</div>

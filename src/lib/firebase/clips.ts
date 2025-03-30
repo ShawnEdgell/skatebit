@@ -1,4 +1,3 @@
-// clips.ts (Refactored)
 import { db } from './init';
 import {
 	getCollection,
@@ -10,7 +9,7 @@ import {
 	deleteComment
 } from './common';
 import type { ClipPost, ClipComment } from '$lib/types/clips';
-import { doc, collection, getDocs, orderBy, where } from 'firebase/firestore';
+import { deleteDoc, doc, collection, getDocs, orderBy, where } from 'firebase/firestore';
 
 export async function submitClipPost(
 	post: Omit<ClipPost, 'id' | 'timestamp' | 'likes' | 'likedBy' | 'commentsCount'>
@@ -32,11 +31,17 @@ export async function getClipById(id: string): Promise<ClipPost | null> {
 	return results[0] || null;
 }
 
-export async function getClipPosts(sortBy: 'latest' | 'popular' = 'latest'): Promise<ClipPost[]> {
-	const clips = await getCollection<ClipPost>(
-		'clips',
+export async function getClipPosts(
+	sortBy: 'latest' | 'popular' = 'latest',
+	weekId?: string
+): Promise<ClipPost[]> {
+	const conditions = [
+		...(weekId ? [where('weekId', '==', weekId)] : []),
 		orderBy(sortBy === 'latest' ? 'timestamp' : 'likes', 'desc')
-	);
+	];
+
+	const clips = await getCollection<ClipPost>('clips', ...conditions);
+
 	return Promise.all(
 		clips.map(async (clip) => ({
 			...clip,
@@ -48,7 +53,10 @@ export async function getClipPosts(sortBy: 'latest' | 'popular' = 'latest'): Pro
 }
 
 export async function deleteClipPost(clipId: string) {
-	await deleteComment(`clips/${clipId}`);
+	await deleteDoc(doc(db, 'clips', clipId));
+
+	// Add a short delay to ensure Firestore updates propagate
+	await new Promise((resolve) => setTimeout(resolve, 250));
 }
 
 export async function likeClipPost(clipId: string, userId: string) {
@@ -76,4 +84,9 @@ export async function deleteClipComment(clipId: string, commentId: string) {
 
 export async function likeClipComment(clipId: string, commentId: string, userId: string) {
 	await toggleLike(`clips/${clipId}/comments`, commentId, userId);
+}
+
+export async function checkSubmissionStatus(uid: string, weekId: string) {
+	const existing = await getUserClipThisWeek(uid, weekId);
+	return !!existing; // returns true if clip exists, false otherwise
 }

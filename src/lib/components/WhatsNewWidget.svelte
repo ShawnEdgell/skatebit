@@ -1,11 +1,15 @@
 <script lang="ts">
 	const updates = [
 		{
-			text: '⭐ Clip of the Week challenge added!',
+			text: '🏆 Hall of Fame added',
+			link: '/halloffame'
+		},
+		{
+			text: '⭐ Clip of the Week challenge added',
 			link: '/cotw'
 		},
 		{
-			text: '💬 Forum pages added!',
+			text: '💬 Forum section added',
 			link: '/forum'
 		},
 		{
@@ -21,7 +25,7 @@
 	<ul class="list-inside list-disc space-y-2 text-sm">
 		{#each updates as update}
 			<li>
-				<a href={update.link} class="link hover:text-primary no-underline transition">
+				<a href={update.link} class="hover:text-primary no-underline">
 					{update.text}
 				</a>
 			</li>

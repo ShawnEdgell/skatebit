@@ -4,25 +4,39 @@ import { db } from './init';
 import type { ClipPost } from '$lib/types/clips';
 
 export async function saveWeeklyWinner(weekId: string): Promise<ClipPost | null> {
+	console.log('📦 Fetching clips for week:', weekId);
+
 	const clipsRef = collection(db, 'clips');
 	const q = query(clipsRef, where('weekId', '==', weekId), orderBy('likes', 'desc'), limit(1));
 	const snapshot = await getDocs(q);
 
-	if (snapshot.empty) return null;
+	if (snapshot.empty) {
+		console.log('❌ No clips found for this week');
+		return null;
+	}
 
 	const doc = snapshot.docs[0];
 	const winner = { id: doc.id, ...doc.data() } as ClipPost;
+	console.log('✅ Found top clip:', winner);
 
 	// Check if already exists in hallOfFame
 	const hofQuery = query(collection(db, 'hallOfFame'), where('weekId', '==', weekId));
 	const hofSnapshot = await getDocs(hofQuery);
-	if (!hofSnapshot.empty) return winner;
 
-	// Save to Hall of Fame
-	await addDoc(collection(db, 'hallOfFame'), {
-		...winner,
-		weekId
-	});
+	if (!hofSnapshot.empty) {
+		console.log('🚫 Hall of Fame entry already exists for week:', weekId);
+		return winner;
+	}
+
+	try {
+		await addDoc(collection(db, 'hallOfFame'), {
+			...winner,
+			weekId
+		});
+		console.log('🔥 Added winner to Hall of Fame');
+	} catch (error) {
+		console.error('🚨 Failed to add to Hall of Fame:', error);
+	}
 
 	return winner;
 }

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { clipUpdated } from '$lib/stores/clipUpdated'; // Import the store
 	import { getClipPosts } from '$lib/firebase/clips';
+	import { getCurrentWeekId } from '$lib/utils/week';
 	import type { ClipPost } from '$lib/types/clips';
 	import VideoItem from '$lib/components/VideoItem.svelte';
 	import { formatDate } from '$lib/utils/formatDate';
@@ -8,11 +10,29 @@
 
 	let clips: ClipPost[] = [];
 	let topClip: ClipPost | null = null;
+	const weekId = getCurrentWeekId(); // ✅ current week
 
-	onMount(async () => {
-		clips = await getClipPosts('popular');
-		topClip = clips[0] ?? null;
+	// Subscribe to clipUpdated store
+	let widgetUpdated = false;
+
+	// Subscribe to the store to trigger updates
+	clipUpdated.subscribe((value) => {
+		widgetUpdated = value;
+		if (widgetUpdated) {
+			loadClips(); // Re-fetch clips after the update
+			clipUpdated.set(false); // Reset the flag after the widget is updated
+		}
 	});
+
+	// Initial load of clips
+	onMount(async () => {
+		await loadClips();
+	});
+
+	async function loadClips() {
+		clips = await getClipPosts('popular', weekId);
+		topClip = clips[0] ?? null;
+	}
 </script>
 
 {#if topClip}
@@ -33,7 +53,11 @@
 				/>
 				<div class="text-sm">
 					<p class="font-semibold">{topClip.userDisplayName}</p>
-					<p class="text-xs opacity-60">{formatDate(topClip.timestamp)}</p>
+					{#if topClip.timestamp}
+						<p class="text-xs opacity-60">
+							{formatDate(topClip.timestamp)}
+						</p>
+					{/if}
 				</div>
 			</a>
 		</div>

@@ -27,7 +27,7 @@
 	<!-- Layout container -->
 	<div class="relative flex w-full justify-center 2xl:justify-between">
 		<!-- Left Sidebar (Sticky) -->
-		<div class="hidden min-w-sm px-4 pt-6 pb-8 2xl:block">
+		<div class="hidden max-w-sm min-w-sm px-4 pt-6 pb-8 2xl:block">
 			<div class="sticky top-24 space-y-6">
 				<!-- Add any left widgets here if needed -->
 			</div>
@@ -39,7 +39,7 @@
 		</main>
 
 		<!-- Right Sidebar (Sticky) -->
-		<div class="hidden min-w-sm px-4 pt-6 pb-8 2xl:block">
+		<div class="hidden max-w-sm min-w-sm px-4 pt-6 pb-8 2xl:block">
 			<div class="sticky top-24 space-y-6">
 				<WhatsNewWidget />
 				<CoTwWidget />
