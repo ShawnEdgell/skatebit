@@ -74,11 +74,11 @@
 <section>
 	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
-	<div class="divider"></div>
+	<div class="divider mb-12"></div>
 </section>
 
 {#if $user}
-	<section class="not-prose mt-6">
+	<section class="not-prose">
 		<div class="card bg-base-300 p-2 shadow-lg">
 			<div class="card-body space-y-4">
 				<h2 class="card-title text-2xl font-bold">📝 Create Thread</h2>

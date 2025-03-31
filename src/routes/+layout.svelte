@@ -41,8 +41,9 @@
 			</div>
 		</aside>
 		<!-- Main -->
+
 		<div class="flex w-full justify-center">
-			<main class="prose card md:prose-lg mx-6 w-full py-10 md:py-14">
+			<main class="prose md:prose-lg mx-6 w-full py-10 md:py-14">
 				{@render children()}
 			</main>
 		</div>

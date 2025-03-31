@@ -151,12 +151,12 @@
 	<section>
 		<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 		<p>{pageDescription}</p>
-		<div class="divider"></div>
+		<div class="divider mb-12"></div>
 	</section>
 
 	<!-- <CountdownTimer on:countdownEnded={handleCountdownEnd} /> -->
 
-	<section class="not-prose mt-10">
+	<section class="not-prose">
 		{#if !$authReady}
 			<!-- Loading state in a card -->
 			<div class="card bg-base-300 p-2 shadow-lg">

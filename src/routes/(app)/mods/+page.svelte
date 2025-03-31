@@ -17,7 +17,7 @@
 	<h1>{pageTitle}</h1>
 	<p>{pageDescription}</p>
 
-	<div class="divider"></div>
+	<div class="divider mb-12"></div>
 </section>
 
 <!-- Mod List Section -->
