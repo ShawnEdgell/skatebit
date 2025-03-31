@@ -154,7 +154,7 @@
 		<div class="divider"></div>
 	</section>
 
-	<CountdownTimer on:countdownEnded={handleCountdownEnd} />
+	<!-- <CountdownTimer on:countdownEnded={handleCountdownEnd} /> -->
 
 	<section class="not-prose mt-6">
 		{#if !$authReady}
