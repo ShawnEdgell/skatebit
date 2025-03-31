@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GoogleLoginButton from '$lib/components/auth/GoogleLoginButton.svelte';
+	import { GoogleLoginButton } from '$lib/components';
 	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/auth';
 	import type { ForumPost } from '$lib/types/forum';
@@ -78,33 +78,42 @@
 </section>
 
 {#if $user}
-	<section>
-		<h2>Create a New Thread</h2>
-		<form on:submit|preventDefault={createThread}>
-			<div>
-				<input
-					type="text"
-					bind:value={newThreadTitle}
-					placeholder="Thread Title"
-					class="input input-bordered w-full"
-				/>
+	<section class="not-prose mt-16">
+		<div class="card bg-base-300 p-2 shadow-lg">
+			<div class="card-body space-y-4">
+				<h2 class="card-title text-2xl font-bold">📝 Create a New Thread</h2>
+
+				<form on:submit|preventDefault={createThread} class="space-y-3">
+					<input
+						type="text"
+						bind:value={newThreadTitle}
+						placeholder="Thread Title"
+						class="input input-bordered w-full"
+					/>
+
+					<textarea
+						bind:value={newThreadContent}
+						placeholder="Thread Content"
+						class="textarea textarea-bordered w-full"
+					></textarea>
+
+					<div class="card-actions w-full justify-end">
+						<button type="submit" class="btn btn-primary w-full">Post Thread</button>
+					</div>
+				</form>
 			</div>
-			<div class="mt-2">
-				<textarea
-					bind:value={newThreadContent}
-					placeholder="Thread Content"
-					class="textarea textarea-bordered w-full"
-				></textarea>
-			</div>
-			<div class="mt-2">
-				<button type="submit" class="btn btn-primary">Post Thread</button>
-			</div>
-		</form>
+		</div>
 	</section>
 {:else}
-	<section>
-		<p>To create posts or comment, please log in.</p>
-		<GoogleLoginButton />
+	<section class="not-prose mt-16">
+		<div class="card bg-base-300 p-2 shadow-lg">
+			<div class="card-body space-y-4 text-center">
+				<p>To create posts or comment, please sign in.</p>
+				<div>
+					<GoogleLoginButton />
+				</div>
+			</div>
+		</div>
 	</section>
 {/if}
 

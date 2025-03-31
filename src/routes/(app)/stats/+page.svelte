@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Help from '$lib/components/ui/Help.svelte';
+	import { Help } from '$lib/components';
 
 	const pageTitle = 'Stats & Settings';
 	const pageDescription = 'Download presets for your Skater XL mods.';
@@ -27,13 +27,15 @@
 				A good starting point for building your own stats. Includes XXL Mod Presets and Fro's Mod
 				settings.
 			</p>
-			<a
-				href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
-				class="btn btn-primary mt-2"
-				target="_blank"
-			>
-				Download
-			</a>
+			<div class="flex w-full justify-end">
+				<a
+					href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
+					class="btn btn-primary"
+					target="_blank"
+				>
+					Download
+				</a>
+			</div>
 		</div>
 	</div>
 </section>
@@ -47,13 +49,15 @@
 				14 Gravity. Latest stats as seen in recent streams and videos. Includes XXL Mod Presets and
 				Fro's Mod settings.
 			</p>
-			<a
-				href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
-				class="btn btn-primary mt-2"
-				target="_blank"
-			>
-				Download
-			</a>
+			<div class="flex w-full justify-end">
+				<a
+					href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
+					class="btn btn-primary mt-2"
+					target="_blank"
+				>
+					Download
+				</a>
+			</div>
 		</div>
 	</div>
 </section>

@@ -1,11 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import AlertBar from '$lib/components/layout/AlertBar.svelte';
-	import ClipOfTheWeek from '$lib/components/widgets/ClipOfTheWeek.svelte';
-	import HallOfFame from '$lib/components/widgets/HallOfFame.svelte';
-	import WhatsNew from '$lib/components/widgets/WhatsNew.svelte';
-	import Navbar from '$lib/components/layout/Navbar.svelte';
-	import Footer from '$lib/components/layout/Footer.svelte';
+	import { AlertBar, ClipOfTheWeek, HallOfFame, WhatsNew, Navbar, Footer } from '$lib/components';
 	import { dev } from '$app/environment';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
@@ -23,18 +18,18 @@
 		<Navbar />
 	</div>
 
-	<div class="4xl:justify-between relative flex w-full justify-center gap-6 px-4">
+	<div class="4xl:justify-between px- relative my-16 flex w-full justify-center gap-6 px-4">
 		<div class="hidden max-w-sm min-w-sm 2xl:block">
 			<div class="rounded-box sticky top-24 space-y-6">
 				<!-- Left widgets -->
 			</div>
 		</div>
 
-		<main class="prose md:prose-lg bg-base-100 rounded-box mt-12 w-full px-6 py-10 shadow md:py-14">
+		<main class="prose md:prose-lg bg-base-100 card w-full px-6 py-10 shadow md:py-14">
 			{@render children()}
 		</main>
 
-		<div class="hidden max-w-sm min-w-sm pt-12 lg:block">
+		<div class="hidden max-w-sm min-w-sm lg:block">
 			<div class="rounded-box sticky top-24 space-y-6">
 				<WhatsNew />
 				<ClipOfTheWeek />
@@ -42,6 +37,6 @@
 			</div>
 		</div>
 	</div>
-
-	<Footer />
 </div>
+
+<Footer />

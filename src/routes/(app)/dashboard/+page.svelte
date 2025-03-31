@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { user } from '$lib/stores/auth';
-	import GoogleLoginButton from '$lib/components/auth/GoogleLoginButton.svelte';
-	import Alert from '$lib/components/ui/Alert.svelte';
+	import { GoogleLoginButton, Alert } from '$lib/components';
 
 	const pageTitle = 'Dashboard';
 	const pageDescription = 'Manage your account and settings.';

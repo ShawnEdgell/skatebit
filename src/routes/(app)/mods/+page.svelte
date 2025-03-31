@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ModListSection from './ModListSection.svelte';
-	import Help from '$lib/components/ui/Help.svelte';
+	import { Help } from '$lib/components';
 
 	const pageTitle = 'Mods';
 	const pageDescription = 'A list of working mods for Skater XL.';

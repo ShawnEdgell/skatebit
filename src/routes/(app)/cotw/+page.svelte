@@ -7,9 +7,7 @@
 	import { getCurrentWeekId, getPreviousWeekId } from '$lib/utils/week';
 	import { clipUpdated, alreadySubmitted } from '$lib/stores/clipUpdated';
 	import type { ClipPost } from '$lib/types/clips';
-	import GoogleLoginButton from '$lib/components/auth/GoogleLoginButton.svelte';
-	import VideoItem from '$lib/components/video/VideoItem.svelte';
-	import CountdownTimer from '$lib/components/ui/CountdownTimer.svelte';
+	import { GoogleLoginButton, VideoItem, CountdownTimer } from '$lib/components';
 	import { saveWeeklyWinner } from '$lib/firebase/hallOfFame';
 
 	const pageTitle = 'Clip of the Week';
@@ -171,9 +169,11 @@
 			<!-- Login prompt in a card -->
 			<div class="card bg-base-300 p-2 shadow-lg">
 				<div class="card-body space-y-4 text-center">
-					<h2 class="card-title text-2xl font-bold">Sign in to Submit</h2>
-					<p class="text-base-content/80 text-sm">You must be signed in to upload your clip.</p>
-					<GoogleLoginButton />
+					<p>You must be signed in to upload a clip.</p>
+
+					<div>
+						<GoogleLoginButton />
+					</div>
 				</div>
 			</div>
 		{:else if $alreadySubmitted}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import VideoNewsItem from '$lib/components/video/VideoNewsItem.svelte';
+	import { VideoNewsItem } from '$lib/components';
 	import type { YouTubeItem } from '$lib/types/youtube';
 
 	export let data: { videos: YouTubeItem[] };

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ImageModal from '$lib/components/layout/ImageModal.svelte';
+	import { ImageModal } from '$lib/components';
 </script>
 
 <h2>Getting Started with Skater XL Modding</h2>

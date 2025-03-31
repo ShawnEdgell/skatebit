@@ -1,5 +1,5 @@
 <script lang="ts">
-	import VideoItem from '$lib/components/video/VideoItem.svelte';
+	import { VideoItem } from '$lib/components';
 	import type { YouTubeItem } from '$lib/types/youtube';
 	export let videos: YouTubeItem[] = [];
 </script>
