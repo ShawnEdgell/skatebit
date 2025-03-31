@@ -35,7 +35,7 @@
 </script>
 
 {#if topClip}
-	<div class="card bg-base-300 p-4">
+	<div class="card bg-base-200 p-4">
 		<h3 class="mb-2 text-lg font-semibold">🎬 Clip of the Week</h3>
 		<VideoItem video={topClip} />
 		<div class="my-3">

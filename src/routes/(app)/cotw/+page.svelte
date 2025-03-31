@@ -159,7 +159,7 @@
 	<section class="not-prose">
 		{#if !$authReady}
 			<!-- Loading state in a card -->
-			<div class="card bg-base-300 p-2 shadow-lg">
+			<div class="card bg-base-200 p-2">
 				<div class="card-body text-center">
 					<span class="loading loading-spinner loading-md"></span>
 					<p class="text-base-content/80 mt-4">Checking authentication...</p>
@@ -167,7 +167,7 @@
 			</div>
 		{:else if !$user}
 			<!-- Login prompt in a card -->
-			<div class="card bg-base-300 p-2 shadow-lg">
+			<div class="card bg-base-200 p-2">
 				<div class="card-body space-y-4 text-center">
 					<p>You must be signed in to upload a clip.</p>
 
@@ -178,7 +178,7 @@
 			</div>
 		{:else if $alreadySubmitted}
 			<!-- Already submitted message in a card -->
-			<div class="card bg-base-300 p-2 shadow-lg">
+			<div class="card bg-base-200 p-2">
 				<div class="card-body text-center">
 					<h2 class=" text-2xl font-bold">Clip Submitted</h2>
 					<p class="text-success text-sm">You’ve already submitted a clip this week. Good luck!</p>
@@ -186,7 +186,7 @@
 			</div>
 		{:else}
 			<!-- Submission form card -->
-			<div class="card bg-base-300 mt-6 p-2 shadow-lg">
+			<div class="card bg-base-200 mt-6 p-2">
 				<div class="card-body space-y-4">
 					<h2 class="card-title text-2xl font-bold">🎬 Submit a Clip</h2>
 
@@ -237,9 +237,9 @@
 		{:else if clips.length > 0}
 			<div class="space-y-6">
 				{#each clips as clip}
-					<div class="not-prose bg-base-300 card w-full">
+					<div class="not-prose bg-base-200 card w-full">
 						<VideoItem video={clip} />
-						<a href={`/cotw/${clip.id}`} class="card hover:bg-base-300 block p-4">
+						<a href={`/cotw/${clip.id}`} class="card hover:bg-base-200 block p-4">
 							<div class="flex items-center justify-between text-sm">
 								<div class="flex items-center gap-3">
 									<img

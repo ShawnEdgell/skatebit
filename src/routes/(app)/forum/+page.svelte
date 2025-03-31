@@ -79,7 +79,7 @@
 
 {#if $user}
 	<section class="not-prose">
-		<div class="card bg-base-300 p-2 shadow-lg">
+		<div class="card bg-base-200 p-2 shadow-lg">
 			<div class="card-body space-y-4">
 				<h2 class="card-title text-2xl font-bold">📝 Create Thread</h2>
 
@@ -106,7 +106,7 @@
 	</section>
 {:else}
 	<section class="not-prose mt-16">
-		<div class="card bg-base-300 p-2 shadow-lg">
+		<div class="card bg-base-200 p-2 shadow-lg">
 			<div class="card-body space-y-4 text-center">
 				<p>To create posts or comment, please sign in.</p>
 				<div>

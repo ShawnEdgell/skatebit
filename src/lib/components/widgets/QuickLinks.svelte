@@ -8,7 +8,7 @@
 	];
 </script>
 
-<div class="card bg-base-300">
+<div class="card bg-base-200">
 	<div class="card-body space-y-4">
 		<h2 class="card-title text-base font-bold">🔗 Quick Links</h2>
 		<ul class="flex flex-col gap-2">
