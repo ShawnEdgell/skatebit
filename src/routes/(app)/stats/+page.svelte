@@ -18,50 +18,38 @@
 	<div class="divider"></div>
 </section>
 
-<!-- Basic Realistic Settings -->
+<!-- Downloads -->
 <section>
-	<div class="card bg-base-300 card-lg not-prose mt-6 shadow-sm">
-		<div class="card-body">
-			<h2 class="card-title font-bold">Basic Realistic Settings (Goofy and Regular)</h2>
-			<p>
-				A good starting point for building your own stats. Includes XXL Mod Presets and Fro's Mod
-				settings.
-			</p>
-			<div class="flex w-full justify-end">
-				<a
-					href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
-					class="btn btn-primary"
-					target="_blank"
-				>
-					Download
-				</a>
-			</div>
-		</div>
-	</div>
+	<h2>Downloads/Presets</h2>
+	<!-- Basic Realistic Settings -->
+	<h3>Basic Realistic Settings (Goofy and Regular)</h3>
+	<p>
+		A good starting point for building your own stats. Includes XXL Mod Presets and Fro's Mod
+		settings.
+	</p>
+	<a
+		href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
+		class="btn btn-primary not-prose"
+		target="_blank"
+	>
+		Download
+	</a>
+	<!-- Latest Settings -->
+	<h3>Milky's Latest Stats (Regular)</h3>
+	<p>
+		14 Gravity. Latest stats as seen in recent streams and videos. Includes XXL Mod Presets and
+		Fro's Mod settings.
+	</p>
+	<a
+		href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
+		class="btn btn-primary not-prose"
+		target="_blank"
+	>
+		Download
+	</a>
 </section>
 
-<!-- Milky's Latest Settings -->
-<section>
-	<div class="card bg-base-300 card-lg not-prose mt-6 shadow-sm">
-		<div class="card-body">
-			<h2 class="card-title font-bold">Milky's Latest Stats (Regular)</h2>
-			<p>
-				14 Gravity. Latest stats as seen in recent streams and videos. Includes XXL Mod Presets and
-				Fro's Mod settings.
-			</p>
-			<div class="flex w-full justify-end">
-				<a
-					href="https://damp-limit-8cd1.milky-irl.workers.dev/MilkyLatest.zip"
-					class="btn btn-primary mt-2"
-					target="_blank"
-				>
-					Download
-				</a>
-			</div>
-		</div>
-	</div>
-</section>
-
+<!-- Essential Settings -->
 <section>
 	<h2>Essential Settings</h2>
 	<p>

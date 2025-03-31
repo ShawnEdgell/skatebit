@@ -1,12 +1,16 @@
-<a href="/cotw" class="navbar bg-primary flex justify-center px-4 text-center md:hidden">
-	<p class="text-sm md:pl-2 md:text-base">
-		Submit your best clips on our new <b>Clip of the Week</b> page!
-	</p>
-</a>
+<script lang="ts">
+	import CountdownTimerSmall from '../ui/CountdownTimerSmall.svelte';
+</script>
 
-<div class="navbar bg-primary hidden justify-between px-4 md:flex">
-	<p class="text-sm md:pl-2 md:text-base">
-		Submit your best clips on our new <b>Clip of the Week</b> page!
+<!-- Desktop Navbar -->
+<div class="navbar bg-primary flex justify-center px-4 md:justify-between">
+	<p class="hidden pl-2 text-sm md:block">
+		Check out the new
+		<strong>Clip of the Week</strong>
+		page!
 	</p>
-	<a href="/cotw" class="btn">Clip of the Week</a>
+	<div class="flex items-center gap-4">
+		<CountdownTimerSmall size="text-lg" />
+		<a href="/cotw" class="btn">Clip of the Week</a>
+	</div>
 </div>

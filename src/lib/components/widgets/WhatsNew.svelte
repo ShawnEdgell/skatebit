@@ -15,6 +15,10 @@
 		{
 			text: '📌 Essential Settings added to stats page',
 			link: '/stats'
+		},
+		{
+			text: '📋 Improved guides section',
+			link: '/guides'
 		}
 	];
 </script>

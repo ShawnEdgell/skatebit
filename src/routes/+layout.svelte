@@ -24,32 +24,28 @@
 	<Background />
 </div>
 
-<div class="flex min-h-screen flex-col items-center">
-	<AlertBar />
-
-	<div class="bg-base-200 sticky top-0 z-50 w-full backdrop-blur">
+<div class="flex min-h-screen flex-col">
+	<div class="bg-base-100 sticky top-0 z-50 w-full shadow-lg">
+		<AlertBar />
 		<Navbar />
 	</div>
 
-	<div class="relative my-6 flex w-full justify-center gap-6 px-6">
-		<div class="hidden max-w-xs min-w-xs xl:block">
-			<div class="rounded-box sticky top-24 space-y-6">
+	<div class="grid lg:grid-cols-[auto_1fr]">
+		<!-- Sidebar -->
+		<aside class="bg-base-100 col-span-1 hidden max-w-xs min-w-sm lg:block">
+			<div class="sticky top-32 h-[calc(100vh-8rem)] space-y-6 overflow-y-auto p-6">
 				<WhatsNew />
-				<QuickLinks />
-			</div>
-		</div>
-
-		<main class="prose md:prose-lg card bg-base-100 w-full px-6 py-10 md:py-14">
-			{@render children()}
-		</main>
-
-		<div class="hidden max-w-xs min-w-xs xl:block">
-			<div class="rounded-box sticky top-24 space-y-6">
 				<ClipOfTheWeek />
 				<HallOfFame />
+				<QuickLinks />
 			</div>
+		</aside>
+		<!-- Main -->
+		<div class="flex w-full justify-center">
+			<main class="prose card md:prose-lg mx-6 w-full py-10 md:py-14">
+				{@render children()}
+			</main>
 		</div>
 	</div>
 </div>
-
 <Footer />
