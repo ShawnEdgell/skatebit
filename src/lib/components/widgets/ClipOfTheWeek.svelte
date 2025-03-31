@@ -56,9 +56,7 @@
 			</a>
 		</div>
 
-		<a href="/cotw" class="btn btn-sm btn-outline btn-primary w-full text-center">
-			View All Clips
-		</a>
+		<a href="/cotw" class="btn btn-sm btn-outline btn-primary text-center"> View All Clips </a>
 	</div>
 {:else}
 	<div class="card bg-base-200 p-4">
@@ -66,8 +64,6 @@
 		<p class="text-sm opacity-60">
 			No clips submitted yet. Be the first to upload and claim the spotlight!
 		</p>
-		<a href="/cotw" class="btn btn-sm btn-outline btn-primary mt-4 w-full text-center">
-			Submit a Clip
-		</a>
+		<a href="/cotw" class="btn btn-sm btn-outline btn-primary mt-4 text-center"> Submit a Clip </a>
 	</div>
 {/if}

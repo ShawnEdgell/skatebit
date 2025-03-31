@@ -31,7 +31,7 @@
 		<Navbar />
 	</div>
 
-	<div class="relative my-6 flex w-full justify-center gap-6 px-4">
+	<div class="relative my-6 flex w-full justify-center gap-6 px-6">
 		<div class="hidden max-w-xs min-w-xs xl:block">
 			<div class="rounded-box sticky top-24 space-y-6">
 				<WhatsNew />
@@ -43,7 +43,7 @@
 			{@render children()}
 		</main>
 
-		<div class="hidden max-w-sm min-w-xs xl:block">
+		<div class="hidden max-w-xs min-w-xs xl:block">
 			<div class="rounded-box sticky top-24 space-y-6">
 				<ClipOfTheWeek />
 				<HallOfFame />
