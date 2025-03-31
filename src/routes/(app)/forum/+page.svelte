@@ -81,7 +81,7 @@
 	<section class="not-prose mt-6">
 		<div class="card bg-base-300 p-2 shadow-lg">
 			<div class="card-body space-y-4">
-				<h2 class="card-title text-2xl font-bold">📝 Create a New Thread</h2>
+				<h2 class="card-title text-2xl font-bold">📝 Create Thread</h2>
 
 				<form on:submit|preventDefault={createThread} class="space-y-3">
 					<input

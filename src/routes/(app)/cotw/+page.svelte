@@ -188,13 +188,13 @@
 			<!-- Submission form card -->
 			<div class="card bg-base-300 mt-6 p-2 shadow-lg">
 				<div class="card-body space-y-4">
-					<h2 class="card-title text-2xl font-bold">🎬 Submit Your Clip</h2>
+					<h2 class="card-title text-2xl font-bold">🎬 Submit a Clip</h2>
 
 					<ul class="text-base-content/80 list-inside list-disc space-y-1 text-sm">
 						<li>1 submission allowed per week</li>
 						<li>Top post gets featured for 1 week</li>
-						<li>Winning clips will be archived in the Hall of Fame</li>
-						<li>Only YouTube links are accepted</li>
+						<li>Winning clip get archived in the Hall of Fame</li>
+						<li>Only YouTube links are accepted (for now)</li>
 					</ul>
 
 					<form on:submit|preventDefault={handleSubmit} class="space-y-3">
