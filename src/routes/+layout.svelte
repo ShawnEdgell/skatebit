@@ -17,15 +17,15 @@
 	let { children } = $props();
 </script>
 
-<div class="fixed inset-0 -z-10">
+<!-- <div class="fixed inset-0 -z-10">
 	<Background />
-</div>
+</div> -->
 
 <div class="flex min-h-screen flex-col items-center">
 	<AlertBar />
 
 	<!-- Sticky Navbar -->
-	<div class="bg-base-100/80 sticky top-0 z-50 h-16 w-full backdrop-blur">
+	<div class="bg-base-200 sticky top-0 z-50 h-16 w-full">
 		<Navbar />
 	</div>
 

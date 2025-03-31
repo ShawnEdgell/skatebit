@@ -10,4 +10,3 @@
 	</p>
 	<a href="/cotw" class="btn">Clip of the Week</a>
 </div>
-
