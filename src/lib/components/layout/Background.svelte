@@ -5,10 +5,10 @@
 	></div>
 
 	<div
-		class="bg-primary animate-pulse-blur absolute right-1/4 bottom-0 h-[28rem] w-[28rem] rounded-full mix-blend-overlay blur-[120px] delay-[2s]"
+		class="bg-secondary animate-pulse-blur absolute right-1/4 bottom-0 h-[28rem] w-[28rem] rounded-full mix-blend-overlay blur-[120px] delay-[2s]"
 	></div>
 	<div
-		class="bg-primary animate-pulse-blur absolute top-1/2 left-1/4 h-[32rem] w-[32rem] rounded-full mix-blend-overlay blur-[130px] delay-[4s]"
+		class="bg-accent animate-pulse-blur absolute top-1/2 left-1/4 h-[32rem] w-[32rem] rounded-full mix-blend-overlay blur-[130px] delay-[4s]"
 	></div>
 </div>
 
@@ -17,11 +17,11 @@
 		0%,
 		100% {
 			transform: scale(1);
-			opacity: 0.15;
+			opacity: 0.25;
 		}
 		50% {
 			transform: scale(1.4);
-			opacity: 0.35;
+			opacity: 0.4;
 		}
 	}
 
