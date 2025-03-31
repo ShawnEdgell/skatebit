@@ -20,7 +20,7 @@
 
 <!-- Basic Realistic Settings -->
 <section>
-	<div class="card bg-base-300 card-lg not-prose mt-16 shadow-sm">
+	<div class="card bg-base-300 card-lg not-prose mt-6 shadow-sm">
 		<div class="card-body">
 			<h2 class="card-title font-bold">Basic Realistic Settings (Goofy and Regular)</h2>
 			<p>

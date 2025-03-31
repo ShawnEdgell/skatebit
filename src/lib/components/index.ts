@@ -1,4 +1,5 @@
 // layout
+export { default as Background } from './layout/Background.svelte';
 export { default as Navbar } from './layout/Navbar.svelte';
 export { default as Footer } from './layout/Footer.svelte';
 export { default as AlertBar } from './layout/AlertBar.svelte';
@@ -11,6 +12,7 @@ export { default as LoginAvatar } from './auth/LoginAvatar.svelte';
 // widgets
 export { default as ClipOfTheWeek } from './widgets/ClipOfTheWeek.svelte';
 export { default as HallOfFame } from './widgets/HallOfFame.svelte';
+export { default as QuickLinks } from './widgets/QuickLinks.svelte';
 export { default as WhatsNew } from './widgets/WhatsNew.svelte';
 
 // video

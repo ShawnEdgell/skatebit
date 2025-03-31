@@ -36,7 +36,7 @@
 </section>
 
 <!-- Tab Selector -->
-<div class="mt-16 flex flex-col">
+<div class="mt-6 flex flex-col">
 	{#each tabs as tab}
 		<button
 			class="btn w-full {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"

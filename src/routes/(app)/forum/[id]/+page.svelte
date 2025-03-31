@@ -111,124 +111,126 @@
 	<meta name="description" content={post ? post.content.substring(0, 150) : 'Forum thread'} />
 </svelte:head>
 
-<a href="/forum" class="btn btn-soft mb-6 no-underline">Back to Forum</a>
+<div>
+	<a href="/forum" class="btn btn-soft mb-6 no-underline">Back to Forum</a>
 
-{#if loading}
-	<p>Loading thread...</p>
-{:else if post}
-	<h1>{post.title}</h1>
-	<p>{post.content}</p>
+	{#if loading}
+		<p>Loading thread...</p>
+	{:else if post}
+		<h1>{post.title}</h1>
+		<p>{post.content}</p>
 
-	<div class="not-prose my-6 flex items-center gap-2">
-		<img
-			src={post.authorAvatar || 'https://via.placeholder.com/40'}
-			alt={post.authorName}
-			class="h-8 w-8 rounded-full"
-		/>
-		<span class="text-sm opacity-50">
-			Posted by {post.authorName} on {formatDate(post.createdAt)}
-		</span>
+		<div class="not-prose my-6 flex items-center gap-2">
+			<img
+				src={post.authorAvatar || 'https://via.placeholder.com/40'}
+				alt={post.authorName}
+				class="h-8 w-8 rounded-full"
+			/>
+			<span class="text-sm opacity-50">
+				Posted by {post.authorName} on {formatDate(post.createdAt)}
+			</span>
 
-		<!-- ✅ Public like count -->
-		{#if (post.likes ?? 0) > 0}
-			<span class="text-sm text-green-500">+{post.likes}</span>
+			<!-- ✅ Public like count -->
+			{#if (post.likes ?? 0) > 0}
+				<span class="text-sm text-green-500">+{post.likes}</span>
+			{/if}
+		</div>
+
+		<!-- 🧡 Like button (only for logged-in users) -->
+		{#if $user}
+			<button class="btn btn-sm" on:click={toggleLikePost}>
+				{post.likedBy?.includes($user.uid) ? '❤️ Liked' : '🤍 Like'}
+			</button>
 		{/if}
+
+		{#if post.authorId === $user?.uid}
+			<button class="btn btn-sm" on:click={editThread}>Edit</button>
+			<button class="btn btn-sm" on:click={removeThread}>Delete</button>
+		{/if}
+	{:else}
+		<p>Thread not found.</p>
+	{/if}
+
+	<div class="divider mb-6"></div>
+
+	{#if $user}
+		<section>
+			<form on:submit|preventDefault={createComment}>
+				<textarea
+					bind:value={newComment}
+					placeholder="Add a comment..."
+					class="textarea textarea-bordered w-full"
+				></textarea>
+				<div class="mt-2">
+					<button type="submit" class="btn btn-primary">Post Comment</button>
+				</div>
+			</form>
+		</section>
+	{:else}
+		<p>Log in to join the discussion!</p>
+		<GoogleLoginButton />
+	{/if}
+
+	<div class="mt-6 mb-12">
+		<h2>Comments</h2>
 	</div>
 
-	<!-- 🧡 Like button (only for logged-in users) -->
-	{#if $user}
-		<button class="btn btn-sm" on:click={toggleLikePost}>
-			{post.likedBy?.includes($user.uid) ? '❤️ Liked' : '🤍 Like'}
-		</button>
-	{/if}
-
-	{#if post.authorId === $user?.uid}
-		<button class="btn btn-sm" on:click={editThread}>Edit</button>
-		<button class="btn btn-sm" on:click={removeThread}>Delete</button>
-	{/if}
-{:else}
-	<p>Thread not found.</p>
-{/if}
-
-<div class="divider mb-6"></div>
-
-{#if $user}
-	<section>
-		<form on:submit|preventDefault={createComment}>
-			<textarea
-				bind:value={newComment}
-				placeholder="Add a comment..."
-				class="textarea textarea-bordered w-full"
-			></textarea>
-			<div class="mt-2">
-				<button type="submit" class="btn btn-primary">Post Comment</button>
-			</div>
-		</form>
-	</section>
-{:else}
-	<p>Log in to join the discussion!</p>
-	<GoogleLoginButton />
-{/if}
-
-<div class="mt-6 mb-12">
-	<h2>Comments</h2>
-</div>
-
-{#if comments.length > 0}
-	{#each comments as comment}
-		<div>
-			<div class="not-prose flex items-center gap-2">
-				<img
-					src={comment.authorAvatar || 'https://via.placeholder.com/40'}
-					alt={comment.authorName}
-					class="h-8 w-8 rounded-full"
-				/>
-				<p>
-					<span class="mr-1">{comment.authorName}</span>
-					<span class="mr-1 text-sm opacity-50">{formatDate(comment.createdAt)}</span>
-					<!-- 🧡 Always show like count if > 0 -->
-					{#if (comment.likes ?? 0) > 0}
-						<span class="text-success text-sm">+{comment.likes}</span>
-					{/if}
-				</p>
-			</div>
+	{#if comments.length > 0}
+		{#each comments as comment}
 			<div>
-				<p>{comment.text}</p>
+				<div class="not-prose flex items-center gap-2">
+					<img
+						src={comment.authorAvatar || 'https://via.placeholder.com/40'}
+						alt={comment.authorName}
+						class="h-8 w-8 rounded-full"
+					/>
+					<p>
+						<span class="mr-1">{comment.authorName}</span>
+						<span class="mr-1 text-sm opacity-50">{formatDate(comment.createdAt)}</span>
+						<!-- 🧡 Always show like count if > 0 -->
+						{#if (comment.likes ?? 0) > 0}
+							<span class="text-success text-sm">+{comment.likes}</span>
+						{/if}
+					</p>
+				</div>
+				<div>
+					<p>{comment.text}</p>
 
-				<!-- 🧡 Like button for logged-in users -->
-				{#if $user}
-					<button
-						class="btn btn-sm mt-1"
-						on:click={() => comment.id && toggleLikeComment(comment.id)}
-					>
-						{comment.likedBy?.includes($user.uid) ? '❤️ Liked' : '🤍 Like'}
-					</button>
-				{/if}
+					<!-- 🧡 Like button for logged-in users -->
+					{#if $user}
+						<button
+							class="btn btn-sm mt-1"
+							on:click={() => comment.id && toggleLikeComment(comment.id)}
+						>
+							{comment.likedBy?.includes($user.uid) ? '❤️ Liked' : '🤍 Like'}
+						</button>
+					{/if}
 
-				{#if comment.authorId === $user?.uid}
-					<button
-						class="btn btn-sm mt-1"
-						on:click={() => {
-							const newText = prompt('New text:', comment.text);
-							if (newText !== null && comment.id) updateComment(comment.id, newText);
-						}}
-					>
-						Edit
-					</button>
-					<button
-						class="btn btn-sm mt-1"
-						on:click={() => {
-							if (comment.id) removeComment(comment.id);
-						}}
-					>
-						Delete
-					</button>
-				{/if}
+					{#if comment.authorId === $user?.uid}
+						<button
+							class="btn btn-sm mt-1"
+							on:click={() => {
+								const newText = prompt('New text:', comment.text);
+								if (newText !== null && comment.id) updateComment(comment.id, newText);
+							}}
+						>
+							Edit
+						</button>
+						<button
+							class="btn btn-sm mt-1"
+							on:click={() => {
+								if (comment.id) removeComment(comment.id);
+							}}
+						>
+							Delete
+						</button>
+					{/if}
+				</div>
+
+				<div class="divider"></div>
 			</div>
-
-			<div class="divider"></div>
-		</div>
-	{/each}
-{:else}
-	<p class="text-sm opacity-50">No comments yet. Be the first to comment!</p>
-{/if}
+		{/each}
+	{:else}
+		<p class="text-sm opacity-50">No comments yet. Be the first to comment!</p>
+	{/if}
+</div>

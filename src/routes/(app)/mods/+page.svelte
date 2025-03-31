@@ -3,7 +3,7 @@
 	import { Help } from '$lib/components';
 
 	const pageTitle = 'Mods';
-	const pageDescription = 'A list of working mods for Skater XL.';
+	const pageDescription = 'Select your game version below to view a list of compatible mods.';
 </script>
 
 <!-- Page Data -->
@@ -15,7 +15,8 @@
 <!-- Header -->
 <section>
 	<h1>{pageTitle}</h1>
-	<Help />
+	<p>{pageDescription}</p>
+
 	<div class="divider"></div>
 </section>
 

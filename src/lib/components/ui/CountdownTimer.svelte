@@ -50,7 +50,7 @@
 </script>
 
 <div
-	class="card bg-neutral rounded-box mx-auto mt-16 grid w-fit auto-cols-max grid-flow-col gap-4 p-4 text-center"
+	class="card bg-neutral rounded-box mx-auto mt-10 grid w-fit auto-cols-max grid-flow-col gap-4 p-4 text-center"
 >
 	{#each [{ label: 'days', value: days }, { label: 'hours', value: hours }, { label: 'min', value: minutes }, { label: 'sec', value: seconds }] as unit}
 		<div class={`rounded-box ${colorClass} flex flex-col p-2 px-4`}>

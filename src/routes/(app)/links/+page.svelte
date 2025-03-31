@@ -20,7 +20,7 @@
 
 <!-- Skater XL Mod.io -->
 <section>
-	<div class="card bg-base-200 card-lg not-prose mt-16">
+	<div class="card bg-base-200 card-lg not-prose mt-6">
 		<div class="card-body">
 			<h2 class="card-title font-bold">skaterxl.mod.io</h2>
 			<p>

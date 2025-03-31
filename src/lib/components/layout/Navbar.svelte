@@ -16,7 +16,7 @@
 		bind:checked={drawerOpen}
 		aria-label="Toggle navigation drawer"
 	/>
-	<div class="drawer-content flex flex-col">
+	<div class="drawer-content flex flex-col items-center">
 		<!-- Navbar -->
 		<div class="navbar w-full justify-between">
 			<div class="flex items-center">

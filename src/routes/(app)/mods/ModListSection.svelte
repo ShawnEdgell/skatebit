@@ -12,11 +12,8 @@
 </script>
 
 <section>
-	<h2>Select Your Game Version</h2>
-	<p class="mb-6">Select your game version below to view a list of compatible mods.</p>
-
 	<!-- Tab Selector -->
-	<div class="flex flex-col">
+	<div class="mt-6 flex flex-col">
 		{#each tabs as tab}
 			<button
 				class="btn {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"

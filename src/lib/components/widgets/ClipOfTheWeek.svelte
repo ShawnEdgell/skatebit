@@ -61,7 +61,7 @@
 		</a>
 	</div>
 {:else}
-	<div class="card bg-base-200 p-4 shadow">
+	<div class="card bg-base-200 p-4">
 		<h3 class="mb-2 text-lg font-semibold">🎬 Clip of the Week</h3>
 		<p class="text-sm opacity-60">
 			No clips submitted yet. Be the first to upload and claim the spotlight!

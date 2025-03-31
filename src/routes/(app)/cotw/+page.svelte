@@ -156,7 +156,7 @@
 
 	<CountdownTimer on:countdownEnded={handleCountdownEnd} />
 
-	<section class="not-prose mt-16">
+	<section class="not-prose mt-6">
 		{#if !$authReady}
 			<!-- Loading state in a card -->
 			<div class="card bg-base-300 p-2 shadow-lg">
