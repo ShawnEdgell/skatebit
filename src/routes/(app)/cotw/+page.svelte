@@ -156,7 +156,7 @@
 
 	<!-- <CountdownTimer on:countdownEnded={handleCountdownEnd} /> -->
 
-	<section class="not-prose mt-6">
+	<section class="not-prose mt-10">
 		{#if !$authReady}
 			<!-- Loading state in a card -->
 			<div class="card bg-base-300 p-2 shadow-lg">
@@ -186,7 +186,7 @@
 			</div>
 		{:else}
 			<!-- Submission form card -->
-			<div class="card bg-base-300 p-2 shadow-lg">
+			<div class="card bg-base-300 mt-6 p-2 shadow-lg">
 				<div class="card-body space-y-4">
 					<h2 class="card-title text-2xl font-bold">🎬 Submit Your Clip</h2>
 
