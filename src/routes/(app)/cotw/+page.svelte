@@ -237,7 +237,7 @@
 		{:else if clips.length > 0}
 			<div class="space-y-6">
 				{#each clips as clip}
-					<div class="not-prose bg-base-200 card w-full">
+					<div class="not-prose bg-base-300 card w-full">
 						<VideoItem video={clip} />
 						<a href={`/cotw/${clip.id}`} class="card hover:bg-base-200 block p-4">
 							<div class="flex items-center justify-between text-sm">
