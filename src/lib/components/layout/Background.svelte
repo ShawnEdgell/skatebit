@@ -1,4 +1,4 @@
-<!-- Background.svelte -->
+<!-- Background.svelte
 <div class="absolute inset-0 -z-10 overflow-hidden opacity-35">
 	<div
 		class="bg-primary animate-pulse-blur absolute top-0 left-1/3 h-96 w-96 rounded-full mix-blend-overlay blur-[100px] delay-[0s]"
@@ -28,4 +28,4 @@
 	.animate-pulse-blur {
 		animation: pulse-blur 12s ease-in-out infinite;
 	}
-</style>
+</style> -->
