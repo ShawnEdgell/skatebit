@@ -18,7 +18,7 @@
 	/>
 	<div class="drawer-content flex flex-col">
 		<!-- Navbar -->
-		<div class="navbar bg-base-200 w-full justify-between">
+		<div class="navbar w-full justify-between">
 			<div class="flex items-center">
 				<div class="flex-none md:hidden">
 					<label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">

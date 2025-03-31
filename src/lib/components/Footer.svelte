@@ -2,7 +2,7 @@
 	import { navItems } from '$lib/data/navItems';
 </script>
 
-<footer class="footer footer-center bg-base-300 flex flex-col p-10">
+<footer class="footer footer-center bg-base-300 flex flex-col p-16">
 	<nav class="flex flex-wrap justify-center gap-4 text-center">
 		{#each navItems as { href, label }}
 			<a {href} class="underline hover:no-underline">
@@ -51,8 +51,10 @@
 			</a>
 		</div>
 	</nav>
+</footer>
 
-	<aside class="text-center text-xs opacity-50">
+<footer class="footer footer-center bg-neutral flex flex-col p-16">
+	<aside class="text-center text-xs">
 		<p>Skatebit {new Date().getFullYear()} - The Skater XL Modding Community</p>
 	</aside>
 </footer>

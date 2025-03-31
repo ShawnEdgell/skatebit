@@ -9,6 +9,7 @@
 	import { dev } from '$app/environment';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import Background from '$lib/components/Background.svelte';
 
 	injectSpeedInsights();
 	injectAnalytics({ mode: dev ? 'development' : 'production' });
@@ -16,11 +17,15 @@
 	let { children } = $props();
 </script>
 
+<div class="fixed inset-0 -z-10">
+	<Background />
+</div>
+
 <div class="flex min-h-screen flex-col items-center">
 	<AlertBar />
 
 	<!-- Sticky Navbar -->
-	<div class="sticky top-0 z-50 w-full">
+	<div class="bg-base-100/80 sticky top-0 z-50 h-16 w-full backdrop-blur">
 		<Navbar />
 	</div>
 
@@ -34,7 +39,7 @@
 		</div>
 
 		<!-- Main Content -->
-		<main class="prose md:prose-lg w-full px-4 pt-12 pb-8 md:pt-16">
+		<main class="prose md:prose-lg 2xl:prose-xl w-full px-4 pt-16 pb-8">
 			{@render children()}
 		</main>
 
