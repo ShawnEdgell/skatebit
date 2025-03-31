@@ -7,11 +7,10 @@
 	import { getCurrentWeekId, getPreviousWeekId } from '$lib/utils/week';
 	import { clipUpdated, alreadySubmitted } from '$lib/stores/clipUpdated';
 	import type { ClipPost } from '$lib/types/clips';
-	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
-	import VideoItem from '$lib/components/VideoItem.svelte';
-	import CountdownTimer from '$lib/components/CountdownTimer.svelte';
+	import GoogleLoginButton from '$lib/components/auth/GoogleLoginButton.svelte';
+	import VideoItem from '$lib/components/video/VideoItem.svelte';
+	import CountdownTimer from '$lib/components/ui/CountdownTimer.svelte';
 	import { saveWeeklyWinner } from '$lib/firebase/hallOfFame';
-	import Alert from '$lib/components/Alert.svelte';
 
 	const pageTitle = 'Clip of the Week';
 	const pageDescription =
@@ -157,41 +156,68 @@
 		<div class="divider"></div>
 	</section>
 
-	<section>
+	<CountdownTimer on:countdownEnded={handleCountdownEnd} />
+
+	<section class="not-prose mt-16">
 		{#if !$authReady}
-			<!-- Initial load -->
-			<div class="pt-12">Loading...</div>
+			<!-- Loading state in a card -->
+			<div class="card bg-base-300 p-2 shadow-lg">
+				<div class="card-body text-center">
+					<span class="loading loading-spinner loading-md"></span>
+					<p class="text-base-content/80 mt-4">Checking authentication...</p>
+				</div>
+			</div>
 		{:else if !$user}
-			<!-- Auth loaded but not logged in -->
-			<GoogleLoginButton />
+			<!-- Login prompt in a card -->
+			<div class="card bg-base-300 p-2 shadow-lg">
+				<div class="card-body space-y-4 text-center">
+					<h2 class="card-title text-2xl font-bold">Sign in to Submit</h2>
+					<p class="text-base-content/80 text-sm">You must be signed in to upload your clip.</p>
+					<GoogleLoginButton />
+				</div>
+			</div>
 		{:else if $alreadySubmitted}
-			<!-- Auth loaded + submitted -->
-			<h2>Submit</h2>
-			<p class="text-success">You already submitted a clip this week!</p>
+			<!-- Already submitted message in a card -->
+			<div class="card bg-base-300 p-2 shadow-lg">
+				<div class="card-body text-center">
+					<h2 class=" text-2xl font-bold">Clip Submitted</h2>
+					<p class="text-success text-sm">You’ve already submitted a clip this week. Good luck!</p>
+				</div>
+			</div>
 		{:else}
-			<form on:submit|preventDefault={handleSubmit}>
-				<h2>Submit</h2>
-				<CountdownTimer on:countdownEnded={handleCountdownEnd} />
-				<ul class="list-disc text-sm">
-					<li>1 submission allowed per week</li>
-					<li>Top post gets featured for 1 week</li>
-					<li>Winning clips will be archived in the Hall of Fame</li>
-					<li>Only YouTube links are accepted</li>
-				</ul>
-				<input
-					type="text"
-					bind:value={youtubeUrl}
-					placeholder="YouTube URL"
-					class="input input-bordered mt-4 w-full"
-				/>
-				{#if error}
-					<p class="text-error">{error}</p>
-				{/if}
-				{#if success}
-					<p class="text-success">{success}</p>
-				{/if}
-				<button type="submit" class="btn btn-primary mt-4">Submit Clip</button>
-			</form>
+			<!-- Submission form card -->
+			<div class="card bg-base-300 p-2 shadow-lg">
+				<div class="card-body space-y-4">
+					<h2 class="card-title text-2xl font-bold">🎬 Submit Your Clip</h2>
+
+					<ul class="text-base-content/80 list-inside list-disc space-y-1 text-sm">
+						<li>1 submission allowed per week</li>
+						<li>Top post gets featured for 1 week</li>
+						<li>Winning clips will be archived in the Hall of Fame</li>
+						<li>Only YouTube links are accepted</li>
+					</ul>
+
+					<form on:submit|preventDefault={handleSubmit} class="space-y-3">
+						<input
+							type="text"
+							bind:value={youtubeUrl}
+							placeholder="Enter your YouTube URL"
+							class="input input-bordered w-full"
+						/>
+
+						{#if error}
+							<div class="text-error text-sm">{error}</div>
+						{/if}
+						{#if success}
+							<div class="text-success text-sm">{success}</div>
+						{/if}
+
+						<div class="card-actions w-full justify-end">
+							<button type="submit" class="btn btn-primary w-full">Submit Clip</button>
+						</div>
+					</form>
+				</div>
+			</div>
 		{/if}
 	</section>
 
@@ -211,7 +237,7 @@
 		{:else if clips.length > 0}
 			<div class="space-y-6">
 				{#each clips as clip}
-					<div class="not-prose bg-base-200 card w-full">
+					<div class="not-prose bg-base-300 card w-full">
 						<VideoItem video={clip} />
 						<a href={`/cotw/${clip.id}`} class="card hover:bg-base-300 block p-4">
 							<div class="flex items-center justify-between text-sm">

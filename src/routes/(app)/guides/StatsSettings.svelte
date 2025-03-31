@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Card from '$lib/components/Card.svelte';
+	import Card from '$lib/components/ui/Card.svelte';
 
 	const statsData = [
 		{ title: 'XXL 3 Mod Stats', content: 'Documents / SkaterXL / XXLMod3 / StatsCollections' },

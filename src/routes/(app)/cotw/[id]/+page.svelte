@@ -13,8 +13,8 @@
 		deleteClipComment,
 		deleteClipPost
 	} from '$lib/firebase/clips';
-	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
-	import VideoItem from '$lib/components/VideoItem.svelte';
+	import GoogleLoginButton from '$lib/components/auth/GoogleLoginButton.svelte';
+	import VideoItem from '$lib/components/video/VideoItem.svelte';
 	import { formatDate } from '$lib/utils/formatDate';
 	import type { ClipPost, ClipComment } from '$lib/types/clips';
 	import { getCurrentWeekId } from '$lib/utils/week';

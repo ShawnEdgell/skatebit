@@ -1,5 +1,5 @@
 <script lang="ts">
-	import LoginAvatar from './LoginAvatar.svelte';
+	import LoginAvatar from '../auth/LoginAvatar.svelte';
 	import { navItems } from '$lib/data/navItems';
 	let drawerOpen = false;
 

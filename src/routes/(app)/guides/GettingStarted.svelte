@@ -1,5 +1,5 @@
 <script lang="ts">
-	import ImageModal from '$lib/components/ImageModal.svelte';
+	import ImageModal from '$lib/components/layout/ImageModal.svelte';
 </script>
 
 <h2>Getting Started with Skater XL Modding</h2>
@@ -9,7 +9,7 @@
 <section class="space-y-4">
 	<!-- Card 1: Check Your Game Version -->
 	<div class="not-prose">
-		<div class="card card-lg bg-base-200 shadow-sm">
+		<div class="card card-lg bg-base-300 shadow-sm">
 			<div class="card-body">
 				<span class="badge badge-warning">Step 1</span>
 				<h2 class="card-title mb-6 text-2xl">Check Your Game Version</h2>
@@ -28,7 +28,7 @@
 
 	<!-- Card 2: Changing Game Versions (Optional) -->
 	<div class="not-prose">
-		<div class="card card-lg bg-base-200 shadow-sm">
+		<div class="card card-lg bg-base-300 shadow-sm">
 			<div class="card-body">
 				<span class="badge badge-warning">Step 2</span>
 				<h2 class="card-title mb-6 text-2xl">Changing Game Versions (Optional)</h2>
@@ -48,7 +48,7 @@
 
 	<!-- Card 3: Download UnityModManager -->
 	<div class="not-prose">
-		<div class="card card-lg bg-base-200 shadow-sm">
+		<div class="card card-lg bg-base-300 shadow-sm">
 			<div class="card-body">
 				<span class="badge badge-warning">Step 3</span>
 				<h2 class="card-title mb-6 text-2xl">Download UnityModManager</h2>
@@ -71,7 +71,7 @@
 
 	<!-- Card 4: UnityModManager Setup -->
 	<div class="not-prose">
-		<div class="card card-lg bg-base-200 shadow-sm">
+		<div class="card card-lg bg-base-300 shadow-sm">
 			<div class="card-body">
 				<span class="badge badge-warning">Step 4</span>
 				<h2 class="card-title mb-6 text-2xl">UnityModManager Setup</h2>
@@ -92,7 +92,7 @@
 
 	<!-- Card 5: Install Mods -->
 	<div class="not-prose">
-		<div class="card card-lg bg-base-200 shadow-sm">
+		<div class="card card-lg bg-base-300 shadow-sm">
 			<div class="card-body">
 				<span class="badge badge-warning">Step 5</span>
 				<h2 class="card-title mb-6 text-2xl">Install Mods</h2>
@@ -118,7 +118,7 @@
 
 	<!-- Card 6: Launch Skater XL! -->
 	<div class="not-prose">
-		<div class="card card-lg bg-base-200 shadow-sm">
+		<div class="card card-lg bg-base-300 shadow-sm">
 			<div class="card-body">
 				<span class="badge badge-warning">Step 6</span>
 				<h2 class="card-title mb-6 text-2xl">Launch Skater XL!</h2>

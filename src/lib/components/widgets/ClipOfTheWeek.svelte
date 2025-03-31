@@ -1,12 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { clipUpdated } from '$lib/stores/clipUpdated'; // Import the store
-	import { getClipPosts } from '$lib/firebase/clips';
+	import { clipUpdated } from '$lib/stores/clipUpdated';
 	import { getCurrentWeekId } from '$lib/utils/week';
 	import type { ClipPost } from '$lib/types/clips';
-	import VideoItem from '$lib/components/VideoItem.svelte';
+	import VideoItem from '../video/VideoItem.svelte';
 	import { formatDate } from '$lib/utils/formatDate';
-	import CountdownTimer from './CountdownTimer.svelte';
+	import { getClipPosts } from '$lib/firebase/clips';
 
 	let clips: ClipPost[] = [];
 	let topClip: ClipPost | null = null;
@@ -36,14 +35,9 @@
 </script>
 
 {#if topClip}
-	<div class="card bg-base-200 p-4 shadow">
+	<div class="card bg-base-300 p-4">
 		<h3 class="mb-2 text-lg font-semibold">🎬 Clip of the Week</h3>
-		<div class="mb-2">
-			<CountdownTimer />
-		</div>
-
 		<VideoItem video={topClip} />
-
 		<div class="my-3">
 			<a href={`/cotw/${topClip.id}`} class="flex items-center gap-3 transition hover:opacity-90">
 				<img
@@ -69,9 +63,6 @@
 {:else}
 	<div class="card bg-base-200 p-4 shadow">
 		<h3 class="mb-2 text-lg font-semibold">🎬 Clip of the Week</h3>
-		<div class="mb-2">
-			<CountdownTimer />
-		</div>
 		<p class="text-sm opacity-60">
 			No clips submitted yet. Be the first to upload and claim the spotlight!
 		</p>

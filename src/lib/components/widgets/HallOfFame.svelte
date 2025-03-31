@@ -13,7 +13,7 @@
 	});
 </script>
 
-<div class="card bg-base-200 p-4 shadow">
+<div class="card bg-base-300 p-4">
 	<h3 class="mb-3 text-lg font-semibold">🏆 Hall of Fame</h3>
 
 	{#if entries.length > 0}

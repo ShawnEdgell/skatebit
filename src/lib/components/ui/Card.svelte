@@ -4,7 +4,7 @@
 	export let download: string = '';
 </script>
 
-<div class="card card-lg bg-base-200 not-prose">
+<div class="card card-lg bg-base-300 not-prose">
 	<div class="card-body">
 		<h2 class="card-title prose">{title}</h2>
 		{#if content}

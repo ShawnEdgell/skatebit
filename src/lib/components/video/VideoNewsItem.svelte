@@ -33,9 +33,9 @@
 	}
 </script>
 
-<div class="not-prose card bg-base-200 mt-6 shadow-md">
+<div class="not-prose card bg-base-300 mt-6">
 	<!-- Video -->
-	<div class="relative h-0 w-full overflow-hidden bg-black pb-[56.25%]">
+	<div class="relative h-0 w-full overflow-hidden pb-[56.25%]">
 		{#if showIframe}
 			<iframe
 				src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1`}

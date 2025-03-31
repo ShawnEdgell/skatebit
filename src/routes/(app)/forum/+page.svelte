@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
+	import GoogleLoginButton from '$lib/components/auth/GoogleLoginButton.svelte';
 	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/auth';
 	import type { ForumPost } from '$lib/types/forum';

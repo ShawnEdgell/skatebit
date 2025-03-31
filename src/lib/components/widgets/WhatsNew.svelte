@@ -19,7 +19,7 @@
 	];
 </script>
 
-<div class="card bg-base-200 space-y-4 p-4 shadow">
+<div class="card bg-base-300 space-y-4 p-4">
 	<h3 class="text-lg font-semibold">👀 What’s New?</h3>
 
 	<ul class="list-inside list-disc space-y-2 text-sm">

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { user } from '$lib/stores/auth';
-	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
+	import GoogleLoginButton from './GoogleLoginButton.svelte';
 </script>
 
 <div class="dropdown dropdown-end">

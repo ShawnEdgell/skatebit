@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
 	import { user } from '$lib/stores/auth';
-	import GoogleLoginButton from '$lib/components/GoogleLoginButton.svelte';
+	import GoogleLoginButton from '$lib/components/auth/GoogleLoginButton.svelte';
 	import { formatDate } from '$lib/utils/formatDate';
 	import type { ForumPost, ForumComment } from '$lib/types/forum';
 	import {

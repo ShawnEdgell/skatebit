@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Card from '$lib/components/Card.svelte';
+	import Card from '$lib/components/ui/Card.svelte';
 
 	const mapGearData = [
 		{ title: 'Custom Maps', content: 'Documents / SkaterXL / Maps' },
