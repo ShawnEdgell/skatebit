@@ -17,9 +17,9 @@
 	let { children } = $props();
 </script>
 
-<div class="fixed inset-0 -z-10">
+<!-- <div class="fixed inset-0 -z-10">
 	<Background />
-</div>
+</div> -->
 
 <div class="flex min-h-screen flex-col items-center">
 	<AlertBar />
