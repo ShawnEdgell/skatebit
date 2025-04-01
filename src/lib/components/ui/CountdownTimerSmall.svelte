@@ -6,14 +6,16 @@
 	let hours = 0;
 	let minutes = 0;
 	let seconds = 0;
-	let interval: number;
+	let interval: number | undefined;
 
+	// Ensure we have a fallback for the class function
 	function getColorClass() {
 		if (days === 0 && hours === 0) return 'text-error';
 		if (days === 0) return 'text-warning';
 		return 'text-success';
 	}
 
+	// Ensure the update function works with a valid time diff
 	function updateCountdown() {
 		const now = new Date();
 		const endOfWeek = getEndOfCurrentWeek();
@@ -31,13 +33,17 @@
 		seconds = Math.floor((diff / 1000) % 60);
 	}
 
+	// Set up the interval and make sure it's cleared
 	onMount(() => {
 		updateCountdown();
 		interval = window.setInterval(updateCountdown, 1000);
 	});
 
+	// Clean up interval on destroy
 	onDestroy(() => {
-		clearInterval(interval);
+		if (interval) {
+			clearInterval(interval);
+		}
 	});
 </script>
 
