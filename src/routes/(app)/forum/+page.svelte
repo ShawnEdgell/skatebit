@@ -79,9 +79,9 @@
 
 {#if $user}
 	<section class="not-prose">
-		<div class="card bg-base-200 p-2 shadow-lg">
+		<div class="card bg-base-200">
 			<div class="card-body space-y-4">
-				<h2 class="card-title text-2xl font-bold">📝 Create Thread</h2>
+				<h2 class="card-title text-2xl font-bold">Create Thread</h2>
 
 				<form on:submit|preventDefault={createThread} class="space-y-3">
 					<input
@@ -98,7 +98,7 @@
 					></textarea>
 
 					<div class="card-actions w-full justify-end">
-						<button type="submit" class="btn btn-primary w-full">Post Thread</button>
+						<button type="submit" class="btn btn-primary">Post Thread</button>
 					</div>
 				</form>
 			</div>

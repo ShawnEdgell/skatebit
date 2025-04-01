@@ -95,10 +95,15 @@
 			await submitClipPost(postData);
 			success = 'Clip submitted successfully!';
 			youtubeUrl = '';
-			await new Promise((r) => setTimeout(r, 250)); // Give Firestore time to sync
+			await new Promise((r) => setTimeout(r, 250));
 			await checkSubmissionStatus();
 			await loadClips();
 			clipUpdated.set(true);
+
+			// ✅ Refresh TOC after layout/UI has updated
+			setTimeout(() => {
+				window.dispatchEvent(new CustomEvent('refresh-toc'));
+			}, 100); // delay slightly to let DOM update
 		} catch (err) {
 			error = 'Submission failed. Try again.';
 			console.error(err);
@@ -129,10 +134,14 @@
 		if ($user) {
 			await checkSubmissionStatus();
 		} else {
-			// If no user at mount, you might delay the check or set up a watcher
-			checkingSubmission = false; // stop loading, show login prompt for now
+			checkingSubmission = false;
 		}
 		await loadClips();
+
+		// ✅ Emit TOC refresh once layout is stable
+		if (typeof window !== 'undefined') {
+			window.dispatchEvent(new CustomEvent('refresh-toc'));
+		}
 	});
 
 	$: if ($user && $user.uid) {
@@ -186,7 +195,7 @@
 			<!-- Submission form card -->
 			<div class="card bg-base-200 mt-6 p-2">
 				<div class="card-body space-y-4">
-					<h2 class="card-title text-2xl font-bold">🎬 Submit a Clip</h2>
+					<h2 class="card-title text-2xl font-bold">Submit a Clip</h2>
 
 					<ul class="text-base-content/80 list-inside list-disc space-y-1 text-sm">
 						<li>1 submission allowed per week</li>
@@ -211,7 +220,7 @@
 						{/if}
 
 						<div class="card-actions w-full justify-end">
-							<button type="submit" class="btn btn-primary w-full">Submit Clip</button>
+							<button type="submit" class="btn btn-primary">Submit Clip</button>
 						</div>
 					</form>
 				</div>
@@ -220,15 +229,23 @@
 	</section>
 
 	<section>
-		<h2 class="flex flex-wrap items-center justify-between gap-2">
-			<span>This Week's Clips</span>
+		<div class="flex items-end justify-between gap-4">
+			<h2 class="m-0 text-2xl leading-tight font-bold">This Week's Clips</h2>
+
 			{#if clips.length > 0}
-				<select bind:value={sortOption} on:change={loadClips} class="select select-sm w-28">
-					<option value="latest">Newest</option>
-					<option value="popular">Popular</option>
-				</select>
+				<!-- Dropdown aligned to bottom of heading -->
+				<div class="flex items-end">
+					<select
+						bind:value={sortOption}
+						on:change={loadClips}
+						class="select select-sm mb-6 w-36 lg:mb-8"
+					>
+						<option value="latest">Newest</option>
+						<option value="popular">Popular</option>
+					</select>
+				</div>
 			{/if}
-		</h2>
+		</div>
 
 		{#if loadingClips}
 			<p class="mt-4 text-sm opacity-50">Loading clips...</p>
