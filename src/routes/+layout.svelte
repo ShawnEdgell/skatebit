@@ -19,11 +19,9 @@
 	let { children } = $props();
 </script>
 
-<Background />
-
 <div class="flex min-h-screen flex-col">
 	<!-- Header -->
-	<div class="bg-base-100/20 sticky top-0 z-50 w-full backdrop-blur-2xl">
+	<div class="bg-base-100 sticky top-0 z-50 w-full backdrop-blur-2xl">
 		<AlertBar />
 		<Navbar />
 	</div>
