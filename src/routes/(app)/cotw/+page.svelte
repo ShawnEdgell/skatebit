@@ -167,9 +167,9 @@
 		<section class="not-prose">
 			{#if !$authReady}
 				<!-- Loading state in a card -->
-				<div class="card bg-base-200 h-36 p-2">
-					<div class="card-body text-center">
-						<p class="text-base-content/80 mt-4">Checking authentication...</p>
+				<div class="card bg-base-200 p-2">
+					<div class="card-body flex items-center justify-center">
+						<span class="loading loading-spinner loading-lg text-primary mt-12"></span>
 					</div>
 				</div>
 			{:else if !$user}
@@ -186,7 +186,7 @@
 			{:else if $alreadySubmitted}
 				<!-- Already submitted message in a card -->
 				<div class="card bg-base-200 h-36 p-2">
-					<div class="card-body mt-2 text-center">
+					<div class="card-body mt-2- text-center">
 						<h2 class="text-2xl font-bold">Clip Submitted</h2>
 						<p class="text-success text-sm">
 							You’ve already submitted a clip this week. Good luck!
