@@ -4,10 +4,20 @@ import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
 export const googleProvider = new GoogleAuthProvider();
 
 export async function signInWithGoogle() {
-	const result = await signInWithPopup(auth, googleProvider);
-	return result.user;
+	try {
+		const result = await signInWithPopup(auth, googleProvider);
+		return result.user;
+	} catch (error) {
+		console.error('Google login failed:', error);
+		throw error;
+	}
 }
 
 export async function logout() {
-	return await signOut(auth);
+	try {
+		await signOut(auth);
+	} catch (error) {
+		console.error('Logout failed:', error);
+		throw error;
+	}
 }

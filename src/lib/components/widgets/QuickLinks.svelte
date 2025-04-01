@@ -17,7 +17,6 @@
 					<a
 						{href}
 						target="_blank"
-						rel="noopener noreferrer"
 						class="btn btn-sm btn-outline btn-primary w-full justify-start text-left"
 					>
 						{label}

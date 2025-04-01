@@ -6,16 +6,10 @@
 	let hours = 0;
 	let minutes = 0;
 	let seconds = 0;
-	let interval: number | undefined;
 
-	// Ensure we have a fallback for the class function
-	function getColorClass() {
-		if (days === 0 && hours === 0) return 'text-error';
-		if (days === 0) return 'text-warning';
-		return 'text-success';
-	}
+	let colorClass = 'text-success'; // default to green
+	let interval: ReturnType<typeof setInterval>;
 
-	// Ensure the update function works with a valid time diff
 	function updateCountdown() {
 		const now = new Date();
 		const endOfWeek = getEndOfCurrentWeek();
@@ -24,6 +18,7 @@
 		if (diff <= 0) {
 			clearInterval(interval);
 			days = hours = minutes = seconds = 0;
+			colorClass = 'text-error'; // time's up
 			return;
 		}
 
@@ -31,25 +26,30 @@
 		hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
 		minutes = Math.floor((diff / (1000 * 60)) % 60);
 		seconds = Math.floor((diff / 1000) % 60);
+
+		// Set urgency-based color
+		if (days === 0 && hours === 0) {
+			colorClass = 'text-error';
+		} else if (days === 0) {
+			colorClass = 'text-warning';
+		} else {
+			colorClass = 'text-success';
+		}
 	}
 
-	// Set up the interval and make sure it's cleared
 	onMount(() => {
 		updateCountdown();
-		interval = window.setInterval(updateCountdown, 1000);
+		interval = setInterval(updateCountdown, 1000);
 	});
 
-	// Clean up interval on destroy
 	onDestroy(() => {
-		if (interval) {
-			clearInterval(interval);
-		}
+		clearInterval(interval);
 	});
 </script>
 
-<span class={`countdown font-mono ${getColorClass()}`} aria-label="Countdown to end of week">
-	<span style={`--value:${days}`} aria-label={`${days} days`}></span>:
-	<span style={`--value:${hours}`} aria-label={`${hours} hours`}></span>:
-	<span style={`--value:${minutes}`} aria-label={`${minutes} minutes`}></span>:
-	<span style={`--value:${seconds}`} aria-label={`${seconds} seconds`}></span>
+<span class={`countdown font-mono ${colorClass}`} aria-label="Countdown to end of week">
+	<span style={`--value:${days}`} aria-label={`${days} days`}>{days}</span>:
+	<span style={`--value:${hours}`} aria-label={`${hours} hours`}>{hours}</span>:
+	<span style={`--value:${minutes}`} aria-label={`${minutes} minutes`}>{minutes}</span>:
+	<span style={`--value:${seconds}`} aria-label={`${seconds} seconds`}>{seconds}</span>
 </span>
