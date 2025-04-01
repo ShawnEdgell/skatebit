@@ -27,6 +27,6 @@
 			{/each}
 		</ul>
 	{:else}
-		<p class="text-sm opacity-60">No winners yet. Check back after the first week ends!</p>
+		<p class="text-sm opacity-60">No winners yet.</p>
 	{/if}
 </div>

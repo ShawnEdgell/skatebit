@@ -25,7 +25,7 @@
 
 {#if typeof window === 'undefined'}
 	<!-- Avoid SSR flash -->
-	<p>Loading...</p>
+	<span class="loading loading-spinner loading-lg text-primary"></span>
 {:else if $user}
 	<button on:click={handleLogout} class="btn btn-error">Logout</button>
 {:else}

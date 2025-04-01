@@ -39,7 +39,7 @@
 			</aside>
 
 			<!-- Main Content -->
-			<main class="prose md:prose-lg my-6 w-full">
+			<main class="prose md:prose-lg mb-6 w-full">
 				{@render children()}
 			</main>
 
@@ -51,7 +51,6 @@
 			</aside>
 		</div>
 	</div>
-
 	<!-- Footer -->
 	<Footer />
 </div>

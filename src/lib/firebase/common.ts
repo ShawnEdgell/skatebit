@@ -1,4 +1,3 @@
-// Complete firebase common.ts
 import {
 	collection,
 	doc,
@@ -16,6 +15,11 @@ import {
 } from 'firebase/firestore';
 import { db } from './init';
 
+function docRef(path: string, id: string) {
+	return doc(db, path, id);
+}
+
+// 🔹 Generic Collection Fetch
 export async function getCollection<T>(
 	path: string,
 	...constraints: QueryConstraint[]
@@ -25,6 +29,7 @@ export async function getCollection<T>(
 	return snapshot.docs.map((d) => ({ id: d.id, ...d.data() })) as T[];
 }
 
+// 🔹 Add New Item to Collection
 export async function addItem<T>(path: string, data: T): Promise<string> {
 	const docRef = await addDoc(collection(db, path), {
 		...data,
@@ -34,8 +39,9 @@ export async function addItem<T>(path: string, data: T): Promise<string> {
 	return docRef.id;
 }
 
+// 🔹 Like / Unlike Handler (for posts or comments)
 export async function toggleLike(path: string, id: string, userId: string): Promise<void> {
-	const ref = doc(db, path, id);
+	const ref = docRef(path, id);
 	const snap = await getDoc(ref);
 	const data = snap.data();
 
@@ -48,10 +54,12 @@ export async function toggleLike(path: string, id: string, userId: string): Prom
 	});
 }
 
+// 🔹 Comments: Read
 export async function getComments<T>(parentPath: string): Promise<T[]> {
 	return getCollection<T>(parentPath, orderBy('createdAt', 'desc'));
 }
 
+// 🔹 Comments: Create
 export async function addComment<T>(
 	parentPath: string,
 	comment: Omit<T, 'id' | 'createdAt' | 'updatedAt' | 'likes' | 'likedBy'>
@@ -73,6 +81,7 @@ export async function addComment<T>(
 	} as T;
 }
 
+// 🔹 Comments: Edit
 export async function editComment(parentPath: string, newText: string): Promise<void> {
 	await updateDoc(doc(db, parentPath), {
 		text: newText,
@@ -80,8 +89,7 @@ export async function editComment(parentPath: string, newText: string): Promise<
 	});
 }
 
+// 🔹 Comments: Delete
 export async function deleteComment(parentPath: string): Promise<void> {
 	await deleteDoc(doc(db, parentPath));
 }
-
-// forum.ts and clips.ts will use the above functions for handling Firestore operations clearly and effectively.

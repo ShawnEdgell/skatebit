@@ -1,6 +1,5 @@
 <script lang="ts">
 	import ModListSection from './ModListSection.svelte';
-	import { Help } from '$lib/components';
 
 	const pageTitle = 'Mods';
 	const pageDescription = 'Select your game version below to view a list of compatible mods.';

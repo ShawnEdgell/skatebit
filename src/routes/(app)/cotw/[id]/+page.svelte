@@ -11,13 +11,13 @@
 		likeClipComment,
 		editClipComment,
 		deleteClipComment,
-		deleteClipPost
+		deleteClipPost,
+		getUserClipThisWeek
 	} from '$lib/firebase/clips';
-	import { GoogleLoginButton, VideoItem } from '$lib/components';
+	import { GoogleLoginButton, VideoCard } from '$lib/components';
 	import { formatDate } from '$lib/utils/formatDate';
-	import type { ClipPost, ClipComment } from '$lib/types/clips';
 	import { getCurrentWeekId } from '$lib/utils/week';
-	import { getUserClipThisWeek } from '$lib/firebase/clips';
+	import type { ClipPost, ClipComment } from '$lib/types/clips';
 
 	let clip: ClipPost | null = null;
 	let comments: ClipComment[] = [];
@@ -38,7 +38,7 @@
 		if (!newComment.trim()) return;
 		if (!$user || !clipId) return;
 		await addClipComment(clipId, {
-			clipId: clipId,
+			clipId,
 			text: newComment,
 			authorId: $user.uid,
 			authorName: $user.displayName || 'Anonymous',
@@ -95,7 +95,6 @@
 			await waitForDeletionToPropagate($user.uid, weekId);
 		}
 
-		// Use SPA-style navigation after confirming deletion
 		goto('/cotw');
 	}
 </script>
@@ -108,11 +107,21 @@
 <div>
 	<a href="/cotw" class="btn btn-soft mb-6 no-underline">Back to Clips</a>
 
-	{#if loading}
-		<p>Loading clip...</p>
-	{:else if clip}
-		<VideoItem video={clip} />
+	<!-- Video Display or Placeholder -->
+	<div class="bg-base-300 relative aspect-[16/9] w-full overflow-hidden rounded-md">
+		{#if loading}
+			<!-- Spinner Centered in Placeholder -->
+			<div class="absolute inset-0 flex items-center justify-center">
+				<span class="loading loading-spinner loading-lg text-primary"></span>
+			</div>
+		{:else if clip}
+			<!-- Actual Video Component -->
+			<VideoCard video={clip} />
+		{/if}
+	</div>
 
+	{#if !loading && clip}
+		<!-- Uploader Info -->
 		<div class="not-prose my-6 flex items-center gap-2">
 			<img
 				src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
@@ -127,6 +136,7 @@
 			{/if}
 		</div>
 
+		<!-- Like + Delete Buttons -->
 		{#if $user}
 			<button class="btn btn-sm" on:click={toggleLike}>
 				{clip.likedBy?.includes($user.uid) ? '❤️ Liked' : '🤍 Like'}
@@ -136,8 +146,9 @@
 		{#if clip.uid === $user?.uid}
 			<button class="btn btn-sm" on:click={removeClip}>Delete</button>
 		{/if}
-	{:else}
-		<p>Clip not found.</p>
+	{:else if !loading && !clip}
+		<!-- Only show this if not loading and no clip was found -->
+		<p class="text-error mt-4 text-sm">Clip not found.</p>
 	{/if}
 
 	<div class="divider mb-6"></div>
@@ -200,9 +211,9 @@
 						>
 							Edit
 						</button>
-						<button class="btn btn-sm mt-1" on:click={() => removeComment(comment.id)}
-							>Delete</button
-						>
+						<button class="btn btn-sm mt-1" on:click={() => removeComment(comment.id)}>
+							Delete
+						</button>
 					{/if}
 				</div>
 				<div class="divider"></div>

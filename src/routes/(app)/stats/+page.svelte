@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { Help } from '$lib/components';
-
 	const pageTitle = 'Stats & Settings';
 	const pageDescription = 'Download presets for your Skater XL mods.';
 </script>
@@ -14,7 +12,11 @@
 <!-- Header -->
 <section>
 	<h1>{pageTitle}</h1>
-	<Help />
+	<p>
+		For help with installation, visit our <a href="/guides" class="hover:no-underline">Guides</a>
+		section or ask us questions on
+		<a class="hover:no-underline" href="https://discord.gg/G9aW5uV" target="_blank">Discord.</a>
+	</p>
 	<div class="divider"></div>
 </section>
 

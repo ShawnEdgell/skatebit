@@ -1,22 +1,23 @@
+<!-- VideoPlayerCard.svelte -->
 <script lang="ts">
 	import type { YouTubeItem } from '$lib/types/youtube';
+
 	export let video: YouTubeItem;
+	export let showMeta: boolean = false;
+	export let showDescription: boolean = false;
+	export let cardStyle: boolean = false;
 
 	let showIframe = false;
 	let showFullDescription = false;
 
-	/**
-	 * Toggles the visibility of the full video description.
-	 */
+	function loadIframe() {
+		showIframe = true;
+	}
+
 	function toggleDescription() {
 		showFullDescription = !showFullDescription;
 	}
 
-	/**
-	 * Formats the published date to a readable string.
-	 * @param dateString - The ISO date string.
-	 * @returns A formatted date string.
-	 */
 	function formatDate(dateString: string): string {
 		return new Date(dateString).toLocaleDateString('en-US', {
 			month: 'long',
@@ -24,25 +25,18 @@
 			year: 'numeric'
 		});
 	}
-
-	/**
-	 * Loads the iframe to play the video.
-	 */
-	function loadIframe() {
-		showIframe = true;
-	}
 </script>
 
-<div class="not-prose card bg-base-300 mt-6">
+<div class={`w-full ${cardStyle ? 'not-prose card bg-base-300 mt-6' : ''}`}>
 	<!-- Video -->
-	<div class="relative h-0 w-full overflow-hidden pb-[56.25%]">
+	<div class="bg-base-300 relative aspect-[16/9] w-full rounded-md">
 		{#if showIframe}
 			<iframe
 				src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1`}
 				title={video.title}
-				frameborder="0"
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 				allowfullscreen
+				loading="lazy"
 				class="absolute top-0 left-0 h-full w-full"
 			></iframe>
 		{:else}
@@ -77,55 +71,51 @@
 		{/if}
 	</div>
 
-	<!-- Card Content -->
-	<div class="card-body space-y-4">
-		<!-- Title -->
-		<h2 class="text-xl font-bold">{video.title}</h2>
+	{#if cardStyle}
+		<div class="card-body space-y-4">
+			<h2 class="text-xl font-bold">{video.title}</h2>
 
-		<!-- Meta -->
-		<div class="flex items-center gap-2 text-sm opacity-80">
-			{#if video.channelAvatar}
-				<img
-					src={video.channelAvatar}
-					alt={video.channelTitle}
-					class="h-6 w-6 rounded-full"
-					loading="lazy"
-				/>
+			{#if showMeta}
+				<div class="flex items-center gap-2 text-sm opacity-80">
+					{#if video.channelAvatar}
+						<img
+							src={video.channelAvatar}
+							alt={video.channelTitle}
+							class="h-6 w-6 rounded-full"
+							loading="lazy"
+						/>
+					{/if}
+					<span class="font-medium">{video.channelTitle}</span>
+					<span class="mx-1">•</span>
+					<span>{video.publishedAt ? formatDate(video.publishedAt) : 'Unknown date'}</span>
+				</div>
 			{/if}
-			<span class="font-medium">{video.channelTitle}</span>
-			<span class="mx-1">•</span>
-			{#if video.publishedAt}
-				<span>Uploaded on {formatDate(video.publishedAt)}</span>
-			{:else}
-				<span>Uploaded on Unknown date</span>
+
+			{#if showDescription && video.description?.trim()}
+				<div class="prose">
+					{#if video.description.length > 100}
+						{#if showFullDescription}
+							<p class="mb-2">{video.description}</p>
+							<button
+								on:click={toggleDescription}
+								class="text-accent mt-2 cursor-pointer border-none bg-transparent p-0 underline hover:no-underline"
+							>
+								Show less
+							</button>
+						{:else}
+							<p class="mb-2">{video.description.slice(0, 100)}...</p>
+							<button
+								on:click={toggleDescription}
+								class="text-accent mt-2 cursor-pointer border-none bg-transparent p-0 underline hover:no-underline"
+							>
+								Read more
+							</button>
+						{/if}
+					{:else}
+						<p>{video.description}</p>
+					{/if}
+				</div>
 			{/if}
 		</div>
-
-		<!-- Description -->
-		{#if video.description?.trim()}
-			<div class="prose">
-				{#if video.description.length > 100}
-					{#if showFullDescription}
-						<p class="mb-2">{video.description}</p>
-						<button
-							on:click={toggleDescription}
-							class="text-accent mt-2 cursor-pointer border-none bg-transparent p-0 underline hover:no-underline"
-						>
-							Show less
-						</button>
-					{:else}
-						<p class="mb-2">{video.description.slice(0, 100)}...</p>
-						<button
-							on:click={toggleDescription}
-							class="text-accent mt-2 cursor-pointer border-none bg-transparent p-0 underline hover:no-underline"
-						>
-							Read more
-						</button>
-					{/if}
-				{:else}
-					<p>{video.description}</p>
-				{/if}
-			</div>
-		{/if}
-	</div>
+	{/if}
 </div>
