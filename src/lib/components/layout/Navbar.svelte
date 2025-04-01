@@ -13,8 +13,8 @@
 
 	<!-- Main navbar content -->
 	<div class="drawer-content w-full">
-		<div class="navbar px-6">
-			<div class="mx-auto flex w-full max-w-5xl items-center justify-between">
+		<div class="navbar px-4">
+			<div class="mx-auto flex w-full items-center justify-between">
 				<!-- Left side -->
 				<div class="flex items-center gap-2">
 					<div class="flex-none md:hidden">

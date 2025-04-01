@@ -29,8 +29,8 @@
 	<!-- Main Layout with Flex -->
 	<div class="mx-6 flex flex-1 justify-center">
 		<!-- Left Sidebar -->
-		<aside class="hidden max-w-sm min-w-sm lg:block">
-			<div class="sticky top-24 my-6 mr-6 h-[calc(100vh-8rem)] space-y-6 overflow-y-auto">
+		<aside class="hidden max-w-xs min-w-xs lg:block">
+			<div class="sticky top-36 mr-6 h-[calc(100vh-8rem)] space-y-6 overflow-y-auto">
 				<QuickLinks />
 				<ClipOfTheWeek />
 				<HallOfFame />

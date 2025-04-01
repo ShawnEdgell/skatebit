@@ -3,8 +3,8 @@
 </script>
 
 <!-- Desktop Alert Bar -->
-<div class="bg-primary w-full px-6">
-	<div class="navbar mx-auto w-full max-w-5xl justify-center md:justify-between">
+<div class="bg-primary w-full px-4">
+	<div class="navbar mx-auto w-full justify-center md:justify-between">
 		<p class="hidden text-sm md:block">
 			Check out the new <strong>Clip of the Week</strong> page!
 		</p>
