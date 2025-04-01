@@ -1,6 +1,6 @@
 <script lang="ts">
 	const links = [
-		{ label: 'SkaterXL Mod.io', href: 'https://mod.io/g/skaterxl' },
+		{ label: 'skaterxl.mod.io', href: 'https://mod.io/g/skaterxl' },
 		{ label: 'XL Hub by Fro', href: 'https://mod.io/g/skaterxl/m/xlhub' },
 		{ label: 'Unity Mod Manager', href: 'https://www.nexusmods.com/site/mods/21?tab=files' },
 		{ label: 'Skater XL Discord', href: 'https://discord.gg/uDkSEBKdga' },

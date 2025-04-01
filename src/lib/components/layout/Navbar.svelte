@@ -9,57 +9,52 @@
 </script>
 
 <div class="drawer">
-	<input
-		id="my-drawer-3"
-		type="checkbox"
-		class="drawer-toggle"
-		bind:checked={drawerOpen}
-		aria-label="Toggle navigation drawer"
-	/>
-	<div class="drawer-content flex flex-col items-center">
-		<!-- Navbar -->
-		<div class="navbar w-full justify-between">
-			<div class="flex items-center">
-				<div class="flex-none md:hidden">
-					<label for="my-drawer-3" aria-label="open sidebar" class="btn btn-square btn-ghost">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							fill="none"
-							viewBox="0 0 24 24"
-							class="inline-block h-6 w-6 stroke-current"
-						>
-							<path
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								stroke-width="2"
-								d="M4 6h16M4 12h16M4 18h16"
-							></path>
-						</svg>
-					</label>
-				</div>
-				<div class="ps-4">
+	<input id="my-drawer-3" type="checkbox" class="drawer-toggle" bind:checked={drawerOpen} />
+
+	<!-- Main navbar content -->
+	<div class="drawer-content w-full">
+		<div class="navbar px-6">
+			<div class="mx-auto flex w-full max-w-5xl items-center justify-between">
+				<!-- Left side -->
+				<div class="flex items-center gap-2">
+					<div class="flex-none md:hidden">
+						<label for="my-drawer-3" class="btn btn-square btn-ghost">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M4 6h16M4 12h16M4 18h16"
+								/>
+							</svg>
+						</label>
+					</div>
 					<a href="/" class="text-lg font-bold">skatebit</a>
 				</div>
-			</div>
-			<div class="flex-none">
-				<ul class="menu menu-horizontal">
-					<!-- Navbar menu content here -->
-					{#each navItems as { href, label }}
-						<li class="hidden md:block">
-							<a {href}>
-								<span>{label}</span>
-							</a>
-						</li>
-					{/each}
-				</ul>
-				<LoginAvatar />
+
+				<!-- Right side -->
+				<div class="flex flex-none items-center gap-4">
+					<ul class="menu menu-horizontal hidden gap-2 md:flex">
+						{#each navItems as { href, label }}
+							<li><a {href}>{label}</a></li>
+						{/each}
+					</ul>
+					<LoginAvatar />
+				</div>
 			</div>
 		</div>
 	</div>
+
+	<!-- Drawer (mobile nav) -->
 	<div class="drawer-side">
-		<label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+		<label for="my-drawer-3" class="drawer-overlay"></label>
 		<ul class="menu bg-base-200 min-h-full w-80 p-4">
-			<!-- Sidebar content here -->
 			{#each navItems as { href, label }}
 				<li>
 					<a class="btn-xl" {href} on:click={closeDrawer}>

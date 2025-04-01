@@ -118,13 +118,19 @@
 {/if}
 
 <section>
-	<h2 class="flex flex-wrap items-center justify-between gap-2">
-		<span>Forum Posts</span>
-		<select bind:value={sortOption} on:change={loadForumPosts} class="select select-sm w-24">
+	<div class="mb-4 flex items-center justify-between">
+		<h2 class="m-0 text-lg font-bold">Forum Posts</h2>
+
+		<!-- Remove inherited prose styles with 'not-prose' -->
+		<select
+			bind:value={sortOption}
+			on:change={loadForumPosts}
+			class="select select-sm not-prose w-24"
+		>
 			<option value="latest">Latest</option>
 			<option value="popular">Popular</option>
 		</select>
-	</h2>
+	</div>
 
 	{#if forumPosts.length > 0}
 		{#each forumPosts as post}

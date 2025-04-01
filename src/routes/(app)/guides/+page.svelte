@@ -40,7 +40,12 @@
 	{#each tabs as tab}
 		<button
 			class="btn w-full {selectedTab === tab.id ? 'btn-primary' : 'btn-base'}"
-			on:click={() => (selectedTab = tab.id)}
+			on:click={() => {
+				selectedTab = tab.id;
+				requestAnimationFrame(() => {
+					dispatchEvent(new CustomEvent('refresh-toc'));
+				});
+			}}
 			aria-label={tab.label}
 		>
 			{tab.label}
