@@ -1,6 +1,7 @@
 <script lang="ts">
 	import LoginAvatar from '../auth/LoginAvatar.svelte';
 	import { navItems } from '$lib/data/navItems';
+
 	let drawerOpen = false;
 
 	function closeDrawer() {
@@ -39,7 +40,10 @@
 							</svg>
 						</label>
 					</div>
-					<a href="/" class="pl-2 text-lg font-bold">skatebit</a>
+
+					<a href="/" class="flex items-center pl-2 text-lg font-bold">
+						<span>skatebit</span>
+					</a>
 				</div>
 
 				<!-- Right side -->
@@ -58,13 +62,13 @@
 	<!-- Drawer (mobile nav) -->
 	<div class="drawer-side">
 		<label for="my-drawer-3" class="drawer-overlay"></label>
-		<ul class="menu bg-base-200 min-h-full w-80 p-4">
+		<ul class="menu bg-base-200 min-h-full w-80">
 			{#each navItems as { href, label }}
-				<li>
-					<a class="btn-xl" {href} on:click={closeDrawer}>
+				<div class="join join-vertical">
+					<a class="btn btn-lg join-item" {href} on:click={closeDrawer}>
 						<span>{label}</span>
 					</a>
-				</li>
+				</div>
 			{/each}
 		</ul>
 	</div>
