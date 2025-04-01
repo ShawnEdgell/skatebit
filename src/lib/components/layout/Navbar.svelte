@@ -35,11 +35,11 @@
 							</svg>
 						</label>
 					</div>
-					<a href="/" class="text-lg font-bold">skatebit</a>
+					<a href="/" class="pl-2 text-lg font-bold">skatebit</a>
 				</div>
 
 				<!-- Right side -->
-				<div class="flex flex-none items-center gap-4">
+				<div class="flex flex-none items-center gap-4 md:pr-2">
 					<ul class="menu menu-horizontal hidden gap-2 md:flex">
 						{#each navItems as { href, label }}
 							<li><a {href}>{label}</a></li>
