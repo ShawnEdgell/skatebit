@@ -9,5 +9,5 @@ export const authReady = writable(false);
 
 onAuthStateChanged(auth, (u) => {
 	user.set(u);
-	authReady.set(true); // ✅ mark auth as initialized
+	authReady.set(true);
 });

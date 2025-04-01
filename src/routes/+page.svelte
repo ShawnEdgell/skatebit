@@ -10,13 +10,6 @@
 
 	const { videos } = data;
 
-	const tabs = [
-		{ id: 'all', label: 'All' },
-		{ id: 'Skater XL', label: 'Skater XL' },
-		{ id: 'Session', label: 'Session' },
-		{ id: 'Skate', label: 'Skate' }
-	];
-
 	let selectedTab = 'all';
 
 	$: filteredVideos =
@@ -34,21 +27,9 @@
 	<div class="divider mb-12"></div>
 </section>
 
-<!-- <div class="mt-6 flex flex-col">
-	{#each tabs as tab}
-		<button
-			class="btn {selectedTab === tab.id ? 'btn-primary  ' : 'btn-base'}"
-			on:click={() => (selectedTab = tab.id)}
-			aria-label={tab.label}
-		>
-			{tab.label}
-		</button>
-	{/each}
-</div> -->
-
 {#if filteredVideos && filteredVideos.length > 0}
 	{#each filteredVideos as video (video.videoId)}
-		<VideoCard {video} />
+		<VideoCard {video} cardStyle={true} showMeta={true} showDescription={true} />
 	{/each}
 {:else}
 	<p>No videos available.</p>
