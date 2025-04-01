@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount, onDestroy } from 'svelte';
+	import CountdownTimerSmall from '../ui/CountdownTimerSmall.svelte';
 	import { getEndOfCurrentWeek } from '$lib/utils/week';
 
 	let days = 0;
