@@ -4,10 +4,10 @@
 		AlertBar,
 		ClipOfTheWeek,
 		HallOfFame,
-		Background,
 		QuickLinks,
 		Navbar,
-		Footer
+		Footer,
+		TableOfContents
 	} from '$lib/components';
 	import { dev } from '$app/environment';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
@@ -21,35 +21,37 @@
 
 <div class="flex min-h-screen flex-col">
 	<!-- Header -->
-	<div class="bg-base-100 sticky top-0 z-50 h-[144px] w-full backdrop-blur-2xl">
+	<div class="bg-base-100 sticky top-0 z-50 w-full">
 		<AlertBar />
 		<Navbar />
 	</div>
 
-	<!-- Main Layout with Flex -->
-	<div class="mx-6 flex flex-1 justify-center">
-		<!-- Left Sidebar -->
-		<aside class="hidden max-w-xs min-w-xs lg:block">
-			<div class="sticky top-36 mr-6 h-[calc(100vh-8rem)] space-y-6 overflow-y-auto">
-				<QuickLinks />
-				<ClipOfTheWeek />
-				<HallOfFame />
-			</div>
-		</aside>
+	<!-- Main layout -->
+	<div class="flex flex-1 justify-center px-6">
+		<div class="flex w-full max-w-7xl justify-center gap-6 xl:justify-between">
+			<!-- Left Sidebar -->
+			<aside class="hidden w-72 xl:block">
+				<div class="sticky top-28 h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2">
+					<ClipOfTheWeek />
+					<HallOfFame />
+					<QuickLinks />
+				</div>
+			</aside>
 
-		<!-- Main Content -->
+			<!-- Main Content -->
+			<main class="prose md:prose-lg my-6 w-full">
+				{@render children()}
+			</main>
 
-		<main class="prose md:prose-lg w-full py-10 md:py-14">
-			{@render children()}
-		</main>
-
-		<!-- Right Sidebar -->
-		<!-- <aside class="hidden max-w-sm min-w-sm 2xl:block">
-			<div class="sticky top-42 h-[calc(100vh-8rem)] space-y-6 overflow-y-auto p-6">
-				<WhatsNew />
-			</div>
-		</aside> -->
+			<!-- Right Sidebar -->
+			<aside class="hidden w-72 xl:block">
+				<div class="sticky top-28 h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pl-2">
+					<TableOfContents />
+				</div>
+			</aside>
+		</div>
 	</div>
 
+	<!-- Footer -->
 	<Footer />
 </div>

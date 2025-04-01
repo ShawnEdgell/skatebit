@@ -14,7 +14,7 @@
 	<!-- Main navbar content -->
 	<div class="drawer-content w-full">
 		<div class="navbar px-4">
-			<div class="mx-auto flex w-full items-center justify-between">
+			<div class="mx-auto flex w-full max-w-7xl items-center justify-between">
 				<!-- Left side -->
 				<div class="flex items-center gap-2">
 					<div class="flex-none md:hidden">
@@ -39,8 +39,8 @@
 				</div>
 
 				<!-- Right side -->
-				<div class="flex flex-none items-center gap-4 md:pr-2">
-					<ul class="menu menu-horizontal hidden gap-2 md:flex">
+				<div class="flex flex-none items-center md:pr-2">
+					<ul class="menu menu-sm menu-horizontal hidden md:flex">
 						{#each navItems as { href, label }}
 							<li><a {href}>{label}</a></li>
 						{/each}

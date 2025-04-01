@@ -7,7 +7,7 @@
 	import { getCurrentWeekId, getPreviousWeekId } from '$lib/utils/week';
 	import { clipUpdated, alreadySubmitted } from '$lib/stores/clipUpdated';
 	import type { ClipPost } from '$lib/types/clips';
-	import { GoogleLoginButton, VideoItem, CountdownTimer } from '$lib/components';
+	import { GoogleLoginButton, VideoItem } from '$lib/components';
 	import { saveWeeklyWinner } from '$lib/firebase/hallOfFame';
 
 	const pageTitle = 'Clip of the Week';
@@ -153,8 +153,6 @@
 		<p>{pageDescription}</p>
 		<div class="divider mb-12"></div>
 	</section>
-
-	<!-- <CountdownTimer on:countdownEnded={handleCountdownEnd} /> -->
 
 	<section class="not-prose">
 		{#if !$authReady}

@@ -152,10 +152,14 @@ async function fetchVideosForSource(source: {
 export async function fetchYouTubeVideos(): Promise<YouTubeItem[]> {
 	const results = await Promise.all(CHANNELS.map((source) => fetchVideosForSource(source)));
 	const allVideos = results.flat();
+
+	// Sort by newest first
 	allVideos.sort((a, b) => {
 		const dateA = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
 		const dateB = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
 		return dateB - dateA;
 	});
-	return allVideos;
+
+	// ✅ Limit to the 10 most recent
+	return allVideos.slice(0, 10);
 }

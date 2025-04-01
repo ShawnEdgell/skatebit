@@ -2,13 +2,12 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { getEndOfCurrentWeek } from '$lib/utils/week';
 
-	export let size: string = 'text-2xl'; // optional prop for styling
-
 	let days = 0;
 	let hours = 0;
 	let minutes = 0;
 	let seconds = 0;
 
+	let colorClass = 'text-success'; // default to green
 	let interval: ReturnType<typeof setInterval>;
 
 	function updateCountdown() {
@@ -19,6 +18,7 @@
 		if (diff <= 0) {
 			clearInterval(interval);
 			days = hours = minutes = seconds = 0;
+			colorClass = 'text-error'; // time's up
 			return;
 		}
 
@@ -26,6 +26,15 @@
 		hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
 		minutes = Math.floor((diff / (1000 * 60)) % 60);
 		seconds = Math.floor((diff / 1000) % 60);
+
+		// Set urgency-based color
+		if (days === 0 && hours === 0) {
+			colorClass = 'text-error';
+		} else if (days === 0) {
+			colorClass = 'text-warning';
+		} else {
+			colorClass = 'text-success';
+		}
 	}
 
 	onMount(() => {
@@ -38,7 +47,7 @@
 	});
 </script>
 
-<span class={`countdown font-mono ${size}`} aria-label="Countdown to end of week">
+<span class={`countdown font-mono ${colorClass}`} aria-label="Countdown to end of week">
 	<span style={`--value:${days}`} aria-label={`${days} days`}>{days}</span>:
 	<span style={`--value:${hours}`} aria-label={`${hours} hours`}>{hours}</span>:
 	<span style={`--value:${minutes}`} aria-label={`${minutes} minutes`}>{minutes}</span>:

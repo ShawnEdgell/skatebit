@@ -22,7 +22,6 @@ export { default as VideoNewsItem } from './video/VideoNewsItem.svelte';
 // ui
 export { default as Alert } from './ui/Alert.svelte';
 export { default as Card } from './ui/Card.svelte';
-export { default as CountdownTimer } from './ui/CountdownTimer.svelte';
 export { default as CountdownTimerSmall } from './ui/CountdownTimerSmall.svelte';
 export { default as Help } from './ui/Help.svelte';
 export { default as TableOfContents } from './ui/TableOfContents.svelte';

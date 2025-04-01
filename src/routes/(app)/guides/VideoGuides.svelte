@@ -9,7 +9,7 @@
 		<div class="card bg-base-300 mt-8">
 			<VideoItem {video} />
 			<div class="card-body">
-				<div class="card-title font-bold">{video.title}</div>
+				<h2 class="card-title not-prose font-bold">{video.title}</h2>
 			</div>
 		</div>
 	{/each}
