@@ -18,7 +18,11 @@
 				<!-- Left side -->
 				<div class="flex items-center gap-2">
 					<div class="flex-none md:hidden">
-						<label for="my-drawer-3" class="btn btn-square btn-ghost">
+						<label
+							for="my-drawer-3"
+							class="btn btn-square btn-ghost"
+							aria-label="Toggle navigation menu"
+						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								class="h-6 w-6"

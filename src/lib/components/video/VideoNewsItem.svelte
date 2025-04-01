@@ -109,7 +109,7 @@
 						<p class="mb-2">{video.description}</p>
 						<button
 							on:click={toggleDescription}
-							class="text-primary mt-2 cursor-pointer border-none bg-transparent p-0 underline hover:no-underline"
+							class="text-accent mt-2 cursor-pointer border-none bg-transparent p-0 underline hover:no-underline"
 						>
 							Show less
 						</button>
@@ -117,7 +117,7 @@
 						<p class="mb-2">{video.description.slice(0, 100)}...</p>
 						<button
 							on:click={toggleDescription}
-							class="text-primary mt-2 cursor-pointer border-none bg-transparent p-0 underline hover:no-underline"
+							class="text-accent mt-2 cursor-pointer border-none bg-transparent p-0 underline hover:no-underline"
 						>
 							Read more
 						</button>
