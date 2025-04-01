@@ -22,7 +22,7 @@
 <div class="flex min-h-screen flex-col">
 	<!-- Header -->
 	<div class="bg-base-100 sticky top-0 z-50 w-full">
-		<!-- <AlertBar /> -->
+		<AlertBar />
 		<Navbar />
 	</div>
 
@@ -39,7 +39,7 @@
 			</aside>
 
 			<!-- Main Content -->
-			<main class="prose md:prose-lg mt-12 mb-6 w-full">
+			<main class="prose md:prose-lg mb-6 w-full">
 				{@render children()}
 			</main>
 
