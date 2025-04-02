@@ -14,7 +14,7 @@
 	const activeId = writable<string | null>(null);
 
 	let observer: IntersectionObserver;
-	const navbarOffset = 110;
+	const navbarOffset = 60;
 
 	// Generate and update the Table of Contents
 	async function generateTOC() {
@@ -116,7 +116,7 @@
 				class:btn-primary={$activeId === id}
 				title={text}
 			>
-				{text.length > 35 ? text.slice(0, 35) + '…' : text}
+				{text.length > 30 ? text.slice(0, 30) + '…' : text}
 			</button>
 		</li>
 	{/each}
