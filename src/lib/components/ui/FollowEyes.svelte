@@ -8,13 +8,13 @@
 	let rightPupil: SVGGElement;
 
 	let isHovered = false;
-	const duckOffset = tweened(0, {
-		duration: 160,
-		easing: cubicOut
-	});
+	let initialDirectionSet = false;
 
-	// Animate up/down when hovering
-	$: duckOffset.set(isHovered ? 40 : 0);
+	const duckOffset = tweened(0, { duration: 160, easing: cubicOut });
+	const slideOffset = tweened(80, { duration: 400, easing: cubicOut }); // 👈 mascot comes in from bottom
+
+	// Animate ducking
+	$: duckOffset.set(isHovered ? 45 : 0);
 
 	// Mouse move = eye tracking
 	function handleMouseMove(event: MouseEvent) {
@@ -37,29 +37,41 @@
 			const dy = mouseY - cy;
 			const angle = Math.atan2(dy, dx);
 			const radius = 8;
-
 			const x = radius * Math.cos(angle);
 			const y = radius * Math.sin(angle);
-
-			eye.setAttribute('transform', `translate(${x}, ${y})`);
+			eye?.setAttribute('transform', `translate(${x}, ${y})`);
 		}
 	}
 
 	onMount(() => {
+		// 👀 Set default eye direction BEFORE user moves mouse
+		// This will run after the bindings resolve
+		requestAnimationFrame(() => {
+			if (!initialDirectionSet && leftPupil && rightPupil) {
+				updateEyes(300, 100); // adjust target position here
+				initialDirectionSet = true;
+			}
+		});
+
+		// 👆 Track real cursor afterward
 		window.addEventListener('mousemove', handleMouseMove);
+
+		// 👇 Animate mascot upward on first mount
+		slideOffset.set(0);
+
 		return () => window.removeEventListener('mousemove', handleMouseMove);
 	});
 </script>
 
 <!-- 🐥 Mascot -->
-<div class="z-10 hidden xl:block" role="presentation">
-	<!-- Wrapper that defines the hover area -->
+<div class="z-10 mb-2 hidden xl:block" role="presentation">
+	<!-- Wrapper with full hover + slide/duck transform -->
 	<div
 		class="h-[100px] w-[120px] transition-transform duration-250 ease-in-out"
 		on:mouseenter={() => (isHovered = true)}
 		on:mouseleave={() => (isHovered = false)}
-		style="transform: translateY({$duckOffset}px);"
 		role="presentation"
+		style="transform: translateY(calc({$slideOffset}px + {$duckOffset}px));"
 	>
 		<svg bind:this={svgEl} viewBox="0 0 240 200" width="120" height="100">
 			<!-- Head -->
