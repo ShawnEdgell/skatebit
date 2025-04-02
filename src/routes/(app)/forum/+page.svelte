@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { GoogleLoginButton } from '$lib/components';
 	import { onMount } from 'svelte';
-	import { user } from '$lib/stores/auth';
+	import { authReady, user } from '$lib/stores/auth';
 	import type { ForumPost } from '$lib/types/forum';
 	import type { Timestamp } from 'firebase/firestore';
 	import { showToast } from '$lib/utils/toast';
@@ -15,6 +15,7 @@
 	let newThreadContent: string = '';
 	let forumPosts: ForumPost[] = [];
 	let sortOption: 'latest' | 'popular' = 'latest';
+	let checkingAuth = true;
 
 	async function loadForumPosts() {
 		try {
@@ -58,6 +59,12 @@
 
 	onMount(() => {
 		loadForumPosts();
+
+		// Wait until auth is ready
+		const unsubscribe = authReady.subscribe((ready) => {
+			checkingAuth = !ready;
+		});
+		return unsubscribe;
 	});
 
 	function formatTimestamp(ts: Date | Timestamp | null): string {
@@ -84,8 +91,26 @@
 	<div class="divider mb-12"></div>
 </section>
 
-{#if $user}
-	<section class="not-prose">
+<section class="not-prose mt-12">
+	{#if checkingAuth}
+		<!-- Unified loading state -->
+		<div class="card bg-base-200 h-36 p-2">
+			<div class="card-body flex items-center justify-center">
+				<span class="loading loading-spinner loading-lg text-primary"></span>
+			</div>
+		</div>
+	{:else if !$user}
+		<!-- Login prompt -->
+		<div class="card bg-base-200 not-prose h-36 p-2">
+			<div class="card-body space-y-4 text-center">
+				<p>To create posts or comment, please sign in.</p>
+				<div>
+					<GoogleLoginButton />
+				</div>
+			</div>
+		</div>
+	{:else}
+		<!-- Create Thread Form -->
 		<div class="card bg-base-200">
 			<div class="card-body space-y-4">
 				<h2 class="card-title text-2xl font-bold">Create Thread</h2>
@@ -110,19 +135,8 @@
 				</form>
 			</div>
 		</div>
-	</section>
-{:else}
-	<section class="not-prose mt-16">
-		<div class="card bg-base-200 p-2 shadow-lg">
-			<div class="card-body space-y-4 text-center">
-				<p>To create posts or comment, please sign in.</p>
-				<div>
-					<GoogleLoginButton />
-				</div>
-			</div>
-		</div>
-	</section>
-{/if}
+	{/if}
+</section>
 
 <section>
 	<div class="mb-4 flex items-center justify-between">

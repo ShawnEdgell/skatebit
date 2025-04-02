@@ -27,6 +27,6 @@
 			{/each}
 		</ul>
 	{:else}
-		<p class="text-sm opacity-60">No winners yet.</p>
+		<p class="text-sm opacity-60">Loading...</p>
 	{/if}
 </div>

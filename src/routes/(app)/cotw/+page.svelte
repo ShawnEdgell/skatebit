@@ -20,6 +20,7 @@
 	let clips: ClipPost[] = [];
 	let sortOption: 'latest' | 'popular' = 'latest';
 	let loadingClips = false;
+	let clipsLoaded = false;
 	let weekId = getCurrentWeekId();
 
 	let uid = '';
@@ -50,6 +51,7 @@
 	// Load the clips for the current week
 	async function loadClips() {
 		loadingClips = true;
+		clipsLoaded = false;
 		try {
 			clips = await getClipPosts(sortOption, weekId);
 		} catch (err) {
@@ -57,6 +59,7 @@
 			clips = [];
 		} finally {
 			loadingClips = false;
+			clipsLoaded = true;
 		}
 	}
 
@@ -154,19 +157,18 @@
 		</section>
 
 		<section class="not-prose">
-			{#if !$authReady}
-				<!-- Loading state in a card -->
+			{#if !$authReady || checkingSubmission}
+				<!-- Unified loading state -->
 				<div class="card bg-base-200 h-36 p-2">
-					<div class="card-body text-center">
-						<p class="text-base-content/80 mt-4">Checking authentication...</p>
+					<div class="card-body flex items-center justify-center">
+						<span class="loading loading-spinner loading-lg text-primary"></span>
 					</div>
 				</div>
 			{:else if !$user}
 				<!-- Login prompt in a card -->
-				<div class="card bg-base-200 h-36 p-2">
+				<div class="card bg-base-200 not-prose h-36 p-2">
 					<div class="card-body space-y-4 text-center">
 						<p class="text-sm">You must be signed in to upload a clip.</p>
-
 						<div>
 							<GoogleLoginButton />
 						</div>
@@ -187,14 +189,12 @@
 				<div class="card bg-base-200 mt-6 p-2">
 					<div class="card-body space-y-4">
 						<h2 class="card-title text-2xl font-bold">Submit a Clip</h2>
-
 						<ul class="text-base-content/80 list-inside list-disc space-y-1 text-sm">
 							<li>1 submission allowed per week</li>
 							<li>Top post gets featured for 1 week</li>
 							<li>Winning clips get archived in the Hall of Fame</li>
 							<li>Only YouTube links are accepted (for now)</li>
 						</ul>
-
 						<form on:submit|preventDefault={handleSubmit} class="space-y-3">
 							<input
 								type="text"
@@ -216,7 +216,6 @@
 				<h2 class="m-0 text-2xl leading-tight font-bold">This Week's Clips</h2>
 
 				{#if clips.length > 0}
-					<!-- Dropdown aligned to bottom of heading -->
 					<div class="flex items-end">
 						<select
 							bind:value={sortOption}
@@ -230,7 +229,7 @@
 				{/if}
 			</div>
 
-			{#if loadingClips}
+			{#if !clipsLoaded}
 				<p class="mt-4 text-sm opacity-50">Loading clips...</p>
 			{:else if clips.length > 0}
 				<div class="space-y-6">
@@ -238,31 +237,13 @@
 						<div class="not-prose bg-base-300 card w-full">
 							<VideoCard video={clip} />
 							<a href={`/cotw/${clip.id}`} class="card hover:bg-base-200 block p-4">
-								<div class="flex items-center justify-between text-sm">
-									<div class="flex items-center gap-3">
-										<img
-											src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
-											alt={clip.userDisplayName}
-											class="h-8 w-8 rounded-full"
-										/>
-										<div>
-											<p class="font-semibold">{clip.userDisplayName}</p>
-											<p class="text-xs opacity-50">Uploaded on {formatDate(clip.timestamp)}</p>
-										</div>
-									</div>
-									<div class="flex items-center gap-4 text-sm">
-										{#if clip.likes > 0}
-											<span class="text-success">❤️ {clip.likes}</span>
-										{/if}
-										<span class="opacity-50">💬 {clip.commentsCount ?? 0}</span>
-									</div>
-								</div>
+								<!-- Clip details here -->
 							</a>
 						</div>
 					{/each}
 				</div>
 			{:else}
-				<p class="text-sm opacity-50">No clips yet. Be the first to submit!</p>
+				<p class="mt-4 text-sm opacity-50">No clips yet. Be the first to submit!</p>
 			{/if}
 		</section>
 	</div>
