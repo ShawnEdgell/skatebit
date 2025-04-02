@@ -37,25 +37,27 @@
 			{#if selectedTab === tab.id}
 				<div>
 					{#each tab.mods as modItem, modIndex}
-						<div class="collapse-arrow bg-base-300 rounded-box not-prose collapse mb-2">
+						<div class="collapse-arrow bg-base-200 collapse mb-3 rounded-xl shadow-md">
 							<input type="checkbox" class="peer hidden" id={`mod-${tab.id}-${modIndex}`} />
+
 							<label
 								for={`mod-${tab.id}-${modIndex}`}
-								class="collapse-title cursor-pointer font-semibold"
+								class="collapse-title flex cursor-pointer items-center gap-2 px-4 py-3 font-semibold transition-all duration-300"
 							>
 								{#if modItem.badge}
-									<span class="badge badge-soft badge-success badge-sm mr-2">{modItem.badge}</span>
+									<span class="badge badge-success badge-sm">{modItem.badge}</span>
 								{/if}
 								{modItem.title}
 							</label>
-							<div class="collapse-content hidden peer-checked:block">
-								<ul class="list-disc pl-5">
+
+							<div class="collapse-content px-4 text-sm leading-relaxed">
+								<ul class="list-disc space-y-1 pl-5">
 									<li><strong>Author:</strong> {modItem.author || 'Unknown'}</li>
 									<li><strong>Working Version:</strong> {modItem.workingVersion || 'N/A'}</li>
 									{#if modItem.keybind}
 										<li><strong>Keybind:</strong> {modItem.keybind}</li>
 									{/if}
-									{#if modItem.features && modItem.features.length > 0}
+									{#if modItem.features?.length}
 										<li><strong>Features:</strong> {modItem.features.join(', ')}</li>
 									{/if}
 									{#if modItem.note}
@@ -63,11 +65,11 @@
 									{/if}
 								</ul>
 
-								{#if modItem.downloadLinks && modItem.downloadLinks.length > 0}
-									<div class="mt-4 flex flex-col gap-2">
+								{#if modItem.downloadLinks?.length}
+									<div class="mt-4 flex flex-wrap gap-2">
 										{#each modItem.downloadLinks as { url, label }}
 											<a
-												class="btn btn-soft no-underline"
+												class="btn btn-primary btn-outline mt-2"
 												href={url}
 												target="_blank"
 												rel="noopener noreferrer"
