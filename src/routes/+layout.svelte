@@ -60,7 +60,7 @@
 <!-- Page Layout -->
 <div class="flex min-h-screen flex-col">
 	<!-- Header -->
-	<div class="bg-base-100 sticky top-0 z-50 mb-12 w-full">
+	<div class="bg-base-100/95 sticky top-0 z-50 mb-12 w-full backdrop-blur">
 		<Navbar />
 	</div>
 

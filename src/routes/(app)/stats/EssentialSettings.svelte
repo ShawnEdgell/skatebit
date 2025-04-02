@@ -1,4 +1,3 @@
-<!-- Essential Settings -->
 <section>
 	<h2>Essential Settings</h2>
 	<p>

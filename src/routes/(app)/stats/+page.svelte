@@ -1,6 +1,7 @@
 <script lang="ts">
 	import EssentialSettings from './EssentialSettings.svelte';
 	import Presets from './Presets.svelte';
+
 	const pageTitle = 'Stats & Settings';
 	const pageDescription = 'Download presets for your Skater XL mods.';
 </script>

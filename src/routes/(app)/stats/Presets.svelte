@@ -1,4 +1,3 @@
-<!-- Presets -->
 <section>
 	<h2>Downloads/Presets</h2>
 	<!-- Basic Realistic Settings -->

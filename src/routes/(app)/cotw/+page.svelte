@@ -153,7 +153,7 @@
 		<section>
 			<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 			<p>{pageDescription}</p>
-			<div class="divider mb-12"></div>
+			<div class="divider"></div>
 		</section>
 
 		<section class="not-prose">
@@ -236,8 +236,29 @@
 					{#each clips as clip}
 						<div class="not-prose bg-base-300 card w-full">
 							<VideoCard video={clip} />
-							<a href={`/cotw/${clip.id}`} class="card hover:bg-base-200 block p-4">
-								<!-- Clip details here -->
+							<a
+								href={`/cotw/${clip.id}`}
+								class="card hover:bg-base-200 block p-4 transition-colors"
+							>
+								<div class="flex items-center justify-between text-sm">
+									<div class="flex items-center gap-3">
+										<img
+											src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
+											alt={clip.userDisplayName}
+											class="h-8 w-8 rounded-full"
+										/>
+										<div>
+											<p class="font-semibold">{clip.userDisplayName}</p>
+											<p class="text-xs opacity-50">Uploaded on {formatDate(clip.timestamp)}</p>
+										</div>
+									</div>
+									<div class="flex items-center gap-4 text-sm">
+										{#if clip.likes > 0}
+											<span class="text-success">❤️ {clip.likes}</span>
+										{/if}
+										<span class="opacity-50">💬 {clip.commentsCount ?? 0}</span>
+									</div>
+								</div>
 							</a>
 						</div>
 					{/each}

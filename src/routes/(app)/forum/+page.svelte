@@ -88,10 +88,10 @@
 <section>
 	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
-	<div class="divider mb-12"></div>
+	<div class="divider"></div>
 </section>
 
-<section class="not-prose mt-12">
+<section class="not-prose">
 	{#if checkingAuth}
 		<!-- Unified loading state -->
 		<div class="card bg-base-200 h-36 p-2">

@@ -37,7 +37,7 @@
 			{#if selectedTab === tab.id}
 				<div>
 					{#each tab.mods as modItem, modIndex}
-						<div class="collapse-arrow bg-base-200 collapse mb-3 rounded-xl shadow-md">
+						<div class="collapse-arrow bg-base-200 collapse mb-3">
 							<input type="checkbox" class="peer hidden" id={`mod-${tab.id}-${modIndex}`} />
 
 							<label

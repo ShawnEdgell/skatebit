@@ -27,7 +27,9 @@
 		{/if}
 	</button>
 
-	<ul class="menu dropdown-content bg-base-200 rounded-box z-[1] mt-5 w-56 p-4 shadow">
+	<ul
+		class="menu dropdown-content bg-base-200 rounded-box absolute right-0 z-[9999] mt-5 w-56 p-4 shadow"
+	>
 		<li><GoogleLoginButton /></li>
 	</ul>
 </div>
