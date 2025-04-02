@@ -18,5 +18,6 @@ export { default as VideoCard } from './video/VideoCard.svelte';
 
 // ui
 export { default as CountdownTimerSmall } from './ui/CountdownTimerSmall.svelte';
+export { default as FollowEyes } from './ui/FollowEyes.svelte';
 export { default as TableOfContents } from './ui/TableOfContents.svelte';
 export { default as Toast } from './ui/Toast.svelte';

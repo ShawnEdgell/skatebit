@@ -4,11 +4,11 @@
 		AlertBar,
 		ClipOfTheWeek,
 		HallOfFame,
-		QuickLinks,
 		Navbar,
 		Footer,
 		TableOfContents,
-		Toast
+		Toast,
+		FollowEyes
 	} from '$lib/components';
 	import { dev } from '$app/environment';
 	import { injectAnalytics } from '@vercel/analytics/sveltekit';
@@ -69,9 +69,13 @@
 		<div class="flex w-full max-w-7xl justify-center gap-6 xl:justify-between">
 			<!-- Left Sidebar -->
 			<aside class="hidden w-72 xl:block">
-				<div class="sticky top-28 h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pr-2">
-					<ClipOfTheWeek />
-					<HallOfFame />
+				<div class="sticky top-28 h-[calc(100vh-7rem)] overflow-y-auto pr-2">
+					<FollowEyes />
+					<div class="space-y-6">
+						<ClipOfTheWeek />
+						<HallOfFame />
+					</div>
+
 					<!-- <QuickLinks /> -->
 				</div>
 			</aside>

@@ -6,6 +6,7 @@
 	import VideoCard from '../video/VideoCard.svelte';
 	import { formatDate } from '$lib/utils/formatDate';
 	import { getClipPosts } from '$lib/firebase/clips';
+	import FollowEyes from '../ui/FollowEyes.svelte';
 
 	let clips: ClipPost[] = [];
 	let featuredClip: ClipPost | null = null;
