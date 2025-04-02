@@ -116,7 +116,7 @@
 				class:btn-primary={$activeId === id}
 				title={text}
 			>
-				{text.length > 38 ? text.slice(0, 38) + '…' : text}
+				{text.length > 35 ? text.slice(0, 35) + '…' : text}
 			</button>
 		</li>
 	{/each}
