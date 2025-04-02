@@ -29,7 +29,7 @@
 
 <div class={`w-full ${cardStyle ? 'not-prose card bg-base-300 mt-6' : ''}`}>
 	<!-- Video -->
-	<div class="bg-base-300 relative aspect-[16/9] w-full rounded-md">
+	<div class="bg-base-300 relative aspect-[16/9] w-full">
 		{#if showIframe}
 			<iframe
 				src={`https://www.youtube.com/embed/${video.videoId}?autoplay=1`}

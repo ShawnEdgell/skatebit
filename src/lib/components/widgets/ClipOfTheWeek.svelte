@@ -65,7 +65,7 @@
 			</a>
 		</div>
 
-		<a href="/cotw" class="btn btn-sm btn-outline btn-primary text-center"> View All Clips </a>
+		<a href="/cotw" class="btn btn-sm btn-soft text-center"> View All Clips </a>
 	{:else}
 		<!-- Placeholder video frame -->
 		<div class="bg-base-300 flex aspect-[16/9] w-full items-center justify-center rounded-md">
@@ -95,6 +95,6 @@
 			</div>
 		</div>
 
-		<a href="/cotw" class="btn btn-sm btn-outline btn-primary text-center">Submit a Clip</a>
+		<a href="/cotw" class="btn btn-sm btn-soft text-center">Submit a Clip</a>
 	{/if}
 </div>

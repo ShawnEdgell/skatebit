@@ -6,7 +6,9 @@
 	let modal: HTMLDialogElement;
 </script>
 
-<button class="btn btn-primary btn-outline" on:click={() => modal.showModal()}>{buttonText}</button>
+<button class="btn btn-primary btn-outline" on:click={() => modal.showModal()}>
+	{buttonText}
+</button>
 
 <dialog bind:this={modal} class="modal">
 	<div class="modal-box max-w-fit">

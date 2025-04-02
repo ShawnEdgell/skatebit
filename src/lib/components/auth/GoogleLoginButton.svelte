@@ -1,31 +1,37 @@
 <script lang="ts">
 	import { signInWithGoogle, logout } from '$lib/firebase/auth';
 	import { user } from '$lib/stores/auth';
+	import { showToast } from '$lib/utils/toast';
 
 	let errorMessage = '';
-	$: $user; // Auto-subscribe
+	$: $user;
 
 	async function login() {
 		errorMessage = '';
 		try {
 			await signInWithGoogle();
+			const name = $user?.displayName || 'Skater';
+			showToast(`Welcome back, ${name}!`, 'success');
 		} catch (error) {
 			errorMessage = 'Login failed. Please try again.';
+			showToast(errorMessage, 'error');
 		}
 	}
 
 	async function handleLogout() {
 		try {
 			await logout();
+			showToast('You have been logged out.', 'info');
 		} catch (error) {
 			errorMessage = 'Logout failed. Please try again.';
+			showToast(errorMessage, 'error');
 		}
 	}
 </script>
 
 {#if typeof window === 'undefined'}
 	<!-- Avoid SSR flash -->
-	<p>Loading...</p>
+	<span class="loading loading-spinner loading-lg text-primary"></span>
 {:else if $user}
 	<button on:click={handleLogout} class="btn btn-error">Logout</button>
 {:else}

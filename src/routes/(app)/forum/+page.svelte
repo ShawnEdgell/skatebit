@@ -4,6 +4,7 @@
 	import { user } from '$lib/stores/auth';
 	import type { ForumPost } from '$lib/types/forum';
 	import type { Timestamp } from 'firebase/firestore';
+	import { showToast } from '$lib/utils/toast';
 
 	import { getForumPosts, submitForumPost } from '$lib/firebase/forum';
 
@@ -32,7 +33,11 @@
 	}
 
 	async function createThread() {
-		if (!newThreadTitle.trim() || !newThreadContent.trim()) return;
+		if (!newThreadTitle.trim() || !newThreadContent.trim()) {
+			showToast('Title and content are required.', 'error');
+			return;
+		}
+
 		try {
 			await submitForumPost({
 				title: newThreadTitle,
@@ -43,9 +48,11 @@
 			});
 			newThreadTitle = '';
 			newThreadContent = '';
+			showToast('Thread posted successfully!', 'success');
 			await loadForumPosts();
 		} catch (error) {
 			console.error('Error creating thread:', error);
+			showToast('Failed to post thread. Try again.', 'error');
 		}
 	}
 

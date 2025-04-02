@@ -1,4 +1,3 @@
-// src/lib/firebase/hallOfFame.ts
 import { collection, addDoc, query, where, orderBy, limit, getDocs } from 'firebase/firestore';
 import { db } from './init';
 import type { ClipPost } from '$lib/types/clips';

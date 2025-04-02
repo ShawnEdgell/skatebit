@@ -1,9 +1,12 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	import { user } from '$lib/stores/auth';
 	import { GoogleLoginButton } from '$lib/components';
 	import { formatDate } from '$lib/utils/formatDate';
+	import { showToast } from '$lib/utils/toast';
+
 	import type { ForumPost, ForumComment } from '$lib/types/forum';
 	import {
 		getForumThread,
@@ -24,39 +27,70 @@
 
 	const threadId = $page.params.id;
 
+	function toMillis(date: any): number {
+		if (!date) return 0;
+		if (typeof date.toMillis === 'function') return date.toMillis();
+		return new Date(date).getTime();
+	}
+
 	async function loadThread() {
 		loading = true;
 		post = await getForumThread(threadId);
-		comments = await getForumComments(threadId);
+		comments = (await getForumComments(threadId)).sort(
+			(a, b) => toMillis(a.createdAt) - toMillis(b.createdAt)
+		);
 		loading = false;
 	}
 
 	async function createComment() {
-		if (!newComment.trim()) return;
+		if (!newComment.trim()) {
+			showToast('Comment cannot be empty.', 'error');
+			return;
+		}
 
-		const addedComment = await addForumComment(threadId, {
-			text: newComment,
-			authorId: $user?.uid ?? '',
-			authorName: $user?.displayName ?? 'Anonymous',
-			authorAvatar: $user?.photoURL ?? '',
-			postId: threadId
-		});
+		try {
+			await addForumComment(threadId, {
+				text: newComment,
+				authorId: $user?.uid ?? '',
+				authorName: $user?.displayName ?? 'Anonymous',
+				authorAvatar: $user?.photoURL ?? '',
+				postId: threadId
+			});
 
-		newComment = '';
-		comments = [addedComment, ...comments];
+			newComment = '';
+			comments = (await getForumComments(threadId)).sort(
+				(a, b) => toMillis(a.createdAt) - toMillis(b.createdAt)
+			);
+			showToast('Comment posted!', 'success');
+		} catch (err) {
+			console.error(err);
+			showToast('Failed to post comment.', 'error');
+		}
 	}
 
 	async function updateComment(commentId: string, newText: string) {
-		await editForumComment(threadId, commentId, newText);
-		comments = comments.map((comment) =>
-			comment.id === commentId ? { ...comment, text: newText, updatedAt: new Date() } : comment
-		);
+		try {
+			await editForumComment(threadId, commentId, newText);
+			comments = comments.map((comment) =>
+				comment.id === commentId ? { ...comment, text: newText, updatedAt: new Date() } : comment
+			);
+			showToast('Comment updated.', 'info');
+		} catch (err) {
+			console.error(err);
+			showToast('Failed to update comment.', 'error');
+		}
 	}
 
 	async function removeComment(commentId: string) {
 		if (confirm('Are you sure you want to delete this comment?')) {
-			await deleteForumComment(threadId, commentId);
-			comments = comments.filter((comment) => comment.id !== commentId);
+			try {
+				await deleteForumComment(threadId, commentId);
+				comments = comments.filter((comment) => comment.id !== commentId);
+				showToast('Comment deleted.', 'info');
+			} catch (err) {
+				console.error(err);
+				showToast('Failed to delete comment.', 'error');
+			}
 		}
 	}
 
@@ -65,7 +99,6 @@
 
 		await likeForumPost(post.id!, $user.uid);
 
-		// Optimistically update the UI
 		const alreadyLiked = post.likedBy?.includes($user.uid);
 		const newLikes = alreadyLiked ? (post.likes ?? 1) - 1 : (post.likes ?? 0) + 1;
 		const updatedLikedBy = alreadyLiked
@@ -82,14 +115,22 @@
 	async function toggleLikeComment(commentId: string) {
 		if (!$user) return;
 		await likeForumComment(threadId, commentId, $user.uid);
-		comments = await getForumComments(threadId); // Refresh comments
+		comments = (await getForumComments(threadId)).sort(
+			(a, b) => toMillis(a.createdAt) - toMillis(b.createdAt)
+		);
 	}
 
 	async function removeThread() {
 		if (post?.authorId !== $user?.uid) return;
 		if (confirm('Are you sure you want to delete this thread?')) {
-			await deleteForumThread(threadId);
-			window.location.href = '/forum';
+			try {
+				await deleteForumThread(threadId);
+				showToast('Thread deleted.', 'info', true); // persist
+				goto('/forum');
+			} catch (err) {
+				console.error(err);
+				showToast('Failed to delete thread.', 'error');
+			}
 		}
 	}
 
@@ -99,8 +140,15 @@
 		if (newTitle === null) return;
 		const newContent = prompt('New content:', post.content);
 		if (newContent === null) return;
-		await updateForumThread(threadId, newTitle, newContent);
-		await loadThread();
+
+		try {
+			await updateForumThread(threadId, newTitle, newContent);
+			await loadThread();
+			showToast('Thread updated.', 'info');
+		} catch (err) {
+			console.error(err);
+			showToast('Failed to update thread.', 'error');
+		}
 	}
 
 	onMount(loadThread);
@@ -176,7 +224,7 @@
 	</div>
 
 	{#if comments.length > 0}
-		{#each comments as comment}
+		{#each comments as comment, i (comment.id)}
 			<div>
 				<div class="not-prose flex items-center gap-2">
 					<img
@@ -187,7 +235,6 @@
 					<p>
 						<span class="mr-1">{comment.authorName}</span>
 						<span class="mr-1 text-sm opacity-50">{formatDate(comment.createdAt)}</span>
-						<!-- 🧡 Always show like count if > 0 -->
 						{#if (comment.likes ?? 0) > 0}
 							<span class="text-success text-sm">+{comment.likes}</span>
 						{/if}
@@ -196,7 +243,6 @@
 				<div>
 					<p>{comment.text}</p>
 
-					<!-- 🧡 Like button for logged-in users -->
 					{#if $user}
 						<button
 							class="btn btn-sm mt-1"
@@ -218,16 +264,16 @@
 						</button>
 						<button
 							class="btn btn-sm mt-1"
-							on:click={() => {
-								if (comment.id) removeComment(comment.id);
-							}}
+							on:click={() => comment.id && removeComment(comment.id)}
 						>
 							Delete
 						</button>
 					{/if}
 				</div>
 
-				<div class="divider"></div>
+				{#if i < comments.length - 1}
+					<div class="divider"></div>
+				{/if}
 			</div>
 		{/each}
 	{:else}
