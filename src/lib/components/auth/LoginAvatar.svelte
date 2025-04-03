@@ -4,7 +4,7 @@
 </script>
 
 <div class="dropdown dropdown-end">
-	<button class="btn btn-circle avatar btn-sm" tabindex="0">
+	<label tabindex="0" class="btn btn-circle avatar h-8 w-8">
 		{#if $user}
 			<img
 				class="rounded-full"
@@ -25,10 +25,11 @@
 				/>
 			</svg>
 		{/if}
-	</button>
+	</label>
 
 	<ul
-		class="menu dropdown-content bg-base-200 rounded-box absolute right-0 z-[9999] mt-5 w-56 gap-2 p-4 shadow"
+		tabindex="0"
+		class="menu dropdown-content bg-base-200 rounded-box absolute right-0 z-[1] mt-5 w-56 gap-2 p-4 shadow"
 	>
 		{#if $user}
 			<li>
