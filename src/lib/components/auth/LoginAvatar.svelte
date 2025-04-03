@@ -29,14 +29,11 @@
 
 	<ul
 		tabindex="0"
-		class="menu dropdown-content bg-base-200 rounded-box absolute right-0 z-[1] mt-5 min-w-56 gap-2 p-4 shadow"
+		class="dropdown-content bg-base-200 rounded-box z-[9999] mt-4 w-fit max-w-[90vw] min-w-max space-y-2 p-4 shadow"
 	>
 		{#if $user}
-			<li>
-				<a class="btn btn-soft" href="/dashboard"> Dashboard </a>
-			</li>
+			<li><a href="/dashboard" class="btn btn-soft w-full min-w-46">Dashboard</a></li>
 		{/if}
-
 		<li><GoogleLoginButton /></li>
 	</ul>
 </div>

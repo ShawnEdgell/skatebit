@@ -169,9 +169,7 @@
 				<div class="card bg-base-200 not-prose h-36 p-2">
 					<div class="card-body space-y-4 text-center">
 						<p class="text-sm">You must be signed in to upload a clip.</p>
-						<div>
-							<GoogleLoginButton />
-						</div>
+						<GoogleLoginButton />
 					</div>
 				</div>
 			{:else if $alreadySubmitted}

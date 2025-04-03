@@ -35,35 +35,34 @@
 </script>
 
 {#if placement === 'click'}
-	<!-- Clickable dropdown (DaisyUI-compliant structure) -->
 	<div class="dropdown dropdown-right dropdown-top">
-		<!-- Trigger element -->
-		<div tabindex="0" role="button" class="btn btn-ghost h-auto min-h-0 p-0">
+		<!-- Trigger (anything passed into the <slot>) -->
+		<div role="button" tabindex="0">
 			<slot />
 		</div>
 
-		<!-- Dropdown content -->
-		<ul
-			tabindex="0"
-			class="dropdown-content menu bg-base-200 rounded-box z-50 w-64 space-y-3 p-4 shadow"
+		<!-- Popover content -->
+		<div
+			role="tooltip"
+			class="dropdown-content card card-bordered bg-base-200 z-50 w-64 p-4 shadow"
 		>
-			<!-- Avatar & Name -->
-			<li class="flex items-center gap-3">
+			<!-- Avatar & Name side by side -->
+			<div class="flex items-center gap-3">
 				<img src={avatar} alt={name} class="border-base-300 h-10 w-10 rounded-full border" />
 				<div>
 					<p class="text-sm font-bold">{name}</p>
 					<p class="text-xs opacity-60">{profile?.bio ? 'User Bio' : 'No bio yet'}</p>
 				</div>
-			</li>
+			</div>
 
 			<!-- Bio -->
 			{#if profile?.bio}
-				<li class="text-sm">{profile.bio}</li>
+				<p class="mt-3 text-sm">{profile.bio}</p>
 			{/if}
 
-			<!-- Links -->
+			<!-- Social Links -->
 			{#if hasProfileContent}
-				<li class="flex flex-wrap gap-2">
+				<div class="mt-3 flex flex-wrap gap-2">
 					{#if profile?.links?.youtube}
 						<a href={profile.links.youtube} target="_blank" class="badge badge-error">YouTube</a>
 					{/if}
@@ -78,17 +77,17 @@
 					{#if profile?.links?.tiktok}
 						<a href={profile.links.tiktok} target="_blank" class="badge badge-neutral">TikTok</a>
 					{/if}
-				</li>
+				</div>
 			{/if}
 
-			<!-- Empty profile state -->
+			<!-- Fallback -->
 			{#if profile && !hasProfileContent}
-				<li class="text-base-300 text-xs italic">This user has not set up a profile yet.</li>
+				<p class="text-base-300 mt-2 text-xs italic">This user has not set up a profile yet.</p>
 			{/if}
-		</ul>
+		</div>
 	</div>
 {:else}
-	<!-- Hover mode -->
+	<!-- Hover tooltip fallback -->
 	<div class="tooltip tooltip-right" data-tip={profile?.bio || name}>
 		<slot />
 	</div>

@@ -104,9 +104,7 @@
 		<div class="card bg-base-200 not-prose h-36 p-2">
 			<div class="card-body space-y-4 text-center">
 				<p>To create posts or comment, please sign in.</p>
-				<div>
-					<GoogleLoginButton />
-				</div>
+				<GoogleLoginButton />
 			</div>
 		</div>
 	{:else}
