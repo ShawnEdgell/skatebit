@@ -29,7 +29,7 @@
 
 	<ul
 		tabindex="0"
-		class="menu dropdown-content bg-base-200 rounded-box absolute right-0 z-[1] mt-5 w-56 gap-2 p-4 shadow"
+		class="menu dropdown-content bg-base-200 rounded-box absolute right-0 z-[1] mt-5 min-w-56 gap-2 p-4 shadow"
 	>
 		{#if $user}
 			<li>
