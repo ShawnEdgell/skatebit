@@ -1,22 +1,41 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-	import { user } from '$lib/stores/auth';
+	import { user, authReady } from '$lib/stores/auth';
 	import { getUserProfile, updateUserProfile } from '$lib/firebase/users';
 	import type { UserProfile } from '$lib/types/users';
 	import { showToast } from '$lib/utils/toast';
-	import { authReady } from '$lib/stores/auth';
+
+	type LinkKey = 'youtube' | 'instagram' | 'discord' | 'tiktok';
+	const linkKeys: LinkKey[] = ['youtube', 'instagram', 'discord', 'tiktok'];
 
 	let profile: Partial<UserProfile> = {
 		links: {}
 	};
+
+	let linkErrors: Partial<Record<LinkKey, string>> = {};
 	let loading = true;
 	let saving = false;
 
 	const pageTitle = 'Dashboard';
 	const pageDescription = 'Update your profile information and social links.';
 
-	// Redirect if not logged in
+	const platformDomains: Record<LinkKey, string> = {
+		youtube: 'youtube.com',
+		instagram: 'instagram.com',
+		discord: 'discord.gg',
+		tiktok: 'tiktok.com'
+	};
+
+	function isValidSocialLink(key: LinkKey, url: string): boolean {
+		try {
+			const parsed = new URL(url);
+			return parsed.hostname.includes(platformDomains[key]);
+		} catch (e) {
+			return false;
+		}
+	}
+
 	$: if (authReady && $user === null && !loading) goto('/');
 
 	onMount(() => {
@@ -25,16 +44,13 @@
 				const existingProfile = await getUserProfile($user.uid);
 
 				profile = {
-					displayName: $user.displayName || '',
-					photoURL: $user.photoURL || '',
-					...existingProfile
-				};
-
-				profile.links = {
-					youtube: existingProfile?.links?.youtube ?? '',
-					instagram: existingProfile?.links?.instagram ?? '',
-					discord: existingProfile?.links?.discord ?? '',
-					tiktok: existingProfile?.links?.tiktok ?? ''
+					bio: existingProfile?.bio ?? '',
+					links: {
+						youtube: existingProfile?.links?.youtube ?? '',
+						instagram: existingProfile?.links?.instagram ?? '',
+						discord: existingProfile?.links?.discord ?? '',
+						tiktok: existingProfile?.links?.tiktok ?? ''
+					}
 				};
 
 				loading = false;
@@ -47,6 +63,20 @@
 	async function saveProfile() {
 		if (!$user) return;
 		saving = true;
+		linkErrors = {};
+
+		for (const key of linkKeys) {
+			const url = profile.links?.[key];
+			if (url && !isValidSocialLink(key, url)) {
+				linkErrors[key] = `Invalid ${key} link`;
+			}
+		}
+
+		if (Object.keys(linkErrors).length > 0) {
+			showToast('Please fix the invalid links.', 'error');
+			saving = false;
+			return;
+		}
 
 		try {
 			await updateUserProfile($user.uid, profile);
@@ -81,15 +111,16 @@
 	<section class="card bg-base-200 not-prose mx-auto max-w-2xl p-6">
 		<div class="mb-6 flex items-center gap-4">
 			<img
-				src={profile.photoURL || 'https://via.placeholder.com/40'}
-				alt={profile.displayName || 'User'}
+				src={$user?.photoURL || 'https://via.placeholder.com/40'}
+				alt={$user?.displayName || 'User'}
 				class="border-base-300 h-10 w-10 rounded-full border"
 			/>
 			<div>
-				<h2 class="text-xl font-bold">{profile.displayName || 'User'}</h2>
+				<h2 class="text-xl font-bold">{$user?.displayName || 'User'}</h2>
 				<p class="text-sm opacity-50">Your public profile</p>
 			</div>
 		</div>
+
 		<form on:submit|preventDefault={saveProfile} class="space-y-4">
 			<!-- Bio -->
 			<div>
@@ -101,52 +132,29 @@
 					class="textarea textarea-bordered w-full"
 				></textarea>
 			</div>
+
+			<!-- Social Links -->
 			<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-				<div>
-					<label class="label" for="youtube"><span class="label-text">YouTube</span></label>
-					<input
-						id="youtube"
-						type="url"
-						placeholder="YouTube Link"
-						bind:value={profile.links!.youtube}
-						class="input input-bordered w-full"
-					/>
-				</div>
-
-				<div>
-					<label class="label" for="instagram"><span class="label-text">Instagram</span></label>
-					<input
-						id="instagram"
-						type="url"
-						placeholder="Instagram Link"
-						bind:value={profile.links!.instagram}
-						class="input input-bordered w-full"
-					/>
-				</div>
-
-				<div>
-					<label class="label" for="discord"><span class="label-text">Discord</span></label>
-					<input
-						id="discord"
-						type="text"
-						placeholder="Discord Link"
-						bind:value={profile.links!.discord}
-						class="input input-bordered w-full"
-					/>
-				</div>
-
-				<div>
-					<label class="label" for="tiktok"><span class="label-text">TikTok</span></label>
-					<input
-						id="tiktok"
-						type="url"
-						placeholder="TikTok Link"
-						bind:value={profile.links!.tiktok}
-						class="input input-bordered w-full"
-					/>
-				</div>
+				{#each linkKeys as key}
+					<div>
+						<label class="label" for={key}>
+							<span class="label-text">{key.charAt(0).toUpperCase() + key.slice(1)}</span>
+						</label>
+						<input
+							id={key}
+							type="url"
+							placeholder={key + ' Link'}
+							bind:value={profile.links![key]}
+							class="input input-bordered w-full {linkErrors[key] ? 'input-error' : ''}"
+						/>
+						{#if linkErrors[key]}
+							<p class="text-error mt-1 text-sm">{linkErrors[key]}</p>
+						{/if}
+					</div>
+				{/each}
 			</div>
 
+			<!-- Save Button -->
 			<div class="pt-6 text-right">
 				<button class="btn btn-primary" type="submit" disabled={saving}>
 					{saving ? 'Saving...' : 'Save Profile'}
