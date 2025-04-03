@@ -35,32 +35,35 @@
 </script>
 
 {#if placement === 'click'}
+	<!-- Clickable dropdown (DaisyUI-compliant structure) -->
 	<div class="dropdown dropdown-right dropdown-top">
-		<div role="button" tabindex="0">
+		<!-- Trigger element -->
+		<div tabindex="0" role="button" class="btn btn-ghost h-auto min-h-0 p-0">
 			<slot />
 		</div>
 
-		<div
-			role="tooltip"
-			class="dropdown-content card card-bordered bg-base-200 z-50 w-64 p-4 shadow"
+		<!-- Dropdown content -->
+		<ul
+			tabindex="0"
+			class="dropdown-content menu bg-base-200 rounded-box z-50 w-64 space-y-3 p-4 shadow"
 		>
-			<!-- Top: Avatar & Name -->
-			<div class="flex items-center gap-3">
+			<!-- Avatar & Name -->
+			<li class="flex items-center gap-3">
 				<img src={avatar} alt={name} class="border-base-300 h-10 w-10 rounded-full border" />
 				<div>
 					<p class="text-sm font-bold">{name}</p>
 					<p class="text-xs opacity-60">{profile?.bio ? 'User Bio' : 'No bio yet'}</p>
 				</div>
-			</div>
+			</li>
 
 			<!-- Bio -->
 			{#if profile?.bio}
-				<p class="mt-3 text-sm">{profile.bio}</p>
+				<li class="text-sm">{profile.bio}</li>
 			{/if}
 
 			<!-- Links -->
 			{#if hasProfileContent}
-				<div class="mt-3 flex flex-wrap gap-2">
+				<li class="flex flex-wrap gap-2">
 					{#if profile?.links?.youtube}
 						<a href={profile.links.youtube} target="_blank" class="badge badge-error">YouTube</a>
 					{/if}
@@ -75,14 +78,14 @@
 					{#if profile?.links?.tiktok}
 						<a href={profile.links.tiktok} target="_blank" class="badge badge-neutral">TikTok</a>
 					{/if}
-				</div>
+				</li>
 			{/if}
 
-			<!-- Empty state -->
+			<!-- Empty profile state -->
 			{#if profile && !hasProfileContent}
-				<p class="text-base-300 mt-2 text-xs italic">This user has not set up a profile yet.</p>
+				<li class="text-base-300 text-xs italic">This user has not set up a profile yet.</li>
 			{/if}
-		</div>
+		</ul>
 	</div>
 {:else}
 	<!-- Hover mode -->
