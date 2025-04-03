@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { GoogleLoginButton } from '$lib/components';
+	import { GoogleLoginButton, UserPopoverCard } from '$lib/components';
 	import { onMount } from 'svelte';
 	import { authReady, user } from '$lib/stores/auth';
 	import type { ForumPost } from '$lib/types/forum';
@@ -158,11 +158,18 @@
 			<div class="flex items-center justify-between gap-4">
 				<!-- Left side: Avatar + Title + Info -->
 				<div class="not-prose flex flex-1 items-start gap-4">
-					<img
-						src={post.authorAvatar || 'https://via.placeholder.com/40'}
-						alt={post.authorName}
-						class="mt-1 h-8 w-8 rounded-full"
-					/>
+					<UserPopoverCard
+						userId={post.authorId}
+						name={post.authorName}
+						avatar={post.authorAvatar || 'https://via.placeholder.com/40'}
+						placement="click"
+					>
+						<img
+							src={post.authorAvatar || 'https://via.placeholder.com/40'}
+							alt={post.authorName}
+							class="mt-1 h-8 w-8 cursor-pointer rounded-full"
+						/>
+					</UserPopoverCard>
 
 					<div>
 						<a class="font-semibold underline hover:no-underline" href={`/forum/${post.id}`}>

@@ -93,7 +93,6 @@
 			</aside>
 		</div>
 	</div>
-
-	<!-- Footer -->
-	<Footer />
 </div>
+<!-- Footer -->
+<Footer />

@@ -3,7 +3,7 @@
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { user } from '$lib/stores/auth';
-	import { GoogleLoginButton } from '$lib/components';
+	import { GoogleLoginButton, UserPopoverCard } from '$lib/components';
 	import { formatDate } from '$lib/utils/formatDate';
 	import { showToast } from '$lib/utils/toast';
 
@@ -169,16 +169,25 @@
 		<p>{post.content}</p>
 
 		<div class="not-prose my-6 flex items-center gap-2">
-			<img
-				src={post.authorAvatar || 'https://via.placeholder.com/40'}
-				alt={post.authorName}
-				class="h-8 w-8 rounded-full"
-			/>
-			<span class="text-sm opacity-50">
-				Posted by {post.authorName} on {formatDate(post.createdAt)}
-			</span>
+			<UserPopoverCard
+				userId={post.authorId}
+				name={post.authorName}
+				avatar={post.authorAvatar || 'https://via.placeholder.com/40'}
+				placement="click"
+			>
+				<div class="flex cursor-pointer items-center gap-2">
+					<img
+						src={post.authorAvatar || 'https://via.placeholder.com/40'}
+						alt={post.authorName}
+						class="border-base-300 h-8 w-8 rounded-full border"
+					/>
+					<p>{post.authorName}</p>
+				</div>
+			</UserPopoverCard>
+			<div>
+				<span class="text-sm opacity-50">{formatDate(post.createdAt)}</span>
+			</div>
 
-			<!-- ✅ Public like count -->
 			{#if (post.likes ?? 0) > 0}
 				<span class="text-sm text-green-500">+{post.likes}</span>
 			{/if}
@@ -227,18 +236,28 @@
 		{#each comments as comment, i (comment.id)}
 			<div>
 				<div class="not-prose flex items-center gap-2">
-					<img
-						src={comment.authorAvatar || 'https://via.placeholder.com/40'}
-						alt={comment.authorName}
-						class="h-8 w-8 rounded-full"
-					/>
-					<p>
-						<span class="mr-1">{comment.authorName}</span>
+					<UserPopoverCard
+						userId={comment.authorId}
+						name={comment.authorName}
+						avatar={comment.authorAvatar || 'https://via.placeholder.com/40'}
+						placement="click"
+					>
+						<div class="flex cursor-pointer items-center gap-2">
+							<img
+								src={comment.authorAvatar || 'https://via.placeholder.com/40'}
+								alt={comment.authorName}
+								class="h-8 w-8 rounded-full"
+							/>
+							<p>{comment.authorName}</p>
+						</div>
+					</UserPopoverCard>
+
+					<div>
 						<span class="mr-1 text-sm opacity-50">{formatDate(comment.createdAt)}</span>
 						{#if (comment.likes ?? 0) > 0}
 							<span class="text-success text-sm">+{comment.likes}</span>
 						{/if}
-					</p>
+					</div>
 				</div>
 				<div>
 					<p>{comment.text}</p>

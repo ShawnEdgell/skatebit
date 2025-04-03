@@ -7,6 +7,7 @@ export { default as ImageModal } from './layout/ImageModal.svelte';
 // auth
 export { default as GoogleLoginButton } from './auth/GoogleLoginButton.svelte';
 export { default as LoginAvatar } from './auth/LoginAvatar.svelte';
+export { default as UserPopoverCard } from './auth/UserPopoverCard.svelte';
 
 // widgets
 export { default as ClipOfTheWeek } from './widgets/ClipOfTheWeek.svelte';

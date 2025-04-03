@@ -33,7 +33,7 @@
 	<!-- Avoid SSR flash -->
 	<span class="loading loading-spinner loading-lg text-primary"></span>
 {:else if $user}
-	<button on:click={handleLogout} class="btn btn-error">Logout</button>
+	<button on:click={handleLogout} class="btn btn-soft">Logout</button>
 {:else}
 	<button on:click={login} class="btn btn-primary">
 		<svg

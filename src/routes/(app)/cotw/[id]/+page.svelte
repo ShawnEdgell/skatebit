@@ -15,7 +15,7 @@
 		deleteClipPost,
 		getUserClipThisWeek
 	} from '$lib/firebase/clips';
-	import { GoogleLoginButton, VideoCard } from '$lib/components';
+	import { GoogleLoginButton, VideoCard, UserPopoverCard } from '$lib/components';
 	import { formatDate } from '$lib/utils/formatDate';
 	import { getCurrentWeekId } from '$lib/utils/week';
 	import type { ClipPost, ClipComment } from '$lib/types/clips';
@@ -190,17 +190,32 @@
 			</svg>
 			<span class="text-sm opacity-50">Loading uploader info...</span>
 		{:else if clip}
-			<img
-				src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
-				alt={clip.userDisplayName}
-				class="h-8 w-8 rounded-full"
-			/>
-			<span class="text-sm opacity-50">
-				Uploaded by {clip.userDisplayName} on {formatDate(clip.timestamp)}
-			</span>
-			{#if (clip.likes ?? 0) > 0}
-				<span class="text-success text-sm">+{clip.likes}</span>
-			{/if}
+			<div class="not-prose my-6 flex items-center gap-2">
+				<!-- Avatar + Name wrapped in Popover -->
+				<UserPopoverCard
+					userId={clip.uid}
+					name={clip.userDisplayName}
+					avatar={clip.userPhotoURL || 'https://via.placeholder.com/40'}
+					placement="click"
+				>
+					<div class="flex cursor-pointer items-center gap-2">
+						<img
+							src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
+							alt={clip.userDisplayName}
+							class="border-base-300 h-8 w-8 rounded-full border"
+						/>
+						<p>{clip.userDisplayName}</p>
+					</div>
+				</UserPopoverCard>
+
+				<!-- Date + Likes -->
+				<div>
+					<span class="text-sm opacity-50">{formatDate(clip.timestamp)}</span>
+					{#if (clip.likes ?? 0) > 0}
+						<span class="text-success ml-2 text-sm">+{clip.likes}</span>
+					{/if}
+				</div>
+			</div>
 		{/if}
 	</div>
 
@@ -248,19 +263,30 @@
 		{#each comments as comment, i (comment.id)}
 			<div>
 				<div class="not-prose flex items-center gap-2">
-					<img
-						src={comment.authorAvatar || 'https://via.placeholder.com/40'}
-						alt={comment.authorName}
-						class="h-8 w-8 rounded-full"
-					/>
-					<p>
-						<span class="mr-1">{comment.authorName}</span>
+					<UserPopoverCard
+						userId={comment.authorId}
+						name={comment.authorName}
+						avatar={comment.authorAvatar || 'https://via.placeholder.com/40'}
+						placement="click"
+					>
+						<div class="flex cursor-pointer items-center gap-2">
+							<img
+								src={comment.authorAvatar || 'https://via.placeholder.com/40'}
+								alt={comment.authorName}
+								class="h-8 w-8 rounded-full"
+							/>
+							<p>{comment.authorName}</p>
+						</div>
+					</UserPopoverCard>
+
+					<div>
 						<span class="mr-1 text-sm opacity-50">{formatDate(comment.createdAt)}</span>
 						{#if (comment.likes ?? 0) > 0}
 							<span class="text-success text-sm">+{comment.likes}</span>
 						{/if}
-					</p>
+					</div>
 				</div>
+
 				<div>
 					<p>{comment.text}</p>
 
