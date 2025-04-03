@@ -1,38 +1,34 @@
-# sv
+# Skatebit
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Skatebit is a modern, community-driven skateboarding platform built with SvelteKit, Firebase, and DaisyUI. It empowers skaters to share their clips, connect with fellow enthusiasts, and discover the latest skateboarding trends—all wrapped in a fast, responsive, and beautifully designed web application.
 
-## Creating a project
+## Key Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- **User Authentication:**  
+  Seamless Google authentication powered by Firebase, enabling quick and secure sign-ins.
 
-```bash
-# create a new project in the current directory
-npx sv create
+- **Dynamic User Profiles:**  
+  Personalize your profile with bios, social links, and avatars. Showcase your skate journey and connect with others.
 
-# create a new project in my-app
-npx sv create my-app
-```
+- **Clip Sharing:**  
+  Easily upload and share skateboarding clips. Users can view and interact with content in a smooth, responsive interface.
 
-## Developing
+- **Responsive & Modern Design:**  
+  Built with SvelteKit, Tailwind CSS, and DaisyUI to provide a fluid user experience across all devices—from mobile to desktop.
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- **Real-Time Updates:**  
+  Integrated with Firebase to deliver real-time interactions and updates so your content stays fresh and engaging.
 
-```bash
-npm run dev
+## Technologies Used
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- **SvelteKit:**  
+  A modern framework for building reactive, fast web applications.
 
-## Building
+- **Firebase:**  
+  Utilized for authentication, real-time database features, and hosting.
 
-To create a production version of your app:
+- **Tailwind CSS & DaisyUI:**  
+  For rapid UI development with utility-first styling and beautiful, pre-built components.
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+- **TypeScript:**  
+  Enhances code quality with type safety and an improved developer experience.
