@@ -228,7 +228,12 @@
 			</div>
 
 			{#if !clipsLoaded}
-				<p class="mt-4 text-sm opacity-50">Loading clips...</p>
+				<!-- Loading placeholder for one clip -->
+				<div class="not-prose bg-base-200 card aspect-video w-full">
+					<div class="flex h-full w-full items-center justify-center">
+						<span class="loading loading-spinner loading-lg text-primary"></span>
+					</div>
+				</div>
 			{:else if clips.length > 0}
 				<div class="space-y-6">
 					{#each clips as clip}

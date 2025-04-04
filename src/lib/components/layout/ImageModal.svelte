@@ -6,7 +6,7 @@
 	let modal: HTMLDialogElement;
 </script>
 
-<button class="btn btn-primary btn-outline" on:click={() => modal.showModal()}>
+<button class="btn btn-soft" on:click={() => modal.showModal()}>
 	{buttonText}
 </button>
 

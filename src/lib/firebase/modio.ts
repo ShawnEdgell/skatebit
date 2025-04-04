@@ -6,7 +6,7 @@ import { MODIO_API_KEY } from '$env/static/private';
 
 const CACHE_COLLECTION = 'modCache';
 const CACHE_DOC = 'skaterxlMods';
-const CACHE_DURATION = 15 * 60 * 1000; // 15 minutes
+const CACHE_DURATION = 60 * 60 * 1000; // 1 hour
 
 export async function getCachedModData(): Promise<ModsData> {
 	const cacheRef = doc(db, CACHE_COLLECTION, CACHE_DOC);

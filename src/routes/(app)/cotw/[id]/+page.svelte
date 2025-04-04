@@ -190,7 +190,7 @@
 			</svg>
 			<span class="text-sm opacity-50">Loading uploader info...</span>
 		{:else if clip}
-			<div class="not-prose my-6 flex items-center gap-2">
+			<div class="not-prose flex items-center gap-2">
 				<!-- Avatar + Name wrapped in Popover -->
 				<UserPopoverCard
 					userId={clip.uid}

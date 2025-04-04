@@ -1,12 +1,14 @@
 <section>
-	<h2>Essential Settings</h2>
-	<p>
+	<h2 class="mb-4 text-2xl font-bold">Essential Settings</h2>
+	<p class="mb-2">
 		For those who want to create their own stats or see which settings make Skater XL feel more
-		realistic, this section will help you find the most important settings.
+		realistic, this section will help you find the most important adjustments.
 	</p>
-	<p>
-		Please note that these recommended values are just suggestions. You can adjust them to suit your
-		personal preference.
+	<p class="mb-4">
+		Please note that the following recommended values are for the <span class="font-semibold"
+			>XXL 3 Mod by Dawgvinci</span
+		> – the main stats menu used by the Skater XL community. Experiment with these settings to find the
+		perfect balance for your style.
 	</p>
 
 	<div class="overflow-x-auto">

@@ -5,19 +5,23 @@
 <section>
 	<h2>Maps & Gear</h2>
 	<p>
-		Almost all custom <strong>maps</strong> and <strong>gear</strong> for Skater XL come from
-		community sources like
-		<a href="https://skaterxl.mod.io/" target="_blank" class="hover:no-underline">skaterxl.mod.io</a
-		>
+		Almost all custom maps and gear for Skater XL come from community sources like
+		<a href="https://mod.io/g/skaterxl/" target="_blank" class="hover:no-underline">
+			mod.io/g/skaterxl
+		</a>
 		and various modding Discord servers. Be sure to check out our
-		<a href="/links" class="hover:no-underline">Helpful Links</a> section to find these communities!
+		<a href="/links" class="hover:no-underline"> Helpful Links </a>
+		section to find these communities! You can also find some of the latest maps and gear on our new
+		<a href="/modio" class="hover:no-underline">mod.io</a>
+		page.
 	</p>
 	<p class="mt-4">
 		Once you've downloaded your content, place the extracted files into the correct folders listed
 		below. Most downloads come in ZIP files — make sure to unzip them first!
 	</p>
 	<p class="mt-2">
-		XLGM gear often requires installation in two locations: one for the <strong>texture</strong>
+		Tip: XLGM gear often requires installation in two locations: one for the <strong>texture</strong
+		>
 		files, and one for the <strong>asset packs</strong>. Both paths are shown below.
 	</p>
 </section>
@@ -25,7 +29,7 @@
 <section class="not-prose mt-6">
 	<div class="flex flex-col gap-4">
 		<!-- Custom Maps -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">Custom Maps</h3>
 				<p class="prose">Documents / SkaterXL / Maps</p>
@@ -33,7 +37,7 @@
 		</div>
 
 		<!-- Custom Gear -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">Custom Gear</h3>
 				<p class="prose">Documents / SkaterXL / Gear</p>
@@ -41,7 +45,7 @@
 		</div>
 
 		<!-- XLGM Gear (Textures) -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">XLGM Gear (Textures)</h3>
 				<p class="prose">Documents / SkaterXL / Gear</p>
@@ -49,7 +53,7 @@
 		</div>
 
 		<!-- XLGM Gear (Assets) -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">XLGM Gear (Assets)</h3>
 				<p class="prose">Documents / SkaterXL / XLGearModifier / AssetPacks</p>

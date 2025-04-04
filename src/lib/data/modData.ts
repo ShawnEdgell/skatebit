@@ -1,3 +1,22 @@
+export const decalFix = [
+	{
+		badge: 'Recommended',
+		title: 'Decal Fix',
+		author: 'Brookzee99',
+		workingVersion: '1.2.2.8 & 1.2.5.6',
+		keybind: '(automatic)',
+		features: ['Enhanced Decals', 'Screen Space Reflections'],
+		note: '',
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/decal-fix', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/1635126/files/2693365/download',
+				label: 'Download'
+			}
+		]
+	}
+];
+
 export const alphaMods = [
 	{
 		badge: 'Essential',
@@ -128,17 +147,17 @@ export const alphaMods = [
 		]
 	},
 	{
-		// badge: 'Recommended',
-		title: 'Decal Fix',
-		author: 'Brookzee99',
-		workingVersion: '1.2.2.8 & 1.2.5.6',
+		badge: 'New',
+		title: 'XL Multiplayer Map Vote',
+		author: 'Guru',
+		workingVersion: '1.0.0',
 		keybind: '(automatic)',
-		features: ['Enhanced Decals', 'Screen Space Reflections'],
-		note: 'Please refer to mod.io description on how to install. This mod DOES NOT go into Unity Mod Manager.',
+		features: ['Allows players to vote for the next map in multiplayer'],
+		note: '',
 		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/decal-fix', label: 'skaterxl.mod.io' },
+			{ url: 'https://mod.io/g/skaterxl/m/xl-multiplayer-map-vote', label: 'skaterxl.mod.io' },
 			{
-				url: 'https://g-629.modapi.io/v1/games/629/mods/1635126/files/2693365/download',
+				url: 'https://g-629.modapi.io/v1/games/629/mods/4466553/files/5744063/download',
 				label: 'Download'
 			}
 		]
@@ -219,38 +238,6 @@ export const alphaMods = [
 			{ url: 'https://mod.io/g/skaterxl/m/xlobjectdropper', label: 'skaterxl.mod.io' },
 			{
 				url: 'https://g-629.modapi.io/v1/games/629/mods/176938/files/2964580/download',
-				label: 'Download'
-			}
-		]
-	},
-	{
-		// badge: 'Useful',
-		title: 'Not My Feet',
-		author: 'M4cs',
-		workingVersion: '1.1',
-		keybind: 'N',
-		features: ['Remove shoe highlighting when using controller the overlay'],
-		note: 'Follow the steps on mod.io to use this mod.',
-		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/notmyfeet', label: 'skaterxl.mod.io' },
-			{
-				url: 'https://g-629.modapi.io/v1/games/629/mods/145102/files/177398/download',
-				label: 'Download'
-			}
-		]
-	},
-	{
-		// badge: 'Useful',
-		title: 'Controls Editor',
-		author: 'Silentbaws',
-		workingVersion: '0.1.1',
-		keybind: 'CTRL + F10',
-		features: ['Control Customization', 'Personalized Trick Mechanics'],
-		note: '',
-		downloadLinks: [
-			{ url: 'https://mod.io/g/skaterxl/m/controls-editor', label: 'skaterxl.mod.io' },
-			{
-				url: 'https://g-629.modapi.io/v1/games/629/mods/138210/files/1170040/download',
 				label: 'Download'
 			}
 		]
@@ -351,6 +338,38 @@ export const alphaMods = [
 			{ url: 'https://discord.com/invite/GmuBn6UzUh', label: "DawgVinci's Discord" },
 			{
 				url: 'https://drive.google.com/file/d/1vxhbZh6GW1Xs_CMAaZwZVD7AwOgZRj4e/',
+				label: 'Download'
+			}
+		]
+	},
+	{
+		// badge: 'Useful',
+		title: 'Not My Feet',
+		author: 'M4cs',
+		workingVersion: '1.1',
+		keybind: 'N',
+		features: ['Remove shoe highlighting when using controller the overlay'],
+		note: 'Follow the steps on mod.io to use this mod.',
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/notmyfeet', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/145102/files/177398/download',
+				label: 'Download'
+			}
+		]
+	},
+	{
+		// badge: 'Useful',
+		title: 'Controls Editor',
+		author: 'Silentbaws',
+		workingVersion: '0.1.1',
+		keybind: 'CTRL + F10',
+		features: ['Control Customization', 'Personalized Trick Mechanics'],
+		note: '',
+		downloadLinks: [
+			{ url: 'https://mod.io/g/skaterxl/m/controls-editor', label: 'skaterxl.mod.io' },
+			{
+				url: 'https://g-629.modapi.io/v1/games/629/mods/138210/files/1170040/download',
 				label: 'Download'
 			}
 		]

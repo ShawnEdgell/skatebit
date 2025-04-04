@@ -13,14 +13,10 @@
 <section>
 	<h2>Stats & Settings</h2>
 	<p>
-		Looking for new stats setups? You can download stat and mod setting presets from our <a
-			href="/stats"
-			class="hover:no-underline">Stats</a
-		> page as well as various modding Discord servers where the community shares their own custom configurations.
-	</p>
-	<p class="mt-4">
-		We’re also working on a feature that will let users upload and share their own presets right
-		here, so stay tuned!
+		Looking for new stats setups? Our <a href="/stats" class="hover:no-underline">Stats</a> page
+		offers a solid set of preset configurations to help get you started. Keep in mind that most of
+		the community shares their custom stats in various Discord servers. Visit our
+		<a href="/links" class="hover:no-underline">Helpful Links</a> page for more on these communities!
 	</p>
 	<p class="mt-4">
 		To install any of the following files, simply place the downloaded presets into the appropriate
@@ -35,7 +31,7 @@
 <section class="not-prose mt-6">
 	<div class="flex flex-col gap-4">
 		<!-- XXL 3 Stats -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">XXL 3 Mod Stats</h3>
 				<p class="prose">Documents / SkaterXL / XXLMod3 / StatsCollections</p>
@@ -43,7 +39,7 @@
 		</div>
 
 		<!-- XXL 3 Stance -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">XXL 3 Mod Stance</h3>
 				<p class="prose">Documents / SkaterXL / XXLMod3 / StanceCollections</p>
@@ -51,7 +47,7 @@
 		</div>
 
 		<!-- XXL 3 Steeze -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">XXL 3 Mod Steeze</h3>
 				<p class="prose">Documents / SkaterXL / XXLMod3 / SteezeCollections</p>
@@ -59,7 +55,7 @@
 		</div>
 
 		<!-- BonedOllieMod -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">BonedOllieMod Settings</h3>
 				<p class="prose">Documents / SkaterXL / BonedOllieMod</p>
@@ -67,7 +63,7 @@
 		</div>
 
 		<!-- Fro's Mod -->
-		<div class="card bg-base-300 shadow-sm">
+		<div class="card bg-base-300">
 			<div class="card-body">
 				<h3 class="card-title text-xl">Fro's Mod Settings</h3>
 				<p class="prose">Steam / steamapps / common / SkaterXL / fro-mod</p>
