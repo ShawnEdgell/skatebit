@@ -225,7 +225,6 @@
 		</section>
 	{:else}
 		<p>Log in to join the discussion!</p>
-
 		<GoogleLoginButton />
 	{/if}
 

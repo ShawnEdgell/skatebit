@@ -33,7 +33,7 @@
 
 <!-- Map Mods Section -->
 <section class="mt-8">
-	<h2 class="mb-4 text-2xl font-bold">Recent Maps</h2>
+	<h2 class="mb-4 text-2xl font-bold">Latest Maps</h2>
 	{#if mapMods && mapMods.length > 0}
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			{#each mapMods as mod}
@@ -75,7 +75,7 @@
 
 <!-- Gear Mods Section -->
 <section class="mt-8">
-	<h2 class="mb-4 text-2xl font-bold">Recent Gear</h2>
+	<h2 class="mb-4 text-2xl font-bold">Latest Gear</h2>
 	{#if gearMods && gearMods.length > 0}
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			{#each gearMods as mod}
@@ -124,7 +124,7 @@
 
 <!-- Script Mods Section -->
 <section class="mt-8">
-	<h2 class="mb-4 text-2xl font-bold">Recent Scripts</h2>
+	<h2 class="mb-4 text-2xl font-bold">Latest Scripts</h2>
 	{#if scriptMods && scriptMods.length > 0}
 		<div class="grid grid-cols-1 gap-4 md:grid-cols-2">
 			{#each scriptMods as mod}
