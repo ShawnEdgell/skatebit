@@ -29,14 +29,18 @@
 
 	$: clipId = $page.params.id;
 
-	onMount(async () => {
-		if (!clipId) return;
-		clip = await getClipById(clipId);
-		comments = (await getClipComments(clipId)).sort(
+	$: if (clipId) {
+		loadClipData(clipId);
+	}
+
+	async function loadClipData(id: string) {
+		loading = true;
+		clip = await getClipById(id);
+		comments = (await getClipComments(id)).sort(
 			(a, b) => toMillis(a.createdAt) - toMillis(b.createdAt)
 		);
 		loading = false;
-	});
+	}
 
 	function toMillis(date: Date | Timestamp | null | undefined): number {
 		if (!date) return 0;
