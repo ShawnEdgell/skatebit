@@ -26,9 +26,5 @@ export const navItems = [
 	{
 		href: '/forum',
 		label: 'Forum'
-	},
-	{
-		href: '/modio',
-		label: 'mod.io'
 	}
 ];

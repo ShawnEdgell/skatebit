@@ -11,9 +11,7 @@
 		</a>
 		and various modding Discord servers. Be sure to check out our
 		<a href="/links" class="hover:no-underline"> Helpful Links </a>
-		section to find these communities! You can also find some of the latest maps and gear on our new
-		<a href="/modio" class="hover:no-underline">mod.io</a>
-		page.
+		section to find these communities!
 	</p>
 	<p class="mt-4">
 		Once you've downloaded your content, place the extracted files into the correct folders listed
