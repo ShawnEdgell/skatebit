@@ -55,43 +55,41 @@
 <!-- Toast Component (reactive with store) -->
 <Toast message={$toast.message} type={$toast.type} visible={$toast.visible} />
 
-<AlertBar />
+<!-- <AlertBar /> -->
 
 <!-- Page Layout -->
 <div class="flex min-h-screen flex-col">
 	<!-- Header -->
-	<div class="bg-base-100/95 sticky top-0 z-50 mb-12 w-full backdrop-blur">
+	<div class="bg-base-100/95 sticky top-0 z-50 w-full backdrop-blur">
 		<Navbar />
 	</div>
 
 	<!-- Main Content Area -->
 	<div class="flex flex-1 justify-center px-6">
-		<div class="flex w-full max-w-7xl justify-center gap-6 xl:justify-between">
-			<!-- Left Sidebar -->
-			<aside class="hidden w-72 xl:block">
+		<!-- <div class="flex w-full max-w-7xl justify-center gap-6 xl:justify-between"> -->
+		<!-- Left Sidebar -->
+		<!-- <aside class="hidden w-72 xl:block">
 				<div class="sticky top-28 h-[calc(100vh-7rem)] overflow-y-auto pr-2">
 					<FollowEyes />
 					<div class="space-y-6">
 						<ClipOfTheWeek />
 						<HallOfFame />
 					</div>
-
-					<!-- <QuickLinks /> -->
 				</div>
-			</aside>
+			</aside> -->
 
-			<!-- Main Content -->
-			<main class="prose md:prose-lg mb-6 w-full">
-				{@render children()}
-			</main>
+		<!-- Main Content -->
+		<main class="prose md:prose-lg my-6 w-full md:my-12">
+			{@render children()}
+		</main>
 
-			<!-- Right Sidebar -->
-			<aside class="hidden w-72 xl:block">
+		<!-- Right Sidebar -->
+		<!-- <aside class="hidden w-72 xl:block">
 				<div class="sticky top-28 h-[calc(100vh-7rem)] space-y-6 overflow-y-auto pl-2">
 					<TableOfContents />
 				</div>
-			</aside>
-		</div>
+			</aside> -->
+		<!-- </div> -->
 	</div>
 </div>
 <!-- Footer -->

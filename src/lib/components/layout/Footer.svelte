@@ -43,10 +43,5 @@
 			</a>
 		</div>
 	</nav>
-</footer>
-
-<footer class="footer footer-center bg-neutral p-16">
-	<aside class="text-center text-xs">
-		<p>Skatebit {new Date().getFullYear()} - The Skater XL Modding Community</p>
-	</aside>
+	<p>Skatebit {new Date().getFullYear()} - The Skater XL Modding Community</p>
 </footer>

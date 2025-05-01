@@ -81,7 +81,7 @@
 						<img
 							src={video.channelAvatar}
 							alt={video.channelTitle}
-							class="h-6 w-6 rounded-full"
+							class="rounded-box h-6 w-6"
 							loading="lazy"
 						/>
 					{/if}

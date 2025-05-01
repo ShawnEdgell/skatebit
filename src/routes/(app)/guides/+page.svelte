@@ -4,6 +4,7 @@
 	import StatsSettings from './StatsSettings.svelte';
 	import VideoGuides from './VideoGuides.svelte';
 	import type { YouTubeItem } from '$lib/types/youtube';
+	import Divider from '$lib/components/layout/Divider.svelte';
 
 	const pageTitle = 'Guides';
 	const pageDescription =
@@ -32,7 +33,7 @@
 <section>
 	<h1>{pageTitle}</h1>
 	<p>{pageDescription}</p>
-	<div class="divider"></div>
+	<Divider />
 </section>
 
 <!-- Tab Selector -->

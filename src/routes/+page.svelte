@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { VideoCard } from '$lib/components';
 	import type { YouTubeItem } from '$lib/types/youtube';
+	import Divider from '$lib/components/layout/Divider.svelte';
 
 	export let data: { videos: YouTubeItem[] };
 
@@ -24,7 +25,7 @@
 <section>
 	<h1>{pageTitle}</h1>
 	<p>{pageDescription}</p>
-	<div class="divider"></div>
+	<Divider />
 </section>
 
 {#if filteredVideos && filteredVideos.length > 0}

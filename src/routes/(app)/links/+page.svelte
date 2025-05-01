@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Divider from '$lib/components/layout/Divider.svelte';
 	import Tables from './Tables.svelte';
 
 	const pageTitle = 'Helpful Links';
@@ -15,7 +16,7 @@
 <section>
 	<h1>{pageTitle}</h1>
 	<p>{pageDescription}</p>
-	<div class="divider"></div>
+	<Divider />
 </section>
 
 <div role="alert" class="alert alert-info">

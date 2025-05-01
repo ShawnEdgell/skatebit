@@ -46,7 +46,7 @@
 
 	{#if loading}
 		<!-- Spinner in aspect-ratio box -->
-		<div class="bg-base-300 flex aspect-[16/9] w-full items-center justify-center rounded-md">
+		<div class="bg-base-300 rounded-box flex aspect-[16/9] w-full items-center justify-center">
 			<span class="loading loading-spinner loading-lg text-primary"></span>
 		</div>
 
@@ -85,7 +85,7 @@
 				<img
 					src={featuredClip.userPhotoURL || 'https://via.placeholder.com/40'}
 					alt={featuredClip.userDisplayName}
-					class="h-8 w-8 rounded-full"
+					class="rounded-box h-8 w-8"
 				/>
 				<div class="text-sm">
 					<p class="font-semibold">{featuredClip.userDisplayName}</p>
@@ -99,7 +99,7 @@
 		<a href="/cotw" class="btn btn-sm btn-soft text-center">View All Clips</a>
 	{:else}
 		<!-- No clips fallback -->
-		<div class="bg-base-300 flex aspect-[16/9] w-full items-center justify-center rounded-md">
+		<div class="bg-base-300 rounded-box flex aspect-[16/9] w-full items-center justify-center">
 			<span class="text-base-content/60 text-sm">No clips submitted yet.</span>
 		</div>
 

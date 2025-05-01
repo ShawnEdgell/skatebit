@@ -3,6 +3,7 @@
 	import { getHallOfFameEntries } from '$lib/firebase/hallOfFame';
 	import type { ClipPost } from '$lib/types/clips';
 	import type { Timestamp } from 'firebase/firestore';
+	import Divider from '$lib/components/layout/Divider.svelte';
 
 	const pageTitle = 'Hall of Fame';
 	const pageDescription = 'Celebrate the winners from each week!';
@@ -31,7 +32,7 @@
 <section>
 	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
-	<div class="divider"></div>
+	<Divider />
 </section>
 
 <h2>Winners</h2>

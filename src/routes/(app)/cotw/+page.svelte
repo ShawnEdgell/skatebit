@@ -10,6 +10,7 @@
 	import { GoogleLoginButton, VideoCard } from '$lib/components';
 	import { saveWeeklyWinner } from '$lib/firebase/hallOfFame';
 	import { showToast } from '$lib/utils/toast';
+	import Divider from '$lib/components/layout/Divider.svelte';
 
 	const pageTitle = 'Clip of the Week';
 	const pageDescription =
@@ -153,7 +154,7 @@
 		<section>
 			<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 			<p>{pageDescription}</p>
-			<div class="divider"></div>
+			<Divider />
 		</section>
 
 		<section class="not-prose">

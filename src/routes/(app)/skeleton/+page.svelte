@@ -1,4 +1,6 @@
 <script lang="ts">
+	import Divider from '$lib/components/layout/Divider.svelte';
+
 	const pageTitle = 'Skeleton';
 	const pageDescription = 'Description';
 </script>
@@ -15,5 +17,5 @@
 	<p>
 		{pageDescription}
 	</p>
-	<div class="divider"></div>
+	<Divider />
 </section>

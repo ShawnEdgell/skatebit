@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Divider from '$lib/components/layout/Divider.svelte';
 	import EssentialSettings from './EssentialSettings.svelte';
 	import Presets from './Presets.svelte';
 
@@ -20,7 +21,7 @@
 		section or ask us questions on
 		<a class="hover:no-underline" href="https://discord.gg/G9aW5uV" target="_blank">Discord.</a>
 	</p>
-	<div class="divider"></div>
+	<Divider />
 </section>
 
 <Presets />

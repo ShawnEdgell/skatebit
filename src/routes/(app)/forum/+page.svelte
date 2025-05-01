@@ -5,6 +5,7 @@
 	import type { ForumPost } from '$lib/types/forum';
 	import type { Timestamp } from 'firebase/firestore';
 	import { showToast } from '$lib/utils/toast';
+	import Divider from '$lib/components/layout/Divider.svelte';
 
 	import { getForumPosts, submitForumPost } from '$lib/firebase/forum';
 
@@ -88,7 +89,7 @@
 <section>
 	<h1>{pageTitle} <span class="badge badge-sm lg:badge-md badge-info">Beta</span></h1>
 	<p>{pageDescription}</p>
-	<div class="divider"></div>
+	<Divider />
 </section>
 
 <section class="not-prose">

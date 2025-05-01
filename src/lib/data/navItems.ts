@@ -19,10 +19,10 @@ export const navItems = [
 		href: '/stats',
 		label: 'Stats'
 	},
-	{
-		href: '/cotw',
-		label: 'CoTW'
-	},
+	// {
+	// 	href: '/cotw',
+	// 	label: 'CoTW'
+	// },
 	{
 		href: '/forum',
 		label: 'Forum'

@@ -113,7 +113,7 @@
 			<img
 				src={$user?.photoURL || 'https://via.placeholder.com/40'}
 				alt={$user?.displayName || 'User'}
-				class="border-base-300 h-10 w-10 rounded-full border"
+				class="border-base-300 rounded-box h-10 w-10 border"
 			/>
 			<div>
 				<h2 class="text-xl font-bold">{$user?.displayName || 'User'}</h2>

@@ -20,6 +20,7 @@
 	import { getCurrentWeekId } from '$lib/utils/week';
 	import type { ClipPost, ClipComment } from '$lib/types/clips';
 	import type { Timestamp } from 'firebase/firestore';
+	import Divider from '$lib/components/layout/Divider.svelte';
 
 	let clip: ClipPost | null = null;
 	let comments: ClipComment[] = [];
@@ -206,7 +207,7 @@
 						<img
 							src={clip.userPhotoURL || 'https://via.placeholder.com/40'}
 							alt={clip.userDisplayName}
-							class="border-base-300 h-8 w-8 rounded-full border"
+							class="border-base-300 rounded-box h-8 w-8 border"
 						/>
 						<p>{clip.userDisplayName}</p>
 					</div>
@@ -239,7 +240,7 @@
 		{/if}
 	</div>
 
-	<div class="divider mb-6"></div>
+	<Divider />
 
 	{#if $user}
 		<section>
@@ -277,7 +278,7 @@
 							<img
 								src={comment.authorAvatar || 'https://via.placeholder.com/40'}
 								alt={comment.authorName}
-								class="h-8 w-8 rounded-full"
+								class="rounded-box h-8 w-8"
 							/>
 							<p>{comment.authorName}</p>
 						</div>
@@ -317,7 +318,7 @@
 				</div>
 
 				{#if i < comments.length - 1}
-					<div class="divider"></div>
+					<Divider />
 				{/if}
 			</div>
 		{/each}

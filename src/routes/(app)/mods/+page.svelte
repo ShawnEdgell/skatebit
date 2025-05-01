@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Divider from '$lib/components/layout/Divider.svelte';
 	import ModListSection from './ModListSection.svelte';
 
 	const pageTitle = 'Mods';
@@ -15,7 +16,7 @@
 <section>
 	<h1>{pageTitle}</h1>
 	<p>{pageDescription}</p>
-	<div class="divider"></div>
+	<Divider />
 </section>
 
 <!-- Mod List Section -->
