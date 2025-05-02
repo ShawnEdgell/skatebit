@@ -1,5 +1,4 @@
 <section>
-	<h2 class=" text-2xl font-bold">Presets</h2>
 	<div class="not-prose flex flex-col gap-6">
 		<!-- Card 1: Basic Realistic Settings -->
 		<div class="card bg-base-200 rounded-box flex flex-col p-6 md:flex-row md:items-center">

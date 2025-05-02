@@ -55,7 +55,7 @@
 <!-- Toast Component (reactive with store) -->
 <Toast message={$toast.message} type={$toast.type} visible={$toast.visible} />
 
-<!-- <AlertBar /> -->
+<AlertBar />
 
 <!-- Page Layout -->
 <div class="flex min-h-screen flex-col">
