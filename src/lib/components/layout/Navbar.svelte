@@ -85,7 +85,7 @@
 		<label for="my-drawer-3" class="drawer-overlay"></label>
 		<ul class="menu join join-vertical bg-base-200 min-h-full w-80 p-4">
 			{#each navItems as { href, label }}
-				<a class="btn btn-lg join-item" {href} on:click={closeDrawer}>
+				<a class="btn btn-ghost btn-lg join-item" {href} on:click={closeDrawer}>
 					{label}
 				</a>
 			{/each}
