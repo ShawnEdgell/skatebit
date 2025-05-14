@@ -81,7 +81,7 @@
 						<img
 							src={video.channelAvatar}
 							alt={video.channelTitle}
-							class="rounded-box h-6 w-6"
+							class="h-6 w-6 rounded-full"
 							loading="lazy"
 						/>
 					{/if}
@@ -92,8 +92,8 @@
 			{/if}
 
 			{#if showDescription && video.description?.trim()}
-				<div class="prose">
-					{#if video.description.length > 100}
+				<div class="prose wrap-break-word">
+					{#if video.description.length > 106}
 						{#if showFullDescription}
 							<p class="mb-2">{video.description}</p>
 							<button

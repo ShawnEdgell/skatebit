@@ -7,7 +7,7 @@
 
 	const pageTitle = 'Recent News';
 	const pageDescription =
-		'Discover the latest official updates, news, and videos from Skater XL, Session, and Skate—all in one place.';
+		'Discover the latest official updates, news, and videos from Skate, Skater XL, Session, and Virtual Skate—all in one place.';
 
 	const { videos } = data;
 

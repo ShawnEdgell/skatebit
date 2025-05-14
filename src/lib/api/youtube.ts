@@ -22,6 +22,12 @@ const CHANNELS = [
 		type: 'channel',
 		id: 'UCSBQJEWTWOUCO65xvoDfljw',
 		channelId: 'UCSBQJEWTWOUCO65xvoDfljw'
+	},
+	{
+		label: 'Virtual Skate',
+		type: 'channel',
+		id: 'UCsQSkP6v4ZL5HpfApYwxryw',
+		channelId: 'UCsQSkP6v4ZL5HpfApYwxryw'
 	}
 ];
 
@@ -161,5 +167,5 @@ export async function fetchYouTubeVideos(): Promise<YouTubeItem[]> {
 	});
 
 	// ✅ Limit to the 10 most recent
-	return allVideos.slice(0, 10);
+	return allVideos.slice(0, 20);
 }
